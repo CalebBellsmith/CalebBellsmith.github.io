@@ -3,115 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caleb Bellsmith | Biomedical Engineering</title>
+    <title>Caleb Bellsmith | Portfolio</title>
     <style>
-        :root {
-            --primary: #005f73;
-            --secondary: #0a9396;
-            --dark: #222;
-            --light: #f4f4f4;
-        }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: var(--dark); margin: 0; padding: 0; background: var(--light); }
-        header { background: var(--primary); color: white; padding: 2rem 1rem; text-align: center; }
-        nav { background: #333; color: white; display: flex; justify-content: center; padding: 0.5rem; position: sticky; top: 0; }
-        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
-        .container { max-width: 900px; margin: auto; padding: 2rem; }
-        section { margin-bottom: 3rem; }
-        h2 { border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; color: var(--primary); }
-        .project-card { background: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 1.5rem; margin-bottom: 2rem; }
-        .project-image { width: 100%; height: 300px; background: #ddd; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; border-radius: 4px; border: 1px dashed #999; }
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-        .tag { background: var(--secondary); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-right: 5px; }
-        footer { text-align: center; padding: 2rem; background: #333; color: white; }
+        :root { --primary: #005f73; --dark: #222; --light: #f4f4f4; }
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: var(--dark); margin: 0; background: var(--light); display: flex; flex-direction: column; min-height: 100vh; }
+        header { background: var(--primary); color: white; padding: 4rem 1rem; text-align: center; }
+        nav { background: #333; display: flex; justify-content: center; padding: 1rem; }
+        nav a { color: white; margin: 0 20px; text-decoration: none; font-weight: bold; font-size: 1.1rem; }
+        nav a:hover { color: #94d2bd; }
+        .hero { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; }
+        footer { text-align: center; padding: 1.5rem; background: #333; color: white; }
     </style>
 </head>
 <body>
-
 <header>
     <h1>Caleb Bellsmith</h1>
     <p>Biomedical Engineering Student | University of Waterloo</p>
-    <p>cbellsmi@uwaterloo.ca | 289-971-6729</p>
 </header>
-
 <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="skills.html">Skills</a>
 </nav>
-
-<div class="container">
-
-    <section id="about">
-        <h2>About Me</h2>
-        <p>I am a Biomedical Engineering student at the University of Waterloo (Class of 2030) with a passion for biomechatronics and digital fabrication. I combine traditional craftsmanship with modern engineering tools to solve physiological challenges.</p>
-        <p><strong>Notable Accreditations:</strong> Governor General's Award (2025), Sir Isaac Newton Physics Award, and Valedictorian (TDCH 2025).</p>
-    </section>
-
-    <section id="projects">
-        <h2>Engineering Projects</h2>
-
-        <div class="project-card">
-            <h3>Mechanical Exoskeleton</h3>
-            <div class="project-image">
-                <span>[Project Photo: Orthotic Exoskeleton Prototype]</span>
-            </div>
-            <p><strong>Biomechatronics Design Team:</strong> Designed a mechanical orthotic exoskeleton to assist recovery from hand and wrist injuries.</p>
-            <ul>
-                <li>Modeled and prototyped using SolidWorks.</li>
-                <li>Optimized for minimal weight and adjustability across various user profiles.</li>
-            </ul>
-            <div><span class="tag">SolidWorks</span><span class="tag">Biomechatronics</span><span class="tag">Prototyping</span></div>
-        </div>
-
-        <div class="project-card">
-            <h3>Custom Canoe Design & Fabrication</h3>
-            <div class="project-image">
-                <span>[Project Photo: Cedar Strip Canoe]</span>
-            </div>
-            <p>Integrated traditional craftsmanship with modern digital fabrication by building a cedar strip canoe from raw materials.</p>
-            <ul>
-                <li>Utilized CNC machining for precision cutting of internal forms.</li>
-                <li>Applied CAD principles to ensure structural integrity and hydrodynamic efficiency.</li>
-            </ul>
-            <div><span class="tag">CNC Machining</span><span class="tag">CAD</span><span class="tag">Digital Fabrication</span></div>
-        </div>
-
-        <div class="project-card">
-            <h3>Adjustable Orthotic Insert</h3>
-            <div class="project-image">
-                <span>[Project Photo: Medial Arch Support Testing]</span>
-            </div>
-            <p>Developed a reusable and adjustable orthotic insert providing targeted medial arch support.</p>
-            <ul>
-                <li>Conducted user testing to iterate on comfort and durability.</li>
-            </ul>
-            <div><span class="tag">Product Design</span><span class="tag">User Testing</span><span class="tag">Independent Research</span></div>
-        </div>
-    </section>
-
-    <section id="skills">
-        <h2>Technical Toolkit</h2>
-        <div class="skills-grid">
-            <div>
-                <strong>Languages</strong>
-                <p>C++, HTML, LaTeX</p>
-            </div>
-            <div>
-                <strong>Design Tools</strong>
-                <p>SolidWorks, Fusion360, AutoCad</p>
-            </div>
-            <div>
-                <strong>Fabrication</strong>
-                <p>CNC Machining, 3D Printing, Soldering</p>
-            </div>
-        </div>
-    </section>
-
+<div class="hero">
+    <h2>Welcome to my Engineering Portfolio</h2>
+    <p>Explore my work in biomechatronics, digital fabrication, and medical design.</p>
 </div>
-
 <footer>
     <p>&copy; 2025 Caleb Bellsmith | <a href="https://linkedin.com/in/caleb-bellsmith-476359385" style="color:white;">LinkedIn</a></p>
 </footer>
-
 </body>
 </html>
