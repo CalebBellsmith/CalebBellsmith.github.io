@@ -2,39 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Projects | Caleb Bellsmith</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Caleb Bellsmith</title>
     <style>
-        :root { --primary: #005f73; }
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f4f4f4; }
+        :root { --primary: #005f73; --light: #f4f4f4; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--light); line-height: 1.6; }
         nav { background: #333; display: flex; justify-content: center; padding: 1rem; }
         nav a { color: white; margin: 0 20px; text-decoration: none; font-weight: bold; }
-        .container { max-width: 900px; margin: 3rem auto; padding: 0 2rem; }
-        .project-card { background: white; padding: 2rem; margin-bottom: 2rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .project-image { width: 100%; height: 250px; background: #eee; border: 1px dashed #ccc; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+        nav a:hover { color: #94d2bd; }
+        .container { max-width: 800px; margin: 3rem auto; padding: 0 2rem; }
+        h1 { color: var(--primary); border-bottom: 2px solid var(--primary); padding-bottom: 10px; }
+        h3 { color: var(--primary); margin-top: 2rem; border-left: 5px solid var(--primary); padding-left: 15px; }
+        ul { list-style: none; padding: 0; }
+        li { margin-bottom: 1.5rem; background: white; padding: 1rem; border-radius: 5px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .date { color: #666; font-size: 0.9rem; font-weight: bold; }
     </style>
 </head>
 <body>
-<nav><a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="skills.html">Skills</a></nav>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="skills.html">Skills</a>
+</nav>
+
 <div class="container">
-    <h1>Engineering Projects</h1>
+    <h1>About Me</h1>
+    <p>I am a Biomedical Engineering student at the University of Waterloo (2025 - 2030). My work focuses on the intersection of mechanical design and human health recovery.</p>
 
-    <div class="project-card">
-        <h3>Mechanical Exoskeleton</h3>
-        <div class="project-image"><span>[Image: Exoskeleton Prototype]</span></div>
-        [cite_start]<p>Designed a mechanical orthotic exoskeleton to assist recovery from hand and wrist injuries[cite: 20, 21]. [cite_start]Modeled and prototyped in SolidWorks, optimizing for cost and weight[cite: 22].</p>
-    </div>
+    <h3>Academic Honors & Accreditations</h3>
+    <ul>
+        <li>
+            <span class="date">2025</span><br>
+            <strong>Governor General's Award:</strong> Awarded for achieving the highest overall academic average.
+        </li>
+        <li>
+            <span class="date">2025</span><br>
+            <strong>Sir Isaac Newton Award:</strong> Recognized for top academic performance in physics.
+        </li>
+        <li>
+            <span class="date">2025</span><br>
+            <strong>TDCH Valedictorian:</strong> Chosen to represent the class due to excellence in scholarship and character.
+        </li>
+        <li>
+            <span class="date">2019</span><br>
+            <strong>HHCS Valedictorian:</strong> Awarded for outstanding scholarship and community involvement.
+        </li>
+    </ul>
 
-    <div class="project-card">
-        <h3>Custom Canoe Design & Fabrication</h3>
-        <div class="project-image"><span>[Image: Cedar Strip Canoe]</span></div>
-        [cite_start]<p>Designed and built a cedar strip canoe using raw materials[cite: 26, 27]. [cite_start]Utilized CNC machining for precision cutting and applied CAD principles for hydrodynamics[cite: 28].</p>
-    </div>
-
-    <div class="project-card">
-        <h3>Adjustable Orthotic Insert</h3>
-        <div class="project-image"><span>[Image: Orthotic Insert]</span></div>
-        [cite_start]<p>Developed a reusable orthotic insert providing targeted medial arch support[cite: 23, 24]. [cite_start]Conducted user testing to improve durability and comfort[cite: 25].</p>
-    </div>
-</div>
-</body>
-</html>
+    <h3>Community & Leadership</h3>
+    <ul>
+        <li>
+            <strong>WEEF Representative (University of Waterloo):</strong> Advocating for student project funding and coordinating between student groups and faculty.
+        </li>
+        <li>
+            <strong>Personal Tutor (2023 - 2025):</strong> Provided high school tutoring in calculus, physics, biology, and chemistry.
