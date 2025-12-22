@@ -2,39 +2,71 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Caleb Bellsmith</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        :root { --primary: #005f73; }
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f4f4f4; }
-        nav { background: #333; display: flex; justify-content: center; padding: 1rem; }
-        nav a { color: white; margin: 0 20px; text-decoration: none; font-weight: bold; }
-        .container { max-width: 900px; margin: 3rem auto; padding: 0 2rem; }
-        .project-card { background: white; padding: 2rem; margin-bottom: 2rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .project-image { width: 100%; height: 250px; background: #eee; border: 1px dashed #ccc; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+        .navbar { background-color: #005f73 !important; }
+        .project-card { border: none; transition: transform 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .project-card:hover { transform: translateY(-10px); }
+        .img-placeholder { height: 250px; background-color: #e9ecef; display: flex; align-items: center; justify-content: center; color: #adb5bd; }
     </style>
 </head>
-<body>
-<nav><a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="skills.html">Skills</a></nav>
-<div class="container">
-    <h1>Engineering Projects</h1>
+<body class="bg-light">
 
-    <div class="project-card">
-        <h3>Mechanical Exoskeleton</h3>
-        <div class="project-image"><span>[Image: Exoskeleton Prototype]</span></div>
-        [cite_start]<p>Designed a mechanical orthotic exoskeleton to assist recovery from hand and wrist injuries[cite: 20, 21]. [cite_start]Modeled and prototyped in SolidWorks, optimizing for cost and weight[cite: 22].</p>
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">CALEB BELLSMITH</a>
+        <div class="navbar-nav ms-auto">
+            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link active" href="projects.html">Projects</a>
+            <a class="nav-link" href="skills.html">Skills</a>
+        </div>
     </div>
+</nav>
 
-    <div class="project-card">
-        <h3>Custom Canoe Design & Fabrication</h3>
-        <div class="project-image"><span>[Image: Cedar Strip Canoe]</span></div>
-        [cite_start]<p>Designed and built a cedar strip canoe using raw materials[cite: 26, 27]. [cite_start]Utilized CNC machining for precision cutting and applied CAD principles for hydrodynamics[cite: 28].</p>
-    </div>
+<div class="container my-5">
+    <h1 class="display-4 fw-bold mb-5">Engineering Projects</h1>
 
-    <div class="project-card">
-        <h3>Adjustable Orthotic Insert</h3>
-        <div class="project-image"><span>[Image: Orthotic Insert]</span></div>
-        [cite_start]<p>Developed a reusable orthotic insert providing targeted medial arch support[cite: 23, 24]. [cite_start]Conducted user testing to improve durability and comfort[cite: 25].</p>
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 project-card">
+                <div class="img-placeholder text-center p-3">
+                    <span>Exoskeleton Prototype Image</span>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">Mechanical Exoskeleton</h5>
+                    <p class="card-text text-muted">Designed an orthotic exoskeleton for hand and wrist injury recovery[cite: 20, 21]. Optimized using SolidWorks for minimal weight and cost efficiency[cite: 22].</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 project-card">
+                <div class="img-placeholder text-center p-3">
+                    <span>Canoe Fabrication Image</span>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">Custom Canoe Design</h5>
+                    <p class="card-text text-muted">Built a cedar strip canoe integrating traditional methods with CNC machining and CAD for hydrodynamic efficiency[cite: 26, 27, 28].</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 project-card">
+                <div class="img-placeholder text-center p-3">
+                    <span>Orthotic Insert Image</span>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">Adjustable Orthotic Insert</h5>
+                    <p class="card-text text-muted">Developed a reusable medial arch support insert[cite: 23, 24]. Refined through user testing for durability and comfort[cite: 25].</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
 </body>
 </html>
