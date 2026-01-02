@@ -7,9 +7,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .navbar { background-color: #005f73 !important; }
-        .project-card { border: none; transition: transform 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .project-card:hover { transform: translateY(-10px); }
-        .img-placeholder { height: 250px; background-color: #e9ecef; display: flex; align-items: center; justify-content: center; color: #adb5bd; }
+        .project-card { border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; }
+        .project-card:hover { transform: translateY(-5px); }
+        .project-img { height: 350px; object-fit: cover; border-radius: 8px 8px 0 0; }
     </style>
 </head>
 <body class="bg-light">
@@ -21,7 +21,6 @@
             <a class="nav-link" href="index.html">Home</a>
             <a class="nav-link" href="about.html">About</a>
             <a class="nav-link active" href="projects.html">Projects</a>
-            <a class="nav-link" href="skills.html">Skills</a>
         </div>
     </div>
 </nav>
@@ -29,41 +28,27 @@
 <div class="container my-5">
     <h1 class="display-4 fw-bold mb-5">Engineering Projects</h1>
 
-    <div class="row g-4">
-        <div class="col-md-6 col-lg-4">
-            <div class="card h-100 project-card">
-                <div class="img-placeholder text-center p-3">
-                    <span>Exoskeleton Prototype Image</span>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title fw-bold">Mechanical Exoskeleton</h5>
-                    <p class="card-text text-muted">Designed an orthotic exoskeleton for hand and wrist injury recovery[cite: 20, 21]. Optimized using SolidWorks for minimal weight and cost efficiency[cite: 22].</p>
-                </div>
-            </div>
+    <div class="card project-card mb-5">
+        <img src="images/exoskeleton_main.jpg" class="card-img-top project-img" alt="Mechanical Exoskeleton">
+        <div class="card-body p-4">
+            <h3 class="fw-bold">Mechanical Exoskeleton - Biomechatronics Team</h3>
+            [cite_start]<p>Designed a mechanical orthotic exoskeleton to assist recovery from hand and wrist injuries[cite: 20, 21]. [cite_start]Modeled and prototyped using <strong>SolidWorks</strong>, optimizing for cost efficiency, minimal weight, and adjustability across different users[cite: 22].</p>
         </div>
+    </div>
 
-        <div class="col-md-6 col-lg-4">
-            <div class="card h-100 project-card">
-                <div class="img-placeholder text-center p-3">
-                    <span>Canoe Fabrication Image</span>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title fw-bold">Custom Canoe Design</h5>
-                    <p class="card-text text-muted">Built a cedar strip canoe integrating traditional methods with CNC machining and CAD for hydrodynamic efficiency[cite: 26, 27, 28].</p>
-                </div>
-            </div>
+    <div class="card project-card mb-5">
+        <img src="images/canoe_main.jpg" class="card-img-top project-img" alt="Custom Cedar Canoe">
+        <div class="card-body p-4">
+            <h3 class="fw-bold">Custom Canoe Design and Fabrication</h3>
+            [cite_start]<p>Designed and built a cedar strip canoe from raw materials, integrating traditional craftsmanship with modern digital fabrication[cite: 26, 27]. [cite_start]Utilized <strong>CNC machining</strong> for precision cutting and applied <strong>CAD design principles</strong> to achieve structural integrity and hydrodynamic efficiency[cite: 28].</p>
         </div>
+    </div>
 
-        <div class="col-md-6 col-lg-4">
-            <div class="card h-100 project-card">
-                <div class="img-placeholder text-center p-3">
-                    <span>Orthotic Insert Image</span>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title fw-bold">Adjustable Orthotic Insert</h5>
-                    <p class="card-text text-muted">Developed a reusable medial arch support insert[cite: 23, 24]. Refined through user testing for durability and comfort[cite: 25].</p>
-                </div>
-            </div>
+    <div class="card project-card mb-5">
+        <img src="images/orthotic_main.jpg" class="card-img-top project-img" alt="Orthotic Insert">
+        <div class="card-body p-4">
+            <h3 class="fw-bold">Adjustable Orthotic Insert</h3>
+            [cite_start]<p>Developed a reusable and adjustable orthotic insert providing targeted medial arch support[cite: 23, 24]. [cite_start]Conducted user testing sessions to improve comfort, durability, and adaptability for varying foot profiles[cite: 25].</p>
         </div>
     </div>
 </div>
