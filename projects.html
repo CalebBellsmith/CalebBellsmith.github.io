@@ -9,19 +9,25 @@
         .navbar { background-color: #005f73 !important; }
         .project-card { border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; margin-bottom: 4rem; }
         .project-card:hover { transform: translateY(-5px); }
+        
+        /* Container for images - keeps the gray background */
         .asset-grid { background-color: #ebebeb; padding: 15px; border-radius: 8px 8px 0 0; }
         
-        /* Lightbox Prep: Make images look clickable */
+        /* UPDATED: Image backgrounds now match the container color (#ebebeb) to remove white gaps */
         .asset-img, .gallery-img { 
             width: 100%; 
             height: 350px; 
             object-fit: contain; 
             border-radius: 4px; 
-            background-color: #fff;
+            background-color: #ebebeb; /* Changed from #fff to blend */
             cursor: pointer;
             transition: 0.3s;
         }
-        .gallery-img { height: 200px; border: 1px solid #dee2e6; }
+        /* UPDATED: Gallery images specific styling */
+        .gallery-img { 
+            height: 200px; 
+            border: none; /* Removed border to blend better */
+        }
         .asset-img:hover, .gallery-img:hover { opacity: 0.8; transform: scale(1.02); }
 
         .tech-label { font-weight: bold; color: #005f73; min-width: 70px; display: inline-block; }
@@ -57,10 +63,10 @@
         </div>
         <div class="card-body p-4">
             <h3 class="fw-bold mb-3 border-bottom pb-2">Custom Cedar Strip Canoe</h3>
-            <p class="lead">Designed and built a custom 17-foot cedar strip canoe combining traditional woodworking with modern digital fabrication.</p>
-            <p><span class="tech-label">Why:</span> I wanted to blend my love for the outdoors with advanced design tools. Building my own canoe let me tailor every detail while experimenting with CNC machining and 3D modeling.</p>
-            <p><span class="tech-label">How:</span> Used CAD and 3D modeling to design the molds, then CNC-machined secondary molds for better accuracy. Each cedar plank was milled from scratch for strength and fit.</p>
-            <p><span class="tech-label">Specs:</span> 17-foot classic cedar strip build. Every part was custom-made for a clean, unified finish.</p>
+            <p class="lead">Designed and built a custom 17-foot cedar strip canoe combining traditional woodworking with modern digital fabrication. [cite: 1, 3]</p>
+            <p><span class="tech-label">Why:</span> I wanted to blend my love for the outdoors with advanced design tools. [cite: 4] Building my own canoe let me tailor every detail while experimenting with CNC machining and 3D modeling. [cite: 5]</p>
+            <p><span class="tech-label">How:</span> Used CAD and 3D modeling to design the molds, then CNC-machined secondary molds for better accuracy. [cite: 6] Each cedar plank was milled from scratch for strength and fit. [cite: 7]</p>
+            <p><span class="tech-label">Specs:</span> 17-foot classic cedar strip build. [cite: 8] Every part was custom-made for a clean, unified finish. [cite: 8]</p>
         </div>
     </div>
 
@@ -74,10 +80,10 @@
         </div>
         <div class="card-body p-4">
             <h3 class="fw-bold mb-3 border-bottom pb-2">Orthotic Hand Exoskeleton</h3>
-            <p class="lead">Developed a fully mechanical, 3D-printed orthotic device to help people with limited upper-limb mobility.</p>
-            <p><span class="tech-label">Why:</span> Built for users with weak forearm strength or poor wrist mobility. The design shifts load from the hand and forearm through a simple mechanical system.</p>
-            <p><span class="tech-label">How:</span> Created dozens of 3D-printed prototypes to find the most effective general design. Regular feedback guided each iteration to improve comfort and function.</p>
-            <p><span class="tech-label">Specs:</span> 100% 3D-printed and purely mechanical. The design is scalable and customizable—users can choose specific fingers for support.</p>
+            <p class="lead">Developed a fully mechanical, 3D-printed orthotic device to help people with limited upper-limb mobility. [cite: 9, 11]</p>
+            <p><span class="tech-label">Why:</span> Built for users with weak forearm strength or poor wrist mobility. [cite: 12] The design shifts load from the hand and forearm through a simple mechanical system. [cite: 13]</p>
+            <p><span class="tech-label">How:</span> Created dozens of 3D-printed prototypes to find the most effective general design. [cite: 14] Regular feedback guided each iteration to improve comfort and function. [cite: 15]</p>
+            <p><span class="tech-label">Specs:</span> 100% 3D-printed and purely mechanical. [cite: 16] The design is scalable and customizable-users can choose specific fingers for support. [cite: 16]</p>
         </div>
     </div>
 
@@ -91,10 +97,10 @@
         </div>
         <div class="card-body p-4">
             <h3 class="fw-bold mb-3 border-bottom pb-2">Custom Finger Prosthetics</h3>
-            <p class="lead">Created 3D-modeled and printed prosthetic fingers for a patient with multiple amputations on their dominant hand.</p>
-            <p><span class="tech-label">Why:</span> The goal was to help the patient regain writing ability. Each prosthetic was fitted precisely for comfort and function.</p>
-            <p><span class="tech-label">How:</span> Modeled and prototyped multiple designs, refining ergonomic features and adding specialized tools like lockable rotation and writing inserts.</p>
-            <p><span class="tech-label">Specs:</span> Each piece is custom-fitted, optimized for comfort, and tailored to specific actions like writing or rotation.</p>
+            <p class="lead">Created 3D-modeled and printed prosthetic fingers for a patient with multiple amputations on their dominant hand. [cite: 17, 19]</p>
+            <p><span class="tech-label">Why:</span> The goal was to help the patient regain writing ability. [cite: 20] Each prosthetic was fitted precisely for comfort and function. [cite: 20]</p>
+            <p><span class="tech-label">How:</span> Modeled and prototyped multiple designs, refining ergonomic features and adding specialized tools like lockable rotation and writing inserts. [cite: 21]</p>
+            <p><span class="tech-label">Specs:</span> Each piece is custom-fitted, optimized for comfort, and tailored to specific actions like writing or rotation. [cite: 22]</p>
         </div>
     </div>
 
@@ -109,7 +115,7 @@
         </div>
         <div class="card-body p-4">
             <h3 class="fw-bold mb-3 border-bottom pb-2">Technical Design & SolidWorks Gallery</h3>
-            <p>A collection of SolidWorks projects showcasing mechanical and aesthetic designs built for various custom requests.</p>
+            <p>A diverse collection of projects designed and fabricated to meet specific custom requests. </p>
         </div>
     </div>
 </div>
