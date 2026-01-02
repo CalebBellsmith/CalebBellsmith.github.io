@@ -7,11 +7,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .navbar { background-color: #005f73 !important; }
-        .project-card { border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; }
+        .project-card { border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; margin-bottom: 4rem; }
         .project-card:hover { transform: translateY(-5px); }
-        .project-img { height: 400px; object-fit: cover; border-radius: 8px 8px 0 0; background-color: #e9ecef; }
+        .asset-grid { background-color: #f8f9fa; padding: 15px; border-radius: 8px 8px 0 0; }
+        .asset-img { width: 100%; height: 250px; object-fit: cover; border-radius: 4px; border: 1px solid #dee2e6; }
         .tech-label { font-weight: bold; color: #005f73; min-width: 70px; display: inline-block; }
         .text-teal { color: #005f73; }
+        footer { background: #212529; color: white; padding: 3rem 0; }
     </style>
 </head>
 <body class="bg-light">
@@ -30,35 +32,74 @@
 <div class="container my-5">
     <h1 class="display-4 fw-bold mb-5 text-center text-teal">Engineering Portfolio</h1>
 
-    <div class="card project-card mb-5">
-        <img src="images/exoskeleton_main.jpg" class="card-img-top project-img" alt="Mechanical Exoskeleton">
+    <div class="card project-card">
+        <div class="asset-grid">
+            <div class="row g-2">
+                <div class="col-md-6"><img src="images/canoe.jpg" class="asset-img" alt="Custom Cedar Strip Canoe"></div>
+                <div class="col-md-6"><img src="images/stems.jpg" class="asset-img" alt="Canoe Stems Detail"></div>
+            </div>
+        </div>
         <div class="card-body p-4">
-            <h3 class="fw-bold mb-3 border-bottom pb-2">Mechanical Exoskeleton - Biomechatronics Design Team</h3>
-            <p>Designed a mechanical orthotic exoskeleton to assist recovery from hand and wrist injuries[cite: 20, 21]. Modeled and prototyped using SolidWorks, optimizing for cost efficiency, minimal weight, and adjustability across users[cite: 22].</p>
+            <h3 class="fw-bold mb-3 border-bottom pb-2">Custom Cedar Strip Canoe</h3>
+            <p class="lead">Designed and built a custom 17-foot cedar strip canoe combining traditional woodworking with modern digital fabrication.</p>
+            <p><span class="tech-label">Why:</span> I wanted to blend my love for the outdoors with advanced design tools. Building my own canoe let me tailor every detail while experimenting with CNC machining and 3D modeling.</p>
+            <p><span class="tech-label">How:</span> Used CAD and 3D modeling to design the molds, then CNC-machined secondary molds for better accuracy. Each cedar plank was milled from scratch for strength and fit.</p>
+            <p><span class="tech-label">Specs:</span> 17-foot classic cedar strip build. Every part was custom-made for a clean, unified finish.</p>
         </div>
     </div>
 
-    <div class="card project-card mb-5">
-        <img src="images/canoe_main.jpg" class="card-img-top project-img" alt="Custom Cedar Canoe">
+    <div class="card project-card">
+        <div class="asset-grid">
+            <div class="row g-2">
+                <div class="col-md-4"><img src="images/hand_exoskeleton.jpg" class="asset-img" alt="Orthotic Hand Exoskeleton"></div>
+                <div class="col-md-4"><img src="images/test.jpg" class="asset-img" alt="Testing Phase"></div>
+                <div class="col-md-4"><img src="images/failures.jpg" class="asset-img" alt="Design Iterations and Failures"></div>
+            </div>
+        </div>
         <div class="card-body p-4">
-            <h3 class="fw-bold mb-3 border-bottom pb-2">Custom Canoe Design and Fabrication - Personal Project</h3>
-            <p>Designed and built a cedar strip canoe from raw materials, integrating traditional craftsmanship with modern digital fabrication methods[cite: 26, 27]. Utilized CNC machining for precision cutting and assembly, applying CAD design principles to achieve structural integrity and hydrodynamic efficiency[cite: 28].</p>
+            <h3 class="fw-bold mb-3 border-bottom pb-2">Orthotic Hand Exoskeleton</h3>
+            <p class="lead">Developed a fully mechanical, 3D-printed orthotic device to help people with limited upper-limb mobility.</p>
+            <p><span class="tech-label">Why:</span> Built for users with weak forearm strength or poor wrist mobility. The design shifts load from the hand and forearm through a simple mechanical system.</p>
+            <p><span class="tech-label">How:</span> Created dozens of 3D-printed prototypes to find the most effective general design. Regular feedback guided each iteration to improve comfort and function.</p>
+            <p><span class="tech-label">Specs:</span> 100% 3D-printed and purely mechanical. The design is scalable and customizable—users can choose specific fingers for support.</p>
         </div>
     </div>
 
-    <div class="card project-card mb-5">
-        <img src="images/prosthetic_main.jpg" class="card-img-top project-img" alt="Custom Finger Prosthetic">
+    <div class="card project-card">
+        <div class="asset-grid">
+            <div class="row g-2">
+                <div class="col-md-4"><img src="images/prosthetic_fingers.jpg" class="asset-img" alt="Custom Finger Prosthetics"></div>
+                <div class="col-md-4"><img src="images/issue.jpg" class="asset-img" alt="Design Challenges"></div>
+                <div class="col-md-4"><img src="images/fitted.jpg" class="asset-img" alt="Final Fitting"></div>
+            </div>
+        </div>
         <div class="card-body p-4">
-            <h3 class="fw-bold mb-3 border-bottom pb-2">Custom Finger Prosthetic</h3>
-            <p><span class="tech-label">How:</span> 3D modeled and printed a modular finger prosthetic utilizing a mechanical cable-driven actuation system.</p>
-            <p><span class="tech-label">Why:</span> To provide a functional and low-cost solution for partial hand amputees, focusing on restoring grip functionality and natural range of motion[cite: 21].</p>
-            <p><span class="tech-label">Specs:</span> 3D-printed modular components; internal cable routing for flexion; ratchet-style locking mechanism to maintain sustained grip[cite: 22].</p>
+            <h3 class="fw-bold mb-3 border-bottom pb-2">Custom Finger Prosthetics</h3>
+            <p class="lead">Created 3D-modeled and printed prosthetic fingers for a patient with multiple amputations on their dominant hand.</p>
+            <p><span class="tech-label">Why:</span> The goal was to help the patient regain writing ability. Each prosthetic was fitted precisely for comfort and function.</p>
+            <p><span class="tech-label">How:</span> Modeled and prototyped multiple designs, refining ergonomic features and adding specialized tools like lockable rotation and writing inserts.</p>
+            <p><span class="tech-label">Specs:</span> Each piece is custom-fitted, optimized for comfort, and tailored to specific actions like writing or rotation.</p>
+        </div>
+    </div>
+
+    <div class="card project-card">
+        <div class="asset-grid">
+            <div class="row g-2">
+                <div class="col-6 col-md-3"><img src="images/swjet.jpg" class="asset-img" alt="SolidWorks Jet Model"></div>
+                <div class="col-6 col-md-3"><img src="images/swflower.jpg" class="asset-img" alt="SolidWorks Flower Model"></div>
+                <div class="col-6 col-md-3"><img src="images/flower.jpg" class="asset-img" alt="Rendered Flower"></div>
+                <div class="col-6 col-md-3"><img src="images/snowman.jpg" class="asset-img" alt="SolidWorks Snowman"></div>
+            </div>
+        </div>
+        <div class="card-body p-4">
+            <h3 class="fw-bold mb-3 border-bottom pb-2">Technical Design & SolidWorks Gallery</h3>
+            <p>A collection of SolidWorks projects showcasing mechanical and aesthetic designs built for various custom requests.</p>
         </div>
     </div>
 </div>
 
-<footer class="bg-dark text-white py-5">
-    <div class="container text-center">
+<footer class="text-center">
+    <div class="container">
         <h4 class="mb-3">Contact Me</h4>
         <p class="mb-1">Email: <a href="mailto:calebb1360@gmail.com" class="text-info text-decoration-none">calebb1360@gmail.com</a></p>
         <p>Phone: [INSERT_REAL_NUMBER_HERE]</p>
