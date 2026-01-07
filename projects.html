@@ -3,40 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caleb Bellsmith | Biomedical Engineering</title>
+    <title>Projects | Caleb Bellsmith</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body { 
-            font-family: 'Inter', sans-serif; 
-            display: flex; 
-            flex-direction: column; 
-            min-height: 100vh; 
-        }
         .navbar { background-color: #005f73 !important; }
-        
-        /* Updated Hero Section to use background.png */
-        .hero { 
-            background: linear-gradient(rgba(0, 95, 115, 0.6), rgba(10, 147, 150, 0.6)), 
-                        url('images/background.png'); 
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: white; 
-            padding: 140px 0; 
+        .project-card { border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; margin-bottom: 4rem; }
+        .project-card:hover { transform: translateY(-5px); }
+        .asset-grid { background-color: #ebebeb; padding: 15px; border-radius: 8px 8px 0 0; }
+        .asset-img, .gallery-img { 
+            width: 100%; 
+            height: 350px; 
+            object-fit: contain; 
+            border-radius: 4px; 
+            background-color: #ebebeb;
+            cursor: pointer;
+            transition: 0.3s;
         }
-        
-        .btn-primary { 
-            background-color: #94d2bd; 
-            border: none; 
-            color: #00222e; 
-            font-weight: bold; 
-        }
-        .btn-primary:hover { 
-            background-color: #0a9396; 
-            color: white; 
-        }
-        footer { margin-top: auto; }
+        .gallery-img { height: 200px; border: none; }
+        .asset-img:hover, .gallery-img:hover { opacity: 0.8; transform: scale(1.02); }
+        .tech-label { font-weight: bold; color: #005f73; min-width: 70px; display: inline-block; }
         .text-teal { color: #005f73; }
+        footer { background: #212529; color: white; padding: 3rem 0; }
+        #lightboxImage { width: 100%; max-height: 85vh; object-fit: contain; }
     </style>
 </head>
 <body class="bg-light">
@@ -45,50 +33,96 @@
         <div class="container">
             <a class="navbar-brand fw-bold" href="index.html">CALEB BELLSMITH</a>
             <div class="navbar-nav ms-auto">
-                <a class="nav-link active" href="index.html">Home</a>
+                <a class="nav-link" href="index.html">Home</a>
                 <a class="nav-link" href="about.html">About</a>
-                <a class="nav-link" href="projects.html">Projects</a>
+                <a class="nav-link active" href="projects.html">Projects</a>
             </div>
         </div>
     </nav>
 
-    <header class="hero text-center">
+    <div class="container my-5">
+        <h1 class="display-4 fw-bold mb-5 text-center text-teal">Engineering Portfolio</h1>
+
+        <div class="card project-card">
+            <div class="asset-grid">
+                <div class="row g-2">
+                    <div class="col-md-6"><img src="images/canoe.jpg" class="asset-img" onclick="openLightbox(this.src)" alt="Custom Cedar Strip Canoe"></div>
+                    <div class="col-md-6"><img src="images/stems.jpg" class="asset-img" onclick="openLightbox(this.src)" alt="Canoe Stems Detail"></div>
+                </div>
+            </div>
+            <div class="card-body p-4">
+                <h3 class="fw-bold mb-3 border-bottom pb-2">Custom Cedar Strip Canoe</h3>
+                <p class="lead">Designed and built a custom 17-foot cedar strip canoe combining traditional woodworking with modern digital fabrication.</p>
+                <p><span class="tech-label">Why:</span> I wanted to blend my love for the outdoors with advanced design tools. Building my own canoe let me tailor every detail while experimenting with CNC machining and 3D modeling.</p>
+                <p><span class="tech-label">How:</span> Used CAD and 3D modeling to design the molds, then CNC-machined secondary molds for better accuracy. Each cedar plank was milled from scratch for strength and fit.</p>
+                <p><span class="tech-label">Specs:</span> 17-foot classic cedar strip build. Every part was custom-made for a clean, unified finish.</p>
+            </div>
+        </div>
+
+        <div class="card project-card">
+            <div class="asset-grid">
+                <div class="row g-2">
+                    <div class="col-md-4"><img src="images/hand_exoskeleton.jpg" class="asset-img" onclick="openLightbox(this.src)" alt="Orthotic Hand Exoskeleton"></div>
+                    <div class="col-md-4"><img src="images/test.jpg" class="asset-img" onclick="openLightbox(this.src)" alt="Testing Phase"></div>
+                    <div class="col-md-4"><img src="images/failures.jpg" class="asset-img" onclick="openLightbox(this.src)" alt="Failures"></div>
+                </div>
+            </div>
+            <div class="card-body p-4">
+                <h3 class="fw-bold mb-3 border-bottom pb-2">Orthotic Hand Exoskeleton</h3>
+                <p class="lead">Developed a fully mechanical, 3D-printed orthotic device to help people with limited upper-limb mobility.</p>
+                <p><span class="tech-label">Why:</span> Built for users with weak forearm strength or poor wrist mobility. The design shifts load from the hand and forearm through a simple mechanical system.</p>
+                <p><span class="tech-label">How:</span> Created dozens of 3D-printed prototypes to find the most effective general design. Regular feedback guided each iteration to improve comfort and function.</p>
+                <p><span class="tech-label">Specs:</span> 100% 3D-printed and purely mechanical. The design is scalable and customizable—users can choose specific fingers for support.</p>
+            </div>
+        </div>
+
+        <div class="card project-card">
+            <div class="asset-grid">
+                <div class="row g-2">
+                    <div class="col-md-4"><img src="images/prosthetic_fingers.jpg" class="asset-img" onclick="openLightbox(this.src)" alt="Custom Finger Prosthetics"></div>
+                    <div class="col-md-4"><img src="images/issue.jpg" class="asset-img" onclick="openLightbox(this.src)" alt="Issue"></div>
+                    <div class="col-md-4"><img src="images/fitted.jpg" class="asset-img" onclick="openLightbox(this.src)" alt="Fitted"></div>
+                </div>
+            </div>
+            <div class="card-body p-4">
+                <h3 class="fw-bold mb-3 border-bottom pb-2">Custom Finger Prosthetics</h3>
+                <p class="lead">Created 3D-modeled and printed prosthetic fingers for a patient with multiple amputations on their dominant hand.</p>
+                <p><span class="tech-label">Why:</span> The goal was to help the patient regain writing ability. Each prosthetic was fitted precisely for comfort and function.</p>
+                <p><span class="tech-label">How:</span> Modeled and prototyped multiple designs, refining ergonomic features and adding specialized tools like lockable rotation and writing inserts.</p>
+                <p><span class="tech-label">Specs:</span> Each piece is custom-fitted, optimized for comfort, and tailored to specific actions like writing or rotation.</p>
+            </div>
+        </div>
+
+        <div class="card project-card">
+            <div class="asset-grid">
+                <div class="row g-2">
+                    <div class="col-6 col-md-3"><img src="images/swjet.jpg" class="gallery-img" onclick="openLightbox(this.src)" alt="Jet"></div>
+                    <div class="col-6 col-md-3"><img src="images/swflower.jpg" class="gallery-img" onclick="openLightbox(this.src)" alt="Flower SW"></div>
+                    <div class="col-6 col-md-3"><img src="images/flower.jpg" class="gallery-img" onclick="openLightbox(this.src)" alt="Flower"></div>
+                    <div class="col-6 col-md-3"><img src="images/snowman.jpg" class="gallery-img" onclick="openLightbox(this.src)" alt="Snowman"></div>
+                </div>
+            </div>
+            <div class="card-body p-4">
+                <h3 class="fw-bold mb-3 border-bottom pb-2">Technical Design & SolidWorks Gallery</h3>
+                <p>Various projects designed and created for custom requests.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content bg-transparent border-0">
+                <div class="modal-body p-0 text-center">
+                    <img src="" id="lightboxImage" class="img-fluid rounded" alt="Large view">
+                    <button type="button" class="btn btn-light mt-3" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center">
         <div class="container">
-            <h1 class="display-3 fw-bold">Biomedical Engineering</h1>
-            <p class="lead mb-4">University of Waterloo | Class of 2030</p>
-            <div class="d-flex justify-content-center gap-3">
-                <a href="projects.html" class="btn btn-primary btn-lg px-5 shadow">View Engineering Projects</a>
-                <a href="Caleb_Bellsmith_Resume.pdf" target="_blank" class="btn btn-outline-light btn-lg px-4">Resume</a>
-            </div>
-        </div>
-    </header>
-
-    <section class="container my-5 py-5 text-center">
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <div class="p-4 bg-white shadow-sm rounded border-top border-4 border-info">
-                    <h3 class="h5 fw-bold text-teal">Design</h3>
-                    <p class="text-muted mb-0">SolidWorks, Fusion360, AutoCAD.</p>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="p-4 bg-white shadow-sm rounded border-top border-4 border-info">
-                    <h3 class="h5 fw-bold text-teal">Fabrication</h3>
-                    <p class="text-muted mb-0">CNC Machining, 3D Printing, Soldering.</p>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="p-4 bg-white shadow-sm rounded border-top border-4 border-info">
-                    <h3 class="h5 fw-bold text-teal">Programming</h3>
-                    <p class="text-muted mb-0">C++, HTML, LaTeX.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-dark text-white py-5">
-        <div class="container text-center">
-            <h4 class="mb-3">Contact Me</h4>
+            <h4 class="mb-3 text-white">Contact Me</h4>
             <p class="mb-1">Email: <a href="mailto:calebb1360@gmail.com" class="text-info text-decoration-none">calebb1360@gmail.com</a></p>
             <p class="text-white-50">Phone: [INSERT_REAL_NUMBER_HERE]</p>
             <div class="mt-3">
@@ -98,6 +132,14 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const lbModal = new bootstrap.Modal(document.getElementById('lightboxModal'));
+        const lbImage = document.getElementById('lightboxImage');
+        function openLightbox(src) {
+            lbImage.src = src;
+            lbModal.show();
+        }
+    </script>
 
 </body>
 </html>
