@@ -5,63 +5,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Caleb Bellsmith</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        .navbar { background-color: #005f73 !important; }
+        .project-card { border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; margin-bottom: 4rem; overflow: hidden; border-radius: 8px; }
+        .project-card:hover { transform: translateY(-5px); }
+        .asset-grid { background-color: #ebebeb; padding: 15px; }
+        .asset-img { 
+            width: 100%; height: 350px; object-fit: contain; 
+            border-radius: 4px; background-color: #ebebeb;
+            cursor: pointer; transition: 0.3s;
+        }
+        .asset-img:hover { opacity: 0.8; transform: scale(1.02); }
+        .tech-label { font-weight: bold; color: #005f73; min-width: 70px; display: inline-block; }
+        .text-teal { color: #005f73; }
+        footer { background: #212529; color: white; padding: 3rem 0; }
+        #lightboxImage { width: 100%; max-height: 85vh; object-fit: contain; }
+    </style>
 </head>
 <body class="bg-light">
 
-    <div class="container my-5">
-        <h1 class="display-4 fw-bold mb-5 text-center text-teal">Engineering Portfolio</h1>
-        <div id="project-container"></div>
-    </div>
-
-    <div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-xl">
-            <div class="modal-content bg-transparent border-0">
-                <div class="modal-body p-0 text-center">
-                    <img src="" id="lightboxImage" class="img-fluid rounded">
-                    <button type="button" class="btn btn-light mt-3" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">CALEB BELLSMITH</a>
+        <div class="navbar-nav ms-auto">
+            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="projects.html">Projects</a>
+            <a class="nav-link" href="about.html">About</a>
         </div>
     </div>
+</nav>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="data.js"></script>
-    <script src="components.js"></script>
-    
-    <script>
-        injectCommonElements(); // This puts back your Navbar and Footer
+<div class="container my-5">
+    <h1 class="display-4 fw-bold mb-5 text-center text-teal">Engineering Portfolio</h1>
+    <div id="project-container"></div>
+</div>
 
-        const container = document.getElementById('project-container');
-        
-        SITE_DATA.projects.forEach(proj => {
-            // Re-creating your Grid logic
-            const imageHtml = proj.images.map(img => `
-                <div class="${proj.columns} mb-2">
-                    <img src="${img}" class="asset-img" onclick="openLightbox('${img}')">
-                </div>
-            `).join('');
+<div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content bg-transparent border-0"><div class="modal-body p-0 text-center">
+            <img src="" id="lightboxImage" class="img-fluid rounded">
+            <button type="button" class="btn btn-light mt-3" data-bs-dismiss="modal">Close</button>
+        </div></div>
+    </div>
+</div>
 
-            const textHtml = `
-                <div class="card-body p-4">
-                    <h3 class="fw-bold mb-3 border-bottom pb-2">${proj.title}</h3>
-                    <p class="lead">${proj.lead}</p>
-                    ${proj.why ? `<p><span class="tech-label">Why:</span> ${proj.why}</p>` : ''}
-                    ${proj.how ? `<p><span class="tech-label">How:</span> ${proj.how}</p>` : ''}
-                    ${proj.specs ? `<p><span class="tech-label">Specs:</span> ${proj.specs}</p>` : ''}
-                </div>
-            `;
+<footer>
+    <div class="container text-center">
+        <h4 class="mb-3">Contact Me</h4>
+        <p>Email: <a href="mailto:calebb1360@gmail.com" class="text-info text-decoration-none">calebb1360@gmail.com</a></p>
+    </div>
+</footer>
 
-            container.innerHTML += `
-                <div class="card project-card">
-                    ${proj.textFirst ? textHtml : ''}
-                    <div class="asset-grid">
-                        <div class="row g-2 justify-content-center">${imageHtml}</div>
-                    </div>
-                    ${!proj.textFirst ? textHtml : ''}
-                </div>
-            `;
-        });
-    </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const projects = [
+        {
+            title: "Custom Cedar Strip Canoe",
+            lead: "Designed and built a custom 17-foot cedar strip canoe.",
+            why: "Blend outdoors passion with digital fabrication.",
+            how: "Used CAD and 3D modeling to design the molds.",
+            specs: "17-foot classic build.",
+            images: ["images/canoe.jpg", "images/stems.jpg"],
+            columns: "col-md-6",
+            textFirst: false
+        },
+        {
+            title: "Orthotic Hand Exoskeleton",
+            lead: "Mechanical 3D-printed orthotic for upper-limb mobility.",
+            why: "Help users with weak forearm strength.",
+            how: "Dozens of 3D-printed iterations.",
+            specs: "100% 3D-printed.",
+            images: ["images/hand_exoskeleton.jpg", "images/test.jpg", "images/failures.jpg"],
+            columns: "col-md-4",
+            textFirst: false
+        },
+        {
+            title: "Custom Finger Prosthetics",
+            lead: "Prosthetic fingers for a patient with multiple amputations.",
+            why: "Regain writing ability and tool use.",
+            how: "Refined ergonomic features and specialized tool inserts.",
+            specs: "Custom-fitted, optimized for comfort.",
+            images: ["images/prosthetic_fingers.jpg", "images/issue.jpg", "images/fitted.jpg"],
+            columns: "col-md-4",
+            textFirst: false
+        },
+        {
+            title: "Technical Design & SolidWorks Gallery",
+            lead: "Various custom requests and mechanical assemblies.",
+            images: ["images/swjet.jpg", "images/swflower.jpg", "images/flower.jpg", "images/snowman.jpg", "images/magno.png"],
+            columns: "col-md-6",
+            textFirst: true
+        }
+    ];
+
+    const container = document.getElementById('project-container');
+    projects.forEach(proj => {
+        const imageHtml = proj.images.map(img => `<div class="${proj.columns} mb-2"><img src="${img}" class="asset-img" onclick="openLightbox('${img}')"></div>`).join('');
+        const textHtml = `<div class="card-body p-4"><h3 class="fw-bold mb-3 border-bottom pb-2">${proj.title}</h3><p class="lead">${proj.lead}</p>${proj.why ? `<p><span class="tech-label">Why:</span> ${proj.why}</p>` : ''} ${proj.how ? `<p><span class="tech-label">How:</span> ${proj.how}</p>` : ''}</div>`;
+        container.innerHTML += `<div class="card project-card">${proj.textFirst ? textHtml : ''}<div class="asset-grid"><div class="row g-2 justify-content-center">${imageHtml}</div></div>${!proj.textFirst ? textHtml : ''}</div>`;
+    });
+
+    const lbModal = new bootstrap.Modal(document.getElementById('lightboxModal'));
+    const lbImage = document.getElementById('lightboxImage');
+    function openLightbox(src) { lbImage.src = src; lbModal.show(); }
+</script>
 </body>
 </html>
