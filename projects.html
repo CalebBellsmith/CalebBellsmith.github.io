@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .navbar { background-color: #005f73 !important; }
-        .project-card { border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; margin-bottom: 4rem; overflow: hidden;}
+        .project-card { border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; margin-bottom: 4rem; overflow: hidden; border-radius: 8px; }
         .project-card:hover { transform: translateY(-5px); }
         .asset-grid { background-color: #ebebeb; padding: 15px; }
         .asset-img { 
@@ -55,84 +55,111 @@
 <footer class="bg-dark text-white py-5">
     <div class="container text-center">
         <h4 class="mb-3">Contact Me</h4>
-        <p>Email: <a href="mailto:calebb1360@gmail.com" class="text-info">calebb1360@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://linkedin.com/in/caleb-bellsmith-476359385" target="_blank" class="text-info">Profile</a></p>
+        <p class="mb-1">Email: <a href="mailto:calebb1360@gmail.com" class="text-info text-decoration-none">calebb1360@gmail.com</a></p>
+        <p class="mb-1">Phone: <a href="tel:2899716729" class="text-info text-decoration-none">289 971 6729</a></p>
+        <div class="mt-3">
+            <a href="https://linkedin.com/in/caleb-bellsmith-476359385" target="_blank" class="text-white mx-2 text-decoration-none">LinkedIn</a>
+        </div>
     </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    // 1. DATA: This is your source of truth. Add a new object {} here to add a new project!
+    // PROJECT DATA STORAGE
     const projects = [
         {
             title: "Custom Cedar Strip Canoe",
-            lead: "Designed and built a custom 17-foot cedar strip canoe.",
-            why: "Blend love for outdoors with advanced design tools.",
-            how: "Used CAD/3D modeling and CNC-machined molds.",
-            specs: "17-foot classic cedar strip build.",
+            lead: "Designed and built a custom 17-foot cedar strip canoe combining traditional woodworking with modern digital fabrication.",
+            why: "I wanted to blend my love for the outdoors with advanced design tools. Building my own canoe let me tailor every detail while experimenting with CNC machining and 3D modeling.",
+            how: "Used CAD and 3D modeling to design the molds, then CNC-machined secondary molds for better accuracy. Each cedar plank was milled from scratch for strength and fit.",
+            specs: "17-foot classic cedar strip build. Every part was custom-made for a clean, unified finish.",
             images: ["images/canoe.jpg", "images/stems.jpg"],
-            columns: "col-md-6", // Two large images
-            textFirst: false     // Images on top
+            columns: "col-md-6",
+            textFirst: false
         },
         {
             title: "Orthotic Hand Exoskeleton",
-            lead: "Mechanical 3D-printed orthotic for upper-limb mobility.",
-            why: "Help users with weak forearm strength.",
-            how: "Dozens of 3D-printed iterations and user feedback.",
-            specs: "100% 3D-printed, scalable mechanical system.",
+            lead: "Developed a fully mechanical, 3D-printed orthotic device to help people with limited upper-limb mobility.",
+            why: "Built for users with weak forearm strength or poor wrist mobility. The design shifts load from the hand and forearm through a simple mechanical system.",
+            how: "Created dozens of 3D-printed prototypes to find the most effective general design. Regular feedback guided each iteration to improve comfort and function.",
+            specs: "100% 3D-printed and purely mechanical. The design is scalable and customizable—users can choose specific fingers for support.",
             images: ["images/hand_exoskeleton.jpg", "images/test.jpg", "images/failures.jpg"],
-            columns: "col-md-4", // Three images per row
+            columns: "col-md-4",
+            textFirst: false
+        },
+        {
+            title: "Custom Finger Prosthetics",
+            lead: "Created 3D-modeled and printed prosthetic fingers for a patient with multiple amputations on their dominant hand.",
+            why: "The goal was to help the patient regain writing ability. Each prosthetic was fitted precisely for comfort and function.",
+            how: "Modeled and prototyped multiple designs, refining ergonomic features and adding specialized tools like lockable rotation and writing inserts.",
+            specs: "Each piece is custom-fitted, optimized for comfort, and tailored to specific actions like writing or rotation.",
+            images: ["images/prosthetic_fingers.jpg", "images/issue.jpg", "images/fitted.jpg"],
+            columns: "col-md-4",
             textFirst: false
         },
         {
             title: "Technical Design & SolidWorks Gallery",
             lead: "Various projects designed and created for custom requests.",
+            why: "", how: "", specs: "", // Leave empty to hide labels
             images: ["images/swjet.jpg", "images/swflower.jpg", "images/flower.jpg", "images/snowman.jpg", "images/magno.png"],
-            columns: "col-md-6", // Your requested 2-per-row layout
-            textFirst: true      // Text on top
+            columns: "col-md-6",
+            textFirst: true
         }
     ];
 
-    // 2. LOGIC: The function that turns that data into HTML
+    // GENERATION LOGIC
     const container = document.getElementById('project-container');
 
-    projects.forEach(proj => {
-        const imageHtml = proj.images.map(img => `
-            <div class="${proj.columns}">
-                <img src="${img}" class="asset-img" onclick="openLightbox('${img}')" alt="${proj.title}">
-            </div>
-        `).join('');
+    function buildProjects() {
+        let fullHtml = "";
 
-        const textHtml = `
-            <div class="card-body p-4">
-                <h3 class="fw-bold mb-3 border-bottom pb-2">${proj.title}</h3>
-                <p class="lead">${proj.lead}</p>
-                ${proj.why ? `<p><span class="tech-label">Why:</span> ${proj.why}</p>` : ''}
-                ${proj.how ? `<p><span class="tech-label">How:</span> ${proj.how}</p>` : ''}
-                ${proj.specs ? `<p><span class="tech-label">Specs:</span> ${proj.specs}</p>` : ''}
-            </div>
-        `;
-
-        const cardHtml = `
-            <div class="card project-card">
-                ${proj.textFirst ? textHtml : ''}
-                <div class="asset-grid">
-                    <div class="row g-2">${imageHtml}</div>
+        projects.forEach(proj => {
+            // Build the image grid
+            const imageHtml = proj.images.map(img => `
+                <div class="${proj.columns}">
+                    <img src="${img}" class="asset-img" onclick="openLightbox('${img}')" alt="${proj.title}">
                 </div>
-                ${!proj.textFirst ? textHtml : ''}
-            </div>
-        `;
-        container.innerHTML += cardHtml;
-    });
+            `).join('');
 
-    // Lightbox Logic
+            // Build the text body
+            const textHtml = `
+                <div class="card-body p-4">
+                    <h3 class="fw-bold mb-3 border-bottom pb-2">${proj.title}</h3>
+                    <p class="lead">${proj.lead}</p>
+                    ${proj.why ? `<p><span class="tech-label">Why:</span> ${proj.why}</p>` : ''}
+                    ${proj.how ? `<p><span class="tech-label">How:</span> ${proj.how}</p>` : ''}
+                    ${proj.specs ? `<p><span class="tech-label">Specs:</span> ${proj.specs}</p>` : ''}
+                </div>
+            `;
+
+            // Combine based on textFirst preference
+            const cardHtml = `
+                <div class="card project-card">
+                    ${proj.textFirst ? textHtml : ''}
+                    <div class="asset-grid">
+                        <div class="row g-2 justify-content-center">${imageHtml}</div>
+                    </div>
+                    ${!proj.textFirst ? textHtml : ''}
+                </div>
+            `;
+            fullHtml += cardHtml;
+        });
+
+        container.innerHTML = fullHtml;
+    }
+
+    // Lightbox Function
     const lbModal = new bootstrap.Modal(document.getElementById('lightboxModal'));
     const lbImage = document.getElementById('lightboxImage');
+    
     function openLightbox(src) {
         lbImage.src = src;
         lbModal.show();
     }
+
+    // Run on load
+    buildProjects();
 </script>
 
 </body>
