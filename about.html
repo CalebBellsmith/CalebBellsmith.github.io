@@ -1,31 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | Caleb Bellsmith</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        .navbar { background-color: #005f73 !important; }
+        .text-teal { color: #005f73; }
+        .skill-badge { background-color: #005f73; color: white; padding: 5px 15px; border-radius: 20px; display: inline-block; margin: 5px; }
+        footer { background: #212529; color: white; padding: 3rem 0; }
+    </style>
 </head>
 <body class="bg-light">
-    <div class="container my-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <h1 class="display-4 fw-bold text-teal mb-4" id="about-title"></h1>
-                <p class="lead mb-4" id="about-desc"></p>
-                <h4 class="fw-bold mb-3">Skills & Tools</h4>
-                <div id="skills-list" class="d-flex flex-wrap gap-2"></div>
-            </div>
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">CALEB BELLSMITH</a>
+        <div class="navbar-nav ms-auto">
+            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="projects.html">Projects</a>
+            <a class="nav-link" href="about.html">About</a>
         </div>
     </div>
+</nav>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="data.js"></script>
-    <script src="components.js"></script>
-    <script>
-        injectCommonElements();
-        document.getElementById('about-title').innerText = SITE_DATA.about.title;
-        document.getElementById('about-desc').innerText = SITE_DATA.about.description;
-        document.getElementById('skills-list').innerHTML = SITE_DATA.about.skills.map(skill => `<span class="badge bg-secondary p-2">${skill}</span>`).join('');
-    </script>
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="display-4 fw-bold text-teal mb-4">About Me</h1>
+            <p class="lead">I am a first-year Biomedical Engineering student at the University of Waterloo. My interest lies in the intersection of mechanical design and healthcare technology.</p>
+            <p>From building high-performance cedar strip canoes to designing 3D-printed orthotic devices, I enjoy hands-on problem solving and technical modeling.</p>
+            
+            <h3 class="mt-5 mb-3">Technical Skills</h3>
+            <div class="skill-badge">SolidWorks</div>
+            <div class="skill-badge">3D Printing</div>
+            <div class="skill-badge">C++</div>
+            <div class="skill-badge">CNC Machining</div>
+            <div class="skill-badge">Prototyping</div>
+        </div>
+    </div>
+</div>
+
+<footer class="mt-5">
+    <div class="container text-center">
+        <h4 class="mb-3">Contact Me</h4>
+        <p class="mb-1">Email: <a href="mailto:calebb1360@gmail.com" class="text-info text-decoration-none">calebb1360@gmail.com</a></p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
