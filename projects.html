@@ -6,20 +6,46 @@
     <title>Projects | Caleb Bellsmith</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .navbar { background-color: #005f73 !important; }
-        .project-card { border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; margin-bottom: 4rem; overflow: hidden; border-radius: 8px; }
-        .project-card:hover { transform: translateY(-5px); }
-        .asset-grid { background-color: #ebebeb; padding: 15px; }
+        :root { --teal-main: #005f73; --bg-gray: #ebebeb; }
+        .navbar { background-color: var(--teal-main) !important; }
+        .text-teal { color: var(--teal-main); }
+        
+        /* Modernized Project Cards */
+        .project-card { 
+            border: none; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            margin-bottom: 5rem; 
+            overflow: hidden; 
+            border-radius: 12px;
+            background: #fff;
+        }
+        .project-card:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+
+        /* Responsive Grid & Image Handling */
+        .asset-grid { background-color: var(--bg-gray); padding: 20px; display: flex; align-items: center; }
         .asset-img { 
             width: 100%; height: 350px; object-fit: contain; 
-            border-radius: 4px; background-color: #ebebeb;
-            cursor: pointer; transition: 0.3s;
+            border-radius: 8px; background-color: var(--bg-gray);
+            cursor: pointer; transition: transform 0.4s ease;
         }
-        .asset-img:hover { opacity: 0.8; transform: scale(1.02); }
-        .tech-label { font-weight: bold; color: #005f73; min-width: 70px; display: inline-block; }
-        .text-teal { color: #005f73; }
+        .asset-img:hover { transform: scale(1.03); }
+
+        /* Typography & Labels */
+        .tech-label { font-weight: 800; color: var(--teal-main); min-width: 75px; display: inline-block; text-transform: uppercase; font-size: 0.85rem; }
+        .project-title { font-weight: 800; letter-spacing: -0.5px; }
+        .lead-text { color: #444; font-weight: 500; }
+
         footer { background: #212529; color: white; padding: 3rem 0; }
         #lightboxImage { width: 100%; max-height: 85vh; object-fit: contain; }
+
+        /* Alternating row helper for desktop */
+        @media (min-width: 768px) {
+            .row-alternate:nth-child(even) { flex-direction: row-reverse; }
+        }
     </style>
 </head>
 <body class="bg-light">
@@ -29,7 +55,7 @@
         <a class="navbar-brand fw-bold" href="index.html">CALEB BELLSMITH</a>
         <div class="navbar-nav ms-auto">
             <a class="nav-link" href="index.html">Home</a>
-            <a class="nav-link" href="projects.html">Projects</a>
+            <a class="nav-link active" href="projects.html">Projects</a>
             <a class="nav-link" href="about.html">About</a>
         </div>
     </div>
@@ -38,87 +64,8 @@
 <div class="container my-5">
     <h1 class="display-4 fw-bold mb-5 text-center text-teal">Engineering Portfolio</h1>
 
-    <div class="card project-card">
-        <div class="asset-grid">
-            <div class="row g-2">
-                <div class="col-md-6"><img src="images/canoe.jpg" class="asset-img" onclick="openLightbox(this.src)" alt="Custom Cedar Strip Canoe"></div>
-                <div class="col-md-6"><img src="images/stems.jpg" class="asset-img" onclick="openLightbox(this.src)" alt="Canoe Detail"></div>
-            </div>
-        </div>
-        <div class="card-body p-4">
-            <h3 class="fw-bold mb-3 border-bottom pb-2">Custom Cedar Strip Canoe</h3>
-            <p class="lead">I designed and built a 17-foot cedar strip canoe that mixes traditional woodworking with modern digital fabrication.</p>
-            <p><span class="tech-label">Why:</span> I’ve always loved the outdoors and wanted to blend that passion with advancing design concepts. Building this canoe allowed for full customization of every detail while getting hands-on with CNC machining and 3D modeling.</p>
-            <p><span class="tech-label">How:</span> We utilized CAD and 3D modeling to perfect the molds. Then, a CNC machine was used for the secondary molds to ensure high accuracy. Every cedar plank was milled from scratch to ensure a tight fit and proper adhesive bonding.</p>
-            <p><span class="tech-label">Specs:</span> A classic 17-foot cedar strip canoe where every component was custom-made for a clean, professional finish.</p>
-        </div>
-    </div>
+    <div id="project-list"></div>
 
-    <div class="card project-card">
-        <div class="asset-grid">
-            <div class="row g-2">
-                <div class="col-md-12"><img src="images/balance.jpg" class="asset-img" onclick="openLightbox(this.src)" alt="Maze Platform"></div>
-            </div>
-        </div>
-        <div class="card-body p-4">
-            <h3 class="fw-bold mb-3 border-bottom pb-2">Tilting Maze Platform</h3>
-            <p class="lead">I designed and created a tilting platform featuring a swappable modular maze.</p>
-            <p><span class="tech-label">Why:</span> To gain applicable experience with microcontrollers and rotational actuation, I developed this tilting maze as a way to integrate my interests in mechanical design and embedded systems.</p>
-            <p><span class="tech-label">How:</span> I designed and 3D printed all mechanical components, utilizing high-torque servos, a potentiometer, and an ESP32 to create a functional, responsive system. The maze module is fully swappable, supporting a variety of custom levels.</p>
-            <p><span class="tech-label">Specs:</span> Every component, including the internal circuitry, was custom-built. I am currently integrating a webcam and computer vision code to enable autonomous navigation and toggleable control modes.</p>
-        </div>
-    </div>
-
-    <div class="card project-card">
-        <div class="asset-grid">
-            <div class="row g-2">
-                <div class="col-md-4"><img src="images/hand_exoskeleton.jpg" class="asset-img" onclick="openLightbox(this.src)" alt="Orthotic Hand Exoskeleton"></div>
-                <div class="col-md-4"><img src="images/test.jpg" class="asset-img" onclick="openLightbox(this.src)" alt="Testing"></div>
-                <div class="col-md-4"><img src="images/failures.jpg" class="asset-img" onclick="openLightbox(this.src)" alt="Failures"></div>
-            </div>
-        </div>
-        <div class="card-body p-4">
-            <h3 class="fw-bold mb-3 border-bottom pb-2">Orthotic Hand Exoskeleton</h3>
-            <p class="lead">A fully mechanical, 3D-printed device designed to assist individuals with limited upper-limb mobility.</p>
-            <p><span class="tech-label">Why:</span> This design was created to assist individuals with minimal forearm, hand, and wrist strength by shifting the heavy lifting away from the hand and forearm through a mechanical linkage.</p>
-            <p><span class="tech-label">How:</span> I went through dozens of 3D-printed prototypes to determine the optimal design for strength and fitment, using iterative feedback to maximize user comfort.</p>
-            <p><span class="tech-label">Specs:</span> 100% 3D-printed and purely mechanical. The design is scalable, allowing for customized support across specific fingers.</p>
-        </div>
-    </div>
-
-    <div class="card project-card">
-        <div class="asset-grid">
-            <div class="row g-2">
-                <div class="col-md-4"><img src="images/prosthetic_fingers.jpg" class="asset-img" onclick="openLightbox(this.src)" alt="Custom Finger Prosthetics"></div>
-                <div class="col-md-4"><img src="images/issue.jpg" class="asset-img" onclick="openLightbox(this.src)" alt="Issue Detail"></div>
-                <div class="col-md-4"><img src="images/fitted.jpg" class="asset-img" onclick="openLightbox(this.src)" alt="Fitted Prosthetic"></div>
-            </div>
-        </div>
-        <div class="card-body p-4">
-            <h3 class="fw-bold mb-3 border-bottom pb-2">Custom Finger Prosthetics</h3>
-            <p class="lead">Custom 3D-printed prosthetic fingers developed for a patient with amputations resulting from scleroderma.</p>
-            <p><span class="tech-label">Why:</span> The primary goal was to restore writing ability and daily usability. I focused on achieving a perfect fit to ensure long-term comfort and functional reliability.</p>
-            <p><span class="tech-label">How:</span> I modeled several ergonomic designs featuring specialized tool inserts and lockable rotation to account for various daily tasks and patient needs.</p>
-            <p><span class="tech-label">Specs:</span> Custom-fitted and optimized for specific tasks like writing or locking in specialized orientations.</p>
-        </div>
-    </div>
-
-    <div class="card project-card">
-        <div class="card-body p-4">
-            <h3 class="fw-bold mb-3 border-bottom pb-2">Technical Design & SolidWorks Gallery</h3>
-            <p class="lead">A collection of various SolidWorks projects ranging from mechanical assemblies to aesthetic custom requests.</p>
-        </div>
-        <div class="asset-grid">
-            <div class="row g-2">
-                <div class="col-md-6"><img src="images/swjet.jpg" class="asset-img" onclick="openLightbox(this.src)"></div>
-                <div class="col-md-6"><img src="images/swflower.jpg" class="asset-img" onclick="openLightbox(this.src)"></div>
-                <div class="col-md-6"><img src="images/flower.jpg" class="asset-img" onclick="openLightbox(this.src)"></div>
-                <div class="col-md-6"><img src="images/snowman.jpg" class="asset-img" onclick="openLightbox(this.src)"></div>
-                <div class="col-md-6"><img src="images/magno.png" class="asset-img" onclick="openLightbox(this.src)"></div>
-                <div class="col-md-6"><img src="images/card.png" class="asset-img" onclick="openLightbox(this.src)"></div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
@@ -133,7 +80,100 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 <script>
+    // 1. DATA OBJECT - Keeping all your exact words and images
+    const projects = [
+        {
+            title: "Custom Cedar Strip Canoe",
+            lead: "I designed and built a 17-foot cedar strip canoe that mixes traditional woodworking with modern digital fabrication.",
+            why: "I’ve always loved the outdoors and wanted to blend that passion with advancing design concepts. Building this canoe allowed for full customization of every detail while getting hands-on with CNC machining and 3D modeling.",
+            how: "We utilized CAD and 3D modeling to perfect the molds. Then, a CNC machine was used for the secondary molds to ensure high accuracy. Every cedar plank was milled from scratch to ensure a tight fit and proper adhesive bonding.",
+            specs: "A classic 17-foot cedar strip canoe where every component was custom-made for a clean, professional finish.",
+            images: ["images/canoe.jpg", "images/stems.jpg"],
+            imgCol: "col-md-6"
+        },
+        {
+            title: "Tilting Maze Platform",
+            lead: "I designed and created a tilting platform featuring a swappable modular maze.",
+            why: "To gain applicable experience with microcontrollers and rotational actuation, I developed this tilting maze as a way to integrate my interests in mechanical design and embedded systems.",
+            how: "I designed and 3D printed all mechanical components, utilizing high-torque servos, a potentiometer, and an ESP32 to create a functional, responsive system. The maze module is fully swappable, supporting a variety of custom levels.",
+            specs: "Every component, including the internal circuitry, was custom-built. I am currently integrating a webcam and computer vision code to enable autonomous navigation and toggleable control modes.",
+            images: ["images/balance.jpg"],
+            imgCol: "col-md-12"
+        },
+        {
+            title: "Orthotic Hand Exoskeleton",
+            lead: "A fully mechanical, 3D-printed device designed to assist individuals with limited upper-limb mobility.",
+            why: "This design was created to assist individuals with minimal forearm, hand, and wrist strength by shifting the heavy lifting away from the hand and forearm through a mechanical linkage.",
+            how: "I went through dozens of 3D-printed prototypes to determine the optimal design for strength and fitment, using iterative feedback to maximize user comfort.",
+            specs: "100% 3D-printed and purely mechanical. The design is scalable, allowing for customized support across specific fingers.",
+            images: ["images/hand_exoskeleton.jpg", "images/test.jpg", "images/failures.jpg"],
+            imgCol: "col-md-4"
+        },
+        {
+            title: "Custom Finger Prosthetics",
+            lead: "Custom 3D-printed prosthetic fingers developed for a patient with amputations resulting from scleroderma.",
+            why: "The primary goal was to restore writing ability and daily usability. I focused on achieving a perfect fit to ensure long-term comfort and functional reliability.",
+            how: "I modeled several ergonomic designs featuring specialized tool inserts and lockable rotation to account for various daily tasks and patient needs.",
+            specs: "Custom-fitted and optimized for specific tasks like writing or locking in specialized orientations.",
+            images: ["images/prosthetic_fingers.jpg", "images/issue.jpg", "images/fitted.jpg"],
+            imgCol: "col-md-4"
+        }
+    ];
+
+    // 2. RENDERER
+    const projectList = document.getElementById('project-list');
+
+    projects.forEach((project, index) => {
+        const imageHtml = project.images.map(img => `
+            <div class="${project.imgCol}">
+                <img src="${img}" class="asset-img mb-2" onclick="openLightbox(this.src)" alt="${project.title}">
+            </div>
+        `).join('');
+
+        projectList.innerHTML += `
+            <div class="card project-card">
+                <div class="row g-0 row-alternate">
+                    <div class="col-lg-6 asset-grid">
+                        <div class="row g-2 w-100 justify-content-center">
+                            ${imageHtml}
+                        </div>
+                    </div>
+                    <div class="col-lg-6 d-flex align-items-center">
+                        <div class="card-body p-4 p-xl-5">
+                            <h2 class="project-title fw-bold mb-3 border-bottom pb-2 text-teal">${project.title}</h2>
+                            <p class="lead lead-text mb-4">${project.lead}</p>
+                            <p><span class="tech-label">Why</span> ${project.why}</p>
+                            <p><span class="tech-label">How</span> ${project.how}</p>
+                            <p><span class="tech-label">Specs</span> ${project.specs}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    // SOLIDWORKS GALLERY (Handled separately for grid style)
+    projectList.innerHTML += `
+        <div class="card project-card">
+            <div class="card-body p-4 p-xl-5 text-center">
+                <h2 class="project-title fw-bold mb-3 border-bottom pb-2 text-teal">Technical Design & SolidWorks Gallery</h2>
+                <p class="lead lead-text mb-4">A collection of various SolidWorks projects ranging from mechanical assemblies to aesthetic custom requests.</p>
+                <div class="asset-grid rounded">
+                    <div class="row g-3">
+                        ${["swjet.jpg", "swflower.jpg", "flower.jpg", "snowman.jpg", "magno.png", "card.png"].map(img => `
+                            <div class="col-6 col-md-4">
+                                <img src="images/${img}" class="asset-img" onclick="openLightbox(this.src)">
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // 3. LIGHTBOX LOGIC
     const lbModal = new bootstrap.Modal(document.getElementById('lightboxModal'));
     const lbImage = document.getElementById('lightboxImage');
     function openLightbox(src) {
