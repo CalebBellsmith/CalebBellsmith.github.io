@@ -80,11 +80,11 @@
 <script>
     const projects = [
         {
-            [cite_start]title: "Custom Cedar Strip Canoe [cite: 1]",
-            [cite_start]lead: "I designed and built a 17-foot cedar strip canoe that mixes traditional woodworking with modern digital fabrication. [cite: 3]",
-            why: "I’ve always loved the outdoors and wanted to blend that passion with advancing design concepts. [cite_start]Building this canoe allowed for full customization of every detail while getting hands-on with CNC machining and 3D modeling. [cite: 4, 5]",
-            how: "We utilized CAD and 3D modeling to perfect the molds. Then, a CNC machine was used for the secondary molds to ensure high accuracy. [cite_start]Every cedar plank was milled from scratch to ensure a tight fit and proper adhesive bonding. [cite: 6, 7]",
-            [cite_start]specs: "A classic 17-foot cedar strip canoe where every component was custom-made for a clean, professional finish. [cite: 8]",
+            title: "Custom Cedar Strip Canoe",
+            lead: "I designed and built a 17-foot cedar strip canoe that mixes traditional woodworking with modern digital fabrication.",
+            why: "I’ve always loved the outdoors and wanted to blend that passion with advancing design concepts. Building this canoe allowed for full customization of every detail while getting hands-on with CNC machining and 3D modeling.",
+            how: "We utilized CAD and 3D modeling to perfect the molds. Then, a CNC machine was used for the secondary molds to ensure high accuracy. Every cedar plank was milled from scratch to ensure a tight fit and proper adhesive bonding.",
+            specs: "A classic 17-foot cedar strip canoe where every component was custom-made for a clean, professional finish.",
             images: ["images/canoe.jpg", "images/stems.jpg"],
             layout: "normal",
             imgCol: "col-md-6"
@@ -100,21 +100,21 @@
             imgCol: "col-md-12"
         },
         {
-            [cite_start]title: "Orthotic Hand Exoskeleton [cite: 9]",
-            [cite_start]lead: "A fully mechanical, 3D-printed device designed to assist individuals with limited upper-limb mobility. [cite: 11]",
-            [cite_start]why: "This design was created to assist individuals with minimal forearm, hand, and wrist strength by shifting the heavy lifting away from the hand and forearm through a mechanical linkage. [cite: 12, 13]",
-            [cite_start]how: "I went through dozens of 3D-printed prototypes to determine the optimal design for strength and fitment, using iterative feedback to maximize user comfort. [cite: 14, 15]",
-            specs: "100% 3D-printed and purely mechanical. [cite_start]The design is scalable, allowing for customized support across specific fingers. [cite: 16]",
+            title: "Orthotic Hand Exoskeleton",
+            lead: "A fully mechanical, 3D-printed device designed to assist individuals with limited upper-limb mobility.",
+            why: "This design was created to assist individuals with minimal forearm, hand, and wrist strength by shifting the heavy lifting away from the hand and forearm through a mechanical linkage.",
+            how: "I went through dozens of 3D-printed prototypes to determine the optimal design for strength and fitment, using iterative feedback to maximize user comfort.",
+            specs: "100% 3D-printed and purely mechanical. The design is scalable, allowing for customized support across specific fingers.",
             images: ["images/hand_exoskeleton.jpg", "images/test.jpg", "images/failures.jpg"],
             layout: "stacked", // Special flag for vertical stacking
             imgCol: "col-6"
         },
         {
-            [cite_start]title: "Custom Finger Prosthetics [cite: 17]",
-            [cite_start]lead: "Custom 3D-printed prosthetic fingers developed for a patient with amputations resulting from scleroderma. [cite: 19]",
-            why: "The primary goal was to restore writing ability and daily usability. [cite_start]I focused on achieving a perfect fit to ensure long-term comfort and functional reliability. [cite: 20]",
-            [cite_start]how: "I modeled several ergonomic designs featuring specialized tool inserts and lockable rotation to account for various daily tasks and patient needs. [cite: 21]",
-            [cite_start]specs: "Custom-fitted and optimized for specific tasks like writing or locking in specialized orientations. [cite: 22]",
+            title: "Custom Finger Prosthetics",
+            lead: "Custom 3D-printed prosthetic fingers developed for a patient with amputations resulting from scleroderma.",
+            why: "The primary goal was to restore writing ability and daily usability. I focused on achieving a perfect fit to ensure long-term comfort and functional reliability.",
+            how: "I modeled several ergonomic designs featuring specialized tool inserts and lockable rotation to account for various daily tasks and patient needs.",
+            specs: "Custom-fitted and optimized for specific tasks like writing or locking in specialized orientations.",
             images: ["images/prosthetic_fingers.jpg", "images/issue.jpg", "images/fitted.jpg"],
             layout: "normal",
             imgCol: "col-md-4"
@@ -167,12 +167,12 @@
         `;
     });
 
-    [cite_start]// SolidWorks Gallery [cite: 23, 25]
+    // SolidWorks Gallery
     projectList.innerHTML += `
         <div class="card project-card">
             <div class="card-body p-4 p-xl-5 text-center">
-                [cite_start]<h2 class="project-title fw-bold mb-3 border-bottom pb-2 text-teal">Technical Design & SolidWorks Gallery [cite: 23]</h2>
-                [cite_start]<p class="lead lead-text mb-4">A collection of various SolidWorks projects ranging from mechanical assemblies to aesthetic custom requests. [cite: 25]</p>
+                <h2 class="project-title fw-bold mb-3 border-bottom pb-2 text-teal">Technical Design & SolidWorks Gallery</h2>
+                <p class="lead lead-text mb-4">A collection of various SolidWorks projects ranging from mechanical assemblies to aesthetic custom requests.</p>
                 <div class="asset-grid rounded">
                     <div class="row g-3">
                         ${["swjet.jpg", "swflower.jpg", "flower.jpg", "snowman.jpg", "magno.png", "card.png"].map(img => `
