@@ -10,7 +10,6 @@
         .navbar { background-color: var(--teal-main) !important; }
         .text-teal { color: var(--teal-main); }
         
-        /* Modernized Project Cards */
         .project-card { 
             border: none; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
@@ -25,16 +24,16 @@
             box-shadow: 0 12px 30px rgba(0,0,0,0.12);
         }
 
-        /* Responsive Grid & Image Handling */
         .asset-grid { background-color: var(--bg-gray); padding: 20px; display: flex; align-items: center; }
         .asset-img { 
             width: 100%; height: 350px; object-fit: contain; 
             border-radius: 8px; background-color: var(--bg-gray);
             cursor: pointer; transition: transform 0.4s ease;
         }
+        /* Style for stacked images to ensure they don't get too tall */
+        .asset-img-stacked { height: 171px !important; margin-bottom: 8px; }
         .asset-img:hover { transform: scale(1.03); }
 
-        /* Typography & Labels */
         .tech-label { font-weight: 800; color: var(--teal-main); min-width: 75px; display: inline-block; text-transform: uppercase; font-size: 0.85rem; }
         .project-title { font-weight: 800; letter-spacing: -0.5px; }
         .lead-text { color: #444; font-weight: 500; }
@@ -42,7 +41,6 @@
         footer { background: #212529; color: white; padding: 3rem 0; }
         #lightboxImage { width: 100%; max-height: 85vh; object-fit: contain; }
 
-        /* Alternating row helper for desktop */
         @media (min-width: 768px) {
             .row-alternate:nth-child(even) { flex-direction: row-reverse; }
         }
@@ -63,16 +61,14 @@
 
 <div class="container my-5">
     <h1 class="display-4 fw-bold mb-5 text-center text-teal">Engineering Portfolio</h1>
-
     <div id="project-list"></div>
-
 </div>
 
 <div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content bg-transparent border-0">
             <div class="modal-body p-0 text-center">
-                <img src="" id="lightboxImage" class="img-fluid rounded" alt="Enlarged view">
+                <img src="" id="lightboxImage" class="img-fluid rounded">
                 <button type="button" class="btn btn-light mt-3" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
@@ -82,15 +78,15 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    // 1. DATA OBJECT - Keeping all your exact words and images
     const projects = [
         {
-            title: "Custom Cedar Strip Canoe",
-            lead: "I designed and built a 17-foot cedar strip canoe that mixes traditional woodworking with modern digital fabrication.",
-            why: "I’ve always loved the outdoors and wanted to blend that passion with advancing design concepts. Building this canoe allowed for full customization of every detail while getting hands-on with CNC machining and 3D modeling.",
-            how: "We utilized CAD and 3D modeling to perfect the molds. Then, a CNC machine was used for the secondary molds to ensure high accuracy. Every cedar plank was milled from scratch to ensure a tight fit and proper adhesive bonding.",
-            specs: "A classic 17-foot cedar strip canoe where every component was custom-made for a clean, professional finish.",
+            [cite_start]title: "Custom Cedar Strip Canoe [cite: 1]",
+            [cite_start]lead: "I designed and built a 17-foot cedar strip canoe that mixes traditional woodworking with modern digital fabrication. [cite: 3]",
+            why: "I’ve always loved the outdoors and wanted to blend that passion with advancing design concepts. [cite_start]Building this canoe allowed for full customization of every detail while getting hands-on with CNC machining and 3D modeling. [cite: 4, 5]",
+            how: "We utilized CAD and 3D modeling to perfect the molds. Then, a CNC machine was used for the secondary molds to ensure high accuracy. [cite_start]Every cedar plank was milled from scratch to ensure a tight fit and proper adhesive bonding. [cite: 6, 7]",
+            [cite_start]specs: "A classic 17-foot cedar strip canoe where every component was custom-made for a clean, professional finish. [cite: 8]",
             images: ["images/canoe.jpg", "images/stems.jpg"],
+            layout: "normal",
             imgCol: "col-md-6"
         },
         {
@@ -100,44 +96,61 @@
             how: "I designed and 3D printed all mechanical components, utilizing high-torque servos, a potentiometer, and an ESP32 to create a functional, responsive system. The maze module is fully swappable, supporting a variety of custom levels.",
             specs: "Every component, including the internal circuitry, was custom-built. I am currently integrating a webcam and computer vision code to enable autonomous navigation and toggleable control modes.",
             images: ["images/balance.jpg"],
+            layout: "normal",
             imgCol: "col-md-12"
         },
         {
-            title: "Orthotic Hand Exoskeleton",
-            lead: "A fully mechanical, 3D-printed device designed to assist individuals with limited upper-limb mobility.",
-            why: "This design was created to assist individuals with minimal forearm, hand, and wrist strength by shifting the heavy lifting away from the hand and forearm through a mechanical linkage.",
-            how: "I went through dozens of 3D-printed prototypes to determine the optimal design for strength and fitment, using iterative feedback to maximize user comfort.",
-            specs: "100% 3D-printed and purely mechanical. The design is scalable, allowing for customized support across specific fingers.",
+            [cite_start]title: "Orthotic Hand Exoskeleton [cite: 9]",
+            [cite_start]lead: "A fully mechanical, 3D-printed device designed to assist individuals with limited upper-limb mobility. [cite: 11]",
+            [cite_start]why: "This design was created to assist individuals with minimal forearm, hand, and wrist strength by shifting the heavy lifting away from the hand and forearm through a mechanical linkage. [cite: 12, 13]",
+            [cite_start]how: "I went through dozens of 3D-printed prototypes to determine the optimal design for strength and fitment, using iterative feedback to maximize user comfort. [cite: 14, 15]",
+            specs: "100% 3D-printed and purely mechanical. [cite_start]The design is scalable, allowing for customized support across specific fingers. [cite: 16]",
             images: ["images/hand_exoskeleton.jpg", "images/test.jpg", "images/failures.jpg"],
-            imgCol: "col-md-4"
+            layout: "stacked", // Special flag for vertical stacking
+            imgCol: "col-6"
         },
         {
-            title: "Custom Finger Prosthetics",
-            lead: "Custom 3D-printed prosthetic fingers developed for a patient with amputations resulting from scleroderma.",
-            why: "The primary goal was to restore writing ability and daily usability. I focused on achieving a perfect fit to ensure long-term comfort and functional reliability.",
-            how: "I modeled several ergonomic designs featuring specialized tool inserts and lockable rotation to account for various daily tasks and patient needs.",
-            specs: "Custom-fitted and optimized for specific tasks like writing or locking in specialized orientations.",
+            [cite_start]title: "Custom Finger Prosthetics [cite: 17]",
+            [cite_start]lead: "Custom 3D-printed prosthetic fingers developed for a patient with amputations resulting from scleroderma. [cite: 19]",
+            why: "The primary goal was to restore writing ability and daily usability. [cite_start]I focused on achieving a perfect fit to ensure long-term comfort and functional reliability. [cite: 20]",
+            [cite_start]how: "I modeled several ergonomic designs featuring specialized tool inserts and lockable rotation to account for various daily tasks and patient needs. [cite: 21]",
+            [cite_start]specs: "Custom-fitted and optimized for specific tasks like writing or locking in specialized orientations. [cite: 22]",
             images: ["images/prosthetic_fingers.jpg", "images/issue.jpg", "images/fitted.jpg"],
+            layout: "normal",
             imgCol: "col-md-4"
         }
     ];
 
-    // 2. RENDERER
     const projectList = document.getElementById('project-list');
 
-    projects.forEach((project, index) => {
-        const imageHtml = project.images.map(img => `
-            <div class="${project.imgCol}">
-                <img src="${img}" class="asset-img mb-2" onclick="openLightbox(this.src)" alt="${project.title}">
-            </div>
-        `).join('');
+    projects.forEach((project) => {
+        let imageMarkup = "";
+
+        if (project.layout === "stacked") {
+            // Stack the first two images vertically, place the third next to them
+            imageMarkup = `
+                <div class="col-6">
+                    <img src="${project.images[0]}" class="asset-img asset-img-stacked" onclick="openLightbox(this.src)">
+                    <img src="${project.images[1]}" class="asset-img asset-img-stacked" onclick="openLightbox(this.src)">
+                </div>
+                <div class="col-6">
+                    <img src="${project.images[2]}" class="asset-img" style="height: 350px;" onclick="openLightbox(this.src)">
+                </div>
+            `;
+        } else {
+            imageMarkup = project.images.map(img => `
+                <div class="${project.imgCol}">
+                    <img src="${img}" class="asset-img mb-2" onclick="openLightbox(this.src)">
+                </div>
+            `).join('');
+        }
 
         projectList.innerHTML += `
             <div class="card project-card">
                 <div class="row g-0 row-alternate">
                     <div class="col-lg-6 asset-grid">
                         <div class="row g-2 w-100 justify-content-center">
-                            ${imageHtml}
+                            ${imageMarkup}
                         </div>
                     </div>
                     <div class="col-lg-6 d-flex align-items-center">
@@ -154,12 +167,12 @@
         `;
     });
 
-    // SOLIDWORKS GALLERY (Handled separately for grid style)
+    [cite_start]// SolidWorks Gallery [cite: 23, 25]
     projectList.innerHTML += `
         <div class="card project-card">
             <div class="card-body p-4 p-xl-5 text-center">
-                <h2 class="project-title fw-bold mb-3 border-bottom pb-2 text-teal">Technical Design & SolidWorks Gallery</h2>
-                <p class="lead lead-text mb-4">A collection of various SolidWorks projects ranging from mechanical assemblies to aesthetic custom requests.</p>
+                [cite_start]<h2 class="project-title fw-bold mb-3 border-bottom pb-2 text-teal">Technical Design & SolidWorks Gallery [cite: 23]</h2>
+                [cite_start]<p class="lead lead-text mb-4">A collection of various SolidWorks projects ranging from mechanical assemblies to aesthetic custom requests. [cite: 25]</p>
                 <div class="asset-grid rounded">
                     <div class="row g-3">
                         ${["swjet.jpg", "swflower.jpg", "flower.jpg", "snowman.jpg", "magno.png", "card.png"].map(img => `
@@ -173,13 +186,9 @@
         </div>
     `;
 
-    // 3. LIGHTBOX LOGIC
     const lbModal = new bootstrap.Modal(document.getElementById('lightboxModal'));
     const lbImage = document.getElementById('lightboxImage');
-    function openLightbox(src) {
-        lbImage.src = src;
-        lbModal.show();
-    }
+    function openLightbox(src) { lbImage.src = src; lbModal.show(); }
 </script>
 </body>
 </html>
