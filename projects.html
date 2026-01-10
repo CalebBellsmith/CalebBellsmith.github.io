@@ -7,41 +7,45 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         :root { 
-            --teal-main: #005f73; 
-            --deep-dark: #1a1a1a; 
-            --blueprint-blue: #f0f4f8;
+            --teal-accent: #0a9396; 
+            --deep-bg: #0f172a; /* Sophisticated deep slate blue/black */
+            --card-bg: rgba(255, 255, 255, 0.03); 
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
 
         body {
-            /* Blueprint grid aesthetic background */
-            background-color: var(--blueprint-blue);
-            background-image: 
-                linear-gradient(#d1d9e0 1px, transparent 1px),
-                linear-gradient(90deg, #d1d9e0 1px, transparent 1px);
-            background-size: 40px 40px;
+            background-color: var(--deep-bg);
+            color: #e2e8f0;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
         }
 
-        .navbar { background-color: var(--teal-main) !important; }
-        .text-teal { color: var(--teal-main); }
+        .navbar { 
+            background-color: rgba(15, 23, 42, 0.9) !important; 
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+        }
         
+        /* Modern "Glass" Project Cards */
         .project-card { 
-            border: none; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
-            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            border: 1px solid var(--glass-border); 
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
             margin-bottom: 5rem; 
             overflow: hidden; 
-            border-radius: 16px;
-            background: #fff;
+            border-radius: 20px;
         }
+        
         .project-card:hover { 
-            transform: translateY(-8px); 
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            transform: translateY(-10px); 
+            border-color: var(--teal-accent);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
-        /* Matte black background for images */
+        /* Black image containers for maximum contrast */
         .asset-grid { 
-            background-color: var(--deep-dark); 
-            padding: 20px; 
+            background-color: #000; 
+            padding: 25px; 
             display: flex; 
             align-items: center; 
         }
@@ -50,27 +54,45 @@
             width: 100%; 
             height: 350px; 
             object-fit: contain; 
-            border-radius: 8px; 
-            background-color: var(--deep-dark); /* Black background for each image */
+            border-radius: 12px; 
+            background-color: #000; 
             cursor: pointer; 
-            transition: transform 0.4s ease;
+            transition: 0.4s ease;
+            filter: brightness(0.9);
+        }
+
+        .asset-img:hover { 
+            transform: scale(1.04); 
+            filter: brightness(1.1);
         }
 
         .asset-img-stacked { height: 171px !important; margin-bottom: 8px; }
-        .asset-img:hover { transform: scale(1.03); }
 
         .tech-label { 
-            font-weight: 800; 
-            color: var(--teal-main); 
-            min-width: 75px; 
+            font-weight: 700; 
+            color: var(--teal-accent); 
+            min-width: 80px; 
             display: inline-block; 
             text-transform: uppercase; 
-            font-size: 0.85rem; 
+            font-size: 0.75rem;
+            letter-spacing: 1px;
         }
-        .project-title { font-weight: 800; letter-spacing: -0.5px; }
-        .lead-text { color: #444; font-weight: 500; }
+        
+        .project-title { 
+            font-weight: 800; 
+            color: #f8fafc;
+            letter-spacing: -0.02em; 
+        }
+        
+        .lead-text { color: #94a3b8; font-weight: 400; }
+        .body-text { color: #cbd5e1; font-size: 0.95rem; }
 
-        footer { background: #212529; color: white; padding: 3rem 0; }
+        footer { 
+            background: #000; 
+            border-top: 1px solid var(--glass-border);
+            padding: 4rem 0; 
+        }
+        
         #lightboxImage { width: 100%; max-height: 85vh; object-fit: contain; }
 
         @media (min-width: 768px) {
@@ -92,17 +114,17 @@
 </nav>
 
 <div class="container my-5">
-    <h1 class="display-4 fw-bold mb-5 text-center text-teal" style="text-shadow: 2px 2px 0px #fff;">Engineering Portfolio</h1>
+    <h1 class="display-4 fw-bold mb-5 text-center" style="color: #f8fafc;">Engineering Portfolio</h1>
     <div id="project-list"></div>
 </div>
 
 <div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="modal-content bg-dark border-0">
+        <div class="modal-content bg-black border-0">
             <div class="modal-body p-0 text-center">
-                <img src="" id="lightboxImage" class="img-fluid rounded">
-                <div class="p-3">
-                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close Gallery</button>
+                <img src="" id="lightboxImage" class="img-fluid rounded shadow-lg">
+                <div class="p-4">
+                    <button type="button" class="btn btn-outline-light rounded-pill px-4" data-bs-dismiss="modal">Close Gallery</button>
                 </div>
             </div>
         </div>
@@ -115,40 +137,40 @@
     const projects = [
         {
             title: "Custom Cedar Strip Canoe",
-            lead: "I designed and built a 17-foot cedar strip canoe that mixes traditional woodworking with modern digital fabrication.",
-            why: "I’ve always loved the outdoors and wanted to blend that passion with advancing design concepts. Building this canoe allowed for full customization of every detail while getting hands-on with CNC machining and 3D modeling.",
-            how: "We utilized CAD and 3D modeling to perfect the molds. Then, a CNC machine was used for the secondary molds to ensure high accuracy. Every cedar plank was milled from scratch to ensure a tight fit and proper adhesive bonding.",
-            specs: "A classic 17-foot cedar strip canoe where every component was custom-made for a clean, professional finish.",
+            lead: "A 17-foot custom build mixing traditional woodworking with digital fabrication.",
+            why: "Blended outdoor passion with design concepts. Built to experiment with CNC machining and 3D modeling.",
+            how: "Utilized CAD for molds and CNC for secondary molds to ensure high accuracy. Every cedar plank was milled from scratch.",
+            specs: "17-foot build; custom-made components for a professional finish.",
             images: ["images/canoe.jpg", "images/stems.jpg"],
             layout: "normal",
             imgCol: "col-md-6"
         },
         {
             title: "Tilting Maze Platform",
-            lead: "I designed and created a tilting platform featuring a swappable modular maze.",
-            why: "To gain applicable experience with microcontrollers and rotational actuation, I developed this tilting maze as a way to integrate my interests in mechanical design and embedded systems.",
-            how: "I designed and 3D printed all mechanical components, utilizing high-torque servos, a potentiometer, and an ESP32 to create a functional, responsive system. The maze module is fully swappable, supporting a variety of custom levels.",
-            specs: "Every component, including the internal circuitry, was custom-built. I am currently integrating a webcam and computer vision code to enable autonomous navigation.",
+            lead: "A modular, tilting platform featuring swappable mazes and ESP32 control.",
+            why: "To gain experience with microcontrollers and rotational actuation in mechanical design.",
+            how: "Designed and 3D printed components using high-torque servos and an ESP32 for responsiveness.",
+            specs: "Custom-built circuitry; currently integrating webcam-based computer vision for autonomous navigation.",
             images: ["images/balance.jpg"],
             layout: "normal",
             imgCol: "col-md-12"
         },
         {
             title: "Orthotic Hand Exoskeleton",
-            lead: "A fully mechanical, 3D-printed device designed to assist individuals with limited upper-limb mobility.",
-            why: "This design was created to assist individuals with minimal forearm, hand, and wrist strength by shifting the heavy lifting away from the hand through a mechanical linkage.",
-            how: "I went through dozens of 3D-printed prototypes to determine the optimal design for strength and fitment, using iterative feedback to maximize user comfort.",
-            specs: "100% 3D-printed and purely mechanical. The design is scalable, allowing for customized support across specific fingers.",
+            lead: "A mechanical, 3D-printed device assisting individuals with limited mobility.",
+            why: "Shifts heavy lifting from the hand/forearm via mechanical linkage.",
+            how: "Iterated through dozens of 3D-printed prototypes for optimal strength and comfort.",
+            specs: "100% 3D-printed; scalable design for specific finger support.",
             images: ["images/hand_exoskeleton.jpg", "images/test.jpg", "images/failures.jpg"],
             layout: "stacked",
             imgCol: "col-6"
         },
         {
             title: "Custom Finger Prosthetics",
-            lead: "Custom 3D-printed prosthetic fingers developed for a patient with amputations resulting from scleroderma.",
-            why: "The primary goal was to restore writing ability and daily usability. I focused on achieving a perfect fit to ensure long-term comfort and functional reliability.",
-            how: "I modeled several ergonomic designs featuring specialized tool inserts and lockable rotation to account for various daily tasks and patient needs.",
-            specs: "Custom-fitted and optimized for specific tasks like writing or locking in specialized orientations.",
+            lead: "3D-printed prosthetics for a patient with scleroderma.",
+            why: "Focused on restoring writing ability and ensuring long-term functional fit.",
+            how: "Modeled ergonomic designs with tool inserts and lockable rotation.",
+            specs: "Custom-fitted and task-optimized for writing and orientation.",
             images: ["images/prosthetic_fingers.jpg", "images/issue.jpg", "images/fitted.jpg"],
             layout: "normal",
             imgCol: "col-md-4"
@@ -159,7 +181,6 @@
 
     projects.forEach((project) => {
         let imageMarkup = "";
-
         if (project.layout === "stacked") {
             imageMarkup = `
                 <div class="col-6">
@@ -188,11 +209,11 @@
                     </div>
                     <div class="col-lg-6 d-flex align-items-center">
                         <div class="card-body p-4 p-xl-5">
-                            <h2 class="project-title fw-bold mb-3 border-bottom pb-2 text-teal">${project.title}</h2>
+                            <h2 class="project-title fw-bold mb-3 border-bottom pb-2">${project.title}</h2>
                             <p class="lead lead-text mb-4">${project.lead}</p>
-                            <p><span class="tech-label">Why</span> ${project.why}</p>
-                            <p><span class="tech-label">How</span> ${project.how}</p>
-                            <p><span class="tech-label">Specs</span> ${project.specs}</p>
+                            <p class="body-text"><span class="tech-label">Why</span> ${project.why}</p>
+                            <p class="body-text"><span class="tech-label">How</span> ${project.how}</p>
+                            <p class="body-text"><span class="tech-label">Specs</span> ${project.specs}</p>
                         </div>
                     </div>
                 </div>
@@ -203,10 +224,10 @@
     // SolidWorks Gallery
     projectList.innerHTML += `
         <div class="card project-card">
-            <div class="card-body p-4 p-xl-5 text-center">
-                <h2 class="project-title fw-bold mb-3 border-bottom pb-2 text-teal">Technical Design & SolidWorks Gallery</h2>
-                <p class="lead lead-text mb-4">A collection of various SolidWorks projects ranging from mechanical assemblies to aesthetic custom requests.</p>
-                <div class="asset-grid rounded">
+            <div class="card-body p-5 text-center">
+                <h2 class="project-title fw-bold mb-3 border-bottom pb-2">Technical Design & SolidWorks Gallery</h2>
+                <p class="lead lead-text mb-5">Various SolidWorks projects ranging from mechanical assemblies to aesthetic custom requests.</p>
+                <div class="asset-grid rounded-4">
                     <div class="row g-3">
                         ${["swjet.jpg", "swflower.jpg", "flower.jpg", "snowman.jpg", "magno.png", "card.png"].map(img => `
                             <div class="col-6 col-md-4">
