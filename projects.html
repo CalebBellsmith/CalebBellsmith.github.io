@@ -5,134 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Caleb Bellsmith</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --teal-main: #005f73; 
-            --bg-fresh: #ffffff;
-            --card-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
-            --border-light: #f1f3f5;
-        }
-
-        body {
-            background-color: var(--bg-fresh);
-            color: #1a1a1b;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            letter-spacing: -0.01em;
-        }
-
-        .navbar { 
-            background: rgba(255, 255, 255, 0.9) !important; 
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--border-light);
-            padding: 1.2rem 0;
-        }
+        :root { --teal-main: #005f73; --bg-gray: #f8f9fa; --asset-bg: #ebebeb; }
+        .navbar { background-color: var(--teal-main) !important; }
+        .text-teal { color: var(--teal-main); }
         
-        .navbar-brand { font-weight: 800; color: var(--teal-main) !important; letter-spacing: -0.5px; }
-        .nav-link { color: #495057 !important; font-weight: 500; }
-        .nav-link.active { color: var(--teal-main) !important; font-weight: 700; }
-
-        /* Clean "High-Performance" Cards */
         .project-card { 
-            border: 1px solid var(--border-light); 
-            background: #ffffff;
-            transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.4s ease; 
+            border: none; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
             margin-bottom: 5rem; 
             overflow: hidden; 
-            border-radius: 20px;
-            box-shadow: var(--card-shadow);
+            border-radius: 12px;
+            background: #fff;
         }
-        
         .project-card:hover { 
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            transform: translateY(-5px); 
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
         }
 
-        /* Black image containers to keep your assets crisp */
-        .asset-grid { 
-            background-color: #000; 
-            padding: 25px; 
-            display: flex; 
-            align-items: center; 
-        }
-
+        .asset-grid { background-color: var(--asset-bg); padding: 25px; display: flex; align-items: center; }
         .asset-img { 
-            width: 100%; 
-            height: 360px; 
-            object-fit: contain; 
-            border-radius: 12px; 
-            background-color: #000; 
-            cursor: pointer; 
-            transition: transform 0.5s ease;
+            width: 100%; height: 350px; object-fit: contain; 
+            border-radius: 8px; background-color: var(--asset-bg);
+            cursor: pointer; transition: transform 0.3s ease;
         }
-
-        .asset-img:hover { transform: scale(1.03); }
-        .asset-img-stacked { height: 176px !important; margin-bottom: 8px; }
-
-        /* Modern Typography */
-        .tech-label { 
-            font-weight: 700; 
-            color: var(--teal-main); 
-            text-transform: uppercase; 
-            font-size: 0.7rem;
-            letter-spacing: 1.5px;
-            margin-bottom: 0.8rem;
-            display: block;
-        }
+        .asset-img:hover { transform: scale(1.02); opacity: 0.9; }
         
-        .project-title { 
-            font-weight: 800; 
-            font-size: 2rem;
-            color: #000;
-            margin-bottom: 1.2rem;
-        }
-        
-        .lead-text { color: #495057; font-size: 1.05rem; line-height: 1.6; font-weight: 500; }
-        .body-text { color: #6c757d; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1rem; }
+        /* Styles for the unique stacked layout */
+        .asset-img-stacked { height: 171px !important; margin-bottom: 8px; }
 
-        footer { 
-            background: #f8f9fa; 
-            padding: 4rem 0; 
-            border-top: 1px solid var(--border-light);
-        }
+        .tech-label { font-weight: 800; color: var(--teal-main); min-width: 75px; display: inline-block; text-transform: uppercase; font-size: 0.8rem; }
+        .project-title { font-weight: 800; letter-spacing: -0.5px; }
         
-        .modal-content { background-color: #000; border: none; }
-        #lightboxImage { width: 100%; max-height: 85vh; object-fit: contain; }
-
-        @media (min-width: 768px) {
+        @media (min-width: 992px) {
+            /* This creates the alternating layout: Text-Left/Image-Right then Image-Left/Text-Right */
             .row-alternate:nth-child(even) { flex-direction: row-reverse; }
         }
+
+        #lightboxImage { width: 100%; max-height: 85vh; object-fit: contain; }
     </style>
 </head>
-<body>
+<body class="bg-light">
 
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
-        <a class="navbar-brand" href="index.html">CALEB BELLSMITH</a>
+        <a class="navbar-brand fw-bold" href="index.html">CALEB BELLSMITH</a>
         <div class="navbar-nav ms-auto">
-            <a class="nav-link px-3" href="index.html">Home</a>
-            <a class="nav-link active px-3" href="projects.html">Projects</a>
-            <a class="nav-link px-3" href="about.html">About</a>
+            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link active" href="projects.html">Projects</a>
+            <a class="nav-link" href="about.html">About</a>
         </div>
     </div>
 </nav>
 
-<div class="container my-5 pt-4">
-    <div class="text-center mb-5">
-        <h1 class="display-4 fw-bold" style="color: var(--teal-main);">Engineering Portfolio</h1>
-        <p class="text-muted">A selection of technical designs and fabrication projects.</p>
-    </div>
+<div class="container my-5">
+    <h1 class="display-4 fw-bold mb-5 text-center text-teal">Engineering Portfolio</h1>
+    
     <div id="project-list"></div>
+
+    <div class="card project-card">
+        <div class="card-body p-4 p-xl-5 text-center">
+            <h2 class="project-title fw-bold mb-3 border-bottom pb-2 text-teal">Technical Design & SolidWorks Gallery</h2>
+            <p class="lead mb-4">A collection of various SolidWorks projects ranging from mechanical assemblies to aesthetic custom requests.</p>
+            <div class="asset-grid rounded">
+                <div class="row g-3 w-100">
+                    <div class="col-6 col-md-4"><img src="images/swjet.jpg" class="asset-img" onclick="openLightbox(this.src)"></div>
+                    <div class="col-6 col-md-4"><img src="images/swflower.jpg" class="asset-img" onclick="openLightbox(this.src)"></div>
+                    <div class="col-6 col-md-4"><img src="images/flower.jpg" class="asset-img" onclick="openLightbox(this.src)"></div>
+                    <div class="col-6 col-md-4"><img src="images/snowman.jpg" class="asset-img" onclick="openLightbox(this.src)"></div>
+                    <div class="col-6 col-md-4"><img src="images/magno.png" class="asset-img" onclick="openLightbox(this.src)"></div>
+                    <div class="col-6 col-md-4"><img src="images/card.png" class="asset-img" onclick="openLightbox(this.src)"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="modal-content">
+        <div class="modal-content bg-transparent border-0">
             <div class="modal-body p-0 text-center">
-                <img src="" id="lightboxImage" class="img-fluid">
-                <div class="p-3">
-                    <button type="button" class="btn btn-light btn-sm" data-bs-dismiss="modal">Close</button>
-                </div>
+                <img src="" id="lightboxImage" class="img-fluid rounded">
+                <button type="button" class="btn btn-light mt-3" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -143,41 +98,41 @@
 <script>
     const projects = [
         {
+            title: "Tilting Maze Platform",
+            lead: "I designed and created a tilting platform featuring a swappable modular maze and autonomous navigation.",
+            why: "To gain applicable experience with microcontrollers and rotational actuation, I developed this tilting maze as a way to integrate mechanical design and embedded systems.",
+            how: "I designed and 3D printed all mechanical components, utilizing high-torque servos, a potentiometer, and an ESP32 to create a functional, responsive system. The maze module is fully swappable for various challenges.",
+            specs: "Every component, including the internal circuitry, was custom-built. I am currently integrating a webcam and computer vision code to enable autonomous navigation and toggleable control modes.",
+            images: ["images/balance.jpg"],
+            layout: "normal",
+            imgCol: "col-12"
+        },
+        {
             title: "Custom Cedar Strip Canoe",
-            lead: "A 17-foot custom build mixing traditional woodworking with digital fabrication.",
-            why: "I wanted to blend my love for the outdoors with advancing design concepts. Built to experiment with CNC machining and 3D modeling.",
-            how: "Used CAD and 3D modeling for molds, then CNC-machined secondary molds for accuracy. Each cedar plank was milled from scratch.",
-            specs: "17-foot build; custom-made components for a professional finish.",
+            lead: "I designed and built a 17-foot cedar strip canoe that mixes traditional woodworking with modern digital fabrication.",
+            why: "I’ve always loved the outdoors and wanted to blend that passion with advancing design concepts. Building this canoe allowed for full customization of every detail while getting hands-on with CNC machining and 3D modeling.",
+            how: "We utilized CAD and 3D modeling to perfect the molds. Then, a CNC machine was used for the secondary molds to ensure high accuracy. Every cedar plank was milled from scratch to ensure a tight fit.",
+            specs: "A classic 17-foot cedar strip canoe where every component was custom-made for a clean, professional finish.",
             images: ["images/canoe.jpg", "images/stems.jpg"],
             layout: "normal",
             imgCol: "col-md-6"
         },
         {
-            title: "Tilting Maze Platform",
-            lead: "A modular, tilting platform featuring swappable mazes and ESP32 control.",
-            why: "To gain experience with microcontrollers and rotational actuation in mechanical design.",
-            how: "Designed and 3D printed components using high-torque servos and an ESP32 for responsiveness.",
-            specs: "Custom-built circuitry; integrating webcam-based computer vision for autonomous navigation.",
-            images: ["images/balance.jpg"],
-            layout: "normal",
-            imgCol: "col-md-12"
-        },
-        {
-            title: "Orthotic Hand Exoskeleton",
-            lead: "A fully mechanical, 3D-printed device designed to assist individuals with limited mobility.",
-            why: "Shifts heavy lifting from the hand/forearm via a mechanical linkage system.",
-            how: "Iterated through dozens of 3D-printed prototypes for optimal strength and comfort.",
-            specs: "100% 3D-printed; scalable design for customized finger support.",
+            title: "Biomechatronics Hand Exoskeletons",
+            lead: "A suite of mechanical and electronic orthotic devices designed to assist individuals with limited upper-limb mobility.",
+            why: "These designs (Mechanical & EMG-activated) were created to assist individuals with minimal strength by shifting heavy lifting away from the hand and forearm through mechanical linkages and signal-based automation.",
+            how: "I developed dozens of 3D-printed prototypes for optimal strength and fitment. The EMG version utilizes sensors to detect neuromuscular signals, processed by an ESP32 to trigger motorized assistance.",
+            specs: "100% 3D-printed and scalable. Features tool-less adjustability and intuitive signal-based movement for assistive applications.",
             images: ["images/hand_exoskeleton.jpg", "images/test.jpg", "images/failures.jpg"],
-            layout: "stacked",
+            layout: "stacked", 
             imgCol: "col-6"
         },
         {
             title: "Custom Finger Prosthetics",
-            lead: "Custom 3D-printed prosthetic fingers developed for a patient with scleroderma.",
-            why: "Focused on restoring writing ability and ensuring long-term functional fit.",
-            how: "Modeled ergonomic designs featuring specialized tool inserts and lockable rotation.",
-            specs: "Custom-fitted and task-optimized for writing and orientation.",
+            lead: "Custom 3D-printed prosthetic fingers developed for a patient with amputations resulting from scleroderma.",
+            why: "The primary goal was to restore writing ability and daily usability. I focused on achieving a perfect fit to ensure long-term comfort and functional reliability.",
+            how: "I modeled several ergonomic designs featuring specialized tool inserts and lockable rotation to account for various daily tasks and patient needs.",
+            specs: "Custom-fitted and optimized for specific tasks like writing or locking in specialized orientations.",
             images: ["images/prosthetic_fingers.jpg", "images/issue.jpg", "images/fitted.jpg"],
             layout: "normal",
             imgCol: "col-md-4"
@@ -188,6 +143,7 @@
 
     projects.forEach((project) => {
         let imageMarkup = "";
+
         if (project.layout === "stacked") {
             imageMarkup = `
                 <div class="col-6">
@@ -195,7 +151,7 @@
                     <img src="${project.images[1]}" class="asset-img asset-img-stacked" onclick="openLightbox(this.src)">
                 </div>
                 <div class="col-6">
-                    <img src="${project.images[2]}" class="asset-img" style="height: 360px;" onclick="openLightbox(this.src)">
+                    <img src="${project.images[2]}" class="asset-img" style="height: 350px;" onclick="openLightbox(this.src)">
                 </div>
             `;
         } else {
@@ -216,38 +172,17 @@
                     </div>
                     <div class="col-lg-6 d-flex align-items-center">
                         <div class="card-body p-4 p-xl-5">
-                            <span class="tech-label">Engineering Project</span>
-                            <h2 class="project-title">${project.title}</h2>
-                            <p class="lead-text mb-4">${project.lead}</p>
-                            <p class="body-text"><span class="tech-label">Purpose</span> ${project.why}</p>
-                            <p class="body-text"><span class="tech-label">Methodology</span> ${project.how}</p>
-                            <p class="body-text"><span class="tech-label">Specifications</span> ${project.specs}</p>
+                            <h2 class="project-title fw-bold mb-3 border-bottom pb-2 text-teal">${project.title}</h2>
+                            <p class="lead mb-4">${project.lead}</p>
+                            <p><span class="tech-label">Why</span> ${project.why}</p>
+                            <p><span class="tech-label">How</span> ${project.how}</p>
+                            <p><span class="tech-label">Specs</span> ${project.specs}</p>
                         </div>
                     </div>
                 </div>
             </div>
         `;
     });
-
-    // SolidWorks Gallery
-    projectList.innerHTML += `
-        <div class="card project-card">
-            <div class="card-body p-5 text-center">
-                <span class="tech-label">Design Repository</span>
-                <h2 class="project-title">Technical Design & SolidWorks Gallery</h2>
-                <p class="lead-text mb-5">A collection of various SolidWorks projects ranging from mechanical assemblies to aesthetic custom requests.</p>
-                <div class="asset-grid rounded-4">
-                    <div class="row g-3">
-                        ${["swjet.jpg", "swflower.jpg", "flower.jpg", "snowman.jpg", "magno.png", "card.png"].map(img => `
-                            <div class="col-6 col-md-4">
-                                <img src="images/${img}" class="asset-img" onclick="openLightbox(this.src)">
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
 
     const lbModal = new bootstrap.Modal(document.getElementById('lightboxModal'));
     const lbImage = document.getElementById('lightboxImage');
