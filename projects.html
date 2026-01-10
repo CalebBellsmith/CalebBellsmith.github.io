@@ -6,35 +6,67 @@
     <title>Projects | Caleb Bellsmith</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        :root { --teal-main: #005f73; --bg-gray: #ebebeb; }
+        :root { 
+            --teal-main: #005f73; 
+            --deep-dark: #1a1a1a; 
+            --blueprint-blue: #f0f4f8;
+        }
+
+        body {
+            /* Blueprint grid aesthetic background */
+            background-color: var(--blueprint-blue);
+            background-image: 
+                linear-gradient(#d1d9e0 1px, transparent 1px),
+                linear-gradient(90deg, #d1d9e0 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
         .navbar { background-color: var(--teal-main) !important; }
         .text-teal { color: var(--teal-main); }
         
         .project-card { 
             border: none; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
             transition: transform 0.3s ease, box-shadow 0.3s ease; 
             margin-bottom: 5rem; 
             overflow: hidden; 
-            border-radius: 12px;
+            border-radius: 16px;
             background: #fff;
         }
         .project-card:hover { 
             transform: translateY(-8px); 
-            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
 
-        .asset-grid { background-color: var(--bg-gray); padding: 20px; display: flex; align-items: center; }
-        .asset-img { 
-            width: 100%; height: 350px; object-fit: contain; 
-            border-radius: 8px; background-color: var(--bg-gray);
-            cursor: pointer; transition: transform 0.4s ease;
+        /* Matte black background for images */
+        .asset-grid { 
+            background-color: var(--deep-dark); 
+            padding: 20px; 
+            display: flex; 
+            align-items: center; 
         }
-        /* Style for stacked images to ensure they don't get too tall */
+
+        .asset-img { 
+            width: 100%; 
+            height: 350px; 
+            object-fit: contain; 
+            border-radius: 8px; 
+            background-color: var(--deep-dark); /* Black background for each image */
+            cursor: pointer; 
+            transition: transform 0.4s ease;
+        }
+
         .asset-img-stacked { height: 171px !important; margin-bottom: 8px; }
         .asset-img:hover { transform: scale(1.03); }
 
-        .tech-label { font-weight: 800; color: var(--teal-main); min-width: 75px; display: inline-block; text-transform: uppercase; font-size: 0.85rem; }
+        .tech-label { 
+            font-weight: 800; 
+            color: var(--teal-main); 
+            min-width: 75px; 
+            display: inline-block; 
+            text-transform: uppercase; 
+            font-size: 0.85rem; 
+        }
         .project-title { font-weight: 800; letter-spacing: -0.5px; }
         .lead-text { color: #444; font-weight: 500; }
 
@@ -46,7 +78,7 @@
         }
     </style>
 </head>
-<body class="bg-light">
+<body>
 
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
@@ -60,16 +92,18 @@
 </nav>
 
 <div class="container my-5">
-    <h1 class="display-4 fw-bold mb-5 text-center text-teal">Engineering Portfolio</h1>
+    <h1 class="display-4 fw-bold mb-5 text-center text-teal" style="text-shadow: 2px 2px 0px #fff;">Engineering Portfolio</h1>
     <div id="project-list"></div>
 </div>
 
 <div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="modal-content bg-transparent border-0">
+        <div class="modal-content bg-dark border-0">
             <div class="modal-body p-0 text-center">
                 <img src="" id="lightboxImage" class="img-fluid rounded">
-                <button type="button" class="btn btn-light mt-3" data-bs-dismiss="modal">Close</button>
+                <div class="p-3">
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close Gallery</button>
+                </div>
             </div>
         </div>
     </div>
@@ -94,7 +128,7 @@
             lead: "I designed and created a tilting platform featuring a swappable modular maze.",
             why: "To gain applicable experience with microcontrollers and rotational actuation, I developed this tilting maze as a way to integrate my interests in mechanical design and embedded systems.",
             how: "I designed and 3D printed all mechanical components, utilizing high-torque servos, a potentiometer, and an ESP32 to create a functional, responsive system. The maze module is fully swappable, supporting a variety of custom levels.",
-            specs: "Every component, including the internal circuitry, was custom-built. I am currently integrating a webcam and computer vision code to enable autonomous navigation and toggleable control modes.",
+            specs: "Every component, including the internal circuitry, was custom-built. I am currently integrating a webcam and computer vision code to enable autonomous navigation.",
             images: ["images/balance.jpg"],
             layout: "normal",
             imgCol: "col-md-12"
@@ -102,11 +136,11 @@
         {
             title: "Orthotic Hand Exoskeleton",
             lead: "A fully mechanical, 3D-printed device designed to assist individuals with limited upper-limb mobility.",
-            why: "This design was created to assist individuals with minimal forearm, hand, and wrist strength by shifting the heavy lifting away from the hand and forearm through a mechanical linkage.",
+            why: "This design was created to assist individuals with minimal forearm, hand, and wrist strength by shifting the heavy lifting away from the hand through a mechanical linkage.",
             how: "I went through dozens of 3D-printed prototypes to determine the optimal design for strength and fitment, using iterative feedback to maximize user comfort.",
             specs: "100% 3D-printed and purely mechanical. The design is scalable, allowing for customized support across specific fingers.",
             images: ["images/hand_exoskeleton.jpg", "images/test.jpg", "images/failures.jpg"],
-            layout: "stacked", // Special flag for vertical stacking
+            layout: "stacked",
             imgCol: "col-6"
         },
         {
@@ -127,7 +161,6 @@
         let imageMarkup = "";
 
         if (project.layout === "stacked") {
-            // Stack the first two images vertically, place the third next to them
             imageMarkup = `
                 <div class="col-6">
                     <img src="${project.images[0]}" class="asset-img asset-img-stacked" onclick="openLightbox(this.src)">
