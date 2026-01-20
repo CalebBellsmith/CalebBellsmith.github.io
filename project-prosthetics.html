@@ -6,14 +6,13 @@
     <title>Prosthetics | Caleb Bellsmith</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        :root { --teal-main: #005f73; --dark-text: #1a1a1a; }
-        body { background-color: #fff; color: var(--dark-text); font-family: 'Segoe UI', sans-serif; padding-bottom: 50px; }
-        .navbar { background-color: var(--teal-main) !important; }
-        .carousel-item img { width: 100%; height: 500px; object-fit: contain; background-color: #f8f9fa; }
-        .tech-summary-box { border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 2.5rem 0; margin: 3rem 0; }
-        .label { font-weight: 800; text-transform: uppercase; font-size: 0.75rem; color: var(--teal-main); display: block; margin-bottom: 0.5rem; letter-spacing: 1px; }
-        .content-body { line-height: 1.8; font-size: 1.1rem; max-width: 800px; margin: 0 auto; }
-        .btn-back { margin-top: 40px; }
+        :root { --teal: #005f73; --dark: #1a1a1a; }
+        body { background-color: #ffffff; color: var(--dark); font-family: 'Segoe UI', sans-serif; }
+        .navbar { background-color: var(--teal) !important; padding: 1rem 0; }
+        .carousel-item img { height: 550px; object-fit: contain; background-color: #f8f9fa; }
+        .tech-summary { border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 3rem 0; margin: 3rem 0; }
+        .label { font-weight: 800; text-transform: uppercase; font-size: 0.75rem; color: var(--teal); display: block; margin-bottom: 0.5rem; letter-spacing: 1px; }
+        .write-up { max-width: 800px; margin: 0 auto 5rem auto; line-height: 1.8; font-size: 1.1rem; }
     </style>
 </head>
 <body>
@@ -22,41 +21,54 @@
     <div class="container">
         <a class="navbar-brand fw-bold" href="index.html">CALEB BELLSMITH</a>
         <div class="navbar-nav ms-auto">
-            <a class="nav-link" href="index.html">Home</a>
-            <a class="nav-link active" href="projects.html">Projects</a>
+            <a class="nav-link" href="projects.html">← All Projects</a>
         </div>
     </div>
 </nav>
 
 <div class="container">
-    <div class="text-center mt-5 mb-4">
+    <div class="text-center py-5">
         <h1 class="display-4 fw-bold">Custom Finger Prosthetics</h1>
-        <p class="lead text-muted">Precision ergonomics for daily functional restoration.</p>
+        <p class="lead text-muted">Specialized ergonomic solutions for scleroderma-related amputations.</p>
     </div>
-    
-    <div id="p4" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel">
+
+    <div id="prosCarousel" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active"><img src="images/prosthetic_fingers.jpg" class="d-block w-100" alt="Prosthetic Detail"></div>
-            <div class="carousel-item"><img src="images/issue.jpg" class="d-block w-100" alt="CAD View"></div>
+            <div class="carousel-item active"><img src="images/prosthetic_fingers.jpg" class="d-block w-100" alt="Prosthetic Design"></div>
+            <div class="carousel-item"><img src="images/issue.jpg" class="d-block w-100" alt="Mechanical Detail"></div>
             <div class="carousel-item"><img src="images/fitted.jpg" class="d-block w-100" alt="Patient Fitting"></div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#p4" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
-        <button class="carousel-control-next" type="button" data-bs-target="#p4" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+        <button class="carousel-control-prev" type="button" data-bs-target="#prosCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon" style="filter: invert(1);"></span></button>
+        <button class="carousel-control-next" type="button" data-bs-target="#prosCarousel" data-bs-slide="next"><span class="carousel-control-next-icon" style="filter: invert(1);"></span></button>
     </div>
 
-    <div class="tech-summary-box">
+    <div class="tech-summary">
         <div class="row text-center text-md-start">
-            <div class="col-md-4 mb-3"><span class="label">Why</span><p>To restore writing ability and usability for a patient with amputations resulting from scleroderma.</p></div>
-            <div class="col-md-4 mb-3"><span class="label">How</span><p>Modeled in SolidWorks with ergonomic specialized tool inserts and lockable rotation for daily tasks.</p></div>
-            <div class="col-md-4 mb-3"><span class="label">Specs</span><p>Custom-fitted and optimized for specific tasks like writing or locking in specialized orientations.</p></div>
+            <div class="col-md-4 mb-4 mb-md-0">
+                <span class="label">Why</span>
+                <p>The primary goal was to restore writing ability and daily functional usability for a specific patient, focusing on long-term comfort and a perfect fit.</p>
+            </div>
+            <div class="col-md-4 mb-4 mb-md-0">
+                <span class="label">How</span>
+                <p>Modeled in SolidWorks using 3D scans of the patient's hand. Designed with specialized tool inserts and lockable rotational points.</p>
+            </div>
+            <div class="col-md-4">
+                <span class="label">Specs</span>
+                <p>Custom-fitted ergonomic socket. Optimised for fine motor tasks like writing and holding specialized instruments.</p>
+            </div>
         </div>
     </div>
 
-    <div class="content-body">
+    <div class="write-up">
         <h2 class="fw-bold mb-4">Patient-Centric Design</h2>
-        <p>The challenge was ergonomic fit. Unlike standard prosthetics, these needed to be comfortable for all-day wear while allowing for modular attachments. I utilized 3D scanning to ensure the socket fit was perfect, reducing pressure points while maintaining enough grip for the user to write clearly for the first time in years.</p>
-        <div class="text-center">
-            <a href="projects.html" class="btn btn-outline-dark btn-back">← Back to Projects</a>
+        <p>
+            Engineering for the human body requires a unique set of constraints—specifically, the need for extreme ergonomic precision. Unlike purely mechanical projects, these prosthetics had to account for soft tissue compression and variable pressure points to avoid sores during all-day wear.
+        </p>
+        <p>
+            Using 3D scanning and parametric modeling in SolidWorks, I developed a modular socket system. This allowed the user to swap out "tips" for different tasks. For example, one tip was optimized with a specific angle for holding a pen, while others featured lockable rotation to assist with gripping objects in specialized orientations.
+        </p>
+        <div class="text-center mt-5">
+            <a href="project-maze.html" class="btn btn-dark px-4 py-2">Next Project: Tilting Maze →</a>
         </div>
     </div>
 </div>
