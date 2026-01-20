@@ -9,12 +9,14 @@
         :root { --teal: #005f73; --dark: #1a1a1a; }
         body { background-color: #ffffff; color: var(--dark); font-family: 'Segoe UI', sans-serif; }
         .navbar { background-color: var(--teal) !important; padding: 1rem 0; }
-        .carousel-item img { height: 500px; object-fit: contain; background-color: #f8f9fa; }
-        .tech-summary { border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 2rem 0; margin: 3rem 0; }
-        .label { font-weight: 800; text-transform: uppercase; font-size: 0.75rem; color: var(--teal); display: block; margin-bottom: 0.5rem; }
+        .carousel-item img { height: 550px; object-fit: contain; background-color: #f8f9fa; }
+        .tech-summary { border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 3rem 0; margin: 3rem 0; }
+        .label { font-weight: 800; text-transform: uppercase; font-size: 0.75rem; color: var(--teal); display: block; margin-bottom: 0.5rem; letter-spacing: 1px; }
+        .write-up { max-width: 800px; margin: 0 auto 5rem auto; line-height: 1.8; font-size: 1.1rem; }
     </style>
 </head>
 <body>
+
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
         <a class="navbar-brand fw-bold" href="index.html">CALEB BELLSMITH</a>
@@ -25,20 +27,35 @@
         </div>
     </div>
 </nav>
-<div class="container py-5">
-    <h1 class="display-4 fw-bold text-center mb-4">Tilting Maze Platform</h1>
-    <div id="pCarousel" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel">
+
+<div class="container">
+    <div class="text-center py-5">
+        <h1 class="display-4 fw-bold">Tilting Maze Platform</h1>
+        <p class="lead text-muted">A study in rotational actuation and embedded control systems.</p>
+    </div>
+
+    <div id="mazeCarousel" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active"><img src="images/balance.jpg" class="d-block w-100"></div>
+            <div class="carousel-item active"><img src="images/balance.jpg" class="d-block w-100" alt="Maze Platform View"></div>
         </div>
     </div>
-    <div class="tech-summary row text-center text-md-start">
-        <div class="col-md-4"><span class="label">Why</span><p>To master rotational actuation and PID control loops.</p></div>
-        <div class="col-md-4"><span class="label">How</span><p>3D printed hardware powered by ESP32 and high-torque servos.</p></div>
-        <div class="col-md-4"><span class="label">Specs</span><p>Dual-axis motion with computer vision ball tracking.</p></div>
+
+    <div class="tech-summary">
+        <div class="row text-center text-md-start">
+            <div class="col-md-4 mb-4 mb-md-0"><span class="label">Why</span><p>To master rotational actuation and bridge the gap between mechanical design and real-time software control.</p></div>
+            <div class="col-md-4 mb-4 mb-md-0"><span class="label">How</span><p>3D printed hardware controlled by an ESP32 and high-torque servos with custom-built circuitry.</p></div>
+            <div class="col-md-4"><span class="label">Specs</span><p>Dual-axis tilting platform with modular maze inserts and planned Computer Vision integration.</p></div>
+        </div>
     </div>
-    <div class="text-center mt-5"><a href="projects.html" class="btn btn-outline-dark px-4 py-2">← Back to All Projects</a></div>
+
+    <div class="write-up">
+        <h2 class="fw-bold mb-4">Mechatronics & Control</h2>
+        <p>The core challenge of this project was achieving smooth motion control. I utilized an ESP32 to process joystick inputs and map them to servo angles. The hardware includes a modular plate system, allowing different maze designs to be hot-swapped onto the tilting platform.</p>
+        <p>I am currently developing a computer vision layer using a webcam to track the ball's position. This will allow the ESP32 to tilt the platform autonomously, solving the maze through real-time coordinate feedback without human intervention.</p>
+        <div class="text-center mt-5"><a href="projects.html" class="btn btn-outline-dark px-4 py-2">← Back to All Projects</a></div>
+    </div>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
