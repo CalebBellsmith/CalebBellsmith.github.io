@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exoskeleton | Caleb Bellsmith</title>
+    <title>Hand Exoskeleton | Caleb Bellsmith</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        :root { --teal-main: #005f73; --dark-text: #1a1a1a; }
-        body { background-color: #fff; color: var(--dark-text); font-family: 'Segoe UI', sans-serif; padding-bottom: 50px; }
-        .navbar { background-color: var(--teal-main) !important; }
-        .carousel-item img { width: 100%; height: 500px; object-fit: contain; background-color: #f8f9fa; }
-        .tech-summary-box { border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 2.5rem 0; margin: 3rem 0; }
-        .label { font-weight: 800; text-transform: uppercase; font-size: 0.75rem; color: var(--teal-main); display: block; margin-bottom: 0.5rem; letter-spacing: 1px; }
-        .content-body { line-height: 1.8; font-size: 1.1rem; max-width: 800px; margin: 0 auto; }
-        .btn-back { margin-top: 40px; }
+        :root { --teal: #005f73; --dark: #1a1a1a; }
+        body { background-color: #ffffff; color: var(--dark); font-family: 'Segoe UI', sans-serif; }
+        .navbar { background-color: var(--teal) !important; padding: 1rem 0; }
+        .carousel-item img { height: 550px; object-fit: contain; background-color: #f8f9fa; }
+        .tech-summary { border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 3rem 0; margin: 3rem 0; }
+        .label { font-weight: 800; text-transform: uppercase; font-size: 0.75rem; color: var(--teal); display: block; margin-bottom: 0.5rem; letter-spacing: 1px; }
+        .write-up { max-width: 800px; margin: 0 auto 5rem auto; line-height: 1.8; font-size: 1.1rem; }
     </style>
 </head>
 <body>
@@ -22,41 +21,54 @@
     <div class="container">
         <a class="navbar-brand fw-bold" href="index.html">CALEB BELLSMITH</a>
         <div class="navbar-nav ms-auto">
-            <a class="nav-link" href="index.html">Home</a>
-            <a class="nav-link active" href="projects.html">Projects</a>
+            <a class="nav-link" href="projects.html">← All Projects</a>
         </div>
     </div>
 </nav>
 
 <div class="container">
-    <div class="text-center mt-5 mb-4">
-        <h1 class="display-4 fw-bold">Hand Exoskeletons</h1>
-        <p class="lead text-muted">Restoring upper-limb mobility through biomechatronics.</p>
+    <div class="text-center py-5">
+        <h1 class="display-4 fw-bold">Biomechatronics Hand Exoskeletons</h1>
+        <p class="lead text-muted">Wearable orthotic devices designed to enhance and restore upper-limb mobility.</p>
     </div>
-    
-    <div id="p3" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel">
+
+    <div id="exoCarousel" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active"><img src="images/hand_exoskeleton.jpg" class="d-block w-100" alt="Exoskeleton Side"></div>
-            <div class="carousel-item"><img src="images/test.jpg" class="d-block w-100" alt="Testing Phase"></div>
-            <div class="carousel-item"><img src="images/failures.jpg" class="d-block w-100" alt="Prototypes"></div>
+            <div class="carousel-item active"><img src="images/hand_exoskeleton.jpg" class="d-block w-100" alt="Main Exoskeleton View"></div>
+            <div class="carousel-item"><img src="images/test.jpg" class="d-block w-100" alt="Testing and Fitment"></div>
+            <div class="carousel-item"><img src="images/failures.jpg" class="d-block w-100" alt="Evolution of Prototypes"></div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#p3" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
-        <button class="carousel-control-next" type="button" data-bs-target="#p3" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+        <button class="carousel-control-prev" type="button" data-bs-target="#exoCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon" style="filter: invert(1);"></span></button>
+        <button class="carousel-control-next" type="button" data-bs-target="#exoCarousel" data-bs-slide="next"><span class="carousel-control-next-icon" style="filter: invert(1);"></span></button>
     </div>
 
-    <div class="tech-summary-box">
+    <div class="tech-summary">
         <div class="row text-center text-md-start">
-            <div class="col-md-4 mb-3"><span class="label">Why</span><p>Assisting individuals with limited strength by shifting lifting loads away from the hand via mechanical linkages.</p></div>
-            <div class="col-md-4 mb-3"><span class="label">How</span><p>Rapid prototyping with 3D printing. The EMG version uses sensors to process neuromuscular signals via ESP32.</p></div>
-            <div class="col-md-4 mb-3"><span class="label">Specs</span><p>Fully 3D-printed and scalable. Featuring tool-less adjustability and signal-based movement.</p></div>
+            <div class="col-md-4 mb-4 mb-md-0">
+                <span class="label">Why</span>
+                <p>Designed to assist individuals with minimal grip strength by shifting mechanical loads away from the hand through automated linkages.</p>
+            </div>
+            <div class="col-md-4 mb-4 mb-md-0">
+                <span class="label">How</span>
+                <p>Iterative 3D printing for structural optimization. The EMG version uses an ESP32 to process neuromuscular signals and trigger movement.</p>
+            </div>
+            <div class="col-md-4">
+                <span class="label">Specs</span>
+                <p>100% 3D-printed and fully scalable. Features tool-less adjustability and intuitive signal-based actuation.</p>
+            </div>
         </div>
     </div>
 
-    <div class="content-body">
-        <h2 class="fw-bold mb-4">Signal Processing & Prototyping</h2>
-        <p>Iterative design was key here. I went through dozens of failures to find the right balance between joint mobility and structural rigidity. By integrating EMG (electromyography) sensors, the device can read small muscle twitches in the forearm and amplify that intent into mechanical grip strength, providing a life-changing boost in mobility for the user.</p>
-        <div class="text-center">
-            <a href="projects.html" class="btn btn-outline-dark btn-back">← Back to Projects</a>
+    <div class="write-up">
+        <h2 class="fw-bold mb-4">Prototyping & Signal Integration</h2>
+        <p>
+            The development of this exoskeleton was a lesson in rapid iteration. As seen in the gallery, the design went through dozens of physical revisions to find the "sweet spot" between structural rigidity and lightweight wearability. 
+        </p>
+        <p>
+            The most significant technical hurdle was the integration of Electromyography (EMG) sensors. By placing sensors on the forearm, the system detects micro-electrical signals sent from the brain to the muscles. An ESP32 microcontroller filters this "noise" and translates intent into servo-driven motion, effectively amplifying the user's natural grip strength without requiring high physical effort.
+        </p>
+        <div class="text-center mt-5">
+            <a href="project-prosthetics.html" class="btn btn-dark px-4 py-2">Next Project: Finger Prosthetics →</a>
         </div>
     </div>
 </div>
