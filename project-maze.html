@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maze | Caleb Bellsmith</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root { --teal-main: #005f73; --dark-text: #1a1a1a; }
+        body { background-color: #fff; color: var(--dark-text); font-family: 'Segoe UI', sans-serif; }
+        .navbar { background-color: var(--teal-main) !important; }
+        .carousel-item img { width: 100%; height: 500px; object-fit: contain; background-color: #f8f9fa; }
+        .tech-summary-box { border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 2rem 0; margin: 3rem 0; }
+        .label { font-weight: 800; text-transform: uppercase; font-size: 0.75rem; color: var(--teal-main); display: block; margin-bottom: 0.5rem; }
+        .content-body { line-height: 1.8; font-size: 1.1rem; max-width: 800px; margin: 0 auto; }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top"><div class="container"><a class="navbar-brand fw-bold" href="index.html">CALEB BELLSMITH</a></div></nav>
+<div class="container">
+    <div class="text-center mt-5 mb-4"><h1 class="display-4 fw-bold">Tilting Maze Platform</h1></div>
+    
+    <div id="p2" class="carousel slide shadow-sm rounded overflow-hidden" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active"><img src="images/balance.jpg" class="d-block w-100"></div>
+        </div>
+    </div>
+
+    <div class="tech-summary-box"><div class="row">
+        <div class="col-md-4"><span class="label">Why</span><p>To gain applicable experience with microcontrollers and rotational actuation, I developed this tilting maze as a way to integrate mechanical design and embedded systems.</p></div>
+        <div class="col-md-4"><span class="label">How</span><p>I designed and 3D printed all mechanical components, utilizing high-torque servos, a potentiometer, and an ESP32 to create a functional, responsive system.</p></div>
+        <div class="col-md-4"><span class="label">Specs</span><p>Every component, including the internal circuitry, was custom-built. Currently integrating Computer Vision via a webcam for autonomous navigation.</p></div>
+    </div></div>
+
+    <div class="content-body mb-5">
+        <h2 class="fw-bold mb-4">Embedded Control Systems</h2>
+        <p>This project was a deep dive into PID control and mechatronics. The challenge lay in translating 2-axis joystick input into smooth servo movement without jitter. The modular plate system allows for different maze layouts to be swapped in. The next phase involves using OpenCV to track the ball's position in real-time, allowing the ESP32 to "solve" the maze automatically.</p>
+    </div>
+</div>
+</body>
+</html>
