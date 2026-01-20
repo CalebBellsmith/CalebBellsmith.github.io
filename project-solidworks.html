@@ -9,6 +9,7 @@
         :root { --teal: #005f73; --dark: #1a1a1a; }
         body { background-color: #ffffff; color: var(--dark); font-family: 'Segoe UI', sans-serif; }
         .navbar { background-color: var(--teal) !important; padding: 1rem 0; }
+        .navbar-brand { font-weight: 700; letter-spacing: 1px; }
         .carousel-item img { height: 550px; object-fit: contain; background-color: #f8f9fa; }
         .tech-summary { border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 3rem 0; margin: 3rem 0; }
         .write-up { max-width: 800px; margin: 0 auto 5rem auto; line-height: 1.8; font-size: 1.1rem; }
@@ -18,46 +19,47 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="index.html">CALEB BELLSMITH</a>
-        <div class="navbar-nav ms-auto">
-            <a class="nav-link" href="projects.html">← All Projects</a>
+        <a class="navbar-brand" href="index.html">CALEB BELLSMITH</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link active" href="projects.html">Projects</a>
+                <a class="nav-link" href="about.html">About</a>
+            </div>
         </div>
     </div>
 </nav>
 
 <div class="container">
     <div class="text-center py-5">
-        <h1 class="display-4 fw-bold">Technical Design & SolidWorks Gallery</h1>
-        <p class="lead text-muted">A collection of complex surface models and mechanical assemblies.</p>
+        <h1 class="display-4 fw-bold">Design Gallery</h1>
+        <p class="lead text-muted">Advanced surfacing and technical CAD assemblies.</p>
     </div>
 
-    <div id="swCarousel" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel">
+    <div id="p5Carousel" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active"><img src="images/swjet.jpg" class="d-block w-100" alt="Fighter Jet"></div>
-            <div class="carousel-item"><img src="images/swflower.jpg" class="d-block w-100" alt="Surface Modeling"></div>
-            <div class="carousel-item"><img src="images/magno.png" class="d-block w-100" alt="Mechanical Part"></div>
-            <div class="carousel-item"><img src="images/card.png" class="d-block w-100" alt="Card Design"></div>
-            <div class="carousel-item"><img src="images/flower.jpg" class="d-block w-100" alt="Render"></div>
+            <div class="carousel-item active"><img src="images/swjet.jpg" class="d-block w-100"></div>
+            <div class="carousel-item"><img src="images/swflower.jpg" class="d-block w-100"></div>
+            <div class="carousel-item"><img src="images/magno.png" class="d-block w-100"></div>
+            <div class="carousel-item"><img src="images/card.png" class="d-block w-100"></div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#swCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon" style="filter: invert(1);"></span></button>
-        <button class="carousel-control-next" type="button" data-bs-target="#swCarousel" data-bs-slide="next"><span class="carousel-control-next-icon" style="filter: invert(1);"></span></button>
+        <button class="carousel-control-prev" type="button" data-bs-target="#p5Carousel" data-bs-slide="prev"><span class="carousel-control-prev-icon" style="filter: invert(1);"></span></button>
+        <button class="carousel-control-next" type="button" data-bs-target="#p5Carousel" data-bs-slide="next"><span class="carousel-control-next-icon" style="filter: invert(1);"></span></button>
     </div>
 
     <div class="tech-summary text-center">
-        <h3 class="fw-bold mb-3">Core Competencies</h3>
-        <p class="lead">Parametric Design • Motion Simulation • Photorealistic Rendering • Technical Drawings</p>
+        <h3 class="fw-bold mb-3">Technical Proficiency</h3>
+        <p class="lead">Parametric Modeling • Surface Geometries • Mechanical Simulation</p>
     </div>
 
     <div class="write-up">
-        <h2 class="fw-bold mb-4">Mastering the Digital Workbench</h2>
-        <p>
-            Beyond functional prototyping, I use SolidWorks to push the boundaries of complex geometry. This gallery showcases my ability to transition between mechanical precision—such as assembly motion and tolerances—and organic surfacing exercises like the jet turbine and floral geometry.
-        </p>
-        <p>
-            My workflow focuses on **Parametric Design**, ensuring that models are built with a robust feature tree that allows for rapid iteration. By simulating motion and stress within the CAD environment, I can identify mechanical failures before they ever reach a 3D printer or CNC machine.
-        </p>
+        <h2 class="fw-bold mb-4">The Digital Workbench</h2>
+        <p>This gallery showcases complex surfacing—such as the jet turbine and organic geometry—alongside high-tolerance mechanical assemblies intended for real-world fabrication.</p>
         <div class="text-center mt-5">
-            <a href="projects.html" class="btn btn-outline-dark px-4 py-2">← Return to All Projects</a>
+            <a href="projects.html" class="btn btn-outline-dark px-4 py-2">← Back to All Projects</a>
         </div>
     </div>
 </div>
