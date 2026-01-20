@@ -3,41 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canoe | Caleb Bellsmith</title>
+    <title>Canoe Project | Caleb Bellsmith</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         :root { --teal: #005f73; --dark: #1a1a1a; }
-        body { background-color: #ffffff; color: var(--dark); font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background-color: #ffffff; color: var(--dark); font-family: 'Segoe UI', sans-serif; }
+        
         .navbar { background-color: var(--teal) !important; }
-        .carousel-item img { height: 500px; object-fit: contain; background: #f8f9fa; width: 100%; }
-        .tech-bar { border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 2rem 0; margin: 3rem 0; }
-        .label { font-weight: 800; text-transform: uppercase; font-size: 0.75rem; color: var(--teal); letter-spacing: 1px; }
-        .main-text { max-width: 800px; margin: 0 auto; line-height: 1.8; font-size: 1.1rem; }
+        
+        /* Carousel Height Control */
+        .carousel-item img {
+            height: 550px;
+            object-fit: contain;
+            background-color: #f8f9fa;
+        }
+
+        .tech-summary {
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            padding: 3rem 0;
+            margin: 3rem 0;
+        }
+
+        .label {
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            color: var(--teal);
+            display: block;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .write-up {
+            max-width: 800px;
+            margin: 0 auto 5rem auto;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-dark"><div class="container"><a class="navbar-brand fw-bold" href="index.html">CALEB BELLSMITH</a></div></nav>
-    <div class="container py-5">
-        <h1 class="display-4 fw-bold text-center">Custom Cedar Strip Canoe</h1>
-        <div id="c1" class="carousel slide shadow rounded my-4" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active"><img src="images/canoe.jpg" alt="Canoe"></div>
-                <div class="carousel-item"><img src="images/stems.jpg" alt="Stems"></div>
-            </div>
-            <button class="carousel-control-prev" data-bs-target="#c1" data-bs-slide="prev"><span class="carousel-control-prev-icon" style="filter:invert(1)"></span></button>
-            <button class="carousel-control-next" data-bs-target="#c1" data-bs-slide="next"><span class="carousel-control-next-icon" style="filter:invert(1)"></span></button>
-        </div>
-        <div class="tech-bar row text-center">
-            <div class="col-md-4"><span class="label">Why</span><p>To blend a passion for the outdoors with high-level digital fabrication and craftsmanship.</p></div>
-            <div class="col-md-4"><span class="label">How</span><p>Used CAD for hull design and CNC-machined molds to ensure 100% accuracy over 17 feet.</p></div>
-            <div class="col-md-4"><span class="label">Specs</span><p>17-foot classic cedar strip construction with custom-made components and marine epoxy.</p></div>
-        </div>
-        <div class="main-text">
-            <h2 class="fw-bold mb-4">Precision Woodworking</h2>
-            <p>This project was a test of patience and precision engineering. By using CNC stations, I ensured the hull was perfectly symmetrical. The most challenging aspect was the "bead and cove" joinery, where hundreds of cedar strips had to be hand-aligned to create a seamless, watertight shell before applying the protective fiberglass layer.</p>
-            <div class="text-center mt-5"><a href="project-maze.html" class="btn btn-dark">Next Project: Tilting Maze →</a></div>
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">CALEB BELLSMITH</a>
+        <div class="navbar-nav ms-auto">
+            <a class="nav-link" href="projects.html">← Back to Projects</a>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</nav>
+
+<div class="container">
+    <div class="text-center py-5">
+        <h1 class="display-4 fw-bold">Custom Cedar Strip Canoe</h1>
+        <p class="lead text-muted">17-foot custom-built vessel blending CNC precision with traditional craft.</p>
+    </div>
+
+    <div id="canoeCarousel" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="images/canoe.jpg" class="d-block w-100" alt="Full Canoe">
+            </div>
+            <div class="carousel-item">
+                <img src="images/stems.jpg" class="d-block w-100" alt="Canoe Detail">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#canoeCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true" style="filter: invert(1);"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#canoeCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true" style="filter: invert(1);"></span>
+        </button>
+    </div>
+
+    <div class="tech-summary">
+        <div class="row">
+            <div class="col-md-4 mb-4 mb-md-0">
+                <span class="label">Why</span>
+                <p>I wanted to blend my passion for the outdoors with advanced engineering concepts. Building this canoe allowed for total customization of every structural and aesthetic detail.</p>
+            </div>
+            <div class="col-md-4 mb-4 mb-md-0">
+                <span class="label">How</span>
+                <p>The hull was designed in CAD to ensure hydrodynamics. I utilized CNC-machined secondary molds to maintain strict tolerances across the entire 17-foot span.</p>
+            </div>
+            <div class="col-md-4">
+                <span class="label">Specs</span>
+                <p>17-foot classic cedar strip construction. Features bead-and-cove joinery, fiberglass reinforcement, and marine-grade epoxy finish.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="write-up">
+        <h2 class="fw-bold mb-4">The Engineering Journey</h2>
+        <p>
+            This project was a study in precision at scale. Traditional canoe building relies heavily on manual measurement, but to ensure a perfectly symmetrical hull, I integrated digital fabrication into the process. 
+        </p>
+        <p>
+            The most challenging phase involved the "bead and cove" joinery. Each individual cedar strip was hand-planed to ensure a seamless fit, preventing gaps that could compromise the structural integrity of the fiberglass bond. The result is a vessel that is as much a piece of engineering as it is a functional outdoor tool.
+        </p>
+        
+        <div class="text-center mt-5">
+            <a href="project-maze.html" class="btn btn-dark px-4 py-2">Next Project: Tilting Maze →</a>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
