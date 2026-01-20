@@ -6,84 +6,46 @@
     <title>Projects | Caleb Bellsmith</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        :root { 
-            --teal-deep: #002d36;
-            --teal-main: #005f73; 
-            --dark-text: #1a1a1a;
-            --muted-text: #666;
-        }
+        :root { --teal: #005f73; --dark: #1a1a1a; }
+        body { background-color: #ffffff; color: var(--dark); font-family: 'Segoe UI', sans-serif; }
+        
+        .navbar { background-color: var(--teal) !important; padding: 1rem 0; }
+        .navbar-brand { font-weight: 700; letter-spacing: 1px; }
 
-        body { 
-            background-color: #ffffff; /* Changed to White */
-            color: var(--dark-text);
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Navbar Styling */
-        .navbar { 
-            background-color: var(--teal-main) !important; 
-            padding: 1rem 0;
-        }
-        .navbar-brand { font-size: 1.2rem; letter-spacing: 2px; color: #fff !important; }
-        .nav-link { color: rgba(255,255,255,0.8) !important; font-weight: 500; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
-        .nav-link:hover, .nav-link.active { color: #fff !important; }
-
-        /* Projects Header */
-        .page-title {
-            margin-top: 80px;
-            margin-bottom: 60px;
-            font-weight: 700;
-            letter-spacing: -1px;
-        }
-
-        /* 2x2 Grid Styling */
-        .project-item {
-            margin-bottom: 4rem;
+        .project-card {
             text-decoration: none;
+            color: inherit;
             display: block;
-            transition: opacity 0.3s ease;
+            margin-bottom: 3rem;
+            transition: transform 0.3s ease;
         }
+        .project-card:hover { transform: translateY(-5px); }
+        .project-card:hover img { opacity: 0.8; }
 
-        .project-item:hover {
-            opacity: 0.8;
-        }
-
-        .image-container {
+        .img-container {
             width: 100%;
+            aspect-ratio: 3 / 2;
             overflow: hidden;
-            background-color: #f5f5f5;
-            margin-bottom: 1.5rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 1rem;
         }
-
-        .project-thumbnail {
+        .img-container img {
             width: 100%;
-            aspect-ratio: 3 / 2; /* Maintains consistent grid height */
+            height: 100%;
             object-fit: cover;
-            display: block;
+            transition: 0.3s ease;
         }
 
-        .project-info-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--dark-text);
-            margin: 0;
-            text-transform: none;
-        }
-
-        /* SolidWorks Gallery Section */
-        .gallery-section {
-            padding-top: 4rem;
-            border-top: 1px solid #eee;
-            margin-top: 2rem;
-        }
+        .project-title { font-weight: 700; font-size: 1.25rem; margin: 0; }
+        .page-header { padding: 60px 0; }
     </style>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="index.html">CALEB BELLSMITH</a>
+        <a class="navbar-brand" href="index.html">CALEB BELLSMITH</a>
         <div class="navbar-nav ms-auto">
             <a class="nav-link" href="index.html">Home</a>
             <a class="nav-link active" href="projects.html">Projects</a>
@@ -93,70 +55,48 @@
 </nav>
 
 <div class="container">
-    <h1 class="page-title display-4">Projects</h1>
+    <div class="page-header">
+        <h1 class="display-4 fw-bold">Portfolio</h1>
+    </div>
 
     <div class="row row-cols-1 row-cols-md-2 gx-5">
         
         <div class="col">
-            <a href="project-canoe.html" class="project-item">
-                <div class="image-container">
-                    <img src="images/canoe.jpg" alt="Cedar Strip Canoe" class="project-thumbnail">
+            <a href="project-canoe.html" class="project-card">
+                <div class="img-container">
+                    <img src="images/canoe.jpg" alt="Cedar Strip Canoe">
                 </div>
-                <h3 class="project-info-title">Custom Cedar Strip Canoe</h3>
+                <h3 class="project-title">Custom Cedar Strip Canoe</h3>
             </a>
         </div>
 
         <div class="col">
-            <a href="project-maze.html" class="project-item">
-                <div class="image-container">
-                    <img src="images/balance.jpg" alt="Tilting Maze Platform" class="project-thumbnail">
+            <a href="project-maze.html" class="project-card">
+                <div class="img-container">
+                    <img src="images/balance.jpg" alt="Tilting Maze">
                 </div>
-                <h3 class="project-info-title">Tilting Maze Platform</h3>
+                <h3 class="project-title">Tilting Maze Platform</h3>
             </a>
         </div>
 
         <div class="col">
-            <a href="project-exoskeleton.html" class="project-item">
-                <div class="image-container">
-                    <img src="images/hand_exoskeleton.jpg" alt="Biomechatronics Hand" class="project-thumbnail">
+            <a href="project-exoskeleton.html" class="project-card">
+                <div class="img-container">
+                    <img src="images/hand_exoskeleton.jpg" alt="Hand Exoskeleton">
                 </div>
-                <h3 class="project-info-title">Biomechatronics Hand Exoskeletons</h3>
+                <h3 class="project-title">Biomechatronics Hand Exoskeletons</h3>
             </a>
         </div>
 
         <div class="col">
-            <a href="project-prosthetics.html" class="project-item">
-                <div class="image-container">
-                    <img src="images/prosthetic_fingers.jpg" alt="Custom Finger Prosthetics" class="project-thumbnail">
+            <a href="project-prosthetics.html" class="project-card">
+                <div class="img-container">
+                    <img src="images/prosthetic_fingers.jpg" alt="Finger Prosthetics">
                 </div>
-                <h3 class="project-info-title">Custom Finger Prosthetics</h3>
+                <h3 class="project-title">Custom Finger Prosthetics</h3>
             </a>
         </div>
 
-    </div>
-
-    <div class="gallery-section mb-5">
-        <h2 class="h4 fw-bold mb-4">Technical Design & SolidWorks Gallery</h2>
-        <div class="row g-3">
-            <div class="col-4 col-md-2">
-                <img src="images/swjet.jpg" class="img-fluid rounded" alt="CAD Design">
-            </div>
-            <div class="col-4 col-md-2">
-                <img src="images/swflower.jpg" class="img-fluid rounded" alt="CAD Design">
-            </div>
-            <div class="col-4 col-md-2">
-                <img src="images/flower.jpg" class="img-fluid rounded" alt="CAD Design">
-            </div>
-            <div class="col-4 col-md-2">
-                <img src="images/snowman.jpg" class="img-fluid rounded" alt="CAD Design">
-            </div>
-            <div class="col-4 col-md-2">
-                <img src="images/magno.png" class="img-fluid rounded" alt="CAD Design">
-            </div>
-            <div class="col-4 col-md-2">
-                <img src="images/card.png" class="img-fluid rounded" alt="CAD Design">
-            </div>
-        </div>
     </div>
 </div>
 
