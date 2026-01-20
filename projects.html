@@ -6,46 +6,20 @@
     <title>Projects | Caleb Bellsmith</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        :root { --teal: #005f73; --dark: #1a1a1a; }
-        body { background-color: #ffffff; color: var(--dark); font-family: 'Segoe UI', sans-serif; }
-        
-        .navbar { background-color: var(--teal) !important; padding: 1rem 0; }
-        .navbar-brand { font-weight: 700; letter-spacing: 1px; }
-
-        .project-card {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            margin-bottom: 3rem;
-            transition: transform 0.3s ease;
-        }
-        .project-card:hover { transform: translateY(-5px); }
-        .project-card:hover img { opacity: 0.8; }
-
-        .img-container {
-            width: 100%;
-            aspect-ratio: 3 / 2;
-            overflow: hidden;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-        }
-        .img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.3s ease;
-        }
-
-        .project-title { font-weight: 700; font-size: 1.25rem; margin: 0; }
-        .page-header { padding: 60px 0; }
+        body { background-color: #ffffff; color: #222; font-family: system-ui, -apple-system, sans-serif; }
+        .navbar { background-color: #005f73 !important; }
+        .project-link { text-decoration: none; color: inherit; display: block; margin-bottom: 40px; transition: 0.3s; }
+        .project-link:hover { opacity: 0.7; transform: translateY(-3px); }
+        .img-box { width: 100%; aspect-ratio: 3/2; overflow: hidden; border-radius: 8px; background: #f0f0f0; margin-bottom: 15px; }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; }
+        .project-title { font-weight: 700; font-size: 1.2rem; }
     </style>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
-        <a class="navbar-brand" href="index.html">CALEB BELLSMITH</a>
+        <a class="navbar-brand fw-bold" href="index.html">CALEB BELLSMITH</a>
         <div class="navbar-nav ms-auto">
             <a class="nav-link" href="index.html">Home</a>
             <a class="nav-link active" href="projects.html">Projects</a>
@@ -54,49 +28,45 @@
     </div>
 </nav>
 
-<div class="container">
-    <div class="page-header">
-        <h1 class="display-4 fw-bold">Portfolio</h1>
-    </div>
+<div class="container py-5">
+    <h1 class="display-5 fw-bold mb-5">Projects</h1>
 
-    <div class="row row-cols-1 row-cols-md-2 gx-5">
-        
-        <div class="col">
-            <a href="project-canoe.html" class="project-card">
-                <div class="img-container">
-                    <img src="images/canoe.jpg" alt="Cedar Strip Canoe">
+    <div class="row">
+        <div class="col-md-6">
+            <a href="project-canoe.html" class="project-link">
+                <div class="img-box">
+                    <img src="images/canoe.jpg" alt="Canoe">
                 </div>
-                <h3 class="project-title">Custom Cedar Strip Canoe</h3>
+                <p class="project-title">Custom Cedar Strip Canoe</p>
             </a>
         </div>
 
-        <div class="col">
-            <a href="project-maze.html" class="project-card">
-                <div class="img-container">
-                    <img src="images/balance.jpg" alt="Tilting Maze">
+        <div class="col-md-6">
+            <a href="project-maze.html" class="project-link">
+                <div class="img-box">
+                    <img src="images/balance.jpg" alt="Maze">
                 </div>
-                <h3 class="project-title">Tilting Maze Platform</h3>
+                <p class="project-title">Tilting Maze Platform</p>
             </a>
         </div>
 
-        <div class="col">
-            <a href="project-exoskeleton.html" class="project-card">
-                <div class="img-container">
-                    <img src="images/hand_exoskeleton.jpg" alt="Hand Exoskeleton">
+        <div class="col-md-6">
+            <a href="project-exoskeleton.html" class="project-link">
+                <div class="img-box">
+                    <img src="images/hand_exoskeleton.jpg" alt="Exoskeleton">
                 </div>
-                <h3 class="project-title">Biomechatronics Hand Exoskeletons</h3>
+                <p class="project-title">Biomechatronics Hand Exoskeletons</p>
             </a>
         </div>
 
-        <div class="col">
-            <a href="project-prosthetics.html" class="project-card">
-                <div class="img-container">
-                    <img src="images/prosthetic_fingers.jpg" alt="Finger Prosthetics">
+        <div class="col-md-6">
+            <a href="project-prosthetics.html" class="project-link">
+                <div class="img-box">
+                    <img src="images/prosthetic_fingers.jpg" alt="Prosthetics">
                 </div>
-                <h3 class="project-title">Custom Finger Prosthetics</h3>
+                <p class="project-title">Custom Finger Prosthetics</p>
             </a>
         </div>
-
     </div>
 </div>
 
