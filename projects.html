@@ -10,8 +10,26 @@
         body { background-color: #ffffff; color: var(--dark); font-family: 'Segoe UI', sans-serif; }
         .navbar { background-color: var(--teal) !important; padding: 1rem 0; }
         .project-card { text-decoration: none; color: inherit; display: block; margin-bottom: 4rem; text-align: center; transition: transform 0.3s ease; }
-        .img-container { width: 100%; aspect-ratio: 3/2; overflow: hidden; border-radius: 12px; margin-bottom: 1.5rem; border: 8px solid #f0f0f0; transition: 0.3s ease; }
-        .img-container img { width: 100%; height: 100%; object-fit: cover; }
+        
+        /* Container stays at a fixed 3:2 ratio */
+        .img-container { 
+            width: 100%; 
+            aspect-ratio: 3/2; 
+            overflow: hidden; 
+            border-radius: 12px; 
+            margin-bottom: 1.5rem; 
+            border: 8px solid #f0f0f0; 
+            transition: 0.3s ease; 
+        }
+        
+        /* Auto-sizing logic: fills the box and centers the image */
+        .img-container img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            object-position: center; 
+        }
+
         .project-card:hover .img-container { border-color: var(--teal); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .project-title { font-weight: 800; font-size: 1.4rem; margin-bottom: 0.5rem; }
         .skills-tagline { font-size: 0.85rem; text-transform: uppercase; font-weight: 600; color: var(--teal); letter-spacing: 1.2px; }
