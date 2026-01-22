@@ -29,7 +29,7 @@
         .btn-primary { background-color: var(--light-teal); border: none; color: #00222e; font-weight: bold; }
         .btn-primary:hover { background-color: #0a9396; color: white; }
         
-        /* Original About Page Styling */
+        /* About Content Styling */
         .text-teal { color: var(--teal); }
         .profile-img { width: 250px; height: 250px; object-fit: cover; border: 5px solid #ebebeb; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         .about-card { border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-radius: 12px; }
@@ -38,6 +38,13 @@
         .experience-item::before { content: ""; position: absolute; left: -9px; top: 0; width: 15px; height: 15px; background-color: var(--teal); border-radius: 50%; }
         .awards-list { list-style-type: disc; padding-left: 20px; }
         .awards-list li { margin-bottom: 15px; color: #212529; }
+
+        /* Coursework Grid Styling */
+        .course-card { border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; background: white; height: 100%; transition: 0.3s; }
+        .course-card:hover { border-color: var(--teal); }
+        .course-card h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 15px; color: #333; }
+        .course-card ul { list-style: none; padding: 0; margin: 0; }
+        .course-card li { font-size: 0.95rem; color: #666; margin-bottom: 8px; }
         
         footer { background: #212529; color: white; padding: 3rem 0; margin-top: 5rem; }
     </style>
@@ -82,12 +89,8 @@
                         </div>
                         <div class="col-md-8">
                             <h1 class="display-5 fw-bold text-teal mb-3">Caleb Bellsmith</h1>
-                            <p class="lead">
-                                I am a first-year <strong>Biomedical Engineering</strong> student at the <strong>University of Waterloo</strong>.
-                            </p>
-                            <p>
-                                My interests are centered on the intersection of mechanical design and healthcare innovation, as well as innovating on simple daily products. I truly love the end-to-end engineering process, with a particular focus on mechanical assemblies and physical creation. From initial CAD modeling to hardware fabrication and circuits, I strive to create legitimately applicable designs for real-world engineering challenges.
-                            </p>
+                            <p class="lead">I am a first-year <strong>Biomedical Engineering</strong> student at the <strong>University of Waterloo</strong>.</p>
+                            <p>My interests are centered on the intersection of mechanical design and healthcare innovation. I strive to create legitimately applicable designs for real-world engineering challenges from initial CAD modeling to hardware fabrication.</p>
                         </div>
                     </div>
                 </div>
@@ -102,17 +105,12 @@
                     <div class="experience-item">
                         <h5 class="fw-bold mb-1">True North Bio-competition</h5>
                         <p class="text-muted mb-2">Electrical Designer</p>
-                        <p>Creating the electrical control framework for a lower-limb exoskeleton, utilizing EMG sensors to facilitate intuitive, signal-based movement for assistive applications.</p>
+                        <p>Creating the electrical control framework for a lower-limb exoskeleton, utilizing EMG sensors to facilitate intuitive, signal-based movement.</p>
                     </div>
                     <div class="experience-item">
                         <h5 class="fw-bold mb-1">Biomechatronics Design Team</h5>
                         <p class="text-muted mb-2">Mechanical Designer</p>
-                        <p>Developing mechanical components for assistive orthotic devices, with a primary focus on structural integrity and wearability.</p>
-                    </div>
-                    <div class="experience-item">
-                        <h5 class="fw-bold mb-1">UWaterloo Space Soldering Team</h5>
-                        <p class="text-muted mb-2">Mechanical Designer</p>
-                        <p>Designing specialized hardware and mechanical housings for microgravity soldering mechanisms.</p>
+                        <p>Developing mechanical components for assistive orthotic devices with a focus on structural integrity.</p>
                     </div>
                 </div>
 
@@ -121,9 +119,8 @@
                     <ul class="awards-list">
                         <li><strong>Governor General's Academic Medal - 2025</strong><br><span class="small text-muted">Awarded to the student graduating with the highest academic average in the secondary school.</span></li>
                         <li><strong>Sir Isaac Newton Physics Award - 2025</strong><br><span class="small text-muted">Recognized for top performance in the University of Waterloo's international high school physics competition.</span></li>
-                        <li><strong>TDCH Valedictorian - 2025</strong><br><span class="small text-muted">Selected by highschool peers and faculty to represent the graduating class at the commencement ceremony.</span></li>
-                        <li><strong>HHCS Valedictorian - 2019</strong><br><span class="small text-muted">Selected to deliver the final address to the middle school graduating class based on leadership and academic merit.</span></li>
-                        <li><strong>Athlete of the Year - 2019</strong><br><span class="small text-muted">Chosen for outstanding althetic performance, leadership and achievement throughout schooling.</span></li>
+                        <li><strong>TDCH Valedictorian - 2025</strong><br><span class="small text-muted">Selected to represent the graduating class at the commencement ceremony.</span></li>
+                        <li><strong>Athlete of the Year - 2019</strong><br><span class="small text-muted">Chosen for outstanding athletic performance and leadership.</span></li>
                     </ul>
                 </div>
 
@@ -132,22 +129,58 @@
                     <div class="mb-4">
                         <h5 class="fw-bold mb-1">Waterloo Engineering Endowment Foundation (WEEF)</h5>
                         <p class="text-muted mb-2">WEEF Representative</p>
-                        <p>Advocated for student project funding by evaluating technical proposals and representing class interests to the faculty.</p>
+                        <p>Advocated for student project funding by evaluating technical proposals.</p>
                     </div>
                     <div class="mb-4">
                         <h5 class="fw-bold mb-1">EPC</h5>
                         <p class="text-muted mb-2">Audio/Visual Volunteer</p>
-                        <p>Responsible for managing live audio mixing and digital media broadcast during community services and events, as well as teaching the system to junior technicians.</p>
+                        <p>Responsible for managing live audio mixing and digital media broadcast.</p>
                     </div>
-                    <div class="mb-4">
-                        <h5 class="fw-bold mb-1">Personal Tutor</h5>
-                        <p class="text-muted mb-2">Mathematics and Physics</p>
-                        <p>Provided high school level tutoring for students in calculus, physics, biology, and chemistry.</p>
-                    </div>
-                    <div class="mb-4">
-                        <h5 class="fw-bold mb-1">Teacher Assistant</h5>
-                        <p class="text-muted mb-2">Settler's Green Elementry School</p>
-                        <p>Volunteered and organized school wide events, providing personalized assistance for various student groups.</p>
+                </div>
+
+                <div class="px-3 mb-5">
+                    <h3 class="fw-bold mb-4 text-teal"><span class="me-2">📖</span>Relevant Coursework</h3>
+                    <div class="row g-4">
+                        <div class="col-md-3">
+                            <div class="course-card">
+                                <h4>Computer Science</h4>
+                                <ul>
+                                    <li>Data Structures & Algorithms</li>
+                                    <li>Digital Computation</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="course-card">
+                                <h4>Design</h4>
+                                <ul>
+                                    <li>Introduction to Biomedical Design</li>
+                                    <li>Human Factors in Design</li>
+                                    <li>Communications: Visualization</li>
+                                    <li>Communications: Written & Oral</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="course-card">
+                                <h4>STEM</h4>
+                                <ul>
+                                    <li>Calculus I & II</li>
+                                    <li>Physics: Statics</li>
+                                    <li>Chemistry</li>
+                                    <li>Elementary Engineering Math</li>
+                                    <li>Linear Algebra & Matrices</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="course-card">
+                                <h4>Other</h4>
+                                <ul>
+                                    <li>Classical Mythology</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -157,11 +190,9 @@
                     <div class="skill-badge">3D Printing (FDM/SLA)</div>
                     <div class="skill-badge">C++ & Arduino Programming</div>
                     <div class="skill-badge">CNC Machining</div>
-                    <div class="skill-badge">Iterative Prototyping</div>
                     <div class="skill-badge">Mechanical Design</div>
                     <div class="skill-badge">Digital Fabrication</div>
                     <div class="skill-badge">HTML/CSS</div>
-                    <div class="skill-badge">LaTeX</div>
                 </div>
 
             </div>
@@ -172,7 +203,6 @@
         <div class="container text-center">
             <h4 class="mb-3">Contact Information</h4>
             <p class="mb-1">Email: <a href="mailto:calebb1360@gmail.com" class="text-info text-decoration-none">calebb1360@gmail.com</a></p>
-            <p class="mb-1">Phone: <a href="tel:2899716729" class="text-info text-decoration-none">289 971 6729</a></p>
             <div class="mt-3">
                 <a href="https://linkedin.com/in/caleb-bellsmith-476359385" target="_blank" class="text-white mx-2 text-decoration-none">LinkedIn Profile</a>
             </div>
