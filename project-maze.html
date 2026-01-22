@@ -5,37 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maze | Caleb Bellsmith</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-   <style>
+    <style>
         :root { --teal: #005f73; --dark: #1a1a1a; }
         body { background-color: #ffffff; color: var(--dark); font-family: 'Segoe UI', sans-serif; }
         .navbar { background-color: var(--teal) !important; padding: 1rem 0; }
         .carousel-item img { height: 500px; object-fit: contain; background-color: #f8f9fa; }
-        .tech-summary { border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 2rem 0; margin: 3rem 0; }
-        .label { font-weight: 800; text-transform: uppercase; font-size: 0.75rem; color: var(--teal); display: block; margin-bottom: 0.5rem; }
-        .write-up { max-width: 800px; margin: 0 auto; line-height: 1.8; font-size: 1.1rem; }
-
-        /* Moves indicators below the image and turns them into dots */
+        
+        /* THE FIX: Forcing indicators below the image frame */
         .carousel-indicators {
-            position: relative; /* Moves dots out of the image overlay */
-            margin-top: 25px;   /* Space between image and dots */
-            margin-bottom: 0;
+            position: relative !important; /* Moves them out of the image overlay */
+            bottom: auto !important;       /* Disables default bottom pinning */
+            margin-top: 25px !important;   /* Space below image */
+            margin-bottom: 0 !important;
+            padding-bottom: 10px;
         }
 
+        /* Styling indicators into circular dots */
         .carousel-indicators [button], 
         .carousel-indicators button {
-            width: 12px !important;    /* Size of the dot */
-            height: 12px !important;   /* Size of the dot */
-            border-radius: 50%;        /* Makes them perfect circles */
-            background-color: var(--teal) !important; /* Uses your teal color */
-            border: none;
-            margin: 0 6px;             /* Horizontal space between dots */
+            width: 12px !important;    
+            height: 12px !important;   
+            border-radius: 50% !important; 
+            background-color: var(--teal) !important;
+            border: none !important;
+            margin: 0 6px !important;
             opacity: 0.3;
             transition: opacity 0.3s ease;
         }
 
         .carousel-indicators .active {
-            opacity: 1; /* Makes the current dot solid teal */
+            opacity: 1 !important;
         }
+
+        .tech-summary { border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 2rem 0; margin: 3rem 0; }
+        .label { font-weight: 800; text-transform: uppercase; font-size: 0.75rem; color: var(--teal); display: block; margin-bottom: 0.5rem; }
+        .write-up { max-width: 800px; margin: 0 auto; line-height: 1.8; font-size: 1.1rem; }
     </style>
 </head>
 <body>
@@ -51,16 +55,30 @@
     </div>
 </nav>
 
-<div class="container">
-    <div class="text-center py-5">
+<div class="container py-5">
+    <div class="text-center mb-5">
         <h1 class="display-4 fw-bold">Tilting Maze Platform</h1>
         <p class="lead text-muted">A study in rotational actuation and embedded control systems.</p>
     </div>
 
-    <div id="mazeCarousel" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel">
+    <div id="mazeCarousel" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel" data-bs-interval="2000">
+        
         <div class="carousel-inner">
-            <div class="carousel-item active"><img src="images/balance.jpg" class="d-block w-100" alt="Maze Platform View"></div>
-        </div>
+            <div class="carousel-item active">
+                <img src="images/balance.jpg" class="d-block w-100" alt="Maze Platform View">
+            </div>
+            </div>
+
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#mazeCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#mazeCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" style="filter:invert(1)"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#mazeCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" style="filter:invert(1)"></span>
+        </button>
     </div>
 
     <div class="tech-summary">
@@ -75,7 +93,10 @@
         <h2 class="fw-bold mb-4">Mechatronics & Control</h2>
         <p>The core challenge of this project was achieving smooth motion control. I utilized an ESP32 to process joystick inputs and map them to servo angles. The hardware includes a modular plate system, allowing different maze designs to be hot-swapped onto the tilting platform.</p>
         <p>I am currently developing a computer vision layer using a webcam to track the ball's position. This will allow the ESP32 to tilt the platform autonomously, solving the maze through real-time coordinate feedback without human intervention.</p>
-        <div class="text-center mt-5"><a href="projects.html" class="btn btn-outline-dark px-4 py-2">← Back to All Projects</a></div>
+    </div>
+
+    <div class="text-center mt-5 mb-5">
+        <a href="projects.html" class="btn btn-outline-dark px-4 py-2">← Back to All Projects</a>
     </div>
 </div>
 
