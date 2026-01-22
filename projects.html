@@ -5,35 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Caleb Bellsmith</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        :root { --teal: #005f73; --dark: #1a1a1a; }
-        body { background-color: #ffffff; color: var(--dark); font-family: 'Segoe UI', sans-serif; }
-        .navbar { background-color: var(--teal) !important; padding: 1rem 0; }
-        .project-card { text-decoration: none; color: inherit; display: block; margin-bottom: 4rem; text-align: center; transition: transform 0.3s ease; }
-        
-        /* Container stays at a fixed 3:2 ratio */
-        .img-container { 
-            width: 100%; 
-            aspect-ratio: 3/2; 
-            overflow: hidden; 
-            border-radius: 12px; 
-            margin-bottom: 1.5rem; 
-            border: 8px solid #f0f0f0; 
-            transition: 0.3s ease; 
-        }
-        
-        /* Auto-sizing logic: fills the box and centers the image */
-        .img-container img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            object-position: center; 
-        }
+   <style>
+    :root { --teal: #005f73; --dark: #1a1a1a; }
+    body { background-color: #ffffff; color: var(--dark); font-family: 'Segoe UI', sans-serif; }
+    .navbar { background-color: var(--teal) !important; padding: 1rem 0; }
+    
+    .project-card { 
+        text-decoration: none; 
+        color: inherit; 
+        display: block; 
+        margin-bottom: 4rem; 
+        text-align: center; 
+        transition: transform 0.3s ease; 
+    }
+    
+    .img-container { 
+        width: 100%; 
+        aspect-ratio: 3/2; 
+        overflow: hidden; 
+        border-radius: 12px; 
+        margin-bottom: 1.5rem; 
+        border: 8px solid #f0f0f0; 
+        transition: 0.3s ease; 
+        /* Nicer background for vertical/odd-shaped photos */
+        background-color: #ebebeb; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .img-container img { 
+        max-width: 100%; 
+        max-height: 100%; 
+        /* This ensures the image is NEVER cut off */
+        object-fit: contain; 
+        transition: transform 0.5s ease;
+    }
 
-        .project-card:hover .img-container { border-color: var(--teal); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .project-title { font-weight: 800; font-size: 1.4rem; margin-bottom: 0.5rem; }
-        .skills-tagline { font-size: 0.85rem; text-transform: uppercase; font-weight: 600; color: var(--teal); letter-spacing: 1.2px; }
-    </style>
+    .project-card:hover .img-container { 
+        border-color: var(--teal); 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+    }
+    
+    .project-card:hover img { transform: scale(1.02); }
+    
+    .project-title { font-weight: 800; font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .skills-tagline { font-size: 0.85rem; text-transform: uppercase; font-weight: 600; color: var(--teal); letter-spacing: 1.2px; }
+</style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
