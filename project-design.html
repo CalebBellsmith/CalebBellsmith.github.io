@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,9 +12,11 @@
         .carousel-item img { height: 500px; object-fit: contain; background-color: #f8f9fa; }
         .tech-summary { border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 2rem 0; margin: 3rem 0; }
         .label { font-weight: 800; text-transform: uppercase; font-size: 0.75rem; color: var(--teal); display: block; margin-bottom: 0.5rem; }
+        .write-up { max-width: 800px; margin: 0 auto; line-height: 1.8; font-size: 1.1rem; }
     </style>
 </head>
 <body>
+
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
         <a class="navbar-brand fw-bold" href="index.html">CALEB BELLSMITH</a>
@@ -26,25 +27,27 @@
         </div>
     </div>
 </nav>
+
 <div class="container py-5">
-    <h1 class="display-4 fw-bold text-center mb-4">Personal Design Gallery</h1>
-<div id="pCarousel" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel" data-bs-interval="2000"><div class="carousel-inner">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold">Personal Design & Artistry</h1>
+        <p class="lead text-muted">A collection of custom works exploring wood, metal, and mixed-media fabrication.</p>
+    </div>
+
+    <div id="pCarousel" class="carousel slide shadow rounded overflow-hidden mb-5" data-bs-ride="carousel" data-bs-interval="2000">
+        <div class="carousel-inner">
             <div class="carousel-item active"><img src="images/carving.jpg" class="d-block w-100"></div>
             <div class="carousel-item"><img src="images/rings.jpg" class="d-block w-100"></div>
             <div class="carousel-item"><img src="images/tree.jpg" class="d-block w-100"></div>
             <div class="carousel-item"><img src="images/cross.jpg" class="d-block w-100"></div>
             <div class="carousel-item"><img src="images/wolf.jpg" class="d-block w-100"></div>
         </div>
-        <button class="carousel-control-prev" data-bs-target="#pCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon" style="filter:invert(1)"></span></button>
-        <button class="carousel-control-next" data-bs-target="#pCarousel" data-bs-slide="next"><span class="carousel-control-next-icon" style="filter:invert(1)"></span></button>
-        <button class="carousel-control-next" data-bs-target="#pCarousel" data-bs-slide="next"><span class="carousel-control-next-icon" style="filter:invert(1)"></span></button>
-        <button class="carousel-control-next" data-bs-target="#pCarousel" data-bs-slide="next"><span class="carousel-control-next-icon" style="filter:invert(1)"></span></button>
-        <button class="carousel-control-next" data-bs-target="#pCarousel" data-bs-slide="next"><span class="carousel-control-next-icon" style="filter:invert(1)"></span></button>
-    </div>
-    <div class="container">
-    <div class="text-center py-5">
-        <h1 class="display-4 fw-bold">Personal Design & Artistry</h1>
-        <p class="lead text-muted">A collection of custom works exploring wood, metal, and mixed-media fabrication.</p>
+        <button class="carousel-control-prev" type="button" data-bs-target="#pCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" style="filter:invert(1)"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#pCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" style="filter:invert(1)"></span>
+        </button>
     </div>
 
     <div class="tech-summary">
@@ -73,10 +76,12 @@
             My work includes woodburnt art pieces that require extreme patience and steady hand-control, as well as copper rings formed through repeated annealing and hammering. These projects serve as a playground for technical experimentation, allowing me to develop a tactile understanding of materials that informs my larger-scale engineering designs.
         </p>
     </div>
+
+    <div class="text-center mt-5 mb-5">
+        <a href="projects.html" class="btn btn-outline-dark px-4 py-2">← Back to All Projects</a>
+    </div>
 </div>
-    <div class="text-center mt-5"><a href="projects.html" class="btn btn-outline-dark px-4 py-2">← Back to All Projects</a></div>
-</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
