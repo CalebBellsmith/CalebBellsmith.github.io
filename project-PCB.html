@@ -52,7 +52,7 @@
 <div class="container py-5">
     <div class="text-center mb-5">
         <h1 class="display-4 fw-bold">Custom EMG Signal Processing PCB</h1>
-        <p class="lead text-muted">A dedicated hardware solution for biopotential data acquisition and wireless transmission.</p>
+        <p class="lead text-muted">A hardware solution for biopotential data collection and wireless transmission.</p>
     </div>
     
     <div id="pcbCarousel" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel" data-bs-interval="3000">
@@ -79,7 +79,7 @@
         <div class="row text-center text-md-start">
             <div class="col-md-4 mb-4 mb-md-0">
                 <span class="label">Why</span>
-                <p>To reduce signal noise in EMG data acquisition and create a compact, reliable power delivery system for wearable robotics.</p>
+                <p>To reduce signal noise in EMG data collection and create a compact, processing system for a wearable diagnostic prosthetic.</p>
             </div>
             <div class="col-md-4 mb-4 mb-md-0">
                 <span class="label">Specifications</span>
@@ -93,12 +93,12 @@
     </div>
 
     <div class="write-up">
-        <h2 class="fw-bold mb-4">Precision in Biopotential Design</h2>
-        <p>Reliable EMG (electromyography) data requires a stable power environment and clean signal routing. This project involved designing a custom 2-layer PCB to bridge the gap between raw analog muscle signals and digital control systems. By moving from breadboard prototyping to a dedicated KiCad-designed board, I was able to significantly decrease electromagnetic interference and improve the responsiveness of my robotic projects.</p>
+        <h2 class="fw-bold mb-4">True North Biocompetition</h2>
+        <p>Reliable EMG data requires a stable power environment and clean signal routing. This project involved designing a custom 2-layer PCB to bridge the gap between raw analog muscle signals and digital control systems. I produced this board for the True North Biocompetition, in which it will pick up a user's muscle data as they wear a leg brace, and export it to an app to track their recovery. I was responsible for this PCB alone.</p>
         
-        <p>The board features a USB-C power input with a robust filtering circuit to ensure stable voltage across all components. It processes three independent signal lines from EMG sensors through a Teensy microcontroller, leveraging its superior ADC capabilities. The processed data is then handed off to an ESP32, which manages the Bluetooth stack to transmit signals to a peripheral device (such as a robotic arm or computer) with minimal latency.</p>
+        <p>The board features a USB-C power input with a filtering circuit to ensure stable voltage across all components. It processes three independent signal lines from EMG sensors through a Teensy microcontroller, leveraging its superior ADC capabilities. The processed data is then handed off to an ESP32, which uses Bluetooth to transmit signals to an outside device with minimal latency.</p>
 
-        <p>Key design considerations included trace width for power rails, strategic placement of decoupling capacitors to suppress switching noise, and the inclusion of dedicated 5V and 2.5V breakout pins for auxiliary hardware. This PCB serves as the "brain" for my current work in human-machine interfaces.</p>
+        <p>Key design considerations included trace width for power rails, strategic placement of decoupling capacitors to suppress switching noise, and the inclusion of dedicated 5V and 2.5V breakout pins for auxiliary hardware.</p>
     </div>
 
     <div class="text-center mt-5 mb-5">
