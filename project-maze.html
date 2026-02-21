@@ -10,8 +10,7 @@
         body { background-color: #ffffff; color: var(--dark); font-family: 'Segoe UI', sans-serif; }
         .navbar { background-color: var(--teal) !important; padding: 1rem 0; }
         .carousel-item img { height: 500px; object-fit: contain; background-color: #f8f9fa; }
-        
-        /* Indicators below the image frame */
+
         .carousel-indicators {
             position: relative !important;
             bottom: auto !important;
@@ -20,11 +19,10 @@
             padding-bottom: 10px;
         }
 
-        /* Styling indicators into circular dots */
         .carousel-indicators button {
-            width: 12px !important;    
-            height: 12px !important;   
-            border-radius: 50% !important; 
+            width: 12px !important;
+            height: 12px !important;
+            border-radius: 50% !important;
             background-color: var(--teal) !important;
             border: none !important;
             margin: 0 6px !important;
@@ -39,6 +37,25 @@
         .tech-summary { border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 2rem 0; margin: 3rem 0; }
         .label { font-weight: 800; text-transform: uppercase; font-size: 0.75rem; color: var(--teal); display: block; margin-bottom: 0.5rem; }
         .write-up { max-width: 800px; margin: 0 auto; line-height: 1.8; font-size: 1.1rem; }
+
+        .mode-card {
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: box-shadow 0.2s ease;
+        }
+        .mode-card:hover { box-shadow: 0 4px 20px rgba(0,95,115,0.1); }
+        .mode-number {
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--teal);
+            margin-bottom: 0.3rem;
+        }
+        .mode-title { font-weight: 700; font-size: 1.1rem; margin-bottom: 0.6rem; }
+        .mode-body { font-size: 0.97rem; line-height: 1.7; color: #333; margin: 0; }
     </style>
 </head>
 <body>
@@ -57,11 +74,10 @@
 <div class="container py-5">
     <div class="text-center mb-5">
         <h1 class="display-4 fw-bold">Tilting Maze Platform</h1>
-        <p class="lead text-muted">A study in rotational actuation and embedded control systems.</p>
+        <p class="lead text-muted">Autonomous maze solving through computer vision, adaptive PID control, and machine learning path memory.</p>
     </div>
 
     <div id="mazeCarousel" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel">
-        
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="images/balance.jpg" class="d-block w-100" alt="Maze Platform View">
@@ -70,7 +86,7 @@
                 <img src="images/fullmaze.jpg" class="d-block w-100" alt="Full Maze View">
             </div>
             <div class="carousel-item">
-                <img src="images/computerview.jpg" class="d-block w-100" alt="Detail View">
+                <img src="images/computerview.jpg" class="d-block w-100" alt="Computer Vision Debug View">
             </div>
         </div>
 
@@ -92,16 +108,47 @@
 
     <div class="tech-summary">
         <div class="row text-center text-md-start">
-            <div class="col-md-4 mb-4 mb-md-0"><span class="label">Why</span><p>To master rotational actuation and bridge the gap between mechanical design and real-time software control.</p></div>
-            <div class="col-md-4 mb-4 mb-md-0"><span class="label">How</span><p>3D printed hardware controlled by an ESP32 and high-torque servos with custom-built circuitry.</p></div>
-            <div class="col-md-4"><span class="label">Specs</span><p>Dual-axis tilting platform with modular maze inserts and planned Computer Vision integration.</p></div>
+            <div class="col-md-4 mb-4 mb-md-0"><span class="label">Why</span><p>To build a fully autonomous system that bridges real-time computer vision, closed-loop control theory, and machine learning — all on physical hardware.</p></div>
+            <div class="col-md-4 mb-4 mb-md-0"><span class="label">How</span><p>An ESP32 drives two high-torque servos on a 3D printed dual-axis platform, commanded by a Python computer vision pipeline over serial communication.</p></div>
+            <div class="col-md-4"><span class="label">Specs</span><p>Adaptive PID controller, HSV-based orange ball tracking, Artificial Potential Field navigation, and an on-disk trajectory learning system with four operating modes.</p></div>
         </div>
     </div>
 
     <div class="write-up">
-        <h2 class="fw-bold mb-4">Mechatronics & Control</h2>
-        <p>The core challenge of this project was achieving smooth motion control. I utilized an ESP32 to process joystick inputs and map them to servo angles. The hardware includes a modular plate system, allowing different maze designs to be hot-swapped onto the tilting platform.</p>
-        <p>I am currently developing a computer vision layer using a webcam to track the ball's position. This will allow the ESP32 to tilt the platform autonomously, solving the maze through real-time coordinate feedback without human intervention.</p>
+
+        <h2 class="fw-bold mb-4">How It Works</h2>
+
+        <p>The platform tilts on two axes via servos driven by an ESP32, while a Python computer vision pipeline running on a connected computer handles all the intelligence. Each frame, the webcam feed is processed using HSV color segmentation to isolate the orange ball, with morphological filtering to clean up noise and a median filter across recent positions to smooth tracking. Wall detection uses inverse brightness thresholding — any dark pixel below a set threshold is treated as a wall boundary. Navigation is built on the Artificial Potential Field method: waypoints generate an attractive force toward the target, and nearby wall pixels generate repulsive forces that scale quadratically with proximity, causing the ball to curve naturally around obstacles rather than drive straight into them.</p>
+
+        <p>Control output flows through an Adaptive PID controller, where the proportional, integral, and derivative terms handle current error, accumulated drift, and oscillation damping respectively. The system auto-tunes its own gains every 60 frames based on actual performance — boosting aggression when sluggish, increasing damping when oscillating. A physics predictor runs in parallel, estimating ball velocity via exponential moving average and feeding a predicted future position into the error signal to compensate for the physical inertia of the ball. All of this is visualized live in a debug overlay showing force vectors, servo angles, speed, and PID state in real time.</p>
+
+        <h2 class="fw-bold mt-5 mb-4">Operating Modes</h2>
+        <p class="mb-4">The joystick button cycles through four modes via click count — one click through four clicks — with the ESP32 broadcasting the active state over serial so the Python pipeline stays in sync.</p>
+
+        <div class="mode-card">
+            <div class="mode-number">Mode 1 — 1 Click</div>
+            <div class="mode-title">Lock</div>
+            <p class="mode-body">Both servos are held at 90° and all serial commands from the computer are ignored. The platform sits completely level. This is the safe idle state used when setting up waypoints, repositioning the ball, or pausing between runs. Because the ESP32 handles this entirely in firmware, the platform stays locked even if the Python script loses connection.</p>
+        </div>
+
+        <div class="mode-card">
+            <div class="mode-number">Mode 2 — 2 Clicks</div>
+            <div class="mode-title">Manual</div>
+            <p class="mode-body">The joystick directly maps to servo angles in real time — no computer involvement at all. Analog joystick readings from 0–4095 are mapped linearly to the 0°–180° servo range entirely on the ESP32. This mode is useful for manually navigating the maze, testing the physical range of motion of the platform, and verifying that both axes respond correctly before switching to autonomous modes. It is also the baseline for comparing how much the automated modes actually improve navigation.</p>
+        </div>
+
+        <div class="mode-card">
+            <div class="mode-number">Mode 3 — 3 Clicks</div>
+            <div class="mode-title">Auto Waypoint</div>
+            <p class="mode-body">The Python pipeline takes full control. Using the detected ball position, it computes an attraction force directly toward the current waypoint and runs it through the Adaptive PID and physics predictor to generate a servo command each frame. There is no wall avoidance in this mode — the system pulls straight toward each target regardless of what is in between. This makes it faster and more decisive in open sections of the maze, and is useful as a diagnostic baseline to see how the ball responds to the control system without the repulsion layer adding complexity. When the ball comes within the waypoint threshold radius, it automatically advances to the next waypoint and resets the PID state.</p>
+        </div>
+
+        <div class="mode-card">
+            <div class="mode-number">Mode 4 — 4 Clicks</div>
+            <div class="mode-title">Auto Smart</div>
+            <p class="mode-body">Everything in Auto Waypoint, plus two additional layers. First, wall repulsion: every frame, the system scans a region around the ball for wall pixels within the safety radius, computes a repulsive force vector away from each one, and adds it to the attraction force before passing the combined result to the PID. This causes the ball to naturally curve away from walls and navigate around corners rather than driving straight into them. Second, machine learning path memory: every time the ball successfully reaches a waypoint, the trajectory it took is recorded and saved to disk. On subsequent runs through the same waypoint pair, the system retrieves the shortest previously successful path and uses it as a series of intermediate guided targets rather than pointing straight at the final waypoint. The result is that the system genuinely improves each run — the first pass through a route may be slow and exploratory, but subsequent passes follow the learned highway and converge significantly faster.</p>
+        </div>
+
     </div>
 
     <div class="text-center mt-5 mb-5">
