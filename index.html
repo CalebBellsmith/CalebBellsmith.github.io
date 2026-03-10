@@ -77,7 +77,7 @@
                     <a class="nav-link" href="#about">About</a>
                     <button onclick="toggleDark()" id="darkBtn"
                         style="background:none; border:1px solid rgba(255,255,255,0.4); color:white; border-radius:20px; padding:0.25rem 0.8rem; font-size:0.8rem; cursor:pointer; margin-left:1rem;">
-                        🌙 Dark
+                         Dark
                     </button>
                 </div>
             </div>
@@ -236,12 +236,12 @@
         function toggleDark() {
             document.body.classList.toggle('dark');
             const btn = document.getElementById('darkBtn');
-            btn.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark';
+            btn.textContent = document.body.classList.contains('dark') ? 'Light' : 'Dark';
             localStorage.setItem('darkMode', document.body.classList.contains('dark'));
         }
         if (localStorage.getItem('darkMode') === 'true') {
             document.body.classList.add('dark');
-            document.getElementById('darkBtn').textContent = '☀️ Light';
+            document.getElementById('darkBtn').textContent = 'Light';
         }
     </script>
 
