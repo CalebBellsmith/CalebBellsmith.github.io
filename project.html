@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project | Caleb Bellsmith</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="theme.js"></script>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">Caleb Bellsmith</a>
+      <ul class="nav-links">
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="about.html">Experience</a></li>
+        <li><a href="Caleb_Bellsmith.pdf" target="_blank">Resume</a></li>
+        <li><button class="theme-btn" id="themeBtn" onclick="toggleTheme()">Light</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-container">
+      <div id="projectContent" class="page-fade"></div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p>Caleb Bellsmith · Biomedical Engineering · University of Waterloo</p>
+      <div class="footer-links">
+        <a href="mailto:calebb1360@gmail.com">calebb1360@gmail.com</a>
+        <a href="https://linkedin.com/in/caleb-bellsmith-476359385" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data/projects.js"></script>
+  <script>
+    function buildCarousel(images) {
+      if (!images || images.length === 0) return '';
+
+      const items = images.map((img, i) => `
+        <div class="carousel-item${i === 0 ? ' active' : ''}">
+          <img src="${img.src}" alt="${img.alt}" loading="${i === 0 ? 'eager' : 'lazy'}">
+        </div>`).join('');
+
+      const dots = images.length > 1 ? images.map((_, i) => `
+        <button class="carousel-dot${i === 0 ? ' active' : ''}" data-index="${i}"></button>`).join('') : '';
+
+      const controls = images.length > 1 ? `
+        <button class="carousel-btn prev" aria-label="Previous">&#8592;</button>
+        <button class="carousel-btn next" aria-label="Next">&#8594;</button>` : '';
+
+      return `
+        <div class="carousel">
+          ${controls}
+          ${items}
+          ${images.length > 1 ? `<div class="carousel-controls">${dots}</div>` : ''}
+        </div>`;
+    }
+
+    function buildTechSummary(items) {
+      if (!items || items.length === 0) return '';
+      const cols = items.map(t => `
+        <div class="tech-item">
+          <span class="label">${t.label}</span>
+          <p>${t.text}</p>
+        </div>`).join('');
+      return `<div class="tech-summary">${cols}</div>`;
+    }
+
+    function buildWriteup(sections, modes) {
+      let html = '<div class="write-up">';
+      sections.forEach(s => {
+        if (s.heading)   html += `<h2>${s.heading}</h2>`;
+        if (s.paragraph) html += `<p>${s.paragraph}</p>`;
+      });
+      if (modes && modes.length > 0) {
+        modes.forEach(m => {
+          html += `
+            <div class="mode-card">
+              <div class="mode-number">${m.number}</div>
+              <div class="mode-title">${m.title}</div>
+              <p class="mode-body">${m.body}</p>
+            </div>`;
+        });
+      }
+      html += '</div>';
+      return html;
+    }
+
+    function initCarousels() {
+      document.querySelectorAll('.carousel').forEach(car => {
+        const items = car.querySelectorAll('.carousel-item');
+        const dots  = car.querySelectorAll('.carousel-dot');
+        const prev  = car.querySelector('.carousel-btn.prev');
+        const next  = car.querySelector('.carousel-btn.next');
+        let current = 0;
+
+        if (items.length <= 1) return;
+
+        function show(n) {
+          items[current].classList.remove('active');
+          dots[current] && dots[current].classList.remove('active');
+          current = ((n % items.length) + items.length) % items.length;
+          items[current].classList.add('active');
+          dots[current] && dots[current].classList.add('active');
+        }
+
+        prev && prev.addEventListener('click', () => show(current - 1));
+        next && next.addEventListener('click', () => show(current + 1));
+        dots.forEach((dot, i) => dot.addEventListener('click', () => show(i)));
+      });
+    }
+
+    function render() {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+      const project = PROJECTS.find(p => p.id === id);
+      const el = document.getElementById('projectContent');
+
+      if (!project) {
+        el.innerHTML = `
+          <div style="padding:5rem 0; text-align:center;">
+            <p style="color:var(--muted)">Project not found.</p>
+            <a href="projects.html" class="btn-ghost" style="margin-top:1.5rem;display:inline-block;">← Back to Projects</a>
+          </div>`;
+        return;
+      }
+
+      document.title = `${project.title} | Caleb Bellsmith`;
+
+      const badge = project.badge
+        ? `<span class="badge-pill">${project.badge}</span>`
+        : '';
+
+      el.innerHTML = `
+        <div class="proj-detail-header">
+          <a href="projects.html" class="back-link">← All Projects</a>
+          <h1>${project.title}</h1>
+          <p class="proj-subtitle">${project.subtitle}</p>
+          ${badge}
+        </div>
+        ${buildCarousel(project.images)}
+        ${buildTechSummary(project.techSummary)}
+        ${buildWriteup(project.writeup, project.modes)}`;
+
+      initCarousels();
+    }
+
+    render();
+  </script>
+
+</body>
+</html>

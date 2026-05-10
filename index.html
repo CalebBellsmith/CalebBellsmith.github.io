@@ -1,249 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caleb Bellsmith | Biomedical Engineering | UWaterloo</title>
-
-    <meta name="google-site-verification" content="A1gXnumRBhYIvi9Fbd_IHJ8TeOHA6bOToTs6mq_tkaU" />
-    <meta name="description" content="Portfolio of Caleb Bellsmith, a Biomedical Engineering student at the University of Waterloo.">
-    <meta name="author" content="Caleb Bellsmith">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        html { scroll-behavior: smooth; }
-        :root { --teal: #005f73; --dark: #1a1a1a; --light-teal: #94d2bd; }
-        body { font-family: 'Inter', sans-serif; display: flex; flex-direction: column; min-height: 100vh; color: var(--dark); }
-        .navbar { background-color: var(--teal) !important; padding: 1rem 0; }
-        
-        /* Hero Section */
-        .hero { 
-            background: linear-gradient(rgba(0, 95, 115, 0.6), rgba(10, 147, 150, 0.6)), 
-                        url('images/background.png'); 
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: white; 
-            padding: 140px 0; 
-        }
-        .btn-primary { background-color: var(--light-teal); border: none; color: #00222e; font-weight: bold; }
-        .btn-primary:hover { background-color: #0a9396; color: white; }
-        
-        /* About Content Styling */
-        .text-teal { color: var(--teal); }
-        .profile-img { width: 250px; height: 250px; object-fit: cover; border: 5px solid #ebebeb; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .about-card { border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-radius: 12px; }
-        .skill-badge { background-color: var(--teal); color: white; padding: 6px 16px; border-radius: 20px; display: inline-block; margin: 4px; font-size: 0.9rem; font-weight: 500; }
-        .experience-item { border-left: 3px solid var(--teal); padding-left: 20px; margin-bottom: 30px; position: relative; }
-        .experience-item::before { content: ""; position: absolute; left: -9px; top: 0; width: 15px; height: 15px; background-color: var(--teal); border-radius: 50%; }
-        .awards-list { list-style-type: disc; padding-left: 20px; }
-        .awards-list li { margin-bottom: 15px; color: #212529; }
-
-        /* Coursework Grid Styling */
-        .course-card { border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; background: white; height: 100%; transition: 0.3s; }
-        .course-card:hover { border-color: var(--teal); }
-        .course-card h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 15px; color: #333; }
-        .course-card ul { list-style: none; padding: 0; margin: 0; }
-        .course-card li { font-size: 0.95rem; color: #666; margin-bottom: 8px; }
-        
-        footer { background: #212529; color: white; padding: 3rem 0; margin-top: 5rem; }
-
-        /* Dark Mode */
-        body.dark { background-color: #121212 !important; color: #e0e0e0; }
-        body.dark .about-card { background-color: #1e1e1e; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
-        body.dark .course-card { background-color: #1e1e1e; border-color: #333; }
-        body.dark .course-card h4 { color: #e0e0e0; }
-        body.dark .course-card li { color: #aaa; }
-        body.dark .course-card:hover { border-color: var(--light-teal); }
-        body.dark .text-teal { color: var(--light-teal); }
-        body.dark .awards-list li { color: #e0e0e0; }
-        body.dark .text-muted { color: #888 !important; }
-        body.dark p { color: #ccc; }
-        body.dark .btn-outline-light { border-color: rgba(255,255,255,0.5); }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caleb Bellsmith</title>
+  <meta name="description" content="Portfolio of Caleb Bellsmith, Biomedical Engineering student at the University of Waterloo.">
+  <meta name="google-site-verification" content="A1gXnumRBhYIvi9Fbd_IHJ8TeOHA6bOToTs6mq_tkaU" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="theme.js"></script>
 </head>
-<body class="bg-light">
+<body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html">CALEB BELLSMITH</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <div class="navbar-nav ms-auto">
-                    <a class="nav-link" href="index.html">Home</a>
-                    <a class="nav-link" href="projects.html">Projects</a>
-                    <a class="nav-link" href="#about">About</a>
-                    <button onclick="toggleDark()" id="darkBtn"
-                        style="background:none; border:1px solid rgba(255,255,255,0.4); color:white; border-radius:20px; padding:0.25rem 0.8rem; font-size:0.8rem; cursor:pointer; margin-left:1rem;">
-                         Dark
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <header class="hero text-center">
-        <div class="container">
-            <h1 class="display-3 fw-bold">Caleb Bellsmith</h1>
-            <p class="lead mb-4">Biomedical Engineering | University of Waterloo | Class of 2030</p>
-            <div class="d-flex justify-content-center gap-3">
-                <a href="projects.html" class="btn btn-primary btn-lg px-5 shadow">View Engineering Projects</a>
-                <a href="Caleb_Bellsmith.pdf" target="_blank" class="btn btn-outline-light btn-lg px-4">Resume</a>
-            </div>
-        </div>
-    </header>
-
-    <div id="about" class="container my-5 py-5">
-        <div class="row justify-content-center">
-            <div class="col-md-10">
-                
-                <div class="card about-card p-4 p-md-5 mb-5">
-                    <div class="row align-items-center">
-                        <div class="col-md-4 text-center mb-4 mb-md-0">
-                            <img src="images/headshot.jpg" class="img-fluid rounded-circle profile-img" alt="Caleb Bellsmith">
-                        </div>
-                        <div class="col-md-8">
-                            <h1 class="display-5 fw-bold text-teal mb-3">Caleb Bellsmith</h1>
-                            <p class="lead">I am a first-year <strong>Biomedical Engineering</strong> student at the <strong>University of Waterloo</strong>.</p>
-                            <p>My interests are centered on the intersection of mechanical design and healthcare innovation. I strive to create legitimately applicable designs for real-world engineering challenges from initial CAD modeling to hardware fabrication.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="px-3 mb-5">
-                    <h3 class="fw-bold mb-4 text-teal">Experience & Design Teams</h3>
-                     <div class="experience-item">
-                        <h5 class="fw-bold mb-1">Waterloo Space Soldering Team</h5>
-                        <p class="text-muted mb-2">Mechanical Designer</p>
-                        <p>Constructing and developing the mechanial design and framework for a microgravity soldering mechanism.</p>
-                    </div>
-                    <div class="experience-item">
-                        <h5 class="fw-bold mb-1">BioTEC Conference</h5>
-                        <p class="text-muted mb-2">Sponsorship Lead</p>
-                        <p>Conducting corporate outreach and securing partnerships for Canada's largest student-run biotechnology and entrepreneurship conference.</p>
-                    </div>
-                    <div class="experience-item">
-                        <h5 class="fw-bold mb-1">True North Bio-competition</h5>
-                        <p class="text-muted mb-2">Electrical Designer</p>
-                        <p>Creating the electrical control framework for a lower-limb exoskeleton, utilizing EMG sensors to facilitate intuitive, signal-based movement.</p>
-                    </div>
-                    <div class="experience-item">
-                        <h5 class="fw-bold mb-1">Biomechatronics Design Team</h5>
-                        <p class="text-muted mb-2">Mechanical Designer</p>
-                        <p>Developing mechanical components for assistive orthotic devices with a focus on structural integrity.</p>
-                    </div>
-                </div>
-
-                <div class="px-3 mb-5">
-                    <h3 class="fw-bold mb-4 text-teal">Awards & Honors</h3>
-                    <ul class="awards-list">
-                        <li><strong>Governor General's Academic Medal - 2025</strong><br><span class="small text-muted">Awarded to the student graduating with the highest academic average in the secondary school.</span></li>
-                        <li><strong>Sir Isaac Newton Physics Award - 2025</strong><br><span class="small text-muted">Recognized for top performance in the University of Waterloo's international high school physics competition.</span></li>
-                        <li><strong>TDCH Valedictorian - 2025</strong><br><span class="small text-muted">Selected for demonstrating exceptional academic achievement and a community centered commitment to TDC Highschool.</span></li>
-                        <li><strong>HHCS Althete of the Year - 2019</strong><br><span class="small text-muted">Awarded for demonstrating exceptional athletic skill and a consistent commitment to sportsmanship and leadership.</span></li>
-                        <li><strong>HHCS Valedictorian - 2019</strong><br><span class="small text-muted">Chosen for embodying the HHCS mission through academic dedication, leadership, and a heart for service.</span></li>
-                    </ul>
-                </div>
-
-                <div class="px-3 mb-5">
-                    <h3 class="fw-bold mb-4 text-teal">Volunteering & Leadership</h3>
-                    <div class="mb-4">
-                        <h5 class="fw-bold mb-1">Waterloo Engineering Endowment Foundation (WEEF)</h5>
-                        <p class="text-muted mb-2">WEEF Representative</p>
-                        <p>Advocated for student project funding by evaluating technical proposals.</p>
-                    </div>
-                    <div class="mb-4">
-                        <h5 class="fw-bold mb-1">EPC</h5>
-                        <p class="text-muted mb-2">Audio/Visual Volunteer</p>
-                        <p>Responsible for managing live audio mixing, digital media broadcast, and volunteer training.</p>
-                    </div>
-                    <div class="mb-4">
-                        <h5 class="fw-bold mb-1">Personal Tutor</h5>
-                        <p class="text-muted mb-2">Mathematics and Physics</p>
-                        <p>Provided high school level tutoring for students in calculus, physics, biology, and chemistry.</p>
-                    </div>
-                    <div class="mb-4">
-                        <h5 class="fw-bold mb-1">Teacher Assistant</h5>
-                        <p class="text-muted mb-2">Settler's Green Elementry School</p>
-                        <p>Volunteered and organized school wide events, providing personalized assistance for various student groups.</p>
-                    </div>
-                </div>
-
-                <div class="px-3 mb-5">
-                    <h3 class="fw-bold mb-4 text-teal"><span class="me-2">📖</span>Relevant Coursework</h3>
-                    <div class="row g-4">
-                        <div class="col-md-3">
-                            <div class="course-card">
-                                <h4>Computer Science</h4>
-                                <ul>
-                                    <li>Data Structures & Algorithms</li>
-                                    <li>Digital Computation</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="course-card">
-                                <h4>Design</h4>
-                                <ul>
-                                    <li>Introduction to Biomedical Design</li>
-                                    <li>Human Factors in Design</li>
-                                    <li>Communications: Visualization</li>
-                                    <li>Communications: Written & Oral</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="course-card">
-                                <h4>STEM</h4>
-                                <ul>
-                                    <li>Calculus I & II</li>
-                                    <li>Physics: Statics</li>
-                                    <li>Chemistry</li>
-                                    <li>Elementary Engineering Math</li>
-                                    <li>Linear Algebra & Matrices</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="course-card">
-                                <h4>Other</h4>
-                                <ul>
-                                    <li>Classical Mythology</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">Caleb Bellsmith</a>
+      <ul class="nav-links">
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">Experience</a></li>
+        <li><a href="Caleb_Bellsmith.pdf" target="_blank">Resume</a></li>
+        <li><button class="theme-btn" id="themeBtn" onclick="toggleTheme()">Light</button></li>
+      </ul>
     </div>
+  </nav>
 
-    <footer>
-        <div class="container text-center">
-            <h4 class="mb-3">Contact Information</h4>
-            <p class="mb-1">Email: <a href="mailto:calebb1360@gmail.com" class="text-info text-decoration-none">calebb1360@gmail.com</a></p>
-            <div class="mt-3">
-                <a href="https://linkedin.com/in/caleb-bellsmith-476359385" target="_blank" class="text-white mx-2 text-decoration-none">LinkedIn Profile</a>
-            </div>
+  <main>
+    <section class="hero page-fade">
+      <span class="hero-label">Biomedical Engineering · University of Waterloo · Class of 2030</span>
+      <h1 class="hero-title">Caleb Bellsmith</h1>
+      <p class="hero-sub">Building at the intersection of mechanical design and healthcare innovation — from CAD and hardware fabrication to embedded systems and beyond.</p>
+      <div class="hero-actions">
+        <a href="projects.html" class="btn-primary">View Projects</a>
+        <a href="Caleb_Bellsmith.pdf" target="_blank" class="btn-ghost">Resume</a>
+      </div>
+    </section>
+
+    <div class="page-container">
+
+      <div class="about-strip page-fade">
+        <img src="images/headshot.jpg" alt="Caleb Bellsmith" class="profile-img">
+        <div class="about-body">
+          <h2>About</h2>
+          <p>I am a first-year Biomedical Engineering student at the University of Waterloo. My interests are centered on the intersection of mechanical design and healthcare innovation, as well as innovating on simple daily products. I truly love the end-to-end engineering process, with a particular focus on mechanical assemblies and physical creation. From initial CAD modeling to hardware fabrication and circuits, I strive to create legitimately applicable designs for real-world engineering challenges.</p>
         </div>
-    </footer>
+      </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        function toggleDark() {
-            document.body.classList.toggle('dark');
-            const btn = document.getElementById('darkBtn');
-            btn.textContent = document.body.classList.contains('dark') ? 'Light' : 'Dark';
-            localStorage.setItem('darkMode', document.body.classList.contains('dark'));
-        }
-        if (localStorage.getItem('darkMode') === 'true') {
-            document.body.classList.add('dark');
-            document.getElementById('darkBtn').textContent = 'Light';
-        }
-    </script>
+      <section class="page-section page-fade">
+        <p class="section-label">Experience & Design Teams</p>
+
+        <div class="exp-item">
+          <div class="exp-meta">
+            <div class="exp-org">Waterloo Space Soldering Team</div>
+            <div class="exp-role">Mechanical Designer</div>
+          </div>
+          <p class="exp-desc">Constructing and developing the mechanical design and framework for a microgravity soldering mechanism.</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-meta">
+            <div class="exp-org">BioTEC Conference</div>
+            <div class="exp-role">Sponsorship Lead</div>
+          </div>
+          <p class="exp-desc">Conducting corporate outreach and securing partnerships for Canada's largest student-run biotechnology and entrepreneurship conference.</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-meta">
+            <div class="exp-org">True North Bio-competition</div>
+            <div class="exp-role">Electrical Designer</div>
+          </div>
+          <p class="exp-desc">Creating the electrical control framework for a lower-limb exoskeleton, utilizing EMG sensors to facilitate intuitive, signal-based movement.</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-meta">
+            <div class="exp-org">Biomechatronics Design Team</div>
+            <div class="exp-role">Mechanical Designer</div>
+          </div>
+          <p class="exp-desc">Developing mechanical components for assistive orthotic devices with a focus on structural integrity.</p>
+        </div>
+      </section>
+
+      <section class="page-section page-fade">
+        <p class="section-label">Awards & Honors</p>
+
+        <div class="award-item">
+          <div class="award-title">Governor General's Academic Medal — 2025</div>
+          <div class="award-desc">Awarded to the student graduating with the highest academic average in the secondary school.</div>
+        </div>
+        <div class="award-item">
+          <div class="award-title">Sir Isaac Newton Physics Award — 2025</div>
+          <div class="award-desc">Recognized for top performance in the University of Waterloo's international high school physics competition.</div>
+        </div>
+        <div class="award-item">
+          <div class="award-title">TDCH Valedictorian — 2025</div>
+          <div class="award-desc">Selected for demonstrating exceptional academic achievement and a community-centered commitment to TDC Highschool.</div>
+        </div>
+        <div class="award-item">
+          <div class="award-title">HHCS Athlete of the Year — 2019</div>
+          <div class="award-desc">Awarded for demonstrating exceptional athletic skill and a consistent commitment to sportsmanship and leadership.</div>
+        </div>
+        <div class="award-item">
+          <div class="award-title">HHCS Valedictorian — 2019</div>
+          <div class="award-desc">Chosen for embodying the HHCS mission through academic dedication, leadership, and a heart for service.</div>
+        </div>
+      </section>
+
+      <section class="page-section page-fade">
+        <p class="section-label">Volunteering & Leadership</p>
+
+        <div class="exp-item">
+          <div class="exp-meta">
+            <div class="exp-org">WEEF</div>
+            <div class="exp-role">Student Representative</div>
+          </div>
+          <p class="exp-desc">Advocated for student project funding by evaluating technical proposals and representing class interests to the faculty.</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-meta">
+            <div class="exp-org">EPC</div>
+            <div class="exp-role">Audio/Visual Volunteer</div>
+          </div>
+          <p class="exp-desc">Responsible for managing live audio mixing, digital media broadcast, and volunteer training.</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-meta">
+            <div class="exp-org">Personal Tutor</div>
+            <div class="exp-role">Mathematics & Physics</div>
+          </div>
+          <p class="exp-desc">Provided high school level tutoring for students in calculus, physics, biology, and chemistry.</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-meta">
+            <div class="exp-org">Settler's Green Elementary</div>
+            <div class="exp-role">Teacher Assistant</div>
+          </div>
+          <p class="exp-desc">Volunteered and organized school-wide events, providing personalized assistance for various student groups.</p>
+        </div>
+      </section>
+
+      <section class="page-section page-fade">
+        <p class="section-label">Relevant Coursework</p>
+        <div class="course-grid">
+          <div class="course-card">
+            <h4>Computer Science</h4>
+            <ul>
+              <li>Data Structures & Algorithms</li>
+              <li>Digital Computation</li>
+            </ul>
+          </div>
+          <div class="course-card">
+            <h4>Design</h4>
+            <ul>
+              <li>Introduction to Biomedical Design</li>
+              <li>Human Factors in Design</li>
+              <li>Communications: Visualization</li>
+              <li>Communications: Written & Oral</li>
+            </ul>
+          </div>
+          <div class="course-card">
+            <h4>STEM</h4>
+            <ul>
+              <li>Calculus I & II</li>
+              <li>Physics: Statics</li>
+              <li>Chemistry</li>
+              <li>Elementary Engineering Math</li>
+              <li>Linear Algebra & Matrices</li>
+            </ul>
+          </div>
+          <div class="course-card">
+            <h4>Other</h4>
+            <ul>
+              <li>Classical Mythology</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p>Caleb Bellsmith · Biomedical Engineering · University of Waterloo</p>
+      <div class="footer-links">
+        <a href="mailto:calebb1360@gmail.com">calebb1360@gmail.com</a>
+        <a href="https://linkedin.com/in/caleb-bellsmith-476359385" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>
