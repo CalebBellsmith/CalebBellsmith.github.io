@@ -5,6 +5,7 @@ const PROJECTS = [
     subtitle: 'A 17-foot custom vessel blending digital fabrication with traditional woodworking.',
     thumbnail: 'images/canoe.jpg',
     skills: ['CAD Modeling', 'CNC Machining', 'Woodworking'],
+    categories: ['collaborative', 'personal', 'design'],
     images: [
       { src: 'images/canoe.jpg',     alt: 'Canoe' },
       { src: 'images/stems.jpg',     alt: 'Stems' },
@@ -31,9 +32,10 @@ const PROJECTS = [
     subtitle: 'Autonomous maze solving through computer vision, adaptive PID control, and machine learning path memory.',
     thumbnail: 'images/fullmaze.jpg',
     skills: ['Embedded Systems', 'ESP32', 'Mechatronics'],
+    categories: ['collaborative', 'personal', 'design'],
     images: [
-      { src: 'images/balance.jpg',     alt: 'Maze Platform View' },
-      { src: 'images/fullmaze.jpg',    alt: 'Full Maze View' },
+      { src: 'images/balance.jpg',      alt: 'Maze Platform View' },
+      { src: 'images/fullmaze.jpg',     alt: 'Full Maze View' },
       { src: 'images/computerview.jpg', alt: 'Computer Vision Debug View' }
     ],
     techSummary: [
@@ -57,17 +59,17 @@ const PROJECTS = [
       {
         number: 'Mode 2 — 2 Clicks',
         title: 'Manual',
-        body: 'The joystick directly maps to servo angles in real time — no computer involvement at all. Analog joystick readings from 0–4095 are mapped linearly to the 0°–180° servo range entirely on the ESP32. This mode is useful for manually navigating the maze, testing the physical range of motion of the platform, and verifying that both axes respond correctly before switching to autonomous modes. It is also the baseline for comparing how much the automated modes actually improve navigation.'
+        body: 'The joystick directly maps to servo angles in real time — no computer involvement at all. Analog joystick readings from 0–4095 are mapped linearly to the 0°–180° servo range entirely on the ESP32. This mode is useful for manually navigating the maze, testing the physical range of motion of the platform, and verifying that both axes respond correctly before switching to autonomous modes.'
       },
       {
         number: 'Mode 3 — 3 Clicks',
         title: 'Auto Waypoint',
-        body: 'The Python pipeline takes full control. Using the detected ball position, it computes an attraction force directly toward the current waypoint and runs it through the Adaptive PID and physics predictor to generate a servo command each frame. There is no wall avoidance in this mode so the system pulls straight toward each target regardless of what is in between. This makes it faster and more decisive in open sections of the maze, and is useful as a baseline to see how the ball responds to the control system without the repulsion layer adding complexity. When the ball comes within the waypoint threshold radius, it automatically advances to the next waypoint and resets the PID state.'
+        body: 'The Python pipeline takes full control. Using the detected ball position, it computes an attraction force directly toward the current waypoint and runs it through the Adaptive PID and physics predictor to generate a servo command each frame. There is no wall avoidance in this mode so the system pulls straight toward each target regardless of what is in between.'
       },
       {
         number: 'Mode 4 — 4 Clicks',
         title: 'Auto Smart',
-        body: 'Everything in Auto Waypoint, plus two additional layers. First, wall repulsion: every frame, the system scans a region around the ball for wall pixels within the safety radius, computes a repulsive force vector away from each one, and adds it to the attraction force before passing the combined result to the PID. This causes the ball to naturally curve away from walls and navigate around corners rather than driving straight into them. Second, machine learning path memory: every time the ball successfully reaches a waypoint, the trajectory it took is recorded and saved to disk. On subsequent runs through the same waypoint pair, the system retrieves the shortest previously successful path and uses it as a series of intermediate guided targets rather than pointing straight at the final waypoint. The result is that the system genuinely improves each run — the first pass through a route may be slow and exploratory, but subsequent passes follow the learned highway and converge significantly faster.'
+        body: 'Everything in Auto Waypoint, plus wall repulsion and machine learning path memory. Every time the ball successfully reaches a waypoint, the trajectory is recorded to disk. On subsequent runs, the system retrieves the shortest previously successful path and uses it as intermediate guided targets — the system genuinely improves each run, converging significantly faster after the first exploratory pass.'
       }
     ]
   },
@@ -79,6 +81,7 @@ const PROJECTS = [
     thumbnail: 'images/joltflex.jpg',
     badge: '⚡ Built at Hack Canada 2025',
     skills: ['Microcontrollers', 'IMU', 'EMG'],
+    categories: ['collaborative', 'personal', 'design'],
     images: [
       { src: 'images/joltflex.jpg', alt: 'Jolt Sleeve' },
       { src: 'images/jolt.jpg',     alt: 'Jolt Hardware' }
@@ -102,6 +105,7 @@ const PROJECTS = [
     subtitle: 'A hardware solution for biopotential data collection and wireless transmission.',
     thumbnail: 'images/schematic.jpg',
     skills: ['KiCad', 'Custom Circuits'],
+    categories: ['collaborative', 'personal', 'design'],
     images: [
       { src: 'images/schematic.jpg', alt: 'PCB Schematic Design' },
       { src: 'images/physical.jpg',  alt: 'Physical PCB Layout' }
@@ -113,7 +117,7 @@ const PROJECTS = [
     ],
     writeup: [
       { heading: 'True North Biocompetition' },
-      { paragraph: 'Reliable EMG data requires a stable power environment and clean signal routing. This project involved designing a custom 2-layer PCB to bridge the gap between raw analog muscle signals and digital control systems. I produced this board for the True North Biocompetition, in which it will pick up a user\'s muscle data as they wear a leg brace, and export it to an app to track their recovery. I was responsible for this PCB alone.' },
+      { paragraph: 'Reliable EMG data requires a stable power environment and clean signal routing. This project involved designing a custom 2-layer PCB to bridge the gap between raw analog muscle signals and digital control systems. I produced this board for the True North Biocompetition, in which it will pick up a user\'s muscle data as they wear a leg brace, and export it to an app to track their recovery.' },
       { paragraph: 'The board features a USB-C power input with a filtering circuit to ensure stable voltage across all components. It processes three independent signal lines from EMG sensors through a Teensy microcontroller, leveraging its superior ADC capabilities. The processed data is then handed off to an ESP32, which uses Bluetooth to transmit signals to an outside device with minimal latency.' },
       { paragraph: 'Key design considerations included trace width for power rails, strategic placement of decoupling capacitors to suppress switching noise, and the inclusion of dedicated 5V and 2.5V breakout pins for auxiliary hardware.' }
     ]
@@ -125,6 +129,7 @@ const PROJECTS = [
     subtitle: 'Advanced surfacing and technical CAD assemblies.',
     thumbnail: 'images/swjet.jpg',
     skills: ['Surface Modeling', 'Mechanical Assembly'],
+    categories: ['collaborative', 'personal', 'design'],
     images: [
       { src: 'images/swjet.jpg',    alt: 'Jet Turbine' },
       { src: 'images/swflower.jpg', alt: 'Organic Flower Surface' },
@@ -149,6 +154,7 @@ const PROJECTS = [
     subtitle: 'A collection of custom works exploring wood, metal, and mixed-media fabrication.',
     thumbnail: 'images/carving.jpg',
     skills: ['Custom Design', 'Multimedium'],
+    categories: ['collaborative', 'personal', 'design'],
     images: [
       { src: 'images/carving.jpg', alt: 'Carving' },
       { src: 'images/rings.jpg',   alt: 'Copper Rings' },
@@ -174,9 +180,10 @@ const PROJECTS = [
     subtitle: 'Ergonomic restoration of fine motor skills for scleroderma patients.',
     thumbnail: 'images/pencilfinger.jpg',
     skills: ['SolidWorks', '3D Scanning', 'Human Factors'],
+    categories: ['collaborative', 'personal', 'design'],
     images: [
-      { src: 'images/pencilfinger.jpg',      alt: 'Main View' },
-      { src: 'images/issue.jpg',             alt: 'Design Detail' },
+      { src: 'images/pencilfinger.jpg',       alt: 'Main View' },
+      { src: 'images/issue.jpg',              alt: 'Design Detail' },
       { src: 'images/prosthetic_fingers.jpg', alt: 'Patient Fitting' }
     ],
     techSummary: [
@@ -197,6 +204,7 @@ const PROJECTS = [
     subtitle: 'Biomechatronics for upper-limb mobility assistance.',
     thumbnail: 'images/test.jpg',
     skills: ['3D Printing', 'Biomechanics'],
+    categories: ['collaborative', 'personal', 'design'],
     images: [
       { src: 'images/hand_exoskeleton.jpg', alt: 'Hand Exoskeleton' },
       { src: 'images/test.jpg',             alt: 'Testing' },

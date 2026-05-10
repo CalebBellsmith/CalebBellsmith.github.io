@@ -1,23 +1,27 @@
-/* Applied in <head> to prevent flash of wrong theme */
+/* Applied in <head> to prevent flash of wrong theme — light is default */
 (function () {
-  if (localStorage.getItem('theme') === 'light') {
-    document.documentElement.setAttribute('data-theme', 'light');
+  if (localStorage.getItem('theme') === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
   }
 })();
 
 function toggleTheme() {
-  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-  const next = isLight ? 'dark' : 'light';
-  document.documentElement.setAttribute('data-theme', next);
-  localStorage.setItem('theme', next);
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  if (isDark) {
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('theme', 'light');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
+  }
   _syncThemeBtn();
 }
 
 function _syncThemeBtn() {
   const btn = document.getElementById('themeBtn');
   if (!btn) return;
-  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-  btn.textContent = isLight ? 'Dark' : 'Light';
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  btn.textContent = isDark ? 'Light' : 'Dark';
 }
 
 document.addEventListener('DOMContentLoaded', _syncThemeBtn);
