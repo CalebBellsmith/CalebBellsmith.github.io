@@ -6,7 +6,7 @@
   <title>Projects | Caleb Bellsmith</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="theme.js"></script>
 </head>
@@ -18,8 +18,8 @@
       <ul class="nav-links">
         <li><a href="projects.html" class="active">Projects</a></li>
         <li><a href="about.html">Experience</a></li>
-        <li><a href="Caleb_Bellsmith.pdf" target="_blank">Resume</a></li>
-        <li><button class="theme-btn" id="themeBtn" onclick="toggleTheme()">Light</button></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><button class="theme-btn" id="themeBtn" onclick="toggleTheme()">Dark</button></li>
       </ul>
     </div>
   </nav>
@@ -28,6 +28,12 @@
     <div class="page-container">
       <div class="projects-header page-fade">
         <h1>Projects</h1>
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="collaborative">Collaborative</button>
+          <button class="filter-btn" data-filter="personal">Personal</button>
+          <button class="filter-btn" data-filter="design">Design</button>
+        </div>
       </div>
       <div class="projects-grid page-fade" id="projectsGrid"></div>
     </div>
@@ -47,17 +53,36 @@
   <script>
     const grid = document.getElementById('projectsGrid');
 
-    PROJECTS.forEach(p => {
-      const skills = p.skills.join(' · ');
-      grid.innerHTML += `
-        <a href="project.html?id=${p.id}" class="proj-card">
+    function renderProjects(filter) {
+      grid.innerHTML = '';
+      const visible = filter === 'all'
+        ? PROJECTS
+        : PROJECTS.filter(p => p.categories && p.categories.includes(filter));
+
+      visible.forEach(p => {
+        const skills = p.skills.join(' · ');
+        const card = document.createElement('a');
+        card.href = `project.html?id=${p.id}`;
+        card.className = 'proj-card';
+        card.innerHTML = `
+          <div class="proj-title">${p.title}</div>
           <div class="proj-thumb">
             <img src="${p.thumbnail}" alt="${p.title}" loading="lazy">
           </div>
-          <div class="proj-title">${p.title}</div>
-          <div class="proj-skills">${skills}</div>
-        </a>`;
+          <div class="proj-skills">${skills}</div>`;
+        grid.appendChild(card);
+      });
+    }
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderProjects(btn.dataset.filter);
+      });
     });
+
+    renderProjects('all');
   </script>
 
 </body>
