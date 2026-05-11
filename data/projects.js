@@ -5,7 +5,8 @@ const PROJECTS = [
     subtitle: 'A 17-foot custom vessel blending digital fabrication with traditional woodworking.',
     thumbnail: 'images/canoe.jpg',
     skills: ['CAD Modeling', 'CNC Machining', 'Woodworking'],
-    categories: ['collaborative', 'personal', 'design'],
+    // Canoe is categorised as design — it's a fabrication/craft-led personal build
+    categories: ['design'],
     images: [
       { src: 'images/canoe.jpg',     alt: 'Canoe' },
       { src: 'images/stems.jpg',     alt: 'Stems' },
@@ -105,7 +106,8 @@ const PROJECTS = [
     subtitle: 'A hardware solution for biopotential data collection and wireless transmission.',
     thumbnail: 'images/schematic.jpg',
     skills: ['KiCad', 'Custom Circuits'],
-    categories: ['collaborative', 'personal', 'design'],
+    // PCB is categorised as collaborative — built for the True North Biocompetition team
+    categories: ['collaborative'],
     images: [
       { src: 'images/schematic.jpg', alt: 'PCB Schematic Design' },
       { src: 'images/physical.jpg',  alt: 'Physical PCB Layout' }
@@ -154,7 +156,8 @@ const PROJECTS = [
     subtitle: 'A collection of custom works exploring wood, metal, and mixed-media fabrication.',
     thumbnail: 'images/carving.jpg',
     skills: ['Custom Design', 'Multimedium'],
-    categories: ['collaborative', 'personal', 'design'],
+    // Personal Design is categorised as personal — solo artistic/craft work
+    categories: ['personal'],
     images: [
       { src: 'images/carving.jpg', alt: 'Carving' },
       { src: 'images/rings.jpg',   alt: 'Copper Rings' },
