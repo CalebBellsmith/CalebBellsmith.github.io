@@ -347,7 +347,7 @@ main { flex: 1; }
   display: flex;
   gap: 1.25rem;
   width: max-content;
-  animation: marqueeScroll 40s linear infinite;
+  animation: marqueeScroll 65s linear infinite;
 }
 
 .marquee-inner:hover { animation-play-state: paused; }
@@ -386,6 +386,55 @@ main { flex: 1; }
   font-size: 0.88rem;
   font-weight: 600;
   line-height: 1.3;
+}
+
+/* ---- HERO LAYOUT (photo right of name) ---- */
+.hero-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.hero-content { flex: 1; }
+
+.hero-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 3px solid var(--border);
+  transition: border-color 0.25s;
+}
+
+@media (max-width: 720px) {
+  .hero-layout { flex-direction: column-reverse; gap: 1.5rem; }
+  .hero-photo { width: 140px; height: 140px; }
+}
+
+/* ---- EXP BULLET LIST ---- */
+.exp-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.exp-bullets li {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.75;
+  padding-left: 1rem;
+  position: relative;
+  margin-bottom: 0.35rem;
+}
+
+.exp-bullets li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
 }
 
 /* ---- FILTER BAR ---- */

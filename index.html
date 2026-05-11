@@ -28,12 +28,17 @@
 
   <main>
     <section class="hero page-fade">
-      <span class="hero-label">Biomedical Engineering · University of Waterloo</span>
-      <h1 class="hero-title">Caleb Bellsmith</h1>
-      <p class="hero-sub">In my work I seek to let my love of engineering and design change the world, one funky project at a time.</p>
-      <div class="hero-actions">
-        <a href="projects.html" class="btn-primary">View Projects</a>
-        <a href="resume.html" class="btn-ghost">Resume</a>
+      <div class="hero-layout">
+        <div class="hero-content">
+          <span class="hero-label">Biomedical Engineering · University of Waterloo</span>
+          <h1 class="hero-title">Caleb Bellsmith</h1>
+          <p class="hero-sub">In my work I seek to let my love of engineering and design change the world, one funky project at a time.</p>
+          <div class="hero-actions">
+            <a href="projects.html" class="btn-primary">View Projects</a>
+            <a href="resume.html" class="btn-ghost">Resume</a>
+          </div>
+        </div>
+        <img src="images/headshot.jpg" alt="Caleb Bellsmith" class="hero-photo">
       </div>
     </section>
 
@@ -55,6 +60,7 @@
   <script src="data/projects.js"></script>
   <script>
     const items = PROJECTS.map(p => ({
+      id: p.id,
       src: p.thumbnail,
       title: p.title
     }));
@@ -64,12 +70,13 @@
     const inner = document.getElementById('marqueeInner');
 
     all.forEach(item => {
-      const div = document.createElement('div');
-      div.className = 'marquee-item';
-      div.innerHTML = `
+      const a = document.createElement('a');
+      a.className = 'marquee-item';
+      a.href = `project.html?id=${item.id}`;
+      a.innerHTML = `
         <img src="${item.src}" alt="${item.title}" loading="lazy">
         <div class="marquee-label">${item.title}</div>`;
-      inner.appendChild(div);
+      inner.appendChild(a);
     });
   </script>
 
