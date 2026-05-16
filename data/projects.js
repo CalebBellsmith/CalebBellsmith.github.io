@@ -32,7 +32,7 @@ const PROJECTS = [
     title: 'Tilting Maze Platform',
     subtitle: 'Autonomous maze solving through computer vision, adaptive PID control, and machine learning path memory.',
     thumbnail: 'images/fullmaze.jpg',
-    thumbPosition: 'top',
+    thumbFit: 'contain',
     skills: ['Embedded Systems', 'ESP32', 'Mechatronics'],
     categories: ['collaborative', 'personal', 'design'],
     images: [
@@ -81,7 +81,7 @@ const PROJECTS = [
     title: 'Jolt Mouse',
     subtitle: 'Wearable arm sleeve for amputee patients which wirelessly connects and controls a computer mouse.',
     thumbnail: 'images/joltflex.jpg',
-    thumbPosition: 'top',
+    thumbFit: 'contain',
     badge: '⚡ Built at Hack Canada 2025',
     skills: ['Microcontrollers', 'IMU', 'EMG'],
     categories: ['collaborative', 'personal', 'design'],
@@ -157,7 +157,7 @@ const PROJECTS = [
     title: 'Personal Design & Artistry',
     subtitle: 'A collection of custom works exploring wood, metal, and mixed-media fabrication.',
     thumbnail: 'images/carving.jpg',
-    thumbPosition: 'top',
+    thumbFit: 'contain',
     skills: ['Custom Design', 'Multimedium'],
     // Personal Design is categorised as personal — solo artistic/craft work
     categories: ['personal'],
