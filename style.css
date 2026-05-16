@@ -516,7 +516,7 @@ main { flex: 1; }
 .proj-thumb {
   width: 100%;
   aspect-ratio: 3/2;
-  background: var(--surface);
+  background: var(--bg);
   border-radius: var(--r);
   overflow: hidden;
   margin-bottom: 0.75rem;

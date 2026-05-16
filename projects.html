@@ -68,7 +68,7 @@
         const card = document.createElement('a');
         card.href = `project.html?id=${p.id}`;
         card.className = 'proj-card';
-        const imgStyle = p.thumbPosition ? `style="object-position: ${p.thumbPosition}"` : '';
+        const imgStyle = p.thumbFit ? `style="object-fit: ${p.thumbFit}"` : '';
         card.innerHTML = `
           <div class="proj-title">${p.title}</div>
           <div class="proj-thumb">
