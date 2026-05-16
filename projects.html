@@ -64,10 +64,11 @@
         const card = document.createElement('a');
         card.href = `project.html?id=${p.id}`;
         card.className = 'proj-card';
+        const pos = p.thumbPosition ? `style="object-position: ${p.thumbPosition}"` : '';
         card.innerHTML = `
           <div class="proj-title">${p.title}</div>
           <div class="proj-thumb">
-            <img src="${p.thumbnail}" alt="${p.title}" loading="lazy">
+            <img src="${p.thumbnail}" alt="${p.title}" loading="lazy" ${pos}>
           </div>
           <div class="proj-skills">${skills}</div>`;
         grid.appendChild(card);

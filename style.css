@@ -223,6 +223,8 @@ main { flex: 1; }
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
+  border: 3px solid var(--border);
+  transition: border-color 0.25s;
 }
 
 .about-body h2 {
@@ -237,6 +239,18 @@ main { flex: 1; }
   color: var(--muted);
   line-height: 1.8;
   font-size: 0.95rem;
+}
+
+.about-tagline {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--muted);
+  letter-spacing: 0.01em;
+  margin-top: 0.25rem;
+}
+
+.about-strip {
+  align-items: center;
 }
 
 /* ---- EXP ITEMS ---- */
@@ -399,8 +413,8 @@ main { flex: 1; }
 .hero-content { flex: 1; }
 
 .hero-photo {
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
@@ -410,7 +424,7 @@ main { flex: 1; }
 
 @media (max-width: 720px) {
   .hero-layout { flex-direction: column-reverse; gap: 1.5rem; }
-  .hero-photo { width: 140px; height: 140px; }
+  .hero-photo { width: 210px; height: 210px; }
 }
 
 /* ---- EXP BULLET LIST ---- */
