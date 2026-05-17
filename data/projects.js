@@ -27,6 +27,31 @@ const PROJECTS = [
     ]
   },
 
+   {
+    id: 'arm',
+    title: 'Robotic Arm',
+    subtitle: 'A precision robotic arm, 5 DoF with adaptive control and custom power conversion circuits.',
+    thumbnail: 'images/robo arm.jpg',
+    thumbFit: 'contain',
+    skills: ['Microcontrollers', 'Firmware', 'Custom Circuits'],
+    categories: ['design'],
+    images: [
+      { src: 'images/robo arm.jpg', alt: 'Robotic Arm' },
+      { src: 'images/robo draft1.jpg',     alt: 'Initial Draft' }
+    ],
+    techSummary: [
+      { label: 'Why',   text: 'Created during the Hack Canada Hackathon to reconnect amputee or upper-limb disabled patients to computers as simply as a normal Bluetooth mouse would.' },
+      { label: 'How',   text: 'An IMU gyroscope measures tilt, while EMG sensors and a button control clicking and freezing. All processed by an ESP32 microcontroller, which wirelessly connects via Bluetooth.' },
+      { label: 'Specs', text: 'EMG and IMU controlled. BLE pipeline to the computer. Companion web dashboard for live monitoring of power, sensitivity, and EMG positioning.' }
+    ],
+    writeup: [
+      { heading: 'Jolt' },
+      { paragraph: 'Jolt is a wireless, wearable arm sleeve that turns natural arm motion into full computer cursor control. An IMU mounted on the sleeve tracks the orientation and movement of your forearm in real time, translating tilts and gestures into smooth, proportional mouse movement across your screen. No desk, no surface, no traditional mouse required.' },
+      { paragraph: 'The hardware is built around an ESP32, which reads data from the IMU and an EMG sensor, then broadcasts wirelessly over Bluetooth, pairing with any computer exactly like a standard Bluetooth mouse. No drivers, no dongles, just a seamless connection. A physical button on the sleeve lets you instantly freeze the cursor and re-zero its position, so you can reposition your arm without sending the pointer flying across the screen. Flexing your forearm triggers the EMG sensor to register a click, keeping the interaction feel intuitive and physical.' },
+      { paragraph: 'Alongside the sleeve sits a companion web dashboard where you can monitor and tune the system in real time: adjusting cursor sensitivity, toggling the freeze state, repositioning the EMG sensor\'s reference point, and watching live data from the sensors. Everything that would otherwise require digging into firmware can be controlled from the browser.' }
+    ]
+  },
+
   {
     id: 'maze',
     title: 'Tilting Maze Platform',
