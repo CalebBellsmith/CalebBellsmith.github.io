@@ -40,15 +40,14 @@ const PROJECTS = [
       { src: 'images/robo draft1.jpg',     alt: 'Initial Draft' }
     ],
     techSummary: [
-      { label: 'Why',   text: 'Created during the Hack Canada Hackathon to reconnect amputee or upper-limb disabled patients to computers as simply as a normal Bluetooth mouse would.' },
-      { label: 'How',   text: 'An IMU gyroscope measures tilt, while EMG sensors and a button control clicking and freezing. All processed by an ESP32 microcontroller, which wirelessly connects via Bluetooth.' },
-      { label: 'Specs', text: 'EMG and IMU controlled. BLE pipeline to the computer. Companion web dashboard for live monitoring of power, sensitivity, and EMG positioning.' }
+      { label: 'Why',   text: 'Designed to act as a second set of helping hands in a lab or soldering setting, with an emphasis on precision and control. ' },
+      { label: 'How',   text: '5 DoF with an ESP 32 for overall control, with a 1 newton meter grip strength. Adapted to be run off a macbook charger for ease of use, with options including joysticks, or a wireless IMU sleeve (see Motion Sleeve page).' },
+      { label: 'Specs', text: 'Fully PETG custom designed parts, including a 3D printed bearing. MG99R servos held at max 6V power, complete with counterweights for longevity.' }
     ],
     writeup: [
-      { heading: 'Jolt' },
-      { paragraph: 'Jolt is a wireless, wearable arm sleeve that turns natural arm motion into full computer cursor control. An IMU mounted on the sleeve tracks the orientation and movement of your forearm in real time, translating tilts and gestures into smooth, proportional mouse movement across your screen. No desk, no surface, no traditional mouse required.' },
-      { paragraph: 'The hardware is built around an ESP32, which reads data from the IMU and an EMG sensor, then broadcasts wirelessly over Bluetooth, pairing with any computer exactly like a standard Bluetooth mouse. No drivers, no dongles, just a seamless connection. A physical button on the sleeve lets you instantly freeze the cursor and re-zero its position, so you can reposition your arm without sending the pointer flying across the screen. Flexing your forearm triggers the EMG sensor to register a click, keeping the interaction feel intuitive and physical.' },
-      { paragraph: 'Alongside the sleeve sits a companion web dashboard where you can monitor and tune the system in real time: adjusting cursor sensitivity, toggling the freeze state, repositioning the EMG sensor\'s reference point, and watching live data from the sensors. Everything that would otherwise require digging into firmware can be controlled from the browser.' }
+      { heading: 'Robotic Arm' },
+      { paragraph: 'The core challenge of this build was designing a mechanically stable arm while developing firmware capable of smooth, proportional control across all axes simultaneously. Rather than relying on a development boards native power supply, I designed a dedicated power path using a USB-C PD trigger board to pull the required voltage directly from a laptop charger, keeping the system compact and cable-managed.'},
+      { paragraph: 'On the firmware side, the ESP32Servo library was tuned through continual testing to establish precise servo limits and calibrated ADC center values for each joystick axis. To handle the mechanical realities of a cantilevered arm, a counterweight system was integrated at the shoulder joint to reduce servo load and improve positional stability under extension.'},
     ]
   },
 
