@@ -59,7 +59,7 @@ const PROJECTS = [
     thumbnail: 'images/fullmaze.jpg',
     thumbFit: 'contain',
     skills: ['Embedded Systems', 'ESP32', 'Mechatronics'],
-    categories: ['collaborative', 'personal', 'design'],
+    categories: ['design'],
     images: [
       { src: 'images/balance.jpg',      alt: 'Maze Platform View' },
       { src: 'images/fullmaze.jpg',     alt: 'Full Maze View' },
@@ -109,7 +109,7 @@ const PROJECTS = [
     thumbFit: 'contain',
     badge: '⚡ Built at Hack Canada 2025',
     skills: ['Microcontrollers', 'IMU', 'EMG'],
-    categories: ['collaborative', 'personal', 'design'],
+    categories: ['design'],
     images: [
       { src: 'images/joltflex.jpg', alt: 'Jolt Sleeve' },
       { src: 'images/jolt.jpg',     alt: 'Jolt Hardware' }
@@ -158,7 +158,7 @@ const PROJECTS = [
     subtitle: 'Advanced surfacing and technical CAD assemblies.',
     thumbnail: 'images/swjet.jpg',
     skills: ['Surface Modeling', 'Mechanical Assembly'],
-    categories: ['collaborative', 'personal', 'design'],
+    categories: ['personal'],
     images: [
       { src: 'images/swjet.jpg',    alt: 'Jet Turbine' },
       { src: 'images/swflower.jpg', alt: 'Organic Flower Surface' },
@@ -211,7 +211,7 @@ const PROJECTS = [
     subtitle: 'Ergonomic restoration of fine motor skills for scleroderma patients.',
     thumbnail: 'images/pencilfinger.jpg',
     skills: ['SolidWorks', '3D Scanning', 'Human Factors'],
-    categories: ['collaborative', 'personal', 'design'],
+    categories: ['personal'],
     images: [
       { src: 'images/pencilfinger.jpg',       alt: 'Main View' },
       { src: 'images/issue.jpg',              alt: 'Design Detail' },
@@ -235,7 +235,7 @@ const PROJECTS = [
     subtitle: 'Biomechatronics for upper-limb mobility assistance.',
     thumbnail: 'images/test.jpg',
     skills: ['3D Printing', 'Biomechanics'],
-    categories: ['collaborative', 'personal', 'design'],
+    categories: ['personal'],
     images: [
       { src: 'images/hand_exoskeleton.jpg', alt: 'Hand Exoskeleton' },
       { src: 'images/test.jpg',             alt: 'Testing' },
