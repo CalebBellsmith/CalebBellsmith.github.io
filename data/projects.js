@@ -179,7 +179,7 @@ const PROJECTS = [
 
   {
     id: 'design',
-    title: 'Personal Design & Artistry',
+    title: 'Wood Working Design',
     subtitle: 'A collection of custom works exploring wood, metal, and mixed-media fabrication.',
     thumbnail: 'images/carving.jpg',
     thumbFit: 'contain',
@@ -188,10 +188,60 @@ const PROJECTS = [
     categories: ['personal'],
     images: [
       { src: 'images/carving.jpg', alt: 'Carving' },
+      { src: 'images/cutting board.jpg', alt: 'Cuttingboards' },
+      { src: 'images/box.jpg', alt: 'Wooden Box' },
+    ],
+    techSummary: [
+      { label: 'Why',      text: 'To experiment with varied materials and fabrication techniques, from subtractive carving to high-heat metalwork.' },
+      { label: 'Mediums',  text: 'Hand-carved wood, hammered copper, welded carbon steel, and pyrographed (woodburnt) art pieces.' },
+      { label: 'Skillset', text: 'MIG welding, copper annealing, woodcarving, and intricate hand-sketching via woodburning.' }
+    ],
+    writeup: [
+      { heading: 'Material Exploration' },
+      { paragraph: 'This personal collection showcases my drive to master the physical properties of diverse materials. Whether it is the delicate subtractive process of a carved tree or the high-heat manipulation required for a welded rail spike cross, each piece represents a unique problem-solving journey.' },
+      { paragraph: 'My work includes woodburnt art pieces that require extreme patience and steady hand-control, as well as copper rings formed through repeated annealing and hammering. These projects serve as a playground for technical experimentation, allowing me to develop a tactile understanding of materials that informs my larger-scale engineering designs.' }
+    ]
+  },
+
+  {
+    id: 'metal working',
+    title: 'Metal Working Design',
+    subtitle: 'A collection of custom works, made by customer request, or for personal enjoyment',
+    thumbnail: 'images/rings.jpg',
+    thumbFit: 'contain',
+    skills: ['Custom Design', 'Welding'],
+    // Personal Design is categorised as personal — solo artistic/craft work
+    categories: ['personal'],
+    images: [
       { src: 'images/rings.jpg',   alt: 'Copper Rings' },
-      { src: 'images/tree.jpg',    alt: 'Tree Art' },
       { src: 'images/cross.jpg',   alt: 'Rail Spike Cross' },
-      { src: 'images/wolf.jpg',    alt: 'Wolf Art' }
+      { src: 'images/necklace.jpg', alt: 'Copper Necklace' },
+    ],
+    techSummary: [
+      { label: 'Why',      text: 'To experiment with varied materials and fabrication techniques, from subtractive carving to high-heat metalwork.' },
+      { label: 'Mediums',  text: 'Hand-carved wood, hammered copper, welded carbon steel, and pyrographed (woodburnt) art pieces.' },
+      { label: 'Skillset', text: 'MIG welding, copper annealing, woodcarving, and intricate hand-sketching via woodburning.' }
+    ],
+    writeup: [
+      { heading: 'Material Exploration' },
+      { paragraph: 'This personal collection showcases my drive to master the physical properties of diverse materials. Whether it is the delicate subtractive process of a carved tree or the high-heat manipulation required for a welded rail spike cross, each piece represents a unique problem-solving journey.' },
+      { paragraph: 'My work includes woodburnt art pieces that require extreme patience and steady hand-control, as well as copper rings formed through repeated annealing and hammering. These projects serve as a playground for technical experimentation, allowing me to develop a tactile understanding of materials that informs my larger-scale engineering designs.' }
+    ]
+  },
+  
+  {
+    id: 'Wood Burning',
+    title: 'Wood Burning Design',
+    subtitle: 'A collection of custom works, made by customer request, or for personal enjoyment',
+    thumbnail: 'images/tree.jpg',
+    thumbFit: 'contain',
+    skills: ['Custom Design', 'Wood Burning'],
+    // Personal Design is categorised as personal — solo artistic/craft work
+    categories: ['personal'],
+    images: [
+      { src: 'images/tree.jpg',   alt: 'Nortic Tree' },
+      { src: 'images/wolf.jpg',   alt: 'Animal Art' },
+      { src: 'images/bookmark.jpg', alt: 'Personalized Bookmarks' },
     ],
     techSummary: [
       { label: 'Why',      text: 'To experiment with varied materials and fabrication techniques, from subtractive carving to high-heat metalwork.' },
