@@ -189,6 +189,7 @@ const PROJECTS = [
     images: [
       { src: 'images/carving.jpg', alt: 'Carving' },
       { src: 'images/cutting board.jpg', alt: 'Cuttingboards' },
+      { src: 'images/cutting board other.jpg', alt: 'More Cuttingboards' },
       { src: 'images/box.jpg', alt: 'Wooden Box' },
     ],
     techSummary: [
