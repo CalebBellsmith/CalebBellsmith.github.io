@@ -264,10 +264,10 @@ const PROJECTS = [
     techSummary: [
       { label: 'Why',   text: 'To restore writing ability and daily usability for a patient with amputations resulting from scleroderma.' },
       { label: 'How',   text: 'Ergonomic SolidWorks modeling featuring specialized tool inserts and lockable rotation to account for daily tasks.' },
-      { label: 'Specs', text: 'Custom-fitted socket designed for pressure distribution and fine motor task optimization.' }
+      { label: 'Specs', text: 'Custom fitted socket designed for pressure distribution and fine motor task use.' }
     ],
     writeup: [
-      { heading: 'Human-Centered Engineering' },
+      { heading: 'Human Centered Engineering' },
       { paragraph: 'These prosthetics were created for a patient with advanced scleroderma, resulting in the amputation of their fingers. I utilized scans of the patient\'s hand to ensure sound socket fit, preventing pressure sores while maintaining enough grip for the user to perform tasks like writing clearly for the first time in years.' },
       { paragraph: 'The design includes modular tips that can be specialized for different activities, as well as a lockable rotational joint that helps the user maintain a natural posture while manipulating tools.' }
     ]
@@ -292,7 +292,6 @@ const PROJECTS = [
     ],
     writeup: [
       { heading: 'Prototyping Mobility' },
-      { paragraph: 'This project involved dozens of 3D-printed iterations to balance grip force with lightweight wearability. The EMG integration allows the device to amplify the user\'s natural intent into functional mechanical force.' }
-    ]
+      { paragraph: 'This project involved dozens of 3D printed iterations to balance grip force with lightweight wearability. The idea is a hand exoskeleton which can be worn then locked when the patient needs to have a sustained load (such as moving groceries).'}
   }
 ];
