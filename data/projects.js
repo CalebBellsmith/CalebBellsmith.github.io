@@ -16,14 +16,14 @@ const PROJECTS = [
       { src: 'images/stemfit.jpg',   alt: 'Stem Fit' }
     ],
     techSummary: [
-      { label: 'Why',   text: 'Designed to explore the limits of custom fabrication while creating a functional, high-performance outdoor tool.' },
-      { label: 'How',   text: 'Utilized CAD for hull hydrodynamics and CNC-machined secondary molds to ensure sub-millimeter precision over 17 feet.' },
-      { label: 'Specs', text: 'Red Cedar construction with bead-and-cove joinery, reinforced with fiberglass and a marine-grade epoxy finish.' }
+      { label: 'Why',   text: 'Designed to explore the blend new design technology with traditional woodworking techniques, while creating a high performance outdoor tool.' },
+      { label: 'How',   text: 'Utilized CAD for hull hydrodynamics and CNC machined secondary molds to ensure sub millimeter precision over 17 feet.' },
+      { label: 'Specs', text: 'Cedar construction with bead-and-cove joinery, reinforced with fiberglass and a marine grade epoxy finish.' }
     ],
     writeup: [
       { heading: 'Precision Woodworking & Digital Logic' },
-      { paragraph: 'The engineering challenge of this build lay in maintaining perfect hull symmetry over a massive span. By integrating CNC-machined stations into the assembly process, I was able to translate a digital model into a physical form with far greater accuracy than traditional manual measurements allow.' },
-      { paragraph: 'The construction utilized a meticulous "bead and cove" joinery method, where each individual cedar strip was hand-planed and aligned to create a seamless shell. This process ensured a structurally sound foundation for the subsequent fiberglass lamination, resulting in a vessel that is both a piece of engineering precision and a functional work of art.' }
+      { paragraph: 'The main fun challenge of this build lay in maintaining perfect hull symmetry over a massive span. By using CNC-machined molds we were able to translate a digital model into a physical form with far greater accuracy than traditional manual measurements allow.' },
+      { paragraph: 'The construction utilized a meticulous "bead and cove" joinery method, where each individual cedar strip was hand milled and aligned to create a seamless shell. This process ensured a structurally sound foundation for the subsequent fiberglass lamination, resulting a function, yet beautiful result.' }
     ]
   },
 
@@ -65,14 +65,14 @@ const PROJECTS = [
       { src: 'images/computerview.jpg', alt: 'Computer Vision Debug View' }
     ],
     techSummary: [
-      { label: 'Why',   text: 'To build a fully autonomous system that combines real-time computer vision, closed-loop control theory, and machine learning.' },
-      { label: 'How',   text: 'An ESP32 drives two high-torque servos on a 3D-printed dual-axis platform, commanded by a Python computer vision pipeline over serial communication.' },
-      { label: 'Specs', text: 'Adaptive PID controller, HSV-based orange ball tracking, Artificial Potential Field navigation, and an on-disk trajectory learning system with four operating modes.' }
+      { label: 'Why',   text: 'To build a fully autonomous system that combines real time computer vision, closed loop control theory, and machine learning.' },
+      { label: 'How',   text: 'An ESP32 drives two high torque servos on a 3D printed dual axis platform, commanded by a Python computer vision pipeline over serial communication.' },
+      { label: 'Specs', text: 'Adaptive PID controller, HSV based orange ball tracking, Artificial Potential Field navigation, and an on disk trajectory learning system with four operating modes.' }
     ],
     writeup: [
       { heading: 'How It Works' },
       { paragraph: 'The platform tilts on two axes via servos driven by an ESP32, while a Python computer vision pipeline running on a connected computer handles all the intelligence. For each frame, the webcam feed is processed using HSV color segmentation to isolate the orange ball, with morphological filtering to clean up noise and a median filter across recent positions to smooth tracking. Wall detection uses inverse brightness thresholding which sets any dark pixel below a set threshold to be treated as a wall boundary. Navigation is built on the Artificial Potential Field method: waypoints generate an attractive force toward the target, and nearby wall pixels generate repulsive forces that scale quadratically with proximity, causing the ball to curve naturally around obstacles rather than drive straight into them.' },
-      { paragraph: 'Control output flows through an Adaptive PID controller, where the proportional, integral, and derivative terms handle current error, accumulated drift, and oscillation damping respectively. The system auto-tunes its own gains every 60 frames based on actual performance — boosting aggression when sluggish, increasing damping when oscillating. A physics predictor runs in parallel, estimating ball velocity via exponential moving average and feeding a predicted future position into the error signal to compensate for the physical inertia of the ball. All of this is visualized live in a debug overlay showing force vectors, servo angles, speed, and PID state in real time.' },
+      { paragraph: 'Control output flows through an Adaptive PID controller, where the proportional, integral, and derivative terms handle current error, accumulated drift, and oscillation damping respectively. The system auto tunes its own gains every 60 frames based on actual performance which boosts aggression when sluggish and increases damping when oscillating. A physics predictor runs in parallel, estimating ball velocity via exponential moving average and feeding a predicted future position into the error signal to compensate for the physical inertia of the ball. All of this is visualized live in a debug overlay showing force vectors, servo angles, speed, and PID state in real time.' },
       { heading: 'Operating Modes' },
       { paragraph: 'The joystick button cycles through four modes via click count, with the ESP32 broadcasting the active state over serial so the Python pipeline stays in sync.' }
     ],
@@ -85,7 +85,7 @@ const PROJECTS = [
       {
         number: 'Mode 2 — 2 Clicks',
         title: 'Manual',
-        body: 'The joystick directly maps to servo angles in real time — no computer involvement at all. Analog joystick readings from 0–4095 are mapped linearly to the 0°–180° servo range entirely on the ESP32. This mode is useful for manually navigating the maze, testing the physical range of motion of the platform, and verifying that both axes respond correctly before switching to autonomous modes.'
+        body: 'The joystick directly maps to servo angles in real time, no computer involvement at all. Analog joystick readings from 0–4095 are mapped linearly to the 0°–180° servo range entirely on the ESP32. This mode is useful for manually navigating the maze, testing the physical range of motion of the platform, and verifying that both axes respond correctly before switching to autonomous modes.'
       },
       {
         number: 'Mode 3 — 3 Clicks',
@@ -95,7 +95,7 @@ const PROJECTS = [
       {
         number: 'Mode 4 — 4 Clicks',
         title: 'Auto Smart',
-        body: 'Everything in Auto Waypoint, plus wall repulsion and machine learning path memory. Every time the ball successfully reaches a waypoint, the trajectory is recorded to disk. On subsequent runs, the system retrieves the shortest previously successful path and uses it as intermediate guided targets — the system genuinely improves each run, converging significantly faster after the first exploratory pass.'
+        body: 'Everything in Auto Waypoint, plus wall repulsion and machine learning path memory. Every time the ball successfully reaches a waypoint, the trajectory is recorded to disk. On subsequent runs, the system retrieves the shortest previously successful path and uses it as intermediate guided targets.'
       }
     ]
   },
@@ -114,14 +114,14 @@ const PROJECTS = [
       { src: 'images/jolt.jpg',     alt: 'Jolt Hardware' }
     ],
     techSummary: [
-      { label: 'Why',   text: 'Created during the Hack Canada Hackathon to reconnect amputee or upper-limb disabled patients to computers as simply as a normal Bluetooth mouse would.' },
+      { label: 'Why',   text: 'Created during the Hack Canada Hackathon to reconnect amputee or upper limb disabled patients to computers as simply as a normal Bluetooth mouse would.' },
       { label: 'How',   text: 'An IMU gyroscope measures tilt, while EMG sensors and a button control clicking and freezing. All processed by an ESP32 microcontroller, which wirelessly connects via Bluetooth.' },
       { label: 'Specs', text: 'EMG and IMU controlled. BLE pipeline to the computer. Companion web dashboard for live monitoring of power, sensitivity, and EMG positioning.' }
     ],
     writeup: [
       { heading: 'Jolt' },
       { paragraph: 'Jolt is a wireless, wearable arm sleeve that turns natural arm motion into full computer cursor control. An IMU mounted on the sleeve tracks the orientation and movement of your forearm in real time, translating tilts and gestures into smooth, proportional mouse movement across your screen. No desk, no surface, no traditional mouse required.' },
-      { paragraph: 'The hardware is built around an ESP32, which reads data from the IMU and an EMG sensor, then broadcasts wirelessly over Bluetooth, pairing with any computer exactly like a standard Bluetooth mouse. No drivers, no dongles, just a seamless connection. A physical button on the sleeve lets you instantly freeze the cursor and re-zero its position, so you can reposition your arm without sending the pointer flying across the screen. Flexing your forearm triggers the EMG sensor to register a click, keeping the interaction feel intuitive and physical.' },
+      { paragraph: 'The hardware is built around an ESP32, which reads data from the IMU and an EMG sensor, then broadcasts wirelessly over Bluetooth, pairing with any computer exactly like a standard Bluetooth mouse. A physical button on the sleeve lets you instantly freeze the cursor and re zero its position, so you can reposition your arm without sending the pointer flying across the screen. Flexing your forearm triggers the EMG sensor to register a click, keeping the interaction feel intuitive and physical.' },
       { paragraph: 'Alongside the sleeve sits a companion web dashboard where you can monitor and tune the system in real time: adjusting cursor sensitivity, toggling the freeze state, repositioning the EMG sensor\'s reference point, and watching live data from the sensors. Everything that would otherwise require digging into firmware can be controlled from the browser.' }
     ]
   },
@@ -141,13 +141,13 @@ const PROJECTS = [
     techSummary: [
       { label: 'Why',            text: 'To reduce signal noise in EMG data collection and create a compact processing system for a wearable diagnostic prosthetic.' },
       { label: 'Specifications', text: 'USB-C powered, 3-channel EMG input, 5V/2.5V/GND rail distribution, and integrated Bluetooth (ESP32) communication.' },
-      { label: 'Hardware Stack', text: 'Designed in KiCad; utilizes a Teensy for high-speed ADC and an ESP32 for wireless data transmission.' }
+      { label: 'Hardware Stack', text: 'Designed in KiCad, it utilizes a Teensy for high speed ADC and an ESP32 for wireless data transmission.' }
     ],
     writeup: [
       { heading: 'True North Biocompetition' },
-      { paragraph: 'Reliable EMG data requires a stable power environment and clean signal routing. This project involved designing a custom 2-layer PCB to bridge the gap between raw analog muscle signals and digital control systems. I produced this board for the True North Biocompetition, in which it will pick up a user\'s muscle data as they wear a leg brace, and export it to an app to track their recovery.' },
+      { paragraph: 'EMG data is notoriously difficult to work with, especially from multiple sensors at once. As such, this PCB was designed to take in data from up to three different sensors, process it and compact it, and export it via bluetooth to a computer for further analytics. I produced this board for the True North Biocompetition, in which it will pick up a user\'s muscle data as they wear a leg brace, and export it to an app to track their recovery.' },
       { paragraph: 'The board features a USB-C power input with a filtering circuit to ensure stable voltage across all components. It processes three independent signal lines from EMG sensors through a Teensy microcontroller, leveraging its superior ADC capabilities. The processed data is then handed off to an ESP32, which uses Bluetooth to transmit signals to an outside device with minimal latency.' },
-      { paragraph: 'Key design considerations included trace width for power rails, strategic placement of decoupling capacitors to suppress switching noise, and the inclusion of dedicated 5V and 2.5V breakout pins for auxiliary hardware.' }
+      { paragraph: 'Key design considerations included trace width for power rails, placement of decoupling capacitors to suppress switching noise, and the inclusion of dedicated 5V and 2.5V breakout pins for auxiliary hardware.' }
     ]
   },
 
@@ -172,14 +172,14 @@ const PROJECTS = [
     ],
     writeup: [
       { heading: 'The Digital Workbench' },
-      { paragraph: 'This gallery showcases complex surfacing — such as the jet turbine and organic geometry — alongside high-tolerance mechanical assemblies intended for real-world fabrication.' }
+      { paragraph: 'This gallery showcases surfacing modeling such as the jet turbine and organic geometry, alongside precise mechanical assemblies intended for real world fabrication.' }
     ]
   },
 
   {
     id: 'design',
     title: 'Wood Working Design',
-    subtitle: 'A collection of custom works exploring wood, metal, and mixed-media fabrication.',
+    subtitle: 'A collection of custom works through a variety of styles and wood types',
     thumbnail: 'images/carving.jpg',
     thumbFit: 'contain',
     skills: ['Custom Design', 'Multimedium'],
@@ -192,14 +192,12 @@ const PROJECTS = [
       { src: 'images/box.jpg', alt: 'Wooden Box' },
     ],
     techSummary: [
-      { label: 'Why',      text: 'To experiment with varied materials and fabrication techniques, from subtractive carving to high-heat metalwork.' },
-      { label: 'Mediums',  text: 'Hand-carved wood, hammered copper, welded carbon steel, and pyrographed (woodburnt) art pieces.' },
-      { label: 'Skillset', text: 'MIG welding, copper annealing, woodcarving, and intricate hand-sketching via woodburning.' }
+      { label: 'Why',      text: 'Although it\'s not a terribly technical project, I\'ve always loved woodworking and carving, so I fill my off time with some less technical design.' },
+      { label: 'What',  text: 'Handcarved 6 square foot tree, end grain and edge grain boards, and a bookmatched flowing box' },
     ],
     writeup: [
-      { heading: 'Material Exploration' },
-      { paragraph: 'This personal collection showcases my drive to master the physical properties of diverse materials. Whether it is the delicate subtractive process of a carved tree or the high-heat manipulation required for a welded rail spike cross, each piece represents a unique problem-solving journey.' },
-      { paragraph: 'My work includes woodburnt art pieces that require extreme patience and steady hand-control, as well as copper rings formed through repeated annealing and hammering. These projects serve as a playground for technical experimentation, allowing me to develop a tactile understanding of materials that informs my larger-scale engineering designs.' }
+      { heading: 'Wood Working' },
+      { paragraph: 'Although I do really love technical design, at times, it is really nice to get a little more hands on and work on a super applicable project. I\'ve long loved the outdoors, so this is just another way to connect with that for me.' },
     ]
   },
 
@@ -218,14 +216,12 @@ const PROJECTS = [
       { src: 'images/necklace.jpg', alt: 'Copper Necklace' },
     ],
     techSummary: [
-      { label: 'Why',      text: 'To experiment with varied materials and fabrication techniques, from subtractive carving to high-heat metalwork.' },
-      { label: 'Mediums',  text: 'Hand-carved wood, hammered copper, welded carbon steel, and pyrographed (woodburnt) art pieces.' },
-      { label: 'Skillset', text: 'MIG welding, copper annealing, woodcarving, and intricate hand-sketching via woodburning.' }
+      { label: 'Why',      text: 'Similarly to my love of wood working, metal working provides a creative outlet, while still learning applicable skills and meeting customer requests.' },
+      { label: 'Mediums',  text: 'MIG, TIG and ARC welding of railway spikes, as well as fine copper weaving and soldering ' },
     ],
     writeup: [
-      { heading: 'Material Exploration' },
-      { paragraph: 'This personal collection showcases my drive to master the physical properties of diverse materials. Whether it is the delicate subtractive process of a carved tree or the high-heat manipulation required for a welded rail spike cross, each piece represents a unique problem-solving journey.' },
-      { paragraph: 'My work includes woodburnt art pieces that require extreme patience and steady hand-control, as well as copper rings formed through repeated annealing and hammering. These projects serve as a playground for technical experimentation, allowing me to develop a tactile understanding of materials that informs my larger-scale engineering designs.' }
+      { heading: 'Metal Exploration' },
+      { paragraph: 'The railway spike cross and copper cross are both projects I undertook out of my love for creation, while the copper rings and other copper crosses I created at customer requests. Realistically though, I just love the ability to create, whether technical or not, of which, matal working is merely another faucet of.' },
     ]
   },
   
@@ -244,14 +240,12 @@ const PROJECTS = [
       { src: 'images/bookmark.jpg', alt: 'Personalized Bookmarks' },
     ],
     techSummary: [
-      { label: 'Why',      text: 'To experiment with varied materials and fabrication techniques, from subtractive carving to high-heat metalwork.' },
-      { label: 'Mediums',  text: 'Hand-carved wood, hammered copper, welded carbon steel, and pyrographed (woodburnt) art pieces.' },
-      { label: 'Skillset', text: 'MIG welding, copper annealing, woodcarving, and intricate hand-sketching via woodburning.' }
+      { label: 'Why',      text: 'To experiement with a slighly more traditionally artistic aspect of woodworking' },
+      { label: 'What',  text: 'I woodburn inscriptions and personalizations on many of my pieces as a finishing touch.' },
     ],
     writeup: [
       { heading: 'Material Exploration' },
-      { paragraph: 'This personal collection showcases my drive to master the physical properties of diverse materials. Whether it is the delicate subtractive process of a carved tree or the high-heat manipulation required for a welded rail spike cross, each piece represents a unique problem-solving journey.' },
-      { paragraph: 'My work includes woodburnt art pieces that require extreme patience and steady hand-control, as well as copper rings formed through repeated annealing and hammering. These projects serve as a playground for technical experimentation, allowing me to develop a tactile understanding of materials that informs my larger-scale engineering designs.' }
+      { paragraph: 'Woodburning to me represented a final aspect of fun simple design that I could tackle, both for customer requests (custom ordering) or for personal enjoyment. ' },
     ]
   },
 
