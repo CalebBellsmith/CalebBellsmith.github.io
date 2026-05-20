@@ -293,5 +293,6 @@ const PROJECTS = [
     writeup: [
       { heading: 'Prototyping Mobility' },
       { paragraph: 'This project involved dozens of 3D printed iterations to balance grip force with lightweight wearability. The idea is a hand exoskeleton which can be worn then locked when the patient needs to have a sustained load (such as moving groceries).'}
+    ]
   }
 ];
