@@ -15,6 +15,96 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
   <script src="theme.js"></script>
+  <style>
+    /* ---- PROJECT SHOWCASE ---- */
+    .showcase-section {
+      overflow: hidden;
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin-top: 1rem;
+    }
+
+    .showcase-track {
+      display: flex;
+      gap: 1.5rem;
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+
+    .showcase-slide {
+      min-width: 72%;
+      flex-shrink: 0;
+      border-radius: var(--r);
+      overflow: hidden;
+      border: 2px solid var(--border);
+      position: relative;
+      height: 400px;
+      opacity: 0.4;
+      transition: opacity 0.5s, border-color 0.5s;
+      text-decoration: none;
+      display: block;
+    }
+
+    .showcase-slide.active {
+      opacity: 1;
+      border-color: var(--accent);
+    }
+
+    .showcase-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .showcase-slide-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem 1.25rem 1rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.72));
+      color: #fff;
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .showcase-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      padding-top: 1.25rem;
+    }
+
+    .showcase-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--border);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .showcase-dot.active {
+      background: var(--accent);
+      transform: scale(1.4);
+    }
+
+    @media (max-width: 720px) {
+      .showcase-slide { min-width: 86%; height: 240px; }
+    }
+
+    /* ---- WEBRING OVERRIDES ---- */
+    #webring-slot img {
+      height: 28px;
+      width: auto;
+    }
+  </style>
 </head>
 <body>
 
@@ -46,8 +136,9 @@
       </div>
     </section>
 
-    <div class="marquee-section page-fade">
-      <div class="marquee-inner" id="marqueeInner"></div>
+    <div class="showcase-section page-fade">
+      <div class="showcase-track" id="showcaseTrack"></div>
+      <div class="showcase-dots" id="showcaseDots"></div>
     </div>
   </main>
 
@@ -57,38 +148,99 @@
       <div class="footer-links">
         <a href="mailto:calebb1360@gmail.com">calebb1360@gmail.com</a>
         <a href="https://linkedin.com/in/caleb-bellsmith-476359385" target="_blank">LinkedIn</a>
+        <span id="webring-slot"></span>
       </div>
     </div>
   </footer>
 
   <script src="data/projects.js"></script>
   <script>
+    /* ---- Showcase carousel ---- */
     const items = PROJECTS.map(p => ({
-      id: p.id,
-      src: p.thumbnail,
-      title: p.title
+      id:    p.id,
+      src:   p.thumbnail,
+      title: p.title,
+      fit:   p.thumbFit || 'cover'
     }));
 
-    // Duplicate for seamless infinite loop
-    const all = [...items, ...items];
-    const inner = document.getElementById('marqueeInner');
+    const track  = document.getElementById('showcaseTrack');
+    const dotsEl = document.getElementById('showcaseDots');
+    let current = 0;
+    let timer;
 
-    all.forEach(item => {
+    // Build slides + dots
+    items.forEach((item, i) => {
       const a = document.createElement('a');
-      a.className = 'marquee-item';
-      a.href = `project.html?id=${item.id}`;
+      a.className = 'showcase-slide' + (i === 0 ? ' active' : '');
+      a.href = `project.html?id=${encodeURIComponent(item.id)}`;
       a.innerHTML = `
-        <img src="${item.src}" alt="${item.title}" loading="lazy">
-        <div class="marquee-label">${item.title}</div>`;
-      inner.appendChild(a);
+        <img src="${item.src}" alt="${item.title}" loading="lazy" style="object-fit:${item.fit}">
+        <div class="showcase-slide-label">${item.title}</div>`;
+      track.appendChild(a);
+
+      const dot = document.createElement('button');
+      dot.className = 'showcase-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', item.title);
+      dot.addEventListener('click', () => { goTo(i); startTimer(); });
+      dotsEl.appendChild(dot);
+    });
+
+    function positionTrack() {
+      const slideW = track.children[0].offsetWidth;
+      const gap    = 24; // 1.5rem in px
+      const contW  = track.parentElement.offsetWidth;
+      const offset = (contW - slideW) / 2 - current * (slideW + gap);
+      track.style.transform = `translateX(${offset}px)`;
+    }
+
+    function goTo(n) {
+      const slides = track.querySelectorAll('.showcase-slide');
+      const dots   = dotsEl.querySelectorAll('.showcase-dot');
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = ((n % items.length) + items.length) % items.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+      positionTrack();
+    }
+
+    function startTimer() {
+      clearInterval(timer);
+      timer = setInterval(() => goTo(current + 1), 3000);
+    }
+
+    track.addEventListener('mouseenter', () => clearInterval(timer));
+    track.addEventListener('mouseleave', startTimer);
+
+    positionTrack();
+    startTimer();
+    window.addEventListener('resize', positionTrack);
+
+    /* ---- Webring: relocate into footer slot + hide arrows ---- */
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const slot   = document.getElementById('webring-slot');
+        const widget = document.body.querySelector('[class*="webring"], [id*="webring"]');
+        if (widget && slot) {
+          // Hide arrow elements (first + last children are typically prev/next)
+          const children = Array.from(widget.children);
+          if (children.length >= 3) {
+            children[0].style.display = 'none'; // prev arrow
+            children[children.length - 1].style.display = 'none'; // next arrow
+          }
+          // Neutralise fixed positioning and scale down
+          widget.style.cssText = 'position:static!important;bottom:auto!important;left:auto!important;display:inline-flex!important;align-items:center!important;transform:scale(0.7)!important;transform-origin:center center!important;';
+          slot.appendChild(widget);
+        }
+      }, 800);
     });
   </script>
 
-  <script 
-  src="https://uwaterloo.network/embed.js" 
-  data-webring
-  data-user="caleb-bellsmith"
-></script>
+  <script
+    src="https://uwaterloo.network/embed.js"
+    data-webring
+    data-user="caleb-bellsmith"
+  ></script>
 
 </body>
 </html>
