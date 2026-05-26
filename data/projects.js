@@ -130,11 +130,12 @@ const PROJECTS = [
     id: 'pcb',
     title: 'Custom EMG Signal Processing PCB',
     subtitle: 'A hardware solution for biopotential data collection and wireless transmission.',
-    thumbnail: 'images/schematic.jpg',
+    thumbnail: 'images/tru leg.jpg',
     skills: ['KiCad', 'Custom Circuits'],
     // PCB is categorised as collaborative — built for the True North Biocompetition team
     categories: ['collaborative'],
     images: [
+      { src: 'images/tru leg.jpg', alt: 'PCB Schematic Design' },
       { src: 'images/schematic.jpg', alt: 'PCB Schematic Design' },
       { src: 'images/physical.jpg',  alt: 'Physical PCB Layout' }
     ],
