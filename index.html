@@ -100,10 +100,11 @@
     }
 
     /* ---- WEBRING OVERRIDES ---- */
-    #webring-slot img {
-      height: 28px;
-      width: auto;
-    }
+    #webring-slot { display: inline-flex; align-items: center; }
+    #webring-slot button { display: none !important; }
+    #webring-slot img { width: 22px !important; height: 22px !important; }
+    #webring-slot .uwaterloo-webring-wrapper { width: auto !important; }
+    #webring-slot .uwaterloo-webring { gap: 0 !important; }
   </style>
 </head>
 <body>
@@ -148,7 +149,9 @@
       <div class="footer-links">
         <a href="mailto:calebb1360@gmail.com">calebb1360@gmail.com</a>
         <a href="https://linkedin.com/in/caleb-bellsmith-476359385" target="_blank">LinkedIn</a>
-        <span id="webring-slot"></span>
+        <span id="webring-slot">
+          <script src="https://uwaterloo.network/embed.js" data-webring data-user="caleb-bellsmith"></script>
+        </span>
       </div>
     </div>
   </footer>
@@ -168,7 +171,6 @@
     let current = 0;
     let timer;
 
-    // Build slides + dots
     items.forEach((item, i) => {
       const a = document.createElement('a');
       a.className = 'showcase-slide' + (i === 0 ? ' active' : '');
@@ -187,7 +189,7 @@
 
     function positionTrack() {
       const slideW = track.children[0].offsetWidth;
-      const gap    = 24; // 1.5rem in px
+      const gap    = 24;
       const contW  = track.parentElement.offsetWidth;
       const offset = (contW - slideW) / 2 - current * (slideW + gap);
       track.style.transform = `translateX(${offset}px)`;
@@ -215,32 +217,7 @@
     positionTrack();
     startTimer();
     window.addEventListener('resize', positionTrack);
-
-    /* ---- Webring: relocate into footer slot + hide arrows ---- */
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        const slot   = document.getElementById('webring-slot');
-        const widget = document.body.querySelector('[class*="webring"], [id*="webring"]');
-        if (widget && slot) {
-          // Hide arrow elements (first + last children are typically prev/next)
-          const children = Array.from(widget.children);
-          if (children.length >= 3) {
-            children[0].style.display = 'none'; // prev arrow
-            children[children.length - 1].style.display = 'none'; // next arrow
-          }
-          // Neutralise fixed positioning and scale down
-          widget.style.cssText = 'position:static!important;bottom:auto!important;left:auto!important;display:inline-flex!important;align-items:center!important;transform:scale(0.7)!important;transform-origin:center center!important;';
-          slot.appendChild(widget);
-        }
-      }, 800);
-    });
   </script>
-
-  <script
-    src="https://uwaterloo.network/embed.js"
-    data-webring
-    data-user="caleb-bellsmith"
-  ></script>
 
 </body>
 </html>
