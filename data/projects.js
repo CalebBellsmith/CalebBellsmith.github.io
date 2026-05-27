@@ -101,32 +101,6 @@ const PROJECTS = [
   },
 
   {
-    id: 'jolt',
-    title: 'Jolt Mouse',
-    subtitle: 'Wearable arm sleeve for amputee patients which wirelessly connects and controls a computer mouse.',
-    thumbnail: 'images/joltflex.jpg',
-    thumbFit: 'contain',
-    badge: '⚡ Built at Hack Canada 2025',
-    skills: ['Microcontrollers', 'IMU', 'EMG'],
-    categories: ['design'],
-    images: [
-      { src: 'images/joltflex.jpg', alt: 'Jolt Sleeve' },
-      { src: 'images/jolt.jpg',     alt: 'Jolt Hardware' }
-    ],
-    techSummary: [
-      { label: 'Why',   text: 'Created during the Hack Canada Hackathon to reconnect amputee or upper limb disabled patients to computers as simply as a normal Bluetooth mouse would.' },
-      { label: 'How',   text: 'An IMU gyroscope measures tilt, while EMG sensors and a button control clicking and freezing. All processed by an ESP32 microcontroller, which wirelessly connects via Bluetooth.' },
-      { label: 'Specs', text: 'EMG and IMU controlled. BLE pipeline to the computer. Companion web dashboard for live monitoring of power, sensitivity, and EMG positioning.' }
-    ],
-    writeup: [
-      { heading: 'Jolt' },
-      { paragraph: 'Jolt is a wireless, wearable arm sleeve that turns natural arm motion into full computer cursor control. An IMU mounted on the sleeve tracks the orientation and movement of your forearm in real time, translating tilts and gestures into smooth, proportional mouse movement across your screen. No desk, no surface, no traditional mouse required.' },
-      { paragraph: 'The hardware is built around an ESP32, which reads data from the IMU and an EMG sensor, then broadcasts wirelessly over Bluetooth, pairing with any computer exactly like a standard Bluetooth mouse. A physical button on the sleeve lets you instantly freeze the cursor and re zero its position, so you can reposition your arm without sending the pointer flying across the screen. Flexing your forearm triggers the EMG sensor to register a click, keeping the interaction feel intuitive and physical.' },
-      { paragraph: 'Alongside the sleeve sits a companion web dashboard where you can monitor and tune the system in real time: adjusting cursor sensitivity, toggling the freeze state, repositioning the EMG sensor\'s reference point, and watching live data from the sensors. Everything that would otherwise require digging into firmware can be controlled from the browser.' }
-    ]
-  },
-
-  {
     id: 'pcb',
     title: 'Custom EMG Signal Processing PCB',
     subtitle: 'A hardware solution for biopotential data collection and wireless transmission.',
@@ -150,6 +124,32 @@ const PROJECTS = [
       { paragraph: 'EMG data is notoriously difficult to work with, especially from multiple sensors at once. As such, this PCB was designed to take in data from up to three different sensors, process it and compact it, and export it via bluetooth to a computer for further analytics. I produced this board for the True North Biocompetition, in which it will pick up a user\'s muscle data as they wear a leg brace, and export it to an app to track their recovery.' },
       { paragraph: 'The board features a USB-C power input with a filtering circuit to ensure stable voltage across all components. It processes three independent signal lines from EMG sensors through a Teensy microcontroller, leveraging its superior ADC capabilities. The processed data is then handed off to an ESP32, which uses Bluetooth to transmit signals to an outside device with minimal latency.' },
       { paragraph: 'Key design considerations included trace width for power rails, placement of decoupling capacitors to suppress switching noise, and the inclusion of dedicated 5V and 2.5V breakout pins for auxiliary hardware.' }
+    ]
+  },
+
+   {
+    id: 'jolt',
+    title: 'Jolt Mouse',
+    subtitle: 'Wearable arm sleeve for amputee patients which wirelessly connects and controls a computer mouse.',
+    thumbnail: 'images/joltflex.jpg',
+    thumbFit: 'contain',
+    badge: '⚡ Built at Hack Canada 2025',
+    skills: ['Microcontrollers', 'IMU', 'EMG'],
+    categories: ['design'],
+    images: [
+      { src: 'images/joltflex.jpg', alt: 'Jolt Sleeve' },
+      { src: 'images/jolt.jpg',     alt: 'Jolt Hardware' }
+    ],
+    techSummary: [
+      { label: 'Why',   text: 'Created during the Hack Canada Hackathon to reconnect amputee or upper limb disabled patients to computers as simply as a normal Bluetooth mouse would.' },
+      { label: 'How',   text: 'An IMU gyroscope measures tilt, while EMG sensors and a button control clicking and freezing. All processed by an ESP32 microcontroller, which wirelessly connects via Bluetooth.' },
+      { label: 'Specs', text: 'EMG and IMU controlled. BLE pipeline to the computer. Companion web dashboard for live monitoring of power, sensitivity, and EMG positioning.' }
+    ],
+    writeup: [
+      { heading: 'Jolt' },
+      { paragraph: 'Jolt is a wireless, wearable arm sleeve that turns natural arm motion into full computer cursor control. An IMU mounted on the sleeve tracks the orientation and movement of your forearm in real time, translating tilts and gestures into smooth, proportional mouse movement across your screen. No desk, no surface, no traditional mouse required.' },
+      { paragraph: 'The hardware is built around an ESP32, which reads data from the IMU and an EMG sensor, then broadcasts wirelessly over Bluetooth, pairing with any computer exactly like a standard Bluetooth mouse. A physical button on the sleeve lets you instantly freeze the cursor and re zero its position, so you can reposition your arm without sending the pointer flying across the screen. Flexing your forearm triggers the EMG sensor to register a click, keeping the interaction feel intuitive and physical.' },
+      { paragraph: 'Alongside the sleeve sits a companion web dashboard where you can monitor and tune the system in real time: adjusting cursor sensitivity, toggling the freeze state, repositioning the EMG sensor\'s reference point, and watching live data from the sensors. Everything that would otherwise require digging into firmware can be controlled from the browser.' }
     ]
   },
 
