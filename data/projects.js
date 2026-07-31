@@ -149,6 +149,28 @@ const PROJECTS = [
   },
 
   {
+    id: 'centrifuge',
+    title: 'Centrifuge for Space',
+    subtitle: 'FILLER: one line summary of the centrifuge and what it is for.',
+    thumbnail: 'images/placeholder.jpg',
+    skills: ['Mechanical Design', 'Prototyping', 'CAD'],
+    categories: ['collaborative'],
+    images: [
+      { src: 'images/placeholder.jpg', alt: 'Centrifuge' }
+    ],
+    techSummary: [
+      { label: 'Why',   text: 'FILLER: why this project exists and what problem the centrifuge is meant to solve.' },
+      { label: 'How',   text: 'FILLER: how it works, the approach taken, and which parts I was personally responsible for.' },
+      { label: 'Specs', text: 'FILLER: key numbers, materials, and hardware details worth calling out.' }
+    ],
+    writeup: [
+      { heading: 'Centrifuge for Space' },
+      { paragraph: 'FILLER: first paragraph. Set up the context of the project, who it was built with, and what the goal was.' },
+      { paragraph: 'FILLER: second paragraph. Describe the design and engineering work in more detail, including the interesting problems and how they were solved.' }
+    ]
+  },
+
+  {
     id: 'pcb',
     title: 'Custom EMG Signal Processing PCB',
     subtitle: 'A hardware solution for biopotential data collection and wireless transmission.',
