@@ -22,7 +22,7 @@ const PROJECTS = [
     writeup: [
       { heading: 'Automating a Manual Process' },
       { paragraph: 'Inspecting a sample by hand meant an operator moving the stage, judging each field of view by eye, and recording results manually, which was both slow and inconsistent between people. The scanner moves the stage in a user set grid, captures at every position, and nudges in a small spiral to recapture whenever a frame comes back unusable, so a full slide finishes unattended.' },
-      { paragraph: 'Frame quality is scored by a MobileNetV3 classifier trained on 1000+ images to achieve a 99.3% consistency from old values. This same data is used to quickly check each frame for whether it"'"s focused, upon which the 3rd stepper will adjust until satisfactory. ' },
+      { paragraph: 'Frame quality is scored by a MobileNetV3 classifier trained on 1000+ images to achieve a 99.3% consistency from old values. This same data is used to quickly check each frame for whether it\'s focused, upon which the 3rd stepper will adjust until satisfactory. ' },
       { paragraph: 'The analysis stage is a direct translation of older lab routines into Python, reproducing its morphological operations and peak finding behaviour exactly so results stayed comparable to years of prior data. Everything lands in a formatted workbook with per sample tabs, descriptive statistics, and a summary comparison across the set.' }
     ]
   },
