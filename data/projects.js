@@ -160,11 +160,11 @@ const PROJECTS = [
     skills: ['Mechanical Design', 'Prototyping', 'CAD'],
     categories: ['collaborative'],
     images: [
-      { src: 'images/WSST.jpg', alt: 'Centrifuge' }
-      { src: 'images/CAD.jpg', alt: 'CAD' }
-      { src: 'images/tip.jpg', alt: 'Tip' }
-      { src: 'images/roof.jpg', alt: 'roof' }
-      { src: 'images/Exo.jpg', alt: 'Exo' }
+      { src: 'images/WSST.jpg', alt: 'Centrifuge' },
+      { src: 'images/CAD.jpg',  alt: 'CAD' },
+      { src: 'images/tip.jpg',  alt: 'Tip' },
+      { src: 'images/roof.jpg', alt: 'Roof' },
+      { src: 'images/Exo.jpg',  alt: 'Exo' }
     ],
     techSummary: [
       { label: 'Why',   text: 'FILLER: why this project exists and what problem the centrifuge is meant to solve.' },
