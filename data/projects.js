@@ -3,7 +3,7 @@ const PROJECTS = [
     id: 'scanner',
     title: 'Automated Microscope Slide Scanner',
     subtitle: 'Motorized slide scanning with automated capture, machine learning quality control, and a full analysis pipeline.',
-    thumbnail: 'images/placeholder.jpg',
+    thumbnail: 'images/autoscope.jpg',
     skills: ['Computer Vision', 'Machine Learning', 'ESP32'],
     // Built during co-op placement
     categories: ['coop'],
