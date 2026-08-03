@@ -3,7 +3,7 @@ const PROJECTS = [
     id: 'scanner',
     title: 'Automated Microscope Slide Scanner',
     subtitle: 'Motorized slide scanning with automated capture, machine learning quality control, and a full analysis pipeline.',
-    thumbnail: 'images/placeholder.jpg',
+    thumbnail: 'images/autoscope.jpg',
     skills: ['Computer Vision', 'Machine Learning', 'ESP32'],
     // Built during co-op placement
     categories: ['coop'],
@@ -11,7 +11,7 @@ const PROJECTS = [
       // VIDEO PLACEHOLDER: drop an .mp4 into images/ and point src at it.
       // 'poster' is the still shown before it plays and is optional.
       // For a .gif instead, delete the type and poster lines and treat it as a normal image.
-      { src: 'images/scanner-demo.mp4', type: 'video', poster: 'images/placeholder.jpg', alt: 'Scanner in operation' },
+      { src: 'images/scanner-demo.mp4', type: 'video', poster: 'images/autoscope.jpg', alt: 'Scanner in operation' },
       { src: 'images/autoscope.jpg', alt: 'Slide Scanner' },
       { src: 'images/scanner-gui.jpg', alt: 'GUI' },
       { src: 'images/side-profile.jpg', alt: 'Side Profile' }

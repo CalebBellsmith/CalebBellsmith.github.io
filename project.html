@@ -120,7 +120,8 @@
         // Auto advance every 3s. A video slide instead holds the carousel until
         // the clip finishes, rather than being cut off partway. Hovering
         // anywhere on the carousel pauses the cycle.
-        const DELAY = 3000;
+        const DELAY = 3000;     // still image dwell time
+        const GIVE_UP = 12000;  // how long to wait for a video to start before skipping it
         let timer = null;
         let paused = false;
 
@@ -136,12 +137,20 @@
             return;
           }
 
-          // A playing video advances from its own 'ended' event so it is not cut
-          // off. This watchdog covers the cases where it never plays at all:
-          // a missing file, an unsupported codec, or autoplay being blocked.
-          timer = setTimeout(() => {
-            if (vid.error || vid.paused || vid.currentTime === 0) show(current + 1);
-          }, DELAY);
+          // A playing video advances from its own 'ended' event so it is never
+          // cut off mid clip. This watchdog only handles a video that never
+          // gets going: missing file, bad codec, or autoplay blocked. It polls
+          // rather than checking once, because a large file can take several
+          // seconds to buffer and must not be skipped while it is still loading.
+          const deadline = Date.now() + GIVE_UP;
+          (function poll() {
+            if (paused) return;
+            if (vid.error) { show(current + 1); return; }
+            const playing = !vid.paused && vid.currentTime > 0;
+            if (playing) return;              // hand off to the 'ended' event
+            if (Date.now() > deadline) { show(current + 1); return; }
+            timer = setTimeout(poll, 400);
+          })();
         }
 
         function show(n) {
