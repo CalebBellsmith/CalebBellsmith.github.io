@@ -12,7 +12,9 @@ const PROJECTS = [
       // 'poster' is the still shown before it plays and is optional.
       // For a .gif instead, delete the type and poster lines and treat it as a normal image.
       { src: 'images/scanner-demo.mp4', type: 'video', poster: 'images/placeholder.jpg', alt: 'Scanner in operation' },
-      { src: 'images/placeholder.jpg', alt: 'Slide Scanner' }
+      { src: 'images/autoscope.jpg', alt: 'Slide Scanner' },
+      { src: 'images/scanner-gui.jpg', alt: 'GUI' },
+      { src: 'images/side-profile.jpg', alt: 'Side Profile' }
     ],
     techSummary: [
       { label: 'Why',   text: 'To replace a slow, manual microscope inspection process with an automated scan which captures, screens, and analyzes an entire sample without operator involvement.' },
