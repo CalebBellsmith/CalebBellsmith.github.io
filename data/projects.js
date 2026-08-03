@@ -28,26 +28,28 @@ const PROJECTS = [
   },
 
   {
-    id: 'roller',
-    title: 'Automated Nano Film Roller',
-    subtitle: 'A motorized winding machine with closed loop encoder control, a touchscreen interface, and fully resumable cycles.',
-    thumbnail: 'images/placeholder.jpg',
-    skills: ['Embedded Systems', 'Firmware', 'Machine Design'],
-    // Built during co-op placement
-    categories: ['coop'],
+    id: 'centrifuge',
+    title: 'Centrifuge for Space',
+    subtitle: 'FILLER: one line summary of the centrifuge and what it is for.',
+    thumbnail: 'images/WSST.jpg',
+    skills: ['Mechanical Design', 'Prototyping', 'CAD'],
+    categories: ['collaborative'],
     images: [
-      { src: 'images/placeholder.jpg', alt: 'Auto Roller' }
+      { src: 'images/WSST.jpg', alt: 'Centrifuge' },
+      { src: 'images/CAD.jpg',  alt: 'CAD' },
+      { src: 'images/tip.jpg',  alt: 'Tip' },
+      { src: 'images/roof.jpg', alt: 'Roof' },
+      { src: 'images/Exo.jpg',  alt: 'Exo' }
     ],
     techSummary: [
-      { label: 'Why',   text: 'To replace a repetitive manual winding task of nano film with a machine which runs a consistent, repeatable cycle on its own, freeing an operator from standing over it.' },
-      { label: 'How',   text: 'An ESP32 runs all real time control, driving a 24V gearmotor through an H bridge with full quadrature encoder feedback, and presents a touchscreen so the machine runs completely standalone.' },
-      { label: 'Specs', text: '3600 encoder pulses per output revolution through a 56:1 gearbox, cycles stored in onboard flash, progress which survives a full power cut, and a hardware emergency stop wired directly into the DC rail. All complying with Canadian electrical and workplace regulations.' }
+      { label: 'Why',   text: 'FILLER: why this project exists and what problem the centrifuge is meant to solve.' },
+      { label: 'How',   text: 'FILLER: how it works, the approach taken, and which parts I was personally responsible for.' },
+      { label: 'Specs', text: 'FILLER: key numbers, materials, and hardware details worth calling out.' }
     ],
     writeup: [
-      { heading: 'A Machine That Runs Itself' },
-      { paragraph: 'The design is deliberately simple, geared towards daily manufacturing and roll processing. Every piece of real time control lives on the microcontroller, and the laptop app is only used to author cycles and watch telemetry. Cycles are written into onboard flash, so once a recipe is loaded the machine is fully independent and the operator drives it entirely from the touchscreen.' },
-      { paragraph: 'The entire design was largely based on workplace regulation and ESA guildlines. A stall is treated as a fault rather than something to retry, the software stop is always graceful, and the emergency stop is a mushroom switch in the DC positive rail which cuts everything at once, meaning firmware can treat every startup as a cold boot. Progress is written to flash periodically, so a cycle interrupted by a power cut can resume from the exact pulse count where it stopped.' },
-      { paragraph: 'This design will effectively eliminate the need for manual rolling, with the future option of in line scanning systems for nano film defects. ' }
+      { heading: 'Centrifuge for Space' },
+      { paragraph: 'FILLER: first paragraph. Set up the context of the project, who it was built with, and what the goal was.' },
+      { paragraph: 'FILLER: second paragraph. Describe the design and engineering work in more detail, including the interesting problems and how they were solved.' }
     ]
   },
 
@@ -153,28 +155,26 @@ const PROJECTS = [
   },
 
   {
-    id: 'centrifuge',
-    title: 'Centrifuge for Space',
-    subtitle: 'FILLER: one line summary of the centrifuge and what it is for.',
-    thumbnail: 'images/WSST.jpg',
-    skills: ['Mechanical Design', 'Prototyping', 'CAD'],
-    categories: ['collaborative'],
+    id: 'roller',
+    title: 'Automated Nano Film Roller',
+    subtitle: 'A motorized winding machine with closed loop encoder control, a touchscreen interface, and fully resumable cycles.',
+    thumbnail: 'images/placeholder.jpg',
+    skills: ['Embedded Systems', 'Firmware', 'Machine Design'],
+    // Built during co-op placement
+    categories: ['coop'],
     images: [
-      { src: 'images/WSST.jpg', alt: 'Centrifuge' },
-      { src: 'images/CAD.jpg',  alt: 'CAD' },
-      { src: 'images/tip.jpg',  alt: 'Tip' },
-      { src: 'images/roof.jpg', alt: 'Roof' },
-      { src: 'images/Exo.jpg',  alt: 'Exo' }
+      { src: 'images/placeholder.jpg', alt: 'Auto Roller' }
     ],
     techSummary: [
-      { label: 'Why',   text: 'FILLER: why this project exists and what problem the centrifuge is meant to solve.' },
-      { label: 'How',   text: 'FILLER: how it works, the approach taken, and which parts I was personally responsible for.' },
-      { label: 'Specs', text: 'FILLER: key numbers, materials, and hardware details worth calling out.' }
+      { label: 'Why',   text: 'To replace a repetitive manual winding task of nano film with a machine which runs a consistent, repeatable cycle on its own, freeing an operator from standing over it.' },
+      { label: 'How',   text: 'An ESP32 runs all real time control, driving a 24V gearmotor through an H bridge with full quadrature encoder feedback, and presents a touchscreen so the machine runs completely standalone.' },
+      { label: 'Specs', text: '3600 encoder pulses per output revolution through a 56:1 gearbox, cycles stored in onboard flash, progress which survives a full power cut, and a hardware emergency stop wired directly into the DC rail. All complying with Canadian electrical and workplace regulations.' }
     ],
     writeup: [
-      { heading: 'Centrifuge for Space' },
-      { paragraph: 'FILLER: first paragraph. Set up the context of the project, who it was built with, and what the goal was.' },
-      { paragraph: 'FILLER: second paragraph. Describe the design and engineering work in more detail, including the interesting problems and how they were solved.' }
+      { heading: 'A Machine That Runs Itself' },
+      { paragraph: 'The design is deliberately simple, geared towards daily manufacturing and roll processing. Every piece of real time control lives on the microcontroller, and the laptop app is only used to author cycles and watch telemetry. Cycles are written into onboard flash, so once a recipe is loaded the machine is fully independent and the operator drives it entirely from the touchscreen.' },
+      { paragraph: 'The entire design was largely based on workplace regulation and ESA guildlines. A stall is treated as a fault rather than something to retry, the software stop is always graceful, and the emergency stop is a mushroom switch in the DC positive rail which cuts everything at once, meaning firmware can treat every startup as a cold boot. Progress is written to flash periodically, so a cycle interrupted by a power cut can resume from the exact pulse count where it stopped.' },
+      { paragraph: 'This design will effectively eliminate the need for manual rolling, with the future option of in line scanning systems for nano film defects. ' }
     ]
   },
 
