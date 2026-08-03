@@ -49,10 +49,18 @@
     function buildCarousel(images) {
       if (!images || images.length === 0) return '';
 
-      const items = images.map((img, i) => `
+      // An entry with type: 'video' renders a <video> instead of an <img>.
+      // Plain .gif files need no type field, they work as ordinary images.
+      const items = images.map((img, i) => {
+        const media = img.type === 'video'
+          ? `<video src="${img.src}"${img.poster ? ` poster="${img.poster}"` : ''}
+                    autoplay loop muted playsinline controls preload="metadata"></video>`
+          : `<img src="${img.src}" alt="${img.alt}" loading="${i === 0 ? 'eager' : 'lazy'}">`;
+        return `
         <div class="carousel-item${i === 0 ? ' active' : ''}">
-          <img src="${img.src}" alt="${img.alt}" loading="${i === 0 ? 'eager' : 'lazy'}">
-        </div>`).join('');
+          ${media}
+        </div>`;
+      }).join('');
 
       const dots = images.length > 1 ? images.map((_, i) => `
         <button class="carousel-dot${i === 0 ? ' active' : ''}" data-index="${i}"></button>`).join('') : '';
@@ -115,6 +123,14 @@
           current = ((n % items.length) + items.length) % items.length;
           items[current].classList.add('active');
           dots[current] && dots[current].classList.add('active');
+
+          // Only let the visible slide's video play
+          items.forEach((item, i) => {
+            const vid = item.querySelector('video');
+            if (!vid) return;
+            if (i === current) { vid.play().catch(() => {}); }
+            else { vid.pause(); }
+          });
         }
 
         prev && prev.addEventListener('click', () => show(current - 1));

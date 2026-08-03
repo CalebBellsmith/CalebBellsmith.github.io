@@ -8,6 +8,10 @@ const PROJECTS = [
     // Built during co-op placement
     categories: ['coop'],
     images: [
+      // VIDEO PLACEHOLDER: drop an .mp4 into images/ and point src at it.
+      // 'poster' is the still shown before it plays and is optional.
+      // For a .gif instead, delete the type and poster lines and treat it as a normal image.
+      { src: 'images/scanner-demo.mp4', type: 'video', poster: 'images/placeholder.jpg', alt: 'Scanner in operation' },
       { src: 'images/placeholder.jpg', alt: 'Slide Scanner' }
     ],
     techSummary: [
