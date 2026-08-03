@@ -156,11 +156,15 @@ const PROJECTS = [
     id: 'centrifuge',
     title: 'Centrifuge for Space',
     subtitle: 'FILLER: one line summary of the centrifuge and what it is for.',
-    thumbnail: 'images/placeholder.jpg',
+    thumbnail: 'images/WSST.jpg',
     skills: ['Mechanical Design', 'Prototyping', 'CAD'],
     categories: ['collaborative'],
     images: [
-      { src: 'images/placeholder.jpg', alt: 'Centrifuge' }
+      { src: 'images/WSST.jpg', alt: 'Centrifuge' }
+      { src: 'images/CAD.jpg', alt: 'CAD' }
+      { src: 'images/tip.jpg', alt: 'Tip' }
+      { src: 'images/roof.jpg', alt: 'roof' }
+      { src: 'images/Exo.jpg', alt: 'Exo' }
     ],
     techSummary: [
       { label: 'Why',   text: 'FILLER: why this project exists and what problem the centrifuge is meant to solve.' },
@@ -231,11 +235,11 @@ const PROJECTS = [
     id: 'lantern',
     title: 'Lantern Light Controller',
     subtitle: 'A microcontroller swap which replaced a sealed factory controller with custom addressable lighting firmware.',
-    thumbnail: 'images/placeholder.jpg',
+    thumbnail: 'images/lantern.jpg',
     skills: ['ATtiny85', 'Firmware', 'Circuit Repair'],
     categories: ['design'],
     images: [
-      { src: 'images/placeholder.jpg', alt: 'Lantern' }
+      { src: 'images/lantern.jpg', alt: 'Lantern' }
     ],
     techSummary: [
       { label: 'Why',   text: 'The lantern string lights were locked to a single factory preset by a controller which had locked proprietary firmware, so the controller was replaced and my own code was inserted.' },
