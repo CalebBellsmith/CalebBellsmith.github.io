@@ -54,7 +54,7 @@
       const items = images.map((img, i) => {
         const media = img.type === 'video'
           ? `<video src="${img.src}"${img.poster ? ` poster="${img.poster}"` : ''}
-                    autoplay loop muted playsinline controls preload="metadata"></video>`
+                    autoplay muted playsinline controls preload="metadata"></video>`
           : `<img src="${img.src}" alt="${img.alt}" loading="${i === 0 ? 'eager' : 'lazy'}">`;
         return `
         <div class="carousel-item${i === 0 ? ' active' : ''}">
@@ -117,6 +117,33 @@
 
         if (items.length <= 1) return;
 
+        // Auto advance every 3s. A video slide instead holds the carousel until
+        // the clip finishes, rather than being cut off partway. Hovering
+        // anywhere on the carousel pauses the cycle.
+        const DELAY = 3000;
+        let timer = null;
+        let paused = false;
+
+        function stopTimer() { clearTimeout(timer); timer = null; }
+
+        function startTimer() {
+          stopTimer();
+          if (paused) return;
+
+          const vid = items[current].querySelector('video');
+          if (!vid) {
+            timer = setTimeout(() => show(current + 1), DELAY);
+            return;
+          }
+
+          // A playing video advances from its own 'ended' event so it is not cut
+          // off. This watchdog covers the cases where it never plays at all:
+          // a missing file, an unsupported codec, or autoplay being blocked.
+          timer = setTimeout(() => {
+            if (vid.error || vid.paused || vid.currentTime === 0) show(current + 1);
+          }, DELAY);
+        }
+
         function show(n) {
           items[current].classList.remove('active');
           dots[current] && dots[current].classList.remove('active');
@@ -124,18 +151,30 @@
           items[current].classList.add('active');
           dots[current] && dots[current].classList.add('active');
 
-          // Only let the visible slide's video play
+          // Only let the visible slide's video play, and restart it each time
           items.forEach((item, i) => {
             const vid = item.querySelector('video');
             if (!vid) return;
-            if (i === current) { vid.play().catch(() => {}); }
+            if (i === current) { vid.currentTime = 0; vid.play().catch(() => {}); }
             else { vid.pause(); }
           });
+
+          startTimer();
         }
+
+        items.forEach(item => {
+          const vid = item.querySelector('video');
+          if (vid) vid.addEventListener('ended', () => show(current + 1));
+        });
 
         prev && prev.addEventListener('click', () => show(current - 1));
         next && next.addEventListener('click', () => show(current + 1));
         dots.forEach((dot, i) => dot.addEventListener('click', () => show(i)));
+
+        car.addEventListener('mouseenter', () => { paused = true;  stopTimer(); });
+        car.addEventListener('mouseleave', () => { paused = false; startTimer(); });
+
+        startTimer();
       });
     }
 
