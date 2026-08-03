@@ -16,20 +16,20 @@ const PROJECTS = [
     ],
     techSummary: [
       { label: 'Why',   text: 'To replace a slow, manual microscope inspection process with an automated scan which captures, screens, and analyzes an entire sample without operator involvement.' },
-      { label: 'How',   text: 'A desktop app drives two stepper motors through an ESP32 over serial, capturing a grid of images from the microscope camera and scoring every frame for quality before it reaches analysis.' },
-      { label: 'Specs', text: 'Thirty image grid per slide, a MobileNetV3 quality classifier, a scratch detection pipeline translated from legacy MATLAB, and automatic Excel export with per sample statistics.' }
+      { label: 'How',   text: 'A desktop app drives three stepper motors through an ESP32 over serial, capturing a grid of images from the microscope camera and scoring every frame for quality before it reaches analysis.' },
+      { label: 'Specs', text: 'Customizable capture sequences, a MobileNetV3 quality classifier, a scratch detection pipeline translated from old MATLAB code, and automatic focus adjustment.' }
     ],
     writeup: [
       { heading: 'Automating a Manual Process' },
-      { paragraph: 'Inspecting a sample by hand meant an operator moving the stage, judging each field of view by eye, and recording results manually, which was both slow and inconsistent between people. The scanner moves the stage in a boustrophedon grid, captures at every position, and nudges in a small spiral to recapture whenever a frame comes back unusable, so a full slide finishes unattended.' },
-      { paragraph: 'Frame quality is scored by a MobileNetV3 classifier trained on images I labeled through a purpose built labeling tool, sorting each capture into clean, watermarked, blotched, scratched, or obstructed. Before enough training data existed the same interface fell back to a sharpness heuristic, which meant the system was useful from the first day rather than waiting on a finished model.' },
-      { paragraph: 'The analysis stage is a direct translation of a legacy MATLAB routine into Python, reproducing its morphological operations and peak finding behaviour exactly so results stayed comparable to years of prior data. Everything lands in a formatted workbook with per sample tabs, descriptive statistics, and a summary comparison across the set.' }
+      { paragraph: 'Inspecting a sample by hand meant an operator moving the stage, judging each field of view by eye, and recording results manually, which was both slow and inconsistent between people. The scanner moves the stage in a user set grid, captures at every position, and nudges in a small spiral to recapture whenever a frame comes back unusable, so a full slide finishes unattended.' },
+      { paragraph: 'Frame quality is scored by a MobileNetV3 classifier trained on 1000+ images to achieve a 99.3% consistency from old values. This same data is used to quickly check each frame for whether it"'"s focused, upon which the 3rd stepper will adjust until satisfactory. ' },
+      { paragraph: 'The analysis stage is a direct translation of older lab routines into Python, reproducing its morphological operations and peak finding behaviour exactly so results stayed comparable to years of prior data. Everything lands in a formatted workbook with per sample tabs, descriptive statistics, and a summary comparison across the set.' }
     ]
   },
 
   {
     id: 'roller',
-    title: 'Automated Take-Up Roller',
+    title: 'Automated Nano Film Roller',
     subtitle: 'A motorized winding machine with closed loop encoder control, a touchscreen interface, and fully resumable cycles.',
     thumbnail: 'images/placeholder.jpg',
     skills: ['Embedded Systems', 'Firmware', 'Machine Design'],
@@ -39,15 +39,15 @@ const PROJECTS = [
       { src: 'images/placeholder.jpg', alt: 'Auto Roller' }
     ],
     techSummary: [
-      { label: 'Why',   text: 'To replace a repetitive manual winding task with a machine which runs a consistent, repeatable cycle on its own, freeing an operator from standing over it.' },
+      { label: 'Why',   text: 'To replace a repetitive manual winding task of nano film with a machine which runs a consistent, repeatable cycle on its own, freeing an operator from standing over it.' },
       { label: 'How',   text: 'An ESP32 runs all real time control, driving a 24V gearmotor through an H bridge with full quadrature encoder feedback, and presents a touchscreen so the machine runs completely standalone.' },
-      { label: 'Specs', text: '3600 encoder pulses per output revolution through a 56:1 gearbox, cycles stored in onboard flash, progress which survives a full power cut, and a hardware emergency stop wired directly into the DC rail.' }
+      { label: 'Specs', text: '3600 encoder pulses per output revolution through a 56:1 gearbox, cycles stored in onboard flash, progress which survives a full power cut, and a hardware emergency stop wired directly into the DC rail. All complying with Canadian electrical and workplace regulations.' }
     ],
     writeup: [
       { heading: 'A Machine That Runs Itself' },
-      { paragraph: 'The design is deliberately thin client: every piece of real time control lives on the microcontroller, and the laptop app is only used to author cycles and watch telemetry. Cycles are written into onboard flash, so once a recipe is loaded the machine is fully independent and the operator drives it entirely from the touchscreen.' },
-      { paragraph: 'Safety and recovery shaped most of the architecture. A stall is treated as a fault rather than something to retry, the software stop is always graceful, and the emergency stop is a mushroom switch in the DC positive rail which cuts everything at once, meaning firmware can treat every startup as a cold boot. Progress is written to flash periodically, so a cycle interrupted by a power cut can resume from the exact pulse count where it stopped.' },
-      { paragraph: 'The most interesting debugging came from a boot loop which survived several wrong theories. Rather than keep guessing I added a persistent breadcrumb counter which survives a crash reset and prints the last completed startup stage on screen, then pulled a real backtrace and resolved it to an exact line. The cause turned out to be a float in a graphics library format string, where unsupported float handling silently shifted every following argument and dereferenced a null pointer.' }
+      { paragraph: 'The design is deliberately simple, geared towards daily manufacturing and roll processing. Every piece of real time control lives on the microcontroller, and the laptop app is only used to author cycles and watch telemetry. Cycles are written into onboard flash, so once a recipe is loaded the machine is fully independent and the operator drives it entirely from the touchscreen.' },
+      { paragraph: 'The entire design was largely based on workplace regulation and ESA guildlines. A stall is treated as a fault rather than something to retry, the software stop is always graceful, and the emergency stop is a mushroom switch in the DC positive rail which cuts everything at once, meaning firmware can treat every startup as a cold boot. Progress is written to flash periodically, so a cycle interrupted by a power cut can resume from the exact pulse count where it stopped.' },
+      { paragraph: 'This design will effectively eliminate the need for manual rolling, with the future option of in line scanning systems for nano film defects. ' }
     ]
   },
 
@@ -219,11 +219,11 @@ const PROJECTS = [
     ],
     writeup: [
       { heading: 'Distortion Analysis' },
-      { paragraph: 'The original workflow moved images through a manual editing step before a legacy script could read them, which made a full batch a slow afternoon. The replacement reads raw camera files directly, automatically crops and de-rotates each frame against a reference target, then finds vertical edges once from a mean gradient profile and refines them row by row, which is a large speed up while producing numerically identical output to the routine it replaced.' },
-      { paragraph: 'Each edge has a quadratic baseline removed before peaks are measured against configurable criteria, and flagged events are boxed onto an output image so a person can verify what the software decided. A run exports a workbook with summary, parameter, and criteria tabs, generates distribution plots, and appends to a running master file so results accumulate across months. I validated it against three paired batches of historical data to confirm the two pipelines agree before retiring the old one.' },
+      { paragraph: 'The original process involved manual photoshop editting before an outdated MATLAB script could read them, which made a full batch frustratingly slow. The replacement reads raw camera files directly, automatically crops and rotates each frame against a reference target, then finds vertical edges once from a mean gradient profile and refines them row by row, which is a large speed up while producing numerically identical output to the routine it replaced.' },
+      { paragraph: 'Each edge has a quadratic baseline removed before peaks are measured against configurable criteria, and flagged events are boxed onto an output image so a person can verify what the software decided. A run exports a workbook with summary, parameter, and criteria tabs, generates distribution plots, and appends to a running master file so results accumulate across months. I validated it against five paired batches of historical data to confirm the two pipelines agree before retiring the old one.' },
       { heading: 'Contact Angle Measurement' },
-      { paragraph: 'The second tool measures droplet contact angles from backlit side profile photographs. For every column it anchors to the local brightness peak and scans downward for the first sustained dark run, which builds a silhouette that survives uneven and partially filled backlighting. A RANSAC fit finds the substrate baseline, and the angle itself is the median of three independent estimators, with the spread between them used as an automatic confidence flag rather than a number the operator has to trust blindly.' },
-      { paragraph: 'A second detection regime handles translucent droplets on reflective substrates, where the light passes through rather than casting a silhouette. There the reflection becomes the measurement, since the contact line is the axis about which the droplet and its mirror image are symmetric. The tool picks its own regime per image and falls back to click assisted modes when a sample is genuinely ambiguous.' }
+      { paragraph: 'This tool measures droplet contact angles from backlit side profile photographs. For every column it anchors to the local brightness peak and scans downward for the first sustained dark run, which builds a silhouette that survives uneven and partially filled backlighting. A RANSAC fit finds the substrate baseline, and the angle itself is the median of three independent estimators, with the spread between them used as an automatic confidence flag rather than a number the operator has to trust blindly.' },
+      { paragraph: 'A second detection regime handles translucent droplets on reflective substrates, where the light passes through rather than casting a silhouette. In this case reflection becomes the measurement, since the contact line is the axis for which the droplet and its mirror image are symmetric. The tool picks its own regime per image and falls back to click assisted modes when a sample is ambiguous.' }
     ]
   },
 
@@ -238,13 +238,13 @@ const PROJECTS = [
       { src: 'images/placeholder.jpg', alt: 'Lantern' }
     ],
     techSummary: [
-      { label: 'Why',   text: 'The lantern string lights were locked to a single factory preset by a controller which had no way to be reprogrammed, so the control was replaced rather than the hardware.' },
+      { label: 'Why',   text: 'The lantern string lights were locked to a single factory preset by a controller which had locked proprietary firmware, so the controller was replaced and my own code was inserted.' },
       { label: 'How',   text: 'A Digispark ATtiny85 taps the existing 5V rail, and the data trace running to the light string was cut and intercepted, leaving the original controller in place to keep running the main lamp.' },
       { label: 'Specs', text: 'Thirty three individually addressable nodes across nine modes, cycled by the lantern original button with a short press to change mode and a hold to turn off.' }
     ],
     writeup: [
       { heading: 'Reverse Engineering the Lantern' },
-      { paragraph: 'The first job was working out what the factory controller actually did. Probing the board found the data line feeding the light string and the button input for the main lamp, but no serial interface anywhere, which pointed to a one time programmable chip that could never be reflashed. Rather than replace the whole board I cut a single trace and intercepted only the data line, so the original controller still runs the main lamp and the several amps of string current never pass through the board I added.' },
+      { paragraph: 'The first hurdle was working out what the factory controller actually did. This involved probing the board found the data line feeding the light string and the button input for the main lamp, but no serial interface anywhere, which pointed to a one time programmable chip that could never be reflashed. Rather than replace the whole board I cut a single trace and intercepted only the data line, so the original controller still runs the main lamp and the several amps of string current never pass through the board I added.' },
       { paragraph: 'The string itself was mislabeled. Listed as four channel, it turned out to be three channel with an unusual colour order, which only became clear after a red test pattern came back green. The stock library also produced scrambled output because it has no timing table for the unusual clock speed of this particular board, so the driver came from a different source whose timing buckets covered it.' },
       { paragraph: 'The most satisfying part was a fault which looked like a firmware bug and was not. Multi colour modes kept losing channels in a strangely consistent order, blue first and red last, which is forward voltage order and therefore a power problem rather than a data one. The culprit was a damaged MOSFET in the power path passing current only through its body diode, so the rail held fine at low current and collapsed under load. Bridging it confirmed the diagnosis instantly, and every colour mode I had been carefully compensating became correct again.' }
     ]
