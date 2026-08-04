@@ -1,0 +1,23 @@
+name: Validate site data
+
+# Runs on every push and pull request, including edits made through the
+# GitHub web editor. If data/projects.js has a syntax error or points at a
+# missing image, this fails and GitHub emails you the exact line.
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  projects-data:
+    name: Check projects.js
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate data/projects.js
+        run: node scripts/validate-projects.js
