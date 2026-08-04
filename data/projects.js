@@ -270,7 +270,7 @@ const PROJECTS = [
     categories: ['coop'],
     images: [
       { src: 'images/tilt_testr.jpg', alt: 'Roll Angle Test Rig' },
-      { src: 'images/tilt_test.jpg', alt: 'Roll Angle GUI }
+      { src: 'images/tilt_test.jpg', alt: 'Roll Angle GUI' }
     ],
     techSummary: [
       { label: 'Why',   text: 'To measure roll off angle repeatably, replacing a hand tilted fixture where one person had to control the tilt, watch for release, and read the angle all at the same moment.' },
