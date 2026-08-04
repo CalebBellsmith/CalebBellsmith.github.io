@@ -212,12 +212,15 @@ const PROJECTS = [
     id: 'optimization',
     title: 'Optimization Code',
     subtitle: 'Two computer vision tools which replaced manual optical measurement with automated, repeatable batch analysis.',
-    thumbnail: 'images/placeholder.jpg',
+    thumbnail: 'images/distortion_SOP.jpg',
     skills: ['Computer Vision', 'Python', 'Data Analysis'],
     // Built during co-op placement
     categories: ['coop'],
     images: [
-      { src: 'images/placeholder.jpg', alt: 'Optimization Code' }
+      { src: 'images/distortion_SOP.jpg', alt: 'Distortion 1' },
+      { src: 'images/CA_1.jpg', alt: 'CA 1' },
+      { src: 'images/distortion.jpg', alt: 'Distortion 2' },
+      { src: 'images/CA_2.jpg', alt: 'CA 2' }
     ],
     techSummary: [
       { label: 'Why',            text: 'Manual optical measurements were slow and varied noticeably between operators, so both tools were built to produce repeatable numbers straight from photographs with no human judgement in the loop.' },
