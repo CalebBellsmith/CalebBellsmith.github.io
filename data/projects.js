@@ -261,12 +261,13 @@ const PROJECTS = [
     id: 'tilt',
     title: 'Roll Angle Test Rig',
     subtitle: 'A motorized tilting platform which measures the angle at which droplets release from a surface.',
-    thumbnail: 'images/placeholder.jpg',
+    thumbnail: 'images/tilt_testr.jpg',
     skills: ['Mechatronics', 'Python', 'CAD'],
     // Built during co-op placement
     categories: ['coop'],
     images: [
-      { src: 'images/placeholder.jpg', alt: 'Roll Angle Test Rig' }
+      { src: 'images/tilt_testr.jpg', alt: 'Roll Angle Test Rig' },
+      { src: 'images/tilt_test.jpg', alt: 'Roll Angle GUI }
     ],
     techSummary: [
       { label: 'Why',   text: 'To measure roll off angle repeatably, replacing a hand tilted fixture where one person had to control the tilt, watch for release, and read the angle all at the same moment.' },
