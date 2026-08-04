@@ -158,30 +158,6 @@ const PROJECTS = [
   },
 
   {
-    id: 'roller',
-    title: 'Automated Nano Film Roller',
-    subtitle: 'A motorized winding machine with closed loop encoder control, a touchscreen interface, and fully resumable cycles.',
-    thumbnail: 'images/placeholder.jpg',
-    skills: ['Embedded Systems', 'Firmware', 'Machine Design'],
-    // Built during co-op placement
-    categories: ['coop'],
-    images: [
-      { src: 'images/placeholder.jpg', alt: 'Auto Roller' }
-    ],
-    techSummary: [
-      { label: 'Why',   text: 'To replace a repetitive manual winding task of nano film with a machine which runs a consistent, repeatable cycle on its own, freeing an operator from standing over it.' },
-      { label: 'How',   text: 'An ESP32 runs all real time control, driving a 24V gearmotor through an H bridge with full quadrature encoder feedback, and presents a touchscreen so the machine runs completely standalone.' },
-      { label: 'Specs', text: '3600 encoder pulses per output revolution through a 56:1 gearbox, cycles stored in onboard flash, progress which survives a full power cut, and a hardware emergency stop wired directly into the DC rail. All complying with Canadian electrical and workplace regulations.' }
-    ],
-    writeup: [
-      { heading: 'A Machine That Runs Itself' },
-      { paragraph: 'The design is deliberately simple, geared towards daily manufacturing and roll processing. Every piece of real time control lives on the microcontroller, and the laptop app is only used to author cycles and watch telemetry. Cycles are written into onboard flash, so once a recipe is loaded the machine is fully independent and the operator drives it entirely from the touchscreen.' },
-      { paragraph: 'The entire design was largely based on workplace regulation and ESA guildlines. A stall is treated as a fault rather than something to retry, the software stop is always graceful, and the emergency stop is a mushroom switch in the DC positive rail which cuts everything at once, meaning firmware can treat every startup as a cold boot. Progress is written to flash periodically, so a cycle interrupted by a power cut can resume from the exact pulse count where it stopped.' },
-      { paragraph: 'This design will effectively eliminate the need for manual rolling, with the future option of in line scanning systems for nano film defects. ' }
-    ]
-  },
-
-  {
     id: 'pcb',
     title: 'Custom EMG Signal Processing PCB',
     subtitle: 'A hardware solution for biopotential data collection and wireless transmission.',
@@ -308,6 +284,30 @@ const PROJECTS = [
       { paragraph: 'Jolt is a wireless, wearable arm sleeve that turns natural arm motion into full computer cursor control. An IMU mounted on the sleeve tracks the orientation and movement of your forearm in real time, translating tilts and gestures into smooth, proportional mouse movement across your screen. No desk, no surface, no traditional mouse required.' },
       { paragraph: 'The hardware is built around an ESP32, which reads data from the IMU and an EMG sensor, then broadcasts wirelessly over Bluetooth, pairing with any computer exactly like a standard Bluetooth mouse. A physical button on the sleeve lets you instantly freeze the cursor and re zero its position, so you can reposition your arm without sending the pointer flying across the screen. Flexing your forearm triggers the EMG sensor to register a click, keeping the interaction feel intuitive and physical.' },
       { paragraph: 'Alongside the sleeve sits a companion web dashboard where you can monitor and tune the system in real time: adjusting cursor sensitivity, toggling the freeze state, repositioning the EMG sensor\'s reference point, and watching live data from the sensors. Everything that would otherwise require digging into firmware can be controlled from the browser.' }
+    ]
+  },
+
+  {
+    id: 'roller',
+    title: 'Automated Nano Film Roller',
+    subtitle: 'A motorized winding machine with closed loop encoder control, a touchscreen interface, and fully resumable cycles.',
+    thumbnail: 'images/placeholder-dark.jpg',
+    skills: ['Embedded Systems', 'Firmware', 'Machine Design'],
+    // Built during co-op placement
+    categories: ['coop'],
+    images: [
+      { src: 'images/placeholder-dark.jpg', alt: 'Auto Roller' }
+    ],
+    techSummary: [
+      { label: 'Why',   text: 'To replace a repetitive manual winding task of nano film with a machine which runs a consistent, repeatable cycle on its own, freeing an operator from standing over it.' },
+      { label: 'How',   text: 'An ESP32 runs all real time control, driving a 24V gearmotor through an H bridge with full quadrature encoder feedback, and presents a touchscreen so the machine runs completely standalone.' },
+      { label: 'Specs', text: '3600 encoder pulses per output revolution through a 56:1 gearbox, cycles stored in onboard flash, progress which survives a full power cut, and a hardware emergency stop wired directly into the DC rail. All complying with Canadian electrical and workplace regulations.' }
+    ],
+    writeup: [
+      { heading: 'A Machine That Runs Itself' },
+      { paragraph: 'The design is deliberately simple, geared towards daily manufacturing and roll processing. Every piece of real time control lives on the microcontroller, and the laptop app is only used to author cycles and watch telemetry. Cycles are written into onboard flash, so once a recipe is loaded the machine is fully independent and the operator drives it entirely from the touchscreen.' },
+      { paragraph: 'The entire design was largely based on workplace regulation and ESA guildlines. A stall is treated as a fault rather than something to retry, the software stop is always graceful, and the emergency stop is a mushroom switch in the DC positive rail which cuts everything at once, meaning firmware can treat every startup as a cold boot. Progress is written to flash periodically, so a cycle interrupted by a power cut can resume from the exact pulse count where it stopped.' },
+      { paragraph: 'This design will effectively eliminate the need for manual rolling, with the future option of in line scanning systems for nano film defects. ' }
     ]
   },
 

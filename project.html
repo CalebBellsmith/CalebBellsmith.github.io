@@ -122,6 +122,7 @@
         // anywhere on the carousel pauses the cycle.
         const DELAY = 3000;     // still image dwell time
         const GIVE_UP = 12000;  // how long to wait for a video to start before skipping it
+        const STALL   = 2500;   // how long a started video may stop progressing before skipping
         let timer = null;
         let paused = false;
 
@@ -138,17 +139,31 @@
           }
 
           // A playing video advances from its own 'ended' event so it is never
-          // cut off mid clip. This watchdog only handles a video that never
-          // gets going: missing file, bad codec, or autoplay blocked. It polls
-          // rather than checking once, because a large file can take several
-          // seconds to buffer and must not be skipped while it is still loading.
-          const deadline = Date.now() + GIVE_UP;
+          // cut off mid clip. This watchdog keeps polling the whole time it is
+          // on screen, because the carousel must never be left stranded: the
+          // clip may fail to load, stall while buffering, or be paused by the
+          // browser to save power, and none of those ever fire 'ended'.
+          const startBy = Date.now() + GIVE_UP;
+          let lastTime = -1;
+          let movingSince = Date.now();
+
           (function poll() {
             if (paused) return;
             if (vid.error) { show(current + 1); return; }
-            const playing = !vid.paused && vid.currentTime > 0;
-            if (playing) return;              // hand off to the 'ended' event
-            if (Date.now() > deadline) { show(current + 1); return; }
+
+            if (vid.currentTime !== lastTime) {
+              lastTime = vid.currentTime;
+              movingSince = Date.now();
+            }
+
+            if (vid.currentTime === 0) {
+              // Still hasn't started. Give it a while, then move on.
+              if (Date.now() > startBy) { show(current + 1); return; }
+            } else if (Date.now() - movingSince > STALL) {
+              // Started, then stopped progressing: buffering stall, or paused.
+              show(current + 1); return;
+            }
+
             timer = setTimeout(poll, 400);
           })();
         }
