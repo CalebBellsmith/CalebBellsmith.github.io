@@ -288,6 +288,40 @@ main { flex: 1; }
   padding-top: 0.1rem;
 }
 
+/* Two or more roles at the same organisation, laid out like the resume:
+   the org name and overall span sit in .exp-meta, each role beneath it. */
+.exp-roles { flex: 1; }
+
+.exp-subrole + .exp-subrole {
+  margin-top: 1.15rem;
+  padding-top: 1.15rem;
+  border-top: 1px dashed var(--border);
+}
+
+.exp-subrole-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  margin-bottom: 0.55rem;
+}
+
+.exp-subrole-title {
+  font-family: var(--font-body);
+  font-size: 0.87rem;
+  font-style: italic;
+  color: var(--text);
+}
+
+.exp-subrole-date {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
 /* ---- AWARDS ---- */
 .award-item {
   padding: 1.1rem 0;
