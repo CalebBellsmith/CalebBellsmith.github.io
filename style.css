@@ -974,3 +974,68 @@ footer {
   .proj-detail-header { padding: 3rem 0 2rem; }
   .carousel-item img  { height: 260px; }
 }
+
+
+/* ---- RESUME PAGE (embedded PDF) ---- */
+.resume-page { padding: 3.5rem 0 5rem; }
+
+.resume-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.resume-heading {
+  font-family: var(--font-head);
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.resume-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+
+.resume-viewer {
+  width: 100%;
+  aspect-ratio: 8.5 / 11;      /* one letter page, so it reads like the real thing */
+  max-height: 1500px;
+  border: 2px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+  background: var(--surface-2);
+  transition: border-color 0.25s;
+}
+
+.resume-viewer iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Shown only on narrow screens, where inline PDFs are unreliable */
+.resume-mobile { display: none; }
+
+@media (max-width: 700px) {
+  .resume-viewer { display: none; }
+
+  .resume-mobile {
+    display: block;
+    text-align: center;
+    padding: 3rem 1.5rem;
+    border: 2px dashed var(--border);
+    border-radius: var(--r);
+    background: var(--surface-2);
+  }
+  .resume-mobile p {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+}

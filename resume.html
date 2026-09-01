@@ -30,163 +30,27 @@
 
   <main>
     <div class="page-container">
-      <div class="resume-doc page-fade">
+      <div class="resume-page page-fade">
 
-        <div class="r-header">
-          <h1>Caleb Bellsmith</h1>
-          <p>289-971-6729 &nbsp;|&nbsp; cbellsmi@uwaterloo.ca &nbsp;|&nbsp; calebbellsmith.github.io &nbsp;|&nbsp; linkedin.com/in/caleb-bellsmith</p>
+        <div class="resume-bar">
+          <h1 class="resume-heading">Resume</h1>
+          <div class="resume-actions">
+            <a id="resumeOpen" class="btn-ghost" target="_blank" rel="noopener">Open in new tab</a>
+            <a id="resumeDownload" class="btn-primary" download>Download PDF</a>
+          </div>
         </div>
 
-        <section class="r-section">
-          <h2 class="r-section-title">Technical Skills</h2>
-          <div class="r-skills-grid">
-            <div class="r-skill-row"><span class="r-skill-label">Languages</span><span>C++, C, Python, HTML, LaTeX, Visual Basic, MATLAB, CSS, JavaScript</span></div>
-            <div class="r-skill-row"><span class="r-skill-label">Tools</span><span>SolidWorks, Fusion360, AutoCAD, VSCode, KiCad, CLion, Bamboo, Arduino IDE, GitHub, GitLab</span></div>
-            <div class="r-skill-row"><span class="r-skill-label">Fabrication</span><span>CNC Machining, 3D Printing, Soldering, Manual Prototyping, Woodworking, Welding</span></div>
-          </div>
-        </section>
+        <!-- Desktop: the PDF renders inline here -->
+        <div class="resume-viewer">
+          <iframe id="resumeFrame" title="Caleb Bellsmith resume" loading="lazy"></iframe>
+        </div>
 
-        <section class="r-section">
-          <h2 class="r-section-title">Experience</h2>
-
-          <div class="r-entry">
-            <div class="r-entry-head">
-              <span class="r-org">Alchemy Nano</span>
-              <span class="r-role">Lab Systems &amp; Prototyping Technician</span>
-              <span class="r-date">2026 – Present</span>
-            </div>
-            <ul class="r-bullets">
-              <li>Designed and manufactured custom testing equipment to enable higher precision and new styles of testing for nanocomposite film samples through custom CV, GUI, and ML models.</li>
-              <li>Performed and optimized lab testing for mechanical and optical properties of Exoshield, an automotive nanocomposite film.</li>
-            </ul>
-          </div>
-
-          <div class="r-entry">
-            <div class="r-entry-head">
-              <span class="r-org">UWaterloo Space Soldering Team</span>
-              <span class="r-role">Mechanical Designer</span>
-              <span class="r-date">2025 – Present</span>
-            </div>
-            <ul class="r-bullets">
-              <li>Constructing a centrifugal structure for a microgravity soldering experiment selected for the CAN-RGX Flight Campaign 2026 (NRC &amp; CSA partnership). Technology is patent pending with commercial applications in space manufacturing and repair.</li>
-              <li>Personally designed and fabricated the rotation mechanism, wire feeding assembly, and general motor assembly for the centrifuge, while running preliminary prototyping tests on the design.</li>
-            </ul>
-          </div>
-
-          <div class="r-entry">
-            <div class="r-entry-head">
-              <span class="r-org">True North Bio-competition</span>
-              <span class="r-role">Electrical Designer</span>
-              <span class="r-date">2025 – 2026</span>
-            </div>
-            <ul class="r-bullets">
-              <li>Designed a custom PCB which served as the complete electrical control framework for a lower limb exoskeleton. The PCB utilized EMG and IMU sensors to map and interpret user movement into athletic recovery data.</li>
-            </ul>
-          </div>
-
-          <div class="r-entry">
-            <div class="r-entry-head">
-              <span class="r-org">Biomechatronics Design Team</span>
-              <span class="r-role">Mechanical Designer</span>
-              <span class="r-date">2025 – 2026</span>
-            </div>
-            <ul class="r-bullets">
-              <li>Developing components for mechanical humanoid orthotic devices, focusing on augmenting human hand strength.</li>
-            </ul>
-          </div>
-
-          <div class="r-entry">
-            <div class="r-entry-head">
-              <span class="r-org">BioTEC Conference</span>
-              <span class="r-role">Sponsorship Lead</span>
-              <span class="r-date">2025 – Present</span>
-            </div>
-            <ul class="r-bullets">
-              <li>Securing partnerships and corporate outreach for Canada's largest student run biotechnology conference.</li>
-            </ul>
-          </div>
-        </section>
-
-        <section class="r-section">
-          <h2 class="r-section-title">Projects</h2>
-
-          <div class="r-entry">
-            <div class="r-entry-head">
-              <span class="r-org">EMG Controlled Wireless Mouse</span>
-              <span class="r-tech">IMU &amp; EMG Sensors, Web Dev</span>
-            </div>
-            <ul class="r-bullets">
-              <li>Created a wearable human machine interface using an ESP32 and IMU to translate arm tilt into mouse movement and EMG sensors to trigger clicks via muscle flexion.</li>
-              <li>Developed a full stack web dashboard to monitor device state and calibrate user specific parameters including sensitivity, Bluetooth status, and muscle group mapping.</li>
-            </ul>
-          </div>
-
-          <div class="r-entry">
-            <div class="r-entry-head">
-              <span class="r-org">Precision Robotic Arm</span>
-              <span class="r-tech">ESP32, C++, Servo Control</span>
-            </div>
-            <ul class="r-bullets">
-              <li>Designed and hand built a custom 5 DoF robotic arm, including circuit design and assembly, high pressure grip systems, and fully 3D printed bearings.</li>
-              <li>Currently being integrated with the EMG wireless arm sleeve to enable motion mirroring, translating human arm movement directly into real time robotic actuation.</li>
-            </ul>
-          </div>
-
-          <div class="r-entry">
-            <div class="r-entry-head">
-              <span class="r-org">Custom Cedar Strip Canoe</span>
-              <span class="r-tech">CAD, CNC Machining</span>
-            </div>
-            <ul class="r-bullets">
-              <li>Computer modeled and fabricated a custom canoe; integrated CNC machined internal molds with traditional woodworking to achieve a smooth seamless finish.</li>
-            </ul>
-          </div>
-
-          <div class="r-entry">
-            <div class="r-entry-head">
-              <span class="r-org">Auto Solving Maze</span>
-              <span class="r-tech">ESP32, C++, Computer Vision</span>
-            </div>
-            <ul class="r-bullets">
-              <li>Developed a servo powered tilting platform and integrated a webcam based computer vision system to enable autonomous maze solving and real time path finding, as well as an ML model to optimize solve time.</li>
-            </ul>
-          </div>
-        </section>
-
-        <section class="r-section">
-          <h2 class="r-section-title">Education &amp; Leadership</h2>
-
-          <div class="r-entry">
-            <div class="r-entry-head">
-              <span class="r-org">University of Waterloo</span>
-              <span class="r-role">Candidate for B.A.Sc. in Biomedical Engineering Co-op</span>
-            </div>
-            <ul class="r-bullets">
-              <li><strong>WEEF Representative:</strong> Nominated by class to evaluate technical proposals for student project funding and represented class interests.</li>
-            </ul>
-          </div>
-
-          <div class="r-entry">
-            <div class="r-entry-head">
-              <span class="r-org">Lifeguard &amp; Swimming Instructor</span>
-              <span class="r-role">Instructor, NLS, CPR Certified</span>
-              <span class="r-date">2023 – 2025</span>
-            </div>
-            <ul class="r-bullets">
-              <li>Selected for competitive outdoor pool placement (Top 4% of 250+ staff) based on performance and leadership.</li>
-            </ul>
-          </div>
-
-          <div class="r-entry">
-            <div class="r-entry-head">
-              <span class="r-org">Distinctions and Awards</span>
-              <span class="r-tech">HHCS, TDCH</span>
-            </div>
-            <ul class="r-bullets">
-              <li>Governor General's Academic Medal, Sir Isaac Newton Physics Award, TDCH Valedictorian, HHCS Valedictorian.</li>
-            </ul>
-          </div>
-        </section>
+        <!-- Small screens: most mobile browsers refuse to render a PDF in an
+             iframe, so they get a clear card instead of a blank grey box -->
+        <div class="resume-mobile">
+          <p>Resumes read poorly squeezed onto a phone screen, so this one opens full size.</p>
+          <a id="resumeOpenMobile" class="btn-primary" target="_blank" rel="noopener">Open resume PDF</a>
+        </div>
 
       </div>
     </div>
@@ -201,6 +65,52 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    /* The resume is whatever PDF is sitting in images/ on GitHub, so updating it
+       means replacing the file and nothing else. This asks GitHub what is
+       actually in that folder, then falls back to the known filename if the
+       lookup fails for any reason (offline, rate limited, API down).
+
+       If several PDFs are present, one whose name contains "resume" or "cv"
+       wins; otherwise the first alphabetically. */
+    const FALLBACK_PDF = 'images/Caleb_Bellsmith.pdf';
+    const CONTENTS_API =
+      'https://api.github.com/repos/CalebBellsmith/CalebBellsmith.github.io/contents/images';
+
+    async function findResumePdf() {
+      try {
+        const ctrl = new AbortController();
+        const bail = setTimeout(() => ctrl.abort(), 3000);
+        const res = await fetch(CONTENTS_API, { signal: ctrl.signal });
+        clearTimeout(bail);
+        if (!res.ok) throw new Error('lookup failed');
+
+        const pdfs = (await res.json())
+          .filter(f => f.type === 'file' && /\.pdf$/i.test(f.name))
+          .sort((a, b) => a.name.localeCompare(b.name));
+        if (!pdfs.length) throw new Error('no pdf in images/');
+
+        const pick = pdfs.find(f => /resume|cv/i.test(f.name)) || pdfs[0];
+        // The sha changes whenever the file does, which sidesteps browser caching
+        return 'images/' + encodeURIComponent(pick.name) + '?v=' + pick.sha.slice(0, 8);
+      } catch (err) {
+        return FALLBACK_PDF;
+      }
+    }
+
+    findResumePdf().then(url => {
+      // Hide the built in PDF toolbar and sidebar in the embed so it sits
+      // quietly in the page. The real links keep them, since anyone opening
+      // or downloading the file wants those controls.
+      const embedded = url + '#toolbar=0&navpanes=0&scrollbar=0&view=FitH';
+
+      document.getElementById('resumeFrame').src = embedded;
+      document.getElementById('resumeOpen').href = url;
+      document.getElementById('resumeOpenMobile').href = url;
+      document.getElementById('resumeDownload').href = url;
+    });
+  </script>
 
 </body>
 </html>
