@@ -119,19 +119,19 @@ const PROJECTS = [
       { src: 'images/placeholder-dark.jpg', alt: 'Stark Sight' }
     ],
     techSummary: [
-      { label: 'Why',   text: 'To control a computer the way Tony Stark does, with hand gestures in the air, working alongside the normal keyboard and trackpad rather than replacing them.' },
+      { label: 'Why',   text: 'Frankly, I figured it would be cool to try controlling a computer with your hands like in movies. Sensors are too cumbersome, hence, I gave CV a try. Once I\'d started this quickly became one of the most enjoyable projects to work on in my portfolio... it\'s just fun.' },
       { label: 'How',   text: 'MediaPipe tracks 21 points per hand plus the upper body from the built in webcam, and three independent classifiers vote on each pose before keyboard and mouse events are sent to the OS.' },
       { label: 'Specs', text: 'Runs entirely on device at around 30 fps on CPU. A pose network trained on 1.3M HaGRIDv2 hands scores 98.6% on people it never saw, then fine tunes to each user after an 8 minute calibration.' }
     ],
     writeup: [
       { heading: 'Three Votes Per Frame' },
-      { paragraph: 'Every frame, the hand landmarks are smoothed with a One Euro filter, which settles still fingers heavily while adding only about 13 ms of lag to a fast pinch. A quality gate then throws out hands that are partly out of frame or that jump faster than fingers physically can. What survives is judged three ways: my own geometric rules built on finger curl, spread and palm tilt, Google\'s MediaPipe gesture classifier, and a pose network I trained myself. A pose has to win the vote and then hold for 3 of the last 5 frames, so a single bad frame can never toggle a mode.' },
-      { paragraph: 'The pose network is a small MLP trained on HaGRIDv2, a public dataset of around 1.3 million annotated hands from 66,000 people. Mapping its classes onto my gesture set, and folding 485,000 near miss and no gesture hands into a single "none" class, gave 98.6% accuracy on a held out set of people, with only 0.6% of resting hands mistaken for a gesture. A confident "none" from the network can veto a lone rule, which is where most of the false triggers were removed.' },
+      { paragraph: 'Hand landmarks are smoothed and filtered for tracking glitches, then judged three ways: my own geometric rules, Google\'s MediaPipe classifier, and a pose network I trained myself. A pose has to win the vote and hold for 3 of 5 frames, so one bad frame never fires a gesture.' },
+      { paragraph: 'The network is a small MLP trained on 1.3 million hands from HaGRIDv2. It hits 98.6% accuracy on unseen people and mistakes only 0.6% of resting hands for a gesture, which is where most false triggers were cut.' },
       { heading: 'Learning From Its User' },
-      { paragraph: 'Calibration records about 8 minutes of a user performing each gesture, plus 45 seconds of ordinary typing and trackpad use so the system learns what to ignore. Only the landmark coordinates are kept, never camera images. A background tuner then fine tunes the network to that person\'s hands, keeping the personal version only if it beats the general one on held out data. It then replays every recording through the live code, alongside randomly varied copies that are faster, further away, rotated or motion blurred, and moves each threshold to the centre of its best scoring range, counting false triggers three times as heavily as misses.' },
-      { paragraph: 'Real use feeds back into the same loop. A hotkey marks a gesture that should not have fired or one that was missed, and undoing an action straight away, such as reopening a tab a gesture just closed, is logged automatically. Re-tuning from those sessions fixes whatever is still going wrong without needing a fresh calibration. Users can also record their own gestures in 5 to 10 samples, matched with k nearest neighbours for poses and dynamic time warping for motions.' },
+      { paragraph: 'An 8 minute calibration records each gesture plus normal typing, so the system learns what to ignore. A background tuner then fits the network and every threshold to that person\'s hands by replaying the recordings, with false triggers weighted three times as heavily as misses.' },
+      { paragraph: 'Hotkeys flag wrong or missed gestures during real use, feeding the next re-tune. Users can also teach it their own gestures from just 5 to 10 samples.' },
       { heading: 'The Gesture Set' },
-      { paragraph: 'Gestures were chosen from what the research and my own calibration data showed could be recognised reliably. Anything that could happen by accident while typing or talking needs a deliberate entry, like a held pose or the off hand acting as a switch.' }
+      { paragraph: 'Anything that could happen by accident while typing or talking needs a deliberate entry, like a held pose or the off hand acting as a switch.' }
     ],
     modes: [
       {
