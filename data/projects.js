@@ -109,6 +109,82 @@ const PROJECTS = [
   },
 
   {
+    id: 'starksight',
+    title: 'Stark Sight',
+    subtitle: 'Webcam hand gesture control for a computer, with a personalised pose network that learns from its user.',
+    thumbnail: 'images/placeholder-dark.jpg',
+    skills: ['Computer Vision', 'Machine Learning', 'Python'],
+    categories: ['design'],
+    images: [
+      { src: 'images/placeholder-dark.jpg', alt: 'Stark Sight' }
+    ],
+    techSummary: [
+      { label: 'Why',   text: 'To control a computer the way Tony Stark does, with hand gestures in the air, working alongside the normal keyboard and trackpad rather than replacing them.' },
+      { label: 'How',   text: 'MediaPipe tracks 21 points per hand plus the upper body from the built in webcam, and three independent classifiers vote on each pose before keyboard and mouse events are sent to the OS.' },
+      { label: 'Specs', text: 'Runs entirely on device at around 30 fps on CPU. A pose network trained on 1.3M HaGRIDv2 hands scores 98.6% on people it never saw, then fine tunes to each user after an 8 minute calibration.' }
+    ],
+    writeup: [
+      { heading: 'Three Votes Per Frame' },
+      { paragraph: 'Every frame, the hand landmarks are smoothed with a One Euro filter, which settles still fingers heavily while adding only about 13 ms of lag to a fast pinch. A quality gate then throws out hands that are partly out of frame or that jump faster than fingers physically can. What survives is judged three ways: my own geometric rules built on finger curl, spread and palm tilt, Google\'s MediaPipe gesture classifier, and a pose network I trained myself. A pose has to win the vote and then hold for 3 of the last 5 frames, so a single bad frame can never toggle a mode.' },
+      { paragraph: 'The pose network is a small MLP trained on HaGRIDv2, a public dataset of around 1.3 million annotated hands from 66,000 people. Mapping its classes onto my gesture set, and folding 485,000 near miss and no gesture hands into a single "none" class, gave 98.6% accuracy on a held out set of people, with only 0.6% of resting hands mistaken for a gesture. A confident "none" from the network can veto a lone rule, which is where most of the false triggers were removed.' },
+      { heading: 'Learning From Its User' },
+      { paragraph: 'Calibration records about 8 minutes of a user performing each gesture, plus 45 seconds of ordinary typing and trackpad use so the system learns what to ignore. Only the landmark coordinates are kept, never camera images. A background tuner then fine tunes the network to that person\'s hands, keeping the personal version only if it beats the general one on held out data. It then replays every recording through the live code, alongside randomly varied copies that are faster, further away, rotated or motion blurred, and moves each threshold to the centre of its best scoring range, counting false triggers three times as heavily as misses.' },
+      { paragraph: 'Real use feeds back into the same loop. A hotkey marks a gesture that should not have fired or one that was missed, and undoing an action straight away, such as reopening a tab a gesture just closed, is logged automatically. Re-tuning from those sessions fixes whatever is still going wrong without needing a fresh calibration. Users can also record their own gestures in 5 to 10 samples, matched with k nearest neighbours for poses and dynamic time warping for motions.' },
+      { heading: 'The Gesture Set' },
+      { paragraph: 'Gestures were chosen from what the research and my own calibration data showed could be recognised reliably. Anything that could happen by accident while typing or talking needs a deliberate entry, like a held pose or the off hand acting as a switch.' }
+    ],
+    modes: [
+      {
+        number: 'Navigation',
+        title: 'Slaps and Thumbs',
+        body: 'An open hand swept sideways moves between desktop spaces, the left hand slapping right and the right hand slapping left. A held thumbs up opens a new tab and a thumbs down closes one. Holding two fingers sideways with the off hand turns the dominant hand\'s slaps into tab switching, and a snapping fist into scrolling.'
+      },
+      {
+        number: 'Mouse Mode',
+        title: 'Cursor and Clicks',
+        body: 'An off hand peace sign toggles mouse mode. The dominant hand then moves the cursor like a trackpad with acceleration, while the off hand is held as a pistol: dropping the thumb onto the index finger left clicks, holding it down drags, and tapping thumb to pinky right clicks. Touching the real trackpad always takes priority.'
+      },
+      {
+        number: 'Continuous',
+        title: 'Zoom, Volume and Voice',
+        body: 'Holding a Vulcan salute with the off hand turns on zoom, and spreading or squeezing the dominant hand\'s fingertips sends real trackpad pinch gestures. An open hand turned like a dial steps the volume. Holding an off hand two finger pistol runs macOS dictation for exactly as long as the shape is held.'
+      },
+      {
+        number: 'System',
+        title: 'Connect, Mute and Quit',
+        body: 'A rock sign connects and disconnects Stark Sight, and a finger on the lips mutes while a shaka unmutes, using the body tracking to find the mouth. Two L shapes take a screenshot. Crossing both forearms into an X while making a rock sign with each hand quits the app, a pose deliberately chosen because it essentially never happens by accident.'
+      }
+    ]
+  },
+
+  {
+    id: 'pcb',
+    title: 'Custom EMG Signal Processing PCB',
+    subtitle: 'A hardware solution for biopotential data collection and wireless transmission.',
+    thumbnail: 'images/tru leg.jpg',
+    thumbFit: 'contain', 
+    skills: ['KiCad', 'Custom Circuits'],
+    // PCB is categorised as collaborative — built for the True North Biocompetition team
+    categories: ['collaborative'],
+    images: [
+      { src: 'images/tru leg.jpg', alt: 'PCB Schematic Design' },
+      { src: 'images/schematic.jpg', alt: 'PCB Schematic Design' },
+      { src: 'images/physical.jpg',  alt: 'Physical PCB Layout' }
+    ],
+    techSummary: [
+      { label: 'Why',            text: 'To reduce signal noise in EMG data collection and create a compact processing system for a wearable diagnostic prosthetic.' },
+      { label: 'Specifications', text: 'USB-C powered, 3-channel EMG input, 5V/2.5V/GND rail distribution, and integrated Bluetooth (ESP32) communication.' },
+      { label: 'Hardware Stack', text: 'Designed in KiCad, it utilizes a Teensy for high speed ADC and an ESP32 for wireless data transmission.' }
+    ],
+    writeup: [
+      { heading: 'True North Biocompetition' },
+      { paragraph: 'EMG data is notoriously difficult to work with, especially from multiple sensors at once. As such, this PCB was designed to take in data from up to three different sensors, process it and compact it, and export it via bluetooth to a computer for further analytics. I produced this board for the True North Biocompetition, in which it will pick up a user\'s muscle data as they wear a leg brace, and export it to an app to track their recovery.' },
+      { paragraph: 'The board features a USB-C power input with a filtering circuit to ensure stable voltage across all components. It processes three independent signal lines from EMG sensors through a Teensy microcontroller, leveraging its superior ADC capabilities. The processed data is then handed off to an ESP32, which uses Bluetooth to transmit signals to an outside device with minimal latency.' },
+      { paragraph: 'Key design considerations included trace width for power rails, placement of decoupling capacitors to suppress switching noise, and the inclusion of dedicated 5V and 2.5V breakout pins for auxiliary hardware.' }
+    ]
+  },
+
+  {
     id: 'maze',
     title: 'Tilting Maze Platform',
     subtitle: 'Autonomous maze solving through computer vision, adaptive PID control, and machine learning path memory.',
@@ -154,33 +230,6 @@ const PROJECTS = [
         title: 'Auto Smart',
         body: 'Everything in Auto Waypoint, plus wall repulsion and machine learning path memory. Every time the ball successfully reaches a waypoint, the trajectory is recorded to disk. On subsequent runs, the system retrieves the shortest previously successful path and uses it as intermediate guided targets.'
       }
-    ]
-  },
-
-  {
-    id: 'pcb',
-    title: 'Custom EMG Signal Processing PCB',
-    subtitle: 'A hardware solution for biopotential data collection and wireless transmission.',
-    thumbnail: 'images/tru leg.jpg',
-    thumbFit: 'contain', 
-    skills: ['KiCad', 'Custom Circuits'],
-    // PCB is categorised as collaborative — built for the True North Biocompetition team
-    categories: ['collaborative'],
-    images: [
-      { src: 'images/tru leg.jpg', alt: 'PCB Schematic Design' },
-      { src: 'images/schematic.jpg', alt: 'PCB Schematic Design' },
-      { src: 'images/physical.jpg',  alt: 'Physical PCB Layout' }
-    ],
-    techSummary: [
-      { label: 'Why',            text: 'To reduce signal noise in EMG data collection and create a compact processing system for a wearable diagnostic prosthetic.' },
-      { label: 'Specifications', text: 'USB-C powered, 3-channel EMG input, 5V/2.5V/GND rail distribution, and integrated Bluetooth (ESP32) communication.' },
-      { label: 'Hardware Stack', text: 'Designed in KiCad, it utilizes a Teensy for high speed ADC and an ESP32 for wireless data transmission.' }
-    ],
-    writeup: [
-      { heading: 'True North Biocompetition' },
-      { paragraph: 'EMG data is notoriously difficult to work with, especially from multiple sensors at once. As such, this PCB was designed to take in data from up to three different sensors, process it and compact it, and export it via bluetooth to a computer for further analytics. I produced this board for the True North Biocompetition, in which it will pick up a user\'s muscle data as they wear a leg brace, and export it to an app to track their recovery.' },
-      { paragraph: 'The board features a USB-C power input with a filtering circuit to ensure stable voltage across all components. It processes three independent signal lines from EMG sensors through a Teensy microcontroller, leveraging its superior ADC capabilities. The processed data is then handed off to an ESP32, which uses Bluetooth to transmit signals to an outside device with minimal latency.' },
-      { paragraph: 'Key design considerations included trace width for power rails, placement of decoupling capacitors to suppress switching noise, and the inclusion of dedicated 5V and 2.5V breakout pins for auxiliary hardware.' }
     ]
   },
 
