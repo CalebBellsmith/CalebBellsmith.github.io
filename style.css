@@ -580,15 +580,6 @@ main { flex: 1; }
 .proj-card:hover .proj-thumb { border-color: var(--accent); }
 .proj-card:hover .proj-thumb img { transform: scale(1.04); opacity: 1; }
 
-.proj-skills {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-style: italic;
-}
-
 /* ---- PROJECT DETAIL ---- */
 .proj-detail-header {
   padding: 5rem 0 2.5rem;

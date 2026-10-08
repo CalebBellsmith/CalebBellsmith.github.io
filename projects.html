@@ -68,7 +68,6 @@
         : PROJECTS.filter(p => p.categories && p.categories.includes(filter));
 
       visible.forEach(p => {
-        const skills = p.skills.join(' · ');
         const card = document.createElement('a');
         card.href = `project.html?id=${encodeURIComponent(p.id)}`;
         card.className = 'proj-card';
@@ -77,8 +76,7 @@
           <div class="proj-title">${p.title}</div>
           <div class="proj-thumb">
             <img src="${p.thumbnail}" alt="${p.title}" loading="lazy" ${imgStyle}>
-          </div>
-          <div class="proj-skills">${skills}</div>`;
+          </div>`;
         grid.appendChild(card);
       });
     }
