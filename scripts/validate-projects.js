@@ -59,6 +59,9 @@ PROJECTS.forEach((p, i) => {
   if (p.id) {
     if (seen.has(p.id)) errors.push(`${where}: duplicate id "${p.id}" (links will go to the wrong project)`);
     seen.add(p.id);
+    if (!/^[a-z0-9-]+$/.test(p.id)) {
+      warnings.push(`${where}: id "${p.id}" should be lowercase letters, numbers and dashes only (it ends up in the page URL)`);
+    }
   }
   if (p.categories && !Array.isArray(p.categories)) {
     errors.push(`${where}: "categories" must be a list, e.g. ['coop']`);

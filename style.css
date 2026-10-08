@@ -957,6 +957,13 @@ footer {
 
 .footer-links { display: flex; gap: 1.25rem; }
 
+/* ---- WEBRING (uwaterloo.network embed in footer) ---- */
+#webring-slot { display: inline-flex; align-items: center; }
+#webring-slot button { display: none !important; }
+#webring-slot img { width: 22px !important; height: 22px !important; }
+#webring-slot .uwaterloo-webring-wrapper { width: auto !important; }
+#webring-slot .uwaterloo-webring { gap: 0 !important; }
+
 /* ---- DIVIDER SECTION ---- */
 .page-section { padding-bottom: 3.5rem; }
 

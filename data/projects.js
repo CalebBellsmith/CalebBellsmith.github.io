@@ -25,7 +25,7 @@ const PROJECTS = [
     writeup: [
       { heading: 'Automating a Manual Process' },
       { paragraph: 'Inspecting a sample by hand meant an operator moving the stage, judging each field of view by eye, and recording results manually, which was both slow and inconsistent between people. The scanner moves the stage in a user set grid, captures at every position, and nudges in a small spiral to recapture whenever a frame comes back unusable, so a full slide finishes unattended.' },
-      { paragraph: 'Frame quality is scored by a MobileNetV3 classifier trained on 1000+ images to achieve a 99.3% consistency from old values. This same data is used to quickly check each frame for whether it\'s focused, upon which the 3rd stepper will adjust until satisfactory. ' },
+      { paragraph: 'Frame quality is scored by a MobileNetV3 classifier trained on 1000+ images to achieve a 99.3% consistency with previous results. This same data is used to quickly check each frame for whether it\'s focused, upon which the 3rd stepper will adjust until satisfactory.' },
       { paragraph: 'The analysis stage is a direct translation of older lab routines into Python, reproducing its morphological operations and peak finding behaviour exactly so results stayed comparable to years of prior data. Everything lands in a formatted workbook with per sample tabs, descriptive statistics, and a summary comparison across the set.' }
     ]
   },
@@ -46,13 +46,13 @@ const PROJECTS = [
     ],
     techSummary: [
       { label: 'Why',   text: 'Current damaged space grade technology must be shipped down to earth to undergo repairs before being sent back up or replaced. This is due to the nature of soldering, being that it necessitates gravity to pull the flux and gas bubbles out of the bead to create a clean joint.' },
-      { label: 'How',   text: 'Our design uses a centrifuge to create artificial gravity, allowing for the soldering of actual PCB\'s in space. As a mechanical designer I was responsible for the conceptual design, modeling, and manufacturing of various subsystems including the exostructure, central motor mount, wire feeding mechanisms, PCB carriers, and central column rotation mechanism.' },
-      { label: 'Specs', text: '6 PCB samples spun at ~200 RPM, utilizing a double rack and pinion mechanism to push heated iron tips toward the PCB\'s. Further using a planetary gear mechanism to rotate an inner column connected to the heated irons, allowing them to spin around the inner centrifuge and solder each PCB in turn.' }
+      { label: 'How',   text: 'Our design uses a centrifuge to create artificial gravity, allowing for the soldering of actual PCBs in space. As a mechanical designer I was responsible for the conceptual design, modeling, and manufacturing of various subsystems including the exostructure, central motor mount, wire feeding mechanisms, PCB carriers, and central column rotation mechanism.' },
+      { label: 'Specs', text: '6 PCB samples spun at ~200 RPM, utilizing a double rack and pinion mechanism to push heated iron tips toward the PCBs. Further using a planetary gear mechanism to rotate an inner column connected to the heated irons, allowing them to spin around the inner centrifuge and solder each PCB in turn.' }
     ],
     writeup: [
       { heading: 'Centrifuge for Space' },
-      { paragraph: 'As referenced above, this centrifuge has been submitted into the CAN-RGX flight competition (flight campaign to take place in early September), which will in volve a parabolic flight to test the device in a 0-G environment. In past years this has then been followed by a trip to the world space conference in Australia to present the design in a showcase there.  ' },
-      { paragraph: 'My personal contribution to this project has spanned the full design process from initial ideation to complete manufacturing. I have personally designed the solder wire feeding mechanism using a MIG welding wheel and tensioning system to ensure reliable consistence. Furthermore, I have designed larger support systems such as the exostructure which stands around and above the centrifuge supporting it and providing mounts and cable paths for the two slip rings. Finally, I designed and manufactured the inner rotation mechanism which rotates the shell of PCB\'s on a bearing as the entire centrifuge is being spun. This involved designing a custom bearing with an encorperated planetary gear mechanism, as well as reliable quick release mounting systems for the PCB\'s.' }
+      { paragraph: 'As referenced above, this centrifuge has been submitted into the CAN-RGX flight competition (flight campaign to take place in early September), which will involve a parabolic flight to test the device in a 0-G environment. In past years this has then been followed by a trip to the world space conference in Australia to present the design in a showcase there.  ' },
+      { paragraph: 'My personal contribution to this project has spanned the full design process from initial ideation to complete manufacturing. I have personally designed the solder wire feeding mechanism using a MIG welding wheel and tensioning system to ensure reliable consistency. Furthermore, I have designed larger support systems such as the exostructure which stands around and above the centrifuge supporting it and providing mounts and cable paths for the two slip rings. Finally, I designed and manufactured the inner rotation mechanism which rotates the shell of PCBs on a bearing as the entire centrifuge is being spun. This involved designing a custom bearing with an incorporated planetary gear mechanism, as well as reliable quick release mounting systems for the PCBs.' }
     ]
   },
 
@@ -73,14 +73,14 @@ const PROJECTS = [
       { src: 'images/stemfit.jpg',   alt: 'Stem Fit' }
     ],
     techSummary: [
-      { label: 'Why',   text: 'Designed to explore the blend new design technology with traditional woodworking techniques, while creating a high performance outdoor tool.' },
+      { label: 'Why',   text: 'Designed to explore blending new design technology with traditional woodworking techniques, while creating a high performance outdoor tool.' },
       { label: 'How',   text: 'Utilized CAD for hull hydrodynamics and CNC machined secondary molds to ensure sub millimeter precision over 17 feet.' },
       { label: 'Specs', text: 'Cedar construction with bead-and-cove joinery, reinforced with fiberglass and a marine grade epoxy finish.' }
     ],
     writeup: [
       { heading: 'Precision Woodworking & Digital Logic' },
       { paragraph: 'The main fun challenge of this build lay in maintaining perfect hull symmetry over a massive span. By using CNC-machined molds we were able to translate a digital model into a physical form with far greater accuracy than traditional manual measurements allow.' },
-      { paragraph: 'The construction utilized a meticulous "bead and cove" joinery method, where each individual cedar strip was hand milled and aligned to create a seamless shell. This process ensured a structurally sound foundation for the subsequent fiberglass lamination, resulting a function, yet beautiful result.' }
+      { paragraph: 'The construction utilized a meticulous "bead and cove" joinery method, where each individual cedar strip was hand milled and aligned to create a seamless shell. This process ensured a structurally sound foundation for the subsequent fiberglass lamination, resulting in a functional, yet beautiful result.' }
     ]
   },
 
@@ -97,13 +97,13 @@ const PROJECTS = [
       { src: 'images/robo draft1.jpg',     alt: 'Initial Draft' }
     ],
     techSummary: [
-      { label: 'Why',   text: 'Designed to act as a second set of helping hands in a lab or soldering setting, with an emphasis on precision and control. ' },
+      { label: 'Why',   text: 'Designed to act as a second set of helping hands in a lab or soldering setting, with an emphasis on precision and control.' },
       { label: 'How',   text: '5 DoF with an ESP 32 for overall control, with a 1 newton meter grip strength. Adapted to be run off a macbook charger for ease of use, with options including joysticks, or a wireless IMU sleeve (see Motion Sleeve page).' },
       { label: 'Specs', text: 'Fully PETG custom designed parts, including a 3D printed bearing. MG99R servos held at max 6V power, complete with counterweights for longevity.' }
     ],
     writeup: [
       { heading: 'Robotic Arm' },
-      { paragraph: 'The core challenge of this build was designing a mechanically stable arm while developing firmware capable of smooth, proportional control across all axes simultaneously. Rather than relying on a development boards native power supply, I designed a dedicated power path using a USB-C PD trigger board to pull the required voltage directly from a laptop charger, keeping the system compact and cable-managed.'},
+      { paragraph: 'The core challenge of this build was designing a mechanically stable arm while developing firmware capable of smooth, proportional control across all axes simultaneously. Rather than relying on a development board\'s native power supply, I designed a dedicated power path using a USB-C PD trigger board to pull the required voltage directly from a laptop charger, keeping the system compact and cable-managed.'},
       { paragraph: 'On the firmware side, the ESP32Servo library was tuned through continual testing to establish precise servo limits and calibrated ADC center values for each joystick axis. To handle the mechanical realities of a cantilevered arm, a counterweight system was integrated at the shoulder joint to reduce servo load and improve positional stability under extension.'},
     ]
   },
@@ -205,7 +205,7 @@ const PROJECTS = [
     ],
     writeup: [
       { heading: 'Distortion Analysis' },
-      { paragraph: 'The original process involved manual photoshop editting before an outdated MATLAB script could read them, which made a full batch frustratingly slow. The replacement reads raw camera files directly, automatically crops and rotates each frame against a reference target, then finds vertical edges once from a mean gradient profile and refines them row by row, which is a large speed up while producing numerically identical output to the routine it replaced.' },
+      { paragraph: 'The original process involved manual Photoshop editing before an outdated MATLAB script could read them, which made a full batch frustratingly slow. The replacement reads raw camera files directly, automatically crops and rotates each frame against a reference target, then finds vertical edges once from a mean gradient profile and refines them row by row, which is a large speed up while producing numerically identical output to the routine it replaced.' },
       { paragraph: 'Each edge has a quadratic baseline removed before peaks are measured against configurable criteria, and flagged events are boxed onto an output image so a person can verify what the software decided. A run exports a workbook with summary, parameter, and criteria tabs, generates distribution plots, and appends to a running master file so results accumulate across months. I validated it against five paired batches of historical data to confirm the two pipelines agree before retiring the old one.' },
       { heading: 'Contact Angle Measurement' },
       { paragraph: 'This tool measures droplet contact angles from backlit side profile photographs. For every column it anchors to the local brightness peak and scans downward for the first sustained dark run, which builds a silhouette that survives uneven and partially filled backlighting. A RANSAC fit finds the substrate baseline, and the angle itself is the median of three independent estimators, with the spread between them used as an automatic confidence flag rather than a number the operator has to trust blindly.' },
@@ -226,11 +226,11 @@ const PROJECTS = [
     techSummary: [
       { label: 'Why',   text: 'The lantern string lights were locked to a single factory preset by a controller which had locked proprietary firmware, so the controller was replaced and my own code was inserted.' },
       { label: 'How',   text: 'A Digispark ATtiny85 taps the existing 5V rail, and the data trace running to the light string was cut and intercepted, leaving the original controller in place to keep running the main lamp.' },
-      { label: 'Specs', text: 'Thirty three individually addressable nodes across nine modes, cycled by the lantern original button with a short press to change mode and a hold to turn off.' }
+      { label: 'Specs', text: 'Thirty three individually addressable nodes across nine modes, cycled by the lantern\'s original button with a short press to change mode and a hold to turn off.' }
     ],
     writeup: [
       { heading: 'Reverse Engineering the Lantern' },
-      { paragraph: 'The first hurdle was working out what the factory controller actually did. This involved probing the board found the data line feeding the light string and the button input for the main lamp, but no serial interface anywhere, which pointed to a one time programmable chip that could never be reflashed. Rather than replace the whole board I cut a single trace and intercepted only the data line, so the original controller still runs the main lamp and the several amps of string current never pass through the board I added.' },
+      { paragraph: 'The first hurdle was working out what the factory controller actually did. Probing the board found the data line feeding the light string and the button input for the main lamp, but no serial interface anywhere, which pointed to a one time programmable chip that could never be reflashed. Rather than replace the whole board I cut a single trace and intercepted only the data line, so the original controller still runs the main lamp and the several amps of string current never pass through the board I added.' },
       { paragraph: 'The string itself was mislabeled. Listed as four channel, it turned out to be three channel with an unusual colour order, which only became clear after a red test pattern came back green. The stock library also produced scrambled output because it has no timing table for the unusual clock speed of this particular board, so the driver came from a different source whose timing buckets covered it.' },
       { paragraph: 'The most satisfying part was a fault which looked like a firmware bug and was not. Multi colour modes kept losing channels in a strangely consistent order, blue first and red last, which is forward voltage order and therefore a power problem rather than a data one. The culprit was a damaged MOSFET in the power path passing current only through its body diode, so the rail held fine at low current and collapsed under load. Bridging it confirmed the diagnosis instantly, and every colour mode I had been carefully compensating became correct again.' }
     ]
@@ -306,8 +306,8 @@ const PROJECTS = [
     writeup: [
       { heading: 'A Machine That Runs Itself' },
       { paragraph: 'The design is deliberately simple, geared towards daily manufacturing and roll processing. Every piece of real time control lives on the microcontroller, and the laptop app is only used to author cycles and watch telemetry. Cycles are written into onboard flash, so once a recipe is loaded the machine is fully independent and the operator drives it entirely from the touchscreen.' },
-      { paragraph: 'The entire design was largely based on workplace regulation and ESA guildlines. A stall is treated as a fault rather than something to retry, the software stop is always graceful, and the emergency stop is a mushroom switch in the DC positive rail which cuts everything at once, meaning firmware can treat every startup as a cold boot. Progress is written to flash periodically, so a cycle interrupted by a power cut can resume from the exact pulse count where it stopped.' },
-      { paragraph: 'This design will effectively eliminate the need for manual rolling, with the future option of in line scanning systems for nano film defects. ' }
+      { paragraph: 'The entire design was largely based on workplace regulation and ESA guidelines. A stall is treated as a fault rather than something to retry, the software stop is always graceful, and the emergency stop is a mushroom switch in the DC positive rail which cuts everything at once, meaning firmware can treat every startup as a cold boot. Progress is written to flash periodically, so a cycle interrupted by a power cut can resume from the exact pulse count where it stopped.' },
+      { paragraph: 'This design will effectively eliminate the need for manual rolling, with the future option of in line scanning systems for nano film defects.' }
     ]
   },
 
@@ -332,7 +332,7 @@ const PROJECTS = [
     ],
     writeup: [
       { heading: 'The Digital Workbench' },
-      { paragraph: 'This gallery showcases surfacing modeling such as the jet turbine and organic geometry, alongside precise mechanical assemblies intended for real world fabrication.' }
+      { paragraph: 'This gallery showcases surface modeling such as the jet turbine and organic geometry, alongside precise mechanical assemblies intended for real world fabrication.' }
     ]
   },
 
@@ -362,7 +362,7 @@ const PROJECTS = [
   },
 
   {
-    id: 'metal working',
+    id: 'metalwork',
     title: 'Metal Working Design',
     subtitle: 'A collection of custom works, made by customer request, or for personal enjoyment',
     thumbnail: 'images/rings.jpg',
@@ -377,16 +377,16 @@ const PROJECTS = [
     ],
     techSummary: [
       { label: 'Why',      text: 'Similarly to my love of wood working, metal working provides a creative outlet, while still learning applicable skills and meeting customer requests.' },
-      { label: 'Mediums',  text: 'MIG, TIG and ARC welding of railway spikes, as well as fine copper weaving and soldering ' },
+      { label: 'Mediums',  text: 'MIG, TIG and ARC welding of railway spikes, as well as fine copper weaving and soldering' },
     ],
     writeup: [
       { heading: 'Metal Exploration' },
-      { paragraph: 'The railway spike cross and copper cross are both projects I undertook out of my love for creation, while the copper rings and other copper crosses I created at customer requests. Realistically though, I just love the ability to create, whether technical or not, of which, matal working is merely another faucet of.' },
+      { paragraph: 'The railway spike cross and copper cross are both projects I undertook out of my love for creation, while the copper rings and other copper crosses I created at customer requests. Realistically though, I just love the ability to create, whether technical or not, and metal working is merely another facet.' },
     ]
   },
   
   {
-    id: 'Wood Burning',
+    id: 'woodburning',
     title: 'Wood Burning Design',
     subtitle: 'A collection of custom works, made by customer request, or for personal enjoyment',
     thumbnail: 'images/tree.jpg',
@@ -395,17 +395,17 @@ const PROJECTS = [
     // Personal Design is categorised as personal — solo artistic/craft work
     categories: ['personal'],
     images: [
-      { src: 'images/tree.jpg',   alt: 'Nortic Tree' },
+      { src: 'images/tree.jpg',   alt: 'Nordic Tree' },
       { src: 'images/wolf.jpg',   alt: 'Animal Art' },
       { src: 'images/bookmark.jpg', alt: 'Personalized Bookmarks' },
     ],
     techSummary: [
-      { label: 'Why',      text: 'To experiement with a slighly more traditionally artistic aspect of woodworking' },
+      { label: 'Why',      text: 'To experiment with a slightly more traditionally artistic aspect of woodworking' },
       { label: 'What',  text: 'I woodburn inscriptions and personalizations on many of my pieces as a finishing touch.' },
     ],
     writeup: [
       { heading: 'Material Exploration' },
-      { paragraph: 'Woodburning to me represented a final aspect of fun simple design that I could tackle, both for customer requests (custom ordering) or for personal enjoyment. ' },
+      { paragraph: 'Woodburning to me represented a final aspect of fun simple design that I could tackle, both for customer requests (custom ordering) or for personal enjoyment.' },
     ]
   },
 

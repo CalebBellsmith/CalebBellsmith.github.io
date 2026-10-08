@@ -50,6 +50,9 @@
       <div class="footer-links">
         <a href="mailto:calebb1360@gmail.com">calebb1360@gmail.com</a>
         <a href="https://linkedin.com/in/caleb-bellsmith-476359385" target="_blank">LinkedIn</a>
+        <span id="webring-slot">
+          <script src="https://uwaterloo.network/embed.js" data-webring data-user="caleb-bellsmith"></script>
+        </span>
       </div>
     </div>
   </footer>
@@ -67,7 +70,7 @@
       visible.forEach(p => {
         const skills = p.skills.join(' · ');
         const card = document.createElement('a');
-        card.href = `project.html?id=${p.id}`;
+        card.href = `project.html?id=${encodeURIComponent(p.id)}`;
         card.className = 'proj-card';
         const imgStyle = p.thumbFit ? `style="object-fit: ${p.thumbFit}"` : '';
         card.innerHTML = `

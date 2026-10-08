@@ -1,18 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://calebbellsmith.github.io/index.html</loc>
-    <lastmod>2026-01-07</lastmod>
+    <loc>https://calebbellsmith.github.io/</loc>
+    <lastmod>2026-10-08</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://calebbellsmith.github.io/projects.html</loc>
-    <lastmod>2026-01-07</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calebbellsmith.github.io/about.html</loc>
-    <lastmod>2026-01-07</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calebbellsmith.github.io/resume.html</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://calebbellsmith.github.io/project.html?id=scanner</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://calebbellsmith.github.io/project.html?id=centrifuge</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://calebbellsmith.github.io/project.html?id=canoe</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://calebbellsmith.github.io/project.html?id=arm</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://calebbellsmith.github.io/project.html?id=maze</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://calebbellsmith.github.io/project.html?id=pcb</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://calebbellsmith.github.io/project.html?id=optimization</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://calebbellsmith.github.io/project.html?id=lantern</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://calebbellsmith.github.io/project.html?id=tilt</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://calebbellsmith.github.io/project.html?id=jolt</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://calebbellsmith.github.io/project.html?id=roller</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://calebbellsmith.github.io/project.html?id=solidworks</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://calebbellsmith.github.io/project.html?id=design</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://calebbellsmith.github.io/project.html?id=metalwork</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://calebbellsmith.github.io/project.html?id=woodburning</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://calebbellsmith.github.io/project.html?id=prosthetics</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://calebbellsmith.github.io/project.html?id=exoskeleton</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
   </url>
 </urlset>
