@@ -112,11 +112,11 @@ const PROJECTS = [
     id: 'starksight',
     title: 'Stark Sight',
     subtitle: 'Webcam hand gesture control for a computer, with a personalised pose network that learns from its user.',
-    thumbnail: 'images/placeholder-dark.jpg',
+    thumbnail: 'images/starksight.jpg',
     skills: ['Computer Vision', 'Machine Learning', 'Python'],
     categories: ['design'],
     images: [
-      { src: 'images/placeholder-dark.jpg', alt: 'Stark Sight' }
+      { src: 'images/starksight.jpg', alt: 'Stark Sight live view with hand tracking' }
     ],
     techSummary: [
       { label: 'Why',   text: 'Frankly, I figured it would be cool to try controlling a computer with your hands like in movies. Sensors are too cumbersome, hence, I gave CV a try. Once I\'d started this quickly became one of the most enjoyable projects to work on in my portfolio... it\'s just fun.' },
