@@ -33,13 +33,13 @@
     }
 
     .showcase-slide {
-      min-width: 72%;
-      flex-shrink: 0;
+      flex: 0 0 min(72%, 820px);
+      aspect-ratio: 16 / 10;
       border-radius: var(--r);
       overflow: hidden;
       border: 2px solid var(--border);
       position: relative;
-      height: 400px;
+      background: #111;
       opacity: 0.4;
       transition: opacity 0.5s, border-color 0.5s;
       text-decoration: none;
@@ -52,10 +52,21 @@
     }
 
     .showcase-slide img {
+      position: relative;
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
+    }
+
+    /* Photos too tall or wide for the slide are shown whole, over a
+       blurred, darkened copy of themselves instead of empty bars */
+    .showcase-backdrop {
+      position: absolute;
+      inset: -40px;
+      background-size: cover;
+      background-position: center;
+      filter: blur(28px) brightness(0.6);
     }
 
     .showcase-slide-label {
@@ -96,7 +107,7 @@
     }
 
     @media (max-width: 720px) {
-      .showcase-slide { min-width: 86%; height: 240px; }
+      .showcase-slide { flex-basis: 86%; }
     }
 
   </style>
@@ -153,12 +164,29 @@
   <script src="data/projects.js"></script>
   <script>
     /* ---- Showcase carousel ---- */
+    // Slides are 16:10. A photo close to that shape fills the slide; anything
+    // much taller or wider is shown whole over a blurred copy of itself.
+    // Per project overrides in data/projects.js:
+    //   showcaseFit:      'cover' or 'contain'
+    //   showcasePosition: which part stays in view when cropped, e.g. 'center 30%'
+    const SLIDE_RATIO = 16 / 10;
     const items = PROJECTS.map(p => ({
       id:    p.id,
       src:   p.thumbnail,
       title: p.title,
-      fit:   p.thumbFit || 'cover'
+      fit:   p.showcaseFit,
+      pos:   p.showcasePosition || 'center'
     }));
+
+    function applyFit(img, item) {
+      let fit = item.fit;
+      if (!fit) {
+        const r = img.naturalWidth / img.naturalHeight;
+        fit = (r > SLIDE_RATIO / 1.3 && r < SLIDE_RATIO * 1.3) ? 'cover' : 'contain';
+      }
+      img.style.objectFit = fit;
+      img.previousElementSibling.hidden = fit === 'cover';
+    }
 
     const track  = document.getElementById('showcaseTrack');
     const dotsEl = document.getElementById('showcaseDots');
@@ -170,9 +198,13 @@
       a.className = 'showcase-slide' + (i === 0 ? ' active' : '');
       a.href = `project.html?id=${encodeURIComponent(item.id)}`;
       a.innerHTML = `
-        <img src="${item.src}" alt="${item.title}" loading="lazy" style="object-fit:${item.fit}">
+        <div class="showcase-backdrop" style="background-image:url('${encodeURI(item.src)}')"></div>
+        <img src="${item.src}" alt="${item.title}" loading="lazy" style="object-position:${item.pos}">
         <div class="showcase-slide-label">${item.title}</div>`;
       track.appendChild(a);
+      const img = a.querySelector('img');
+      if (img.complete && img.naturalWidth) applyFit(img, item);
+      else img.addEventListener('load', () => applyFit(img, item));
 
       const dot = document.createElement('button');
       dot.className = 'showcase-dot' + (i === 0 ? ' active' : '');

@@ -365,6 +365,8 @@ const PROJECTS = [
     title: 'Technical Design Gallery',
     subtitle: 'Advanced surfacing and technical CAD assemblies.',
     thumbnail: 'images/swjet.jpg',
+    // Exploded view runs edge to edge, so show it whole on the homepage
+    showcaseFit: 'contain',
     skills: ['Surface Modeling', 'Mechanical Assembly'],
     categories: ['personal'],
     images: [
