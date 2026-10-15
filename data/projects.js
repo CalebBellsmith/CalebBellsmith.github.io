@@ -234,31 +234,27 @@ const PROJECTS = [
   },
 
   {
-    id: 'optimization',
-    title: 'Optimization Code',
-    subtitle: 'Two computer vision tools which replaced manual optical measurement with automated, repeatable batch analysis.',
-    thumbnail: 'images/distortion_SOP.jpg',
-    skills: ['Computer Vision', 'Python', 'Data Analysis'],
+    id: 'roller',
+    title: 'Automated Nano Film Roller',
+    subtitle: 'A motorized winding machine with closed loop encoder control, a touchscreen interface, and fully resumable cycles.',
+    thumbnail: 'images/roller-rig.jpg',
+    skills: ['Embedded Systems', 'Firmware', 'Machine Design'],
     // Built during co-op placement
     categories: ['coop'],
     images: [
-      { src: 'images/distortion_SOP.jpg', alt: 'Distortion 1' },
-      { src: 'images/CA_1.jpg', alt: 'CA 1' },
-      { src: 'images/distortion.jpg', alt: 'Distortion 2' },
-      { src: 'images/CA_2.jpg', alt: 'CA 2' }
+      { src: 'images/roller-rig.jpg', alt: 'Automated film roller' },
+      { src: 'images/roller-controls.jpg', alt: 'Roller drive unit with touchscreen and emergency stop' }
     ],
     techSummary: [
-      { label: 'Why',            text: 'Manual optical measurements were slow and varied noticeably between operators, so both tools were built to produce repeatable numbers straight from photographs with no human judgement in the loop.' },
-      { label: 'How',            text: 'Each tool runs a phase based desktop interface over a shared analysis core, batching folders of images through a calibrated pipeline and exporting formatted spreadsheets alongside annotated verification images.' },
-      { label: 'Specifications', text: 'Distortion analysis through gradient edge detection with polynomial baseline removal and parallel batch processing. Contact angle measurement through envelope extraction, RANSAC baseline fitting, and a median of three independent geometric estimators.' }
+      { label: 'Why',   text: 'To replace a repetitive manual winding task of nano film with a machine which runs a consistent, repeatable cycle on its own, freeing an operator from standing over it.' },
+      { label: 'How',   text: 'An ESP32 runs all real time control, driving a 24V gearmotor through an H bridge with full quadrature encoder feedback, and presents a touchscreen so the machine runs completely standalone.' },
+      { label: 'Specs', text: '3600 encoder pulses per output revolution through a 56:1 gearbox, cycles stored in onboard flash, progress which survives a full power cut, and a hardware emergency stop wired directly into the DC rail. All complying with Canadian electrical and workplace regulations.' }
     ],
     writeup: [
-      { heading: 'Distortion Analysis' },
-      { paragraph: 'The original process involved manual Photoshop editing before an outdated MATLAB script could read them, which made a full batch frustratingly slow. The replacement reads raw camera files directly, automatically crops and rotates each frame against a reference target, then finds vertical edges once from a mean gradient profile and refines them row by row, which is a large speed up while producing numerically identical output to the routine it replaced.' },
-      { paragraph: 'Each edge has a quadratic baseline removed before peaks are measured against configurable criteria, and flagged events are boxed onto an output image so a person can verify what the software decided. A run exports a workbook with summary, parameter, and criteria tabs, generates distribution plots, and appends to a running master file so results accumulate across months. I validated it against five paired batches of historical data to confirm the two pipelines agree before retiring the old one.' },
-      { heading: 'Contact Angle Measurement' },
-      { paragraph: 'This tool measures droplet contact angles from backlit side profile photographs. For every column it anchors to the local brightness peak and scans downward for the first sustained dark run, which builds a silhouette that survives uneven and partially filled backlighting. A RANSAC fit finds the substrate baseline, and the angle itself is the median of three independent estimators, with the spread between them used as an automatic confidence flag rather than a number the operator has to trust blindly.' },
-      { paragraph: 'A second detection regime handles translucent droplets on reflective substrates, where the light passes through rather than casting a silhouette. In this case reflection becomes the measurement, since the contact line is the axis for which the droplet and its mirror image are symmetric. The tool picks its own regime per image and falls back to click assisted modes when a sample is ambiguous.' }
+      { heading: 'A Machine That Runs Itself' },
+      { paragraph: 'The design is deliberately simple, geared towards daily manufacturing and roll processing. Every piece of real time control lives on the microcontroller, and the laptop app is only used to author cycles and watch telemetry. Cycles are written into onboard flash, so once a recipe is loaded the machine is fully independent and the operator drives it entirely from the touchscreen.' },
+      { paragraph: 'The entire design was largely based on workplace regulation and ESA guidelines. A stall is treated as a fault rather than something to retry, the software stop is always graceful, and the emergency stop is a mushroom switch in the DC positive rail which cuts everything at once, meaning firmware can treat every startup as a cold boot. Progress is written to flash periodically, so a cycle interrupted by a power cut can resume from the exact pulse count where it stopped.' },
+      { paragraph: 'This design will effectively eliminate the need for manual rolling, with the future option of in line scanning systems for nano film defects.' }
     ]
   },
 
@@ -337,27 +333,31 @@ const PROJECTS = [
   },
 
   {
-    id: 'roller',
-    title: 'Automated Nano Film Roller',
-    subtitle: 'A motorized winding machine with closed loop encoder control, a touchscreen interface, and fully resumable cycles.',
-    thumbnail: 'images/roller-rig.jpg',
-    skills: ['Embedded Systems', 'Firmware', 'Machine Design'],
+    id: 'optimization',
+    title: 'Optimization Code',
+    subtitle: 'Two computer vision tools which replaced manual optical measurement with automated, repeatable batch analysis.',
+    thumbnail: 'images/distortion_SOP.jpg',
+    skills: ['Computer Vision', 'Python', 'Data Analysis'],
     // Built during co-op placement
     categories: ['coop'],
     images: [
-      { src: 'images/roller-rig.jpg', alt: 'Automated film roller' },
-      { src: 'images/roller-controls.jpg', alt: 'Roller drive unit with touchscreen and emergency stop' }
+      { src: 'images/distortion_SOP.jpg', alt: 'Distortion 1' },
+      { src: 'images/CA_1.jpg', alt: 'CA 1' },
+      { src: 'images/distortion.jpg', alt: 'Distortion 2' },
+      { src: 'images/CA_2.jpg', alt: 'CA 2' }
     ],
     techSummary: [
-      { label: 'Why',   text: 'To replace a repetitive manual winding task of nano film with a machine which runs a consistent, repeatable cycle on its own, freeing an operator from standing over it.' },
-      { label: 'How',   text: 'An ESP32 runs all real time control, driving a 24V gearmotor through an H bridge with full quadrature encoder feedback, and presents a touchscreen so the machine runs completely standalone.' },
-      { label: 'Specs', text: '3600 encoder pulses per output revolution through a 56:1 gearbox, cycles stored in onboard flash, progress which survives a full power cut, and a hardware emergency stop wired directly into the DC rail. All complying with Canadian electrical and workplace regulations.' }
+      { label: 'Why',            text: 'Manual optical measurements were slow and varied noticeably between operators, so both tools were built to produce repeatable numbers straight from photographs with no human judgement in the loop.' },
+      { label: 'How',            text: 'Each tool runs a phase based desktop interface over a shared analysis core, batching folders of images through a calibrated pipeline and exporting formatted spreadsheets alongside annotated verification images.' },
+      { label: 'Specifications', text: 'Distortion analysis through gradient edge detection with polynomial baseline removal and parallel batch processing. Contact angle measurement through envelope extraction, RANSAC baseline fitting, and a median of three independent geometric estimators.' }
     ],
     writeup: [
-      { heading: 'A Machine That Runs Itself' },
-      { paragraph: 'The design is deliberately simple, geared towards daily manufacturing and roll processing. Every piece of real time control lives on the microcontroller, and the laptop app is only used to author cycles and watch telemetry. Cycles are written into onboard flash, so once a recipe is loaded the machine is fully independent and the operator drives it entirely from the touchscreen.' },
-      { paragraph: 'The entire design was largely based on workplace regulation and ESA guidelines. A stall is treated as a fault rather than something to retry, the software stop is always graceful, and the emergency stop is a mushroom switch in the DC positive rail which cuts everything at once, meaning firmware can treat every startup as a cold boot. Progress is written to flash periodically, so a cycle interrupted by a power cut can resume from the exact pulse count where it stopped.' },
-      { paragraph: 'This design will effectively eliminate the need for manual rolling, with the future option of in line scanning systems for nano film defects.' }
+      { heading: 'Distortion Analysis' },
+      { paragraph: 'The original process involved manual Photoshop editing before an outdated MATLAB script could read them, which made a full batch frustratingly slow. The replacement reads raw camera files directly, automatically crops and rotates each frame against a reference target, then finds vertical edges once from a mean gradient profile and refines them row by row, which is a large speed up while producing numerically identical output to the routine it replaced.' },
+      { paragraph: 'Each edge has a quadratic baseline removed before peaks are measured against configurable criteria, and flagged events are boxed onto an output image so a person can verify what the software decided. A run exports a workbook with summary, parameter, and criteria tabs, generates distribution plots, and appends to a running master file so results accumulate across months. I validated it against five paired batches of historical data to confirm the two pipelines agree before retiring the old one.' },
+      { heading: 'Contact Angle Measurement' },
+      { paragraph: 'This tool measures droplet contact angles from backlit side profile photographs. For every column it anchors to the local brightness peak and scans downward for the first sustained dark run, which builds a silhouette that survives uneven and partially filled backlighting. A RANSAC fit finds the substrate baseline, and the angle itself is the median of three independent estimators, with the spread between them used as an automatic confidence flag rather than a number the operator has to trust blindly.' },
+      { paragraph: 'A second detection regime handles translucent droplets on reflective substrates, where the light passes through rather than casting a silhouette. In this case reflection becomes the measurement, since the contact line is the axis for which the droplet and its mirror image are symmetric. The tool picks its own regime per image and falls back to click assisted modes when a sample is ambiguous.' }
     ]
   },
 
