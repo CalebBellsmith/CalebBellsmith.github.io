@@ -340,12 +340,13 @@ const PROJECTS = [
     id: 'roller',
     title: 'Automated Nano Film Roller',
     subtitle: 'A motorized winding machine with closed loop encoder control, a touchscreen interface, and fully resumable cycles.',
-    thumbnail: 'images/placeholder-dark.jpg',
+    thumbnail: 'images/roller-rig.jpg',
     skills: ['Embedded Systems', 'Firmware', 'Machine Design'],
     // Built during co-op placement
     categories: ['coop'],
     images: [
-      { src: 'images/placeholder-dark.jpg', alt: 'Auto Roller' }
+      { src: 'images/roller-rig.jpg', alt: 'Automated film roller' },
+      { src: 'images/roller-controls.jpg', alt: 'Roller drive unit with touchscreen and emergency stop' }
     ],
     techSummary: [
       { label: 'Why',   text: 'To replace a repetitive manual winding task of nano film with a machine which runs a consistent, repeatable cycle on its own, freeing an operator from standing over it.' },
