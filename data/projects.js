@@ -2,7 +2,7 @@ const PROJECTS = [
   {
     id: 'scanner',
     title: 'Automated Micrographing Robot',
-    subtitle: 'Motorized slide scanning with automated capture, machine learning quality control, and a full analysis pipeline.',
+    subtitle: 'Motorized micrographing with automated capture, machine learning quality control, and a full analysis pipeline.',
     thumbnail: 'images/autoscope.jpg',
     thumbFit: 'contain',
     skills: ['Computer Vision', 'Machine Learning', 'ESP32'],
