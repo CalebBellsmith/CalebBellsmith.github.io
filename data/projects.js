@@ -1,7 +1,7 @@
 const PROJECTS = [
   {
     id: 'scanner',
-    title: 'Automated Microscope Slide Scanner',
+    title: 'Automated Micrographing Robot',
     subtitle: 'Motorized slide scanning with automated capture, machine learning quality control, and a full analysis pipeline.',
     thumbnail: 'images/autoscope.jpg',
     thumbFit: 'contain',
