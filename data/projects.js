@@ -94,7 +94,8 @@ const PROJECTS = [
     categories: ['design'],
     images: [
       { src: 'images/robo arm.jpg', alt: 'Robotic Arm' },
-      { src: 'images/robo draft1.jpg',     alt: 'Initial Draft' }
+      { src: 'images/robo draft1.jpg',     alt: 'Initial Draft' },
+      { src: 'images/arm-demo.mp4', type: 'video', alt: 'Robotic arm controlled by joystick' }
     ],
     techSummary: [
       { label: 'Why',   text: 'Designed to act as a second set of helping hands in a lab or soldering setting, with an emphasis on precision and control.' },
