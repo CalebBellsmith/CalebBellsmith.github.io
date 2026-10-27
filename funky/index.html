@@ -10,10 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
   <link rel="stylesheet" href="funky.css">
-  <script>
-    /* Theme before first paint, so there's no flash. Dark unless switched to light. */
-    try { if (localStorage.getItem('funky_theme') === 'light') document.documentElement.dataset.theme = 'light'; } catch (e) {}
-  </script>
   <script data-goatcounter="https://calebbellsmith.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
@@ -22,10 +18,6 @@
 
   <div class="shell">
     <aside class="sidebar" id="sidebar">
-      <div class="brand">
-        <span class="brand-mark">CB</span>
-        <span class="brand-text">FUNKY<span class="brand-dot">.</span>SIDE</span>
-      </div>
 
       <nav class="tabs" aria-label="Funky sections">
         <a class="tab" href="#dashboard" data-tab="dashboard">
@@ -54,10 +46,6 @@
         <button class="foot-btn" id="ownerBtn" type="button">
           <svg viewBox="0 0 24 24"><path d="M6 11V8a6 6 0 0 1 12 0v3M5 11h14v10H5z"/></svg>
           <span id="ownerLabel">Owner mode</span>
-        </button>
-        <button class="foot-btn" id="themeBtn" type="button">
-          <svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg>
-          <span id="themeLabel">Light mode</span>
         </button>
         <a class="foot-btn back" id="backBtn" href="../">
           <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
@@ -137,7 +125,6 @@
       <!-- ============ LINKS & ANALYTICS ============ -->
       <section class="panel-page" data-page="links">
         <header class="page-head">
-          <p class="kicker">// tab 02</p>
           <h1>Links &amp; Analytics</h1>
         </header>
         <div class="grid">
@@ -176,16 +163,37 @@
       <!-- ============ LED MATRIX ============ -->
       <section class="panel-page" data-page="led">
         <header class="page-head">
-          <p class="kicker">// tab 03</p>
           <h1>LED Matrix</h1>
         </header>
-        <div class="card soon">Bringing the full control panel online shortly.</div>
+        <div class="grid">
+          <article class="card span-2">
+            <h2 class="card-title"><span class="tag yellow">01</span>8&times;8 ambient lamp</h2>
+            <p class="card-note">An ESP32 driving 64 WS2812B LEDs with eight generative effects (ocean, lava, pool caustics, aurora, fireflies, candle, rain, music), scenes, a sleep timer and a sunrise alarm. The panel below is the same one as the Mac app, running entirely in the browser: without a board it simulates the effects live, and in Chrome, Edge or Arc it connects to the real board over Bluetooth.</p>
+            <div class="btn-line">
+              <button class="btn neon" type="button" id="ledLaunch">Launch</button>
+              <a class="btn ghost" href="led/" target="_blank" rel="noopener">Open full screen</a>
+            </div>
+          </article>
+          <article class="card">
+            <h2 class="card-title"><span class="tag pink">02</span>Pairing</h2>
+            <p class="card-note" id="ledPairState"></p>
+            <details class="pair-box">
+              <summary>Pair this browser</summary>
+              <p class="small muted">Paste the contents of <code>app/pairing.json</code> from the LED project. It's kept in this browser only.</p>
+              <textarea class="field mono" id="ledPairInput" rows="4" spellcheck="false" placeholder='{"serviceUUID": "...", "key": "..."}'></textarea>
+              <div class="btn-line">
+                <button class="btn neon" type="button" id="ledPairSave">Save</button>
+                <button class="btn danger" type="button" id="ledPairForget">Forget</button>
+              </div>
+            </details>
+          </article>
+        </div>
+        <div class="embed" id="ledEmbed" hidden></div>
       </section>
 
       <!-- ============ STARK SIGHT ============ -->
       <section class="panel-page" data-page="starksight">
         <header class="page-head">
-          <p class="kicker">// tab 04</p>
           <h1>Stark Sight</h1>
         </header>
         <div class="card soon">Launch and live view coming online shortly.</div>
@@ -194,7 +202,6 @@
       <!-- ============ LIBRARY ============ -->
       <section class="panel-page" data-page="library">
         <header class="page-head">
-          <p class="kicker">// tab 05</p>
           <h1>Software Library</h1>
         </header>
         <div class="card soon">Being stocked shortly.</div>
@@ -231,5 +238,6 @@
 
   <script src="funky.js"></script>
   <script src="links.js"></script>
+  <script src="tabs.js"></script>
 </body>
 </html>

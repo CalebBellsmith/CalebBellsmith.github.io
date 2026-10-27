@@ -48,20 +48,6 @@
 
   document.getElementById('menuBtn').addEventListener('click', () => sidebar.classList.toggle('open'));
 
-  // ---------- theme ----------
-  const themeLabel = document.getElementById('themeLabel');
-  function syncTheme() {
-    themeLabel.textContent = document.documentElement.dataset.theme === 'light' ? 'Dark mode' : 'Light mode';
-  }
-  document.getElementById('themeBtn').addEventListener('click', () => {
-    const light = document.documentElement.dataset.theme !== 'light';
-    if (light) document.documentElement.dataset.theme = 'light';
-    else delete document.documentElement.dataset.theme;
-    store.set('funky_theme', light ? 'light' : 'dark');
-    syncTheme();
-  });
-  syncTheme();
-
   // ---------- owner mode ----------
   const owner = {
     key() { return store.get('gc_key'); },

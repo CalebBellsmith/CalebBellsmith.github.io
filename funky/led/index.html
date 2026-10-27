@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LED Matrix</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Neon skin for the funky side; the Mac app keeps its own colours */
+    :root { --bg: #07060d; --stage: #05040a; --panel: #0f0c1d; --raise: #1a1530; --raise-hover: #241d42;
+            --line: #2b2450; --text: #e9e6ff; --muted: #8e88b8; --accent: #00f0ff; --ok: #39ff9f; }
+    .panel-head h1 { letter-spacing: 0.06em; text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
+    .link[data-state="ready"], .link[data-state="needs-pairing"] { border-color: #ff2bd6; box-shadow: 0 0 10px rgba(255, 43, 214, 0.45); }
+  </style>
+</head>
+<body>
+  <main class="layout">
+    <!-- Live preview -->
+    <section class="stage" aria-label="Matrix preview">
+      <div class="stage-top">
+        <button type="button" class="link" id="link" data-state="offline">
+          <span class="dot" aria-hidden="true"></span>
+          <span class="link-text" id="linkText">Offline preview</span>
+          <span class="rssi" id="rssi"></span>
+        </button>
+        <div class="view-tools">
+          <div class="seg seg-small" role="group" aria-label="Preview style">
+            <button type="button" data-view="leds" class="on">LEDs</button>
+            <button type="button" data-view="diffused">Diffused</button>
+          </div>
+          <button type="button" class="icon-btn" id="rotateBtn" title="Rotate preview to match the board">⟳</button>
+          <button type="button" class="icon-btn" id="mirrorBtn" title="Mirror preview">⇋</button>
+        </div>
+      </div>
+
+      <div class="banner" id="syncBanner" hidden>
+        <p>You changed things while the board was away.</p>
+        <div class="btn-row">
+          <button type="button" class="chip primary" id="syncSend">Send my changes</button>
+          <button type="button" class="chip" id="syncKeep">Keep the board's</button>
+        </div>
+      </div>
+
+      <div class="banner" id="otaBanner" hidden>
+        <p id="otaText">Updating firmware…</p>
+        <div class="progress"><div class="progress-bar" id="otaBar"></div></div>
+      </div>
+
+      <div class="board-wrap">
+        <canvas id="board" width="640" height="640" aria-label="8 by 8 LED preview"></canvas>
+      </div>
+      <p class="stage-note" id="stageNote">Showing a simulation of the board.</p>
+    </section>
+
+    <!-- Controls -->
+    <section class="panel" aria-label="Controls">
+      <header class="panel-head">
+        <h1>LED Matrix</h1>
+        <p class="sub">8×8 WS2812B · ESP32</p>
+      </header>
+
+      <div class="group">
+        <h2>Mode</h2>
+        <div class="modes" id="modes" role="radiogroup" aria-label="Mode"></div>
+      </div>
+
+      <div class="group">
+        <h2>Light</h2>
+        <label class="slider">
+          <span class="slider-label">Brightness <output id="brightOut">13%</output></span>
+          <input type="range" id="bright" min="0" max="255" value="32">
+        </label>
+        <label class="slider effect-only">
+          <span class="slider-label">Speed <output id="speedOut">3</output></span>
+          <input type="range" id="speed" min="1" max="10" value="3">
+        </label>
+        <label class="slider effect-only">
+          <span class="slider-label">Hue shift <output id="hueOut">0°</output>
+            <button type="button" class="text-btn" id="hueReset">Reset</button></span>
+          <input type="range" id="hue" class="hue-track" min="0" max="359" value="0">
+        </label>
+      </div>
+
+      <div class="group" id="solidGroup" hidden>
+        <h2>Colour</h2>
+        <div class="colour-row">
+          <input type="color" id="solidColor" value="#ff9329" aria-label="Solid colour">
+          <div class="swatches" id="solidSwatches"></div>
+        </div>
+      </div>
+
+      <div class="group" id="paintGroup" hidden>
+        <h2>Paint</h2>
+        <p class="hint">Click or drag on the preview to paint LEDs.</p>
+        <div class="colour-row">
+          <input type="color" id="brushColor" value="#3ad0ff" aria-label="Brush colour">
+          <div class="swatches" id="brushSwatches"></div>
+        </div>
+        <div class="btn-row">
+          <button type="button" class="chip" id="eraserBtn" aria-pressed="false">Eraser</button>
+          <button type="button" class="chip" id="fillBtn">Fill</button>
+          <button type="button" class="chip" id="clearBtn">Clear</button>
+        </div>
+      </div>
+
+      <div class="group" id="musicGroup" hidden>
+        <h2>Music</h2>
+        <p class="hint" id="musicHint">The Mac's microphone drives the board while this mode is on.</p>
+        <div class="meters" aria-hidden="true">
+          <span>Bass</span><div class="meter"><div id="mBass"></div></div>
+          <span>Mid</span><div class="meter"><div id="mMid"></div></div>
+          <span>High</span><div class="meter"><div id="mHigh"></div></div>
+        </div>
+      </div>
+
+      <div class="group">
+        <h2>Scenes</h2>
+        <div class="scenes" id="scenes"></div>
+        <form class="scene-save" id="sceneForm">
+          <input id="sceneName" maxlength="17" autocomplete="off" spellcheck="false" placeholder="Name this look">
+          <button type="submit" class="chip">Save current</button>
+        </form>
+        <label class="row-label">Drift through scenes
+          <select id="cycle">
+            <option value="0">Off</option>
+            <option value="5">every 5 min</option>
+            <option value="15">every 15 min</option>
+            <option value="30">every 30 min</option>
+            <option value="60">every hour</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="group">
+        <h2>Sleep timer</h2>
+        <div class="btn-row tight" id="sleepBtns">
+          <button type="button" class="chip" data-sleep="0">Off</button>
+          <button type="button" class="chip" data-sleep="15">15 min</button>
+          <button type="button" class="chip" data-sleep="30">30 min</button>
+          <button type="button" class="chip" data-sleep="60">1 h</button>
+          <button type="button" class="chip" data-sleep="90">1.5 h</button>
+        </div>
+        <p class="hint countdown" id="sleepLeft"></p>
+      </div>
+
+      <div class="group">
+        <h2>Sunrise alarm</h2>
+        <label class="switch-row">
+          <input type="checkbox" id="alarmOn"> <span>Wake me with a sunrise</span>
+        </label>
+        <div class="alarm-grid" id="alarmFields">
+          <label>Fully bright at <input type="time" id="alarmTime" value="07:00"></label>
+          <label>Lasting
+            <select id="alarmDur">
+              <option value="10">10 min</option>
+              <option value="20" selected>20 min</option>
+              <option value="30">30 min</option>
+              <option value="45">45 min</option>
+              <option value="60">60 min</option>
+            </select>
+          </label>
+        </div>
+        <div class="days" id="alarmDays" role="group" aria-label="Days"></div>
+        <label class="slider">
+          <span class="slider-label">Peak brightness <output id="peakOut">59%</output></span>
+          <input type="range" id="alarmPeak" min="10" max="255" value="150">
+        </label>
+        <div class="btn-row">
+          <button type="button" class="chip" id="sunriseTry">Try a 1-minute sunrise</button>
+        </div>
+        <p class="hint" id="clockNote"></p>
+      </div>
+
+      <div class="group">
+        <h2>Board</h2>
+        <label class="switch-row">
+          <input type="checkbox" id="flip"> <span>Row 7 is the top of the board</span>
+        </label>
+        <p class="hint">Sets which way is up for Candle, Aurora and Sunrise.</p>
+        <div class="btn-row" id="nativeOnly">
+          <button type="button" class="chip" id="otaBtn">Update firmware…</button>
+        </div>
+      </div>
+
+      <details class="group console">
+        <summary>Keyboard shortcuts</summary>
+        <dl class="keys">
+          <dt>1 – 8</dt><dd>Effects, in the order shown</dd>
+          <dt>9 · P · 0</dt><dd>Solid · Paint · Off</dd>
+          <dt>Space</dt><dd>Off / back on</dd>
+          <dt>N</dt><dd>Next scene or effect</dd>
+          <dt>↑ ↓</dt><dd>Brightness (hold Shift for bigger steps)</dd>
+          <dt>[ ]</dt><dd>Speed</dd>
+        </dl>
+      </details>
+
+      <details class="group console">
+        <summary>Console</summary>
+        <div class="log" id="log" aria-live="polite"></div>
+        <form id="cmdForm" class="cmd-form">
+          <input id="cmdInput" autocomplete="off" spellcheck="false" placeholder="Type a command, e.g. STATUS">
+          <button type="submit" class="chip">Send</button>
+        </form>
+      </details>
+    </section>
+  </main>
+
+  <script src="effects.js"></script>
+  <script src="link.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
