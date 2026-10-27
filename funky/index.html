@@ -196,7 +196,23 @@
         <header class="page-head">
           <h1>Stark Sight</h1>
         </header>
-        <div class="card soon">Launch and live view coming online shortly.</div>
+        <div class="grid">
+          <article class="card span-2">
+            <h2 class="card-title"><span class="tag cyan">01</span>Gesture control through a webcam</h2>
+            <p class="card-note">MediaPipe tracks both hands and the upper body; three classifiers (geometric rules, Google's gesture model and a pose network I trained on 1.3M hands) vote on every frame, and the winner becomes real keyboard and mouse input. It runs locally on the Mac, because a web page isn't allowed to move your cursor, so this tab launches it and shows its live view.</p>
+            <div class="btn-line">
+              <button class="btn neon" type="button" id="ssLaunch">Launch</button>
+              <a class="btn ghost" href="http://127.0.0.1:8723/" target="_blank" rel="noopener" id="ssOpen" hidden>Open full screen</a>
+              <a class="btn ghost" href="../project.html?id=starksight">Project write-up</a>
+            </div>
+          </article>
+          <article class="card">
+            <h2 class="card-title"><span class="tag pink">02</span>Status</h2>
+            <p class="card-note" id="ssStatus"><span class="status-dot"></span>Checking&hellip;</p>
+            <p class="small muted" id="ssHint">Launching needs Stark Sight installed on this Mac. Shortcut: <code>Ctrl</code> + <code>Option</code> + <code>S</code> from anywhere.</p>
+          </article>
+        </div>
+        <div class="embed" id="ssEmbed" hidden></div>
       </section>
 
       <!-- ============ LIBRARY ============ -->

@@ -47,4 +47,63 @@
   function reloadLed() { if (ledEmbed.firstChild) { ledEmbed.innerHTML = ''; launchLed(); } }
   $('ledLaunch').addEventListener('click', () => { ledEmbed.innerHTML = ''; launchLed(); });
   syncLedPair();
+
+  // ---------- Stark Sight ----------
+  // The app serves its own page at 127.0.0.1:8723 and only answers that page, so the site
+  // just checks it's up and embeds it; the Launch button opens a starksight:// link that
+  // the app's small launcher (tools/install-web-launch.sh) handles.
+  const SS = 'http://127.0.0.1:8723/';
+  const ssEmbed = $('ssEmbed');
+  let ssUp = null, ssPoll = null;
+
+  async function ssAlive() {
+    try {
+      const ctl = new AbortController();
+      const t = setTimeout(() => ctl.abort(), 1500);
+      await fetch(SS + 'static/style.css?probe=' + Date.now(), { mode: 'no-cors', cache: 'no-store', signal: ctl.signal });
+      clearTimeout(t);
+      return true;
+    } catch (e) { return false; }
+  }
+
+  function ssShow(up) {
+    if (up === ssUp) return;
+    ssUp = up;
+    $('ssStatus').innerHTML = up
+      ? '<span class="status-dot on"></span>Running on this Mac.'
+      : '<span class="status-dot"></span>Not running.';
+    $('ssLaunch').textContent = up ? 'Running' : 'Launch';
+    $('ssLaunch').disabled = up;
+    $('ssOpen').hidden = !up;
+    if (up && !ssEmbed.firstChild) {
+      ssEmbed.innerHTML = '<iframe src="' + SS + '" title="Stark Sight live view" ' +
+        'allow="local-network-access; loopback-network; local-network; camera; microphone"></iframe>';
+    }
+    if (!up) ssEmbed.innerHTML = '';
+    ssEmbed.hidden = !up;
+  }
+
+  async function ssCheck() { ssShow(await ssAlive()); }
+
+  function ssWatch(on) {
+    clearInterval(ssPoll);
+    if (on) { ssCheck(); ssPoll = setInterval(ssCheck, 4000); }
+  }
+
+  $('ssLaunch').addEventListener('click', () => {
+    location.href = 'starksight://launch';
+    $('ssStatus').innerHTML = '<span class="status-dot warn"></span>Starting (camera warms up in a few seconds)&hellip;';
+    ssUp = null;
+    clearInterval(ssPoll);
+    let tries = 0;
+    ssPoll = setInterval(async () => {
+      const up = await ssAlive();
+      if (up || ++tries > 30) { ssShow(up); ssWatch(location.hash === '#starksight'); }
+    }, 1500);
+  });
+
+  // Only poll while the tab is open
+  F.onTab('starksight', () => ssWatch(true));
+  window.addEventListener('hashchange', () => { if (location.hash !== '#starksight') ssWatch(false); });
+  if (location.hash === '#starksight') ssWatch(true);
 })();
