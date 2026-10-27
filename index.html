@@ -14,6 +14,12 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
+  <script>
+    /* Owner only: reopen the funky side if that's where you left off */
+    try {
+      if (localStorage.getItem('gc_key') && localStorage.getItem('funky_last') === '1') location.replace('funky/');
+    } catch (e) {}
+  </script>
   <script src="theme.js"></script>
   <script data-goatcounter="https://calebbellsmith.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   <style>
@@ -133,7 +139,7 @@
         <div class="hero-content">
           <span class="hero-label">Biomedical Engineering · University of Waterloo</span>
           <h1 class="hero-title">Caleb Bellsmith</h1>
-          <p class="hero-sub">In my work I seek to let my love of engineering and design change the world, one funky project at a time.</p>
+          <p class="hero-sub">In my work I seek to let my love of engineering and design change the world, one <a href="funky/" class="funky-egg">funky</a> project at a time.</p>
           <div class="hero-actions">
             <a href="projects.html" class="btn-primary">View Projects</a>
             <a href="resume.html" class="btn-ghost">Resume</a>

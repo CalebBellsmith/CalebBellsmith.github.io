@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funky | Caleb Bellsmith</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+  <link rel="stylesheet" href="funky.css">
+  <script>
+    /* Theme before first paint, so there's no flash. Dark unless switched to light. */
+    try { if (localStorage.getItem('funky_theme') === 'light') document.documentElement.dataset.theme = 'light'; } catch (e) {}
+  </script>
+  <script data-goatcounter="https://calebbellsmith.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-scan" aria-hidden="true"></div>
+
+  <div class="shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <span class="brand-mark">CB</span>
+        <span class="brand-text">FUNKY<span class="brand-dot">.</span>SIDE</span>
+      </div>
+
+      <nav class="tabs" aria-label="Funky sections">
+        <a class="tab" href="#dashboard" data-tab="dashboard">
+          <svg viewBox="0 0 24 24"><path d="M3 3h8v10H3zM13 3h8v6h-8zM13 11h8v10h-8zM3 15h8v6H3z"/></svg>
+          <span>Dashboard</span>
+        </a>
+        <a class="tab" href="#links" data-tab="links">
+          <svg viewBox="0 0 24 24"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>
+          <span>Links &amp; Analytics</span>
+        </a>
+        <a class="tab" href="#led" data-tab="led">
+          <svg viewBox="0 0 24 24"><path d="M4 4h4v4H4zM10 4h4v4h-4zM16 4h4v4h-4zM4 10h4v4H4zM10 10h4v4h-4zM16 10h4v4h-4zM4 16h4v4H4zM10 16h4v4h-4zM16 16h4v4h-4z"/></svg>
+          <span>LED Matrix</span>
+        </a>
+        <a class="tab" href="#starksight" data-tab="starksight">
+          <svg viewBox="0 0 24 24"><path d="M8 13V5a1.5 1.5 0 0 1 3 0v6M11 11V4a1.5 1.5 0 0 1 3 0v7M14 11V5.5a1.5 1.5 0 0 1 3 0V14a7 7 0 0 1-7 7h-1a6 6 0 0 1-5-3l-2.5-4a1.5 1.5 0 0 1 2.5-1.6L8 15"/></svg>
+          <span>Stark Sight</span>
+        </a>
+        <a class="tab" href="#library" data-tab="library">
+          <svg viewBox="0 0 24 24"><path d="M4 4h5v16H4zM10 4h4v16h-4zM15.5 4.5l4-1 3 15.5-4 1z"/></svg>
+          <span>Software Library</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-foot">
+        <button class="foot-btn" id="ownerBtn" type="button">
+          <svg viewBox="0 0 24 24"><path d="M6 11V8a6 6 0 0 1 12 0v3M5 11h14v10H5z"/></svg>
+          <span id="ownerLabel">Owner mode</span>
+        </button>
+        <button class="foot-btn" id="themeBtn" type="button">
+          <svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg>
+          <span id="themeLabel">Light mode</span>
+        </button>
+        <a class="foot-btn back" id="backBtn" href="../">
+          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+          <span>Back to main site</span>
+        </a>
+      </div>
+    </aside>
+
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu">
+      <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+
+    <main class="main">
+
+      <!-- ============ DASHBOARD ============ -->
+      <section class="panel-page" data-page="dashboard">
+        <header class="hero">
+          <p class="kicker">// access granted</p>
+          <h1 class="glitch" data-text="I see you also appreciate the fun bits of engineering...">I see you also appreciate the fun bits of engineering...</h1>
+          <p class="hero-sub">enjoy some of my funkier projects!</p>
+        </header>
+
+        <div class="grid">
+          <article class="card span-2">
+            <h2 class="card-title"><span class="tag cyan">01</span>Quick tracking link</h2>
+            <p class="card-note">Type a company, get a link to the portfolio that tells you when they open it.</p>
+            <form class="gen" data-gen>
+              <input class="field" name="name" placeholder="Company or marker, e.g. Martinrea" autocomplete="off" required>
+              <button class="btn neon" type="submit">Generate</button>
+            </form>
+            <div class="gen-out" data-gen-out hidden>
+              <code class="link-code" data-gen-link></code>
+              <button class="btn ghost" type="button" data-copy>Copy</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <h2 class="card-title"><span class="tag pink">02</span>Signal</h2>
+            <div id="glance"></div>
+          </article>
+
+          <a class="card tile" href="#led">
+            <span class="tag yellow">03</span>
+            <h3>LED Matrix</h3>
+            <p>Live 8&times;8 lamp control over Bluetooth, straight from the browser.</p>
+            <span class="tile-go">Open &rarr;</span>
+          </a>
+          <a class="card tile" href="#starksight">
+            <span class="tag cyan">04</span>
+            <h3>Stark Sight</h3>
+            <p>Control a computer with hand gestures through a webcam.</p>
+            <span class="tile-go">Open &rarr;</span>
+          </a>
+          <a class="card tile" href="#library">
+            <span class="tag pink">05</span>
+            <h3>Software Library</h3>
+            <p>Simulators, timers and dashboards from my personal builds.</p>
+            <span class="tile-go">Open &rarr;</span>
+          </a>
+
+          <article class="card span-3">
+            <h2 class="card-title"><span class="tag yellow">06</span>Elsewhere</h2>
+            <div class="ext-links">
+              <a class="ext" href="https://uofwaterloo-my.sharepoint.com/:x:/g/personal/cbellsmi_uwaterloo_ca/IQDl-lo0DQCGT5u9tq9RSZmxATsuz0A8RfK7Y2QOz2r9jlE" target="_blank" rel="noopener">
+                <strong>Spreadsheet v2</strong>
+                <span>Excel on SharePoint (UWaterloo sign-in)</span>
+              </a>
+              <a class="ext" href="https://nichefambase.vercel.app" target="_blank" rel="noopener">
+                <strong>Niche Fam</strong>
+                <span>nichefambase.vercel.app</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ============ LINKS & ANALYTICS ============ -->
+      <section class="panel-page" data-page="links">
+        <header class="page-head">
+          <p class="kicker">// tab 02</p>
+          <h1>Links &amp; Analytics</h1>
+        </header>
+        <div class="card soon">Bringing this online next: full link manager plus live charts of who's opening your links.</div>
+      </section>
+
+      <!-- ============ LED MATRIX ============ -->
+      <section class="panel-page" data-page="led">
+        <header class="page-head">
+          <p class="kicker">// tab 03</p>
+          <h1>LED Matrix</h1>
+        </header>
+        <div class="card soon">Bringing the full control panel online shortly.</div>
+      </section>
+
+      <!-- ============ STARK SIGHT ============ -->
+      <section class="panel-page" data-page="starksight">
+        <header class="page-head">
+          <p class="kicker">// tab 04</p>
+          <h1>Stark Sight</h1>
+        </header>
+        <div class="card soon">Launch and live view coming online shortly.</div>
+      </section>
+
+      <!-- ============ LIBRARY ============ -->
+      <section class="panel-page" data-page="library">
+        <header class="page-head">
+          <p class="kicker">// tab 05</p>
+          <h1>Software Library</h1>
+        </header>
+        <div class="card soon">Being stocked shortly.</div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Owner mode dialog -->
+  <dialog class="modal" id="ownerDialog">
+    <form method="dialog" class="modal-body" id="ownerForm">
+      <h2>Owner mode</h2>
+      <div id="ownerLocked">
+        <p>Paste your GoatCounter API key to unlock analytics on this browser. It's stored only here, never on the site.</p>
+        <p class="small">GoatCounter &rarr; your name (top right) &rarr; API &rarr; New API key, with <em>Read statistics</em> ticked.</p>
+        <input class="field" id="ownerKey" type="password" placeholder="API key" autocomplete="off">
+        <p class="err" id="ownerErr" hidden></p>
+        <div class="modal-actions">
+          <button class="btn ghost" value="cancel" formnovalidate>Cancel</button>
+          <button class="btn neon" id="ownerSave" type="button">Unlock</button>
+        </div>
+      </div>
+      <div id="ownerUnlocked" hidden>
+        <p>This browser is in owner mode: analytics unlocked, your own visits aren't counted, and the site reopens here.</p>
+        <div class="modal-actions">
+          <button class="btn ghost" value="cancel">Close</button>
+          <button class="btn danger" id="ownerLock" type="button">Leave owner mode</button>
+        </div>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="funky.js"></script>
+</body>
+</html>
