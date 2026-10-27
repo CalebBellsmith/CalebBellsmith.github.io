@@ -140,7 +140,37 @@
           <p class="kicker">// tab 02</p>
           <h1>Links &amp; Analytics</h1>
         </header>
-        <div class="card soon">Bringing this online next: full link manager plus live charts of who's opening your links.</div>
+        <div class="grid">
+          <article class="card span-2">
+            <h2 class="card-title"><span class="tag cyan">01</span>New tracking link</h2>
+            <p class="card-note">Each link opens your normal portfolio. When someone uses it, the name shows up below, so you know that company looked.</p>
+            <form class="gen" data-gen>
+              <input class="field" name="name" placeholder="Company or marker, e.g. Blue Robotics" autocomplete="off" required>
+              <button class="btn neon" type="submit">Generate</button>
+            </form>
+            <div class="gen-out" data-gen-out hidden>
+              <code class="link-code" data-gen-link></code>
+              <button class="btn ghost" type="button" data-copy>Copy</button>
+            </div>
+          </article>
+          <article class="card">
+            <h2 class="card-title"><span class="tag pink">02</span>Range</h2>
+            <div class="range" id="range">
+              <button type="button" data-days="7">7d</button>
+              <button type="button" data-days="30" class="on">30d</button>
+              <button type="button" data-days="90">90d</button>
+              <button type="button" data-days="365">1y</button>
+            </div>
+            <p class="card-note small" id="rangeNote"></p>
+          </article>
+
+          <article class="card span-3">
+            <h2 class="card-title"><span class="tag yellow">03</span>Your links</h2>
+            <div class="table-wrap"><table class="ltable" id="linkTable"></table></div>
+          </article>
+        </div>
+
+        <div id="analytics"></div>
       </section>
 
       <!-- ============ LED MATRIX ============ -->
@@ -200,5 +230,6 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="funky.js"></script>
+  <script src="links.js"></script>
 </body>
 </html>

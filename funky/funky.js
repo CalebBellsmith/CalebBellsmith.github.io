@@ -68,7 +68,14 @@
     on() { return !!store.get('gc_key'); },
   };
 
-  async function gc(path, params) {
+  // GoatCounter allows 4 requests a second, so calls go out one at a time, spaced
+  let gcQueue = Promise.resolve();
+  function gc(path, params) {
+    const run = gcQueue.then(() => gcFetch(path, params));
+    gcQueue = run.catch(() => {}).then(() => new Promise(r => setTimeout(r, 280)));
+    return run;
+  }
+  async function gcFetch(path, params) {
     const key = owner.key();
     if (!key) throw new Error('locked');
     const url = new URL(GC + path);
@@ -109,7 +116,7 @@
     if (!key) return;
     ownerErr.hidden = true;
     try {
-      const res = await fetch(GC + '/stats/total?start=' + isoDay(-1), { headers: { Authorization: 'Bearer ' + key } });
+      const res = await fetch(GC + '/stats/total?start=' + gcTime(-1), { headers: { Authorization: 'Bearer ' + key } });
       if (res.status === 401) throw new Error("That key wasn't accepted.");
       if (res.status === 403) throw new Error('That key needs the "Read statistics" permission.');
       if (!res.ok) throw new Error('GoatCounter replied ' + res.status + '. Try again in a moment.');
@@ -183,6 +190,8 @@
     const d = new Date(); d.setDate(d.getDate() + (offsetDays || 0));
     return d.toISOString().slice(0, 10);
   }
+  // API time bounds must sit on the hour
+  function gcTime(offsetDays) { return isoDay(offsetDays) + 'T00:00:00Z'; }
 
   // ---------- dashboard glance ----------
   const glance = document.getElementById('glance');
@@ -199,8 +208,8 @@
     glance.innerHTML = '<p class="locked">Loading&hellip;</p>';
     try {
       const [week, today] = await Promise.all([
-        gc('/stats/total', { start: isoDay(-6), end: isoDay(1) }),
-        gc('/stats/total', { start: isoDay(0), end: isoDay(1) }),
+        gc('/stats/total', { start: gcTime(-6), end: gcTime(1) }),
+        gc('/stats/total', { start: gcTime(0), end: gcTime(1) }),
       ]);
       glance.innerHTML = `
         <div class="glance-row">
@@ -215,7 +224,7 @@
   ownerChange.push(renderGlance);
   onTab('dashboard', renderGlance);
 
-  window.Funky = { store, toast, copy, onTab, owner, gc, links, linkFor, slugify, isoDay, ownerChange, SITE };
+  window.Funky = { store, toast, copy, onTab, owner, gc, links, linkFor, slugify, isoDay, gcTime, ownerChange, SITE };
 
   syncOwner(false);
   route();
