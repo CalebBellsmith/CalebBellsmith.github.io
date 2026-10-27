@@ -220,7 +220,69 @@
         <header class="page-head">
           <h1>Software Library</h1>
         </header>
-        <div class="card soon">Being stocked shortly.</div>
+        <div class="lib">
+
+          <article class="card lib-item">
+            <div class="lib-head">
+              <h2 class="card-title"><span class="tag cyan">mtsim</span>MicroLED mass-transfer line simulator</h2>
+              <div class="chips"><span>Python</span><span>Monte Carlo</span><span>Discrete-event sim</span><span>Sobol sensitivity</span></div>
+            </div>
+            <p>Compares four ways of building microLED displays (cartridge-based two-step transfer, elastomer stamp, laser transfer and pick-and-place) by following every subpixel back to the wafer device that landed on it, then running the whole factory as a discrete-event simulation and sweeping the parameters nobody publishes.</p>
+            <ul class="facts">
+              <li><strong>99%</strong> busy: cartridge loading is the bottleneck while the print station starves 76% of the time</li>
+              <li><strong>55&times;</strong> fewer repairs than an elastomer stamp line for a 12.3" automotive panel</li>
+              <li><strong>9 vs 36</strong> optimal colour bins, depending on whether sorting happens during loading or off-line</li>
+            </ul>
+            <div class="gallery">
+              <a href="library/mtsim-panels.jpg" target="_blank" rel="noopener"><img src="library/mtsim-panels.jpg" alt="Simulated panels before and after repair and demura" loading="lazy"></a>
+              <a href="library/mtsim-print.gif" target="_blank" rel="noopener"><img src="library/mtsim-print.gif" alt="Animation of cartridges printing onto a backplane" loading="lazy"></a>
+              <a href="library/mtsim-stations.jpg" target="_blank" rel="noopener"><img src="library/mtsim-stations.jpg" alt="Station utilisation over a simulated week" loading="lazy"></a>
+              <a href="library/mtsim-binning.jpg" target="_blank" rel="noopener"><img src="library/mtsim-binning.jpg" alt="Binning cost optimum" loading="lazy"></a>
+              <a href="library/mtsim-flow.jpg" target="_blank" rel="noopener"><img src="library/mtsim-flow.jpg" alt="Device flow from wafer to working subpixel" loading="lazy"></a>
+            </div>
+            <p class="fine">All numbers not marked as vendor claims are illustrative assumptions of the model, not data from any company.</p>
+            <div class="btn-line"><a class="btn ghost" href="https://github.com/CalebBellsmith/mtsim" target="_blank" rel="noopener">Code on GitHub</a></div>
+          </article>
+
+          <article class="card lib-item">
+            <div class="lib-head">
+              <h2 class="card-title"><span class="tag pink">meeting</span>Meeting Cost</h2>
+              <div class="chips"><span>Desktop app (PySide6)</span><span>Rebuilt for the browser</span></div>
+            </div>
+            <p>A stopwatch that counts money instead of minutes. Add who's in the room, hit start, and watch the meeting's cost climb at everyone's combined salary rate (yearly salary &divide; 2,080 hours). People can come and go mid-meeting without rewriting what's already been spent. The desktop version encrypts its salary list; this one keeps it in your browser only.</p>
+            <div class="meter" id="meter">
+              <div class="meter-read">
+                <div class="meter-cost" id="mcCost">$0.00</div>
+                <div class="meter-sub"><span id="mcClock">00:00:00</span> &middot; <span id="mcRate">$0.00 / hr</span></div>
+              </div>
+              <div class="btn-line">
+                <button class="btn neon" type="button" id="mcStart">Start</button>
+                <button class="btn ghost" type="button" id="mcReset">Reset</button>
+              </div>
+              <div class="room" id="mcRoom"></div>
+              <form class="gen" id="mcAdd">
+                <input class="field" name="name" placeholder="Name" autocomplete="off" required>
+                <input class="field" name="salary" type="number" min="1" step="any" placeholder="Yearly salary" required>
+                <button class="btn ghost" type="submit">Add</button>
+              </form>
+              <p class="small muted" id="mcSummary"></p>
+            </div>
+          </article>
+
+          <article class="card lib-item">
+            <div class="lib-head">
+              <h2 class="card-title"><span class="tag yellow">jolt</span>Jolt dashboard</h2>
+              <div class="chips"><span>React</span><span>TypeScript</span><span>Web Bluetooth</span><span>Hack Canada 2025</span></div>
+            </div>
+            <p>The companion web app for Jolt, a forearm band that lets upper-limb amputees move a cursor by tilting their arm. It pairs with the band over Web Bluetooth and shows connection and power state, live gyroscope readings and a live view of the arm's movement, so sensitivity and EMG placement can be tuned without touching firmware.</p>
+            <div class="btn-line">
+              <a class="btn neon" href="https://jolt-dusky.vercel.app/" target="_blank" rel="noopener">Open dashboard</a>
+              <a class="btn ghost" href="https://github.com/CalebBellsmith/Jolt" target="_blank" rel="noopener">Code on GitHub</a>
+              <a class="btn ghost" href="../project.html?id=jolt">Hardware write-up</a>
+            </div>
+          </article>
+
+        </div>
       </section>
 
     </main>
@@ -255,5 +317,6 @@
   <script src="funky.js"></script>
   <script src="links.js"></script>
   <script src="tabs.js"></script>
+  <script src="library.js"></script>
 </body>
 </html>
