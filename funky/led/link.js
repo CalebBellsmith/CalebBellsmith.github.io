@@ -117,21 +117,45 @@
     async start() {
       this.pairing = readPairing();
       if (!this.pairing) return this.emitLink('needs-pairing', 'Paste your pairing.json on the LED tab, then click here.');
-      // Boards picked before can reconnect without the picker (where Chrome supports it).
-      if (navigator.bluetooth.getDevices) {
-        try {
-          const known = (await navigator.bluetooth.getDevices())[0];
-          if (known) { this.adopt(known); return this.connect(); }
-        } catch (e) { /* not supported here */ }
-      }
-      this.emitLink('ready', 'Click to pick your matrix in the Bluetooth window.');
+      // Embedded on the LED tab, the tab's Launch button starts the connection instead.
+      if (new URLSearchParams(location.search).has('wait')) return this.emitLink('ready', 'Press Launch to connect.');
+      if (!(await this.connectKnown())) this.emitLink('ready', 'Click to pick your matrix in the Bluetooth window.');
     }
 
-    // Clicking the status pill: open the picker (needs that click as a user gesture).
-    async reconnect() {
+    // A board this browser has connected to before reconnects with no picker.
+    async knownDevice() {
+      if (!navigator.bluetooth.getDevices) return null;
+      try {
+        const all = await navigator.bluetooth.getDevices();
+        return all.find((d) => this.device && d.id === this.device.id) || all[0] || null;
+      } catch (e) { return null; }
+    }
+
+    async connectKnown() {
+      const known = this.device || await this.knownDevice();
+      if (!known) return false;
+      this.adopt(known);
+      this.connect();
+      return true;
+    }
+
+    // Launch button / status pill. Must run inside that click: if the board is new to this
+    // browser, Chrome's picker opens (filtered to your board), which needs the click.
+    async launch() {
       this.pairing = readPairing();
       if (!this.pairing) return this.emitLink('needs-pairing', 'Paste your pairing.json on the LED tab first.');
-      if (this.device && this.device.gatt.connected) this.device.gatt.disconnect();
+      if (this.paired) return;
+      if (await this.connectKnown()) return;
+      return this.pick();
+    }
+
+    // Status pill: drop the current link and connect again (picker only if needed).
+    async reconnect() {
+      if (this.device && this.device.gatt.connected) { this.device.gatt.disconnect(); return; }
+      return this.launch();
+    }
+
+    async pick() {
       try {
         const dev = await navigator.bluetooth.requestDevice({
           filters: [{ services: [this.pairing.serviceUUID] }],
@@ -317,6 +341,8 @@
   global.createLink = function () {
     const port = global.webkit && global.webkit.messageHandlers && global.webkit.messageHandlers.led;
     if (port) return new NativeLink(port);
-    return navigator.bluetooth ? new WebLink() : new PreviewLink();
+    const link = navigator.bluetooth ? new WebLink() : new PreviewLink();
+    global.ledLink = link;          // the LED tab's Launch button calls ledLink.launch()
+    return link;
   };
 })(window);

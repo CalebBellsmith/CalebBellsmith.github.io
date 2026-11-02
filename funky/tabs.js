@@ -35,17 +35,42 @@
     reloadLed();
   });
 
+  // The panel loads (hidden) as soon as the tab opens, so Launch can connect straight away.
+  // It's same-origin, so the Launch click also counts as a click inside the panel, which
+  // Chrome needs if it has to show its Bluetooth picker (only for a board it hasn't met).
   const ledEmbed = $('ledEmbed');
-  function launchLed() {
-    if (!ledEmbed.firstChild) {
-      ledEmbed.innerHTML = '<iframe src="led/" title="LED Matrix control panel" allow="bluetooth; microphone"></iframe>';
-    }
-    ledEmbed.hidden = false;
-    $('ledLaunch').textContent = 'Relaunch';
-    ledEmbed.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  let ledFrame = null, ledLoaded = false, ledPending = false;
+
+  function loadLed() {
+    if (ledFrame) return;
+    ledEmbed.innerHTML = '<iframe src="led/?wait" title="LED Matrix control panel" allow="bluetooth; microphone"></iframe>';
+    ledFrame = ledEmbed.firstChild;
+    ledLoaded = false;
+    ledFrame.addEventListener('load', () => {
+      ledLoaded = true;
+      if (ledPending) { ledPending = false; connectLed(); }
+    });
   }
-  function reloadLed() { if (ledEmbed.firstChild) { ledEmbed.innerHTML = ''; launchLed(); } }
-  $('ledLaunch').addEventListener('click', () => { ledEmbed.innerHTML = ''; launchLed(); });
+  function connectLed() {
+    const link = ledFrame && ledFrame.contentWindow && ledFrame.contentWindow.ledLink;
+    if (link && link.launch) link.launch();
+  }
+  function reloadLed() {
+    const shown = !ledEmbed.hidden;
+    ledEmbed.innerHTML = ''; ledFrame = null;
+    loadLed();
+    ledEmbed.hidden = !shown;
+  }
+  $('ledLaunch').addEventListener('click', () => {
+    loadLed();
+    ledEmbed.hidden = false;
+    $('ledLaunch').textContent = 'Reconnect';
+    if (ledLoaded) connectLed(); else ledPending = true;
+    ledEmbed.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  F.onTab('led', loadLed);
+  if (location.hash === '#led') loadLed();
+  syncLedPair();
   syncLedPair();
 
   // ---------- Stark Sight ----------

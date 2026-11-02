@@ -212,9 +212,10 @@
     rain: { cmd: 'RAIN', breathe: 10 },
     music: { cmd: 'MUSIC', breathe: 0 },
     sunrise: { cmd: 'SUNRISE', breathe: 0 },
+    stars: { cmd: 'STARS', breathe: 0 },
   };
-  const EFFECTS = ['ocean', 'lava', 'caustic', 'aurora', 'fireflies', 'candle', 'rain', 'music'];
-  const EFFECT_ORDER = ['ocean', 'lava', 'caustic', 'aurora', 'fireflies', 'candle', 'rain'];   // NEXT without scenes
+  const EFFECTS = ['ocean', 'lava', 'caustic', 'aurora', 'fireflies', 'candle', 'rain', 'stars', 'music'];
+  const EFFECT_ORDER = ['ocean', 'lava', 'caustic', 'aurora', 'fireflies', 'candle', 'rain', 'stars'];   // NEXT without scenes
   const isEffect = (m) => EFFECTS.includes(m);
   const NUM_SCENES = 8;
 
@@ -229,6 +230,7 @@
     [0.11, 0.13, 1.2, 5.0, 5.1, 0.15], [0.07, 0.19, 3.6, 3.3, 4.7, 0.55], [0.15, 0.10, 5.2, 0.8, 3.3, 0.86],
     [0.12, 0.17, 2.7, 4.4, 5.9, 0.27]];
   const RAIN_INTERVAL = 1.4, RAIN_LIFE = 4.0, RAIN_SPEED = 1.8;
+  const STAR_LED = [[0.23, 0.0], [0.17, 1.9], [0.29, 3.6], [0.13, 5.1]];   // rate, phase
 
   const now = () => performance.now();
 
@@ -265,6 +267,8 @@
       this.causticLight = hueRotate([150, 225, 255], h);
       this.firefly = hueRotate([190, 255, 40], h);
       this.rainRing = hueRotate([110, 180, 255], h);
+      this.starCold = hueRotate([170, 190, 255], h);
+      this.starWarm = hueRotate([255, 215, 165], h);
     }
 
     set(x, y, c) { const p = (y * W + x) * 3; this.leds[p] = c[0]; this.leds[p + 1] = c[1]; this.leds[p + 2] = c[2]; }
@@ -445,6 +449,7 @@
         case 'rain': this.renderRain(t); break;
         case 'music': this.renderMusic(t); break;
         case 'sunrise': this.renderSunrise(t, this.sunriseProgress()); break;
+        case 'stars': this.renderStars(t); break;
         default: return;
       }
       const depth = MODES[this.mode].breathe;
@@ -610,6 +615,18 @@
         if (high > 0.05 && s > 200) col = addSat(col, scaled([255, 255, 255], (high * (s - 200)) / 55));
         this.set(x, y, col);
       }
+    }
+
+    // Only the 4 centre LEDs: point lights for the star-projector hood (see effects.h).
+    renderStars(t) {
+      this.fill([0, 0, 0]);
+      STAR_LED.forEach(([rate, phase], i) => {
+        let w = 0.5 + 0.5 * Math.sin(t * rate + phase);
+        w = 0.12 + 0.88 * w * w * w;
+        const warm = stretch(noiseAt(i * 10, t * 0.05, 3));
+        const c = [0, 1, 2].map((k) => blend8(this.starCold[k], this.starWarm[k], warm));
+        this.set(3 + (i & 1), 3 + (i >> 1), scaled(c, w));
+      });
     }
 
     renderSunrise(t, p) {

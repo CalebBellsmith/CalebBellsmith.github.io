@@ -11,7 +11,7 @@
   const REAL_FRAME_STALE_MS = 2500;
   const MODE_TILES = [
     ['ocean', 'Ocean'], ['lava', 'Lava'], ['caustic', 'Caustic'], ['aurora', 'Aurora'],
-    ['fireflies', 'Fireflies'], ['candle', 'Candle'], ['rain', 'Rain'], ['music', 'Music'],
+    ['fireflies', 'Fireflies'], ['candle', 'Candle'], ['rain', 'Rain'], ['stars', 'Stars'], ['music', 'Music'],
     ['solid', 'Solid'], ['paint', 'Paint'], ['off', 'Off'],
   ];
   const DAY_LABELS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
@@ -403,7 +403,7 @@
   // ---------- Scenes ----------
   // A small swatch for a scene: its effect's palette, recoloured by its hue.
   function sceneSwatch(s) {
-    const palName = { caustic: 'ocean', rain: 'ocean', fireflies: 'aurora' }[s.mode] || s.mode;
+    const palName = { caustic: 'ocean', rain: 'ocean', fireflies: 'aurora', stars: 'ocean' }[s.mode] || s.mode;
     const pal = MatrixSim.PALETTES[palName] || MatrixSim.PALETTES.ocean;
     const cols = [6, 10, 14].map((i) => MatrixSim.hueRotate(pal[i], s.hue)).map((c) => `rgb(${c.join(',')})`);
     return `linear-gradient(135deg, ${cols.join(', ')})`;
@@ -533,8 +533,8 @@
     if (['input', 'select', 'textarea'].includes(tag) || e.metaKey || e.ctrlKey || e.altKey) return;
     const k = e.key;
     const step = e.shiftKey ? 32 : 8;
-    if (k >= '1' && k <= '8') selectMode(EFFECTS[+k - 1]);
-    else if (k === '9') selectMode('solid');
+    if (k >= '1' && k <= '9') selectMode(EFFECTS[+k - 1]);
+    else if (k === 's' || k === 'S') selectMode('solid');
     else if (k === '0') selectMode('off');
     else if (k === 'p' || k === 'P') selectMode('paint');
     else if (k === 'n' || k === 'N') { send('NEXT'); deriveUiMode(); }
