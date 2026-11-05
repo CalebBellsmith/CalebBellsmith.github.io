@@ -31,7 +31,7 @@
   }
 
   // ---------- tabs ----------
-  const TABS = ['dashboard', 'links', 'led', 'starksight', 'library'];
+  const TABS = ['dashboard', 'links', 'led', 'starksight', 'canoe', 'library'];
   const sidebar = document.getElementById('sidebar');
   const listeners = {};
 

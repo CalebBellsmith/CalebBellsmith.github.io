@@ -1,0 +1,112 @@
+{
+ "hydro": [
+  [
+   "Length over stems",
+   "5182",
+   "5182"
+  ],
+  [
+   "Beam, max",
+   "890",
+   "890"
+  ],
+  [
+   "Beam, waterline",
+   "830",
+   "851"
+  ],
+  [
+   "Depth, centre",
+   "370",
+   "370"
+  ],
+  [
+   "Bow height",
+   "635",
+   "635"
+  ],
+  [
+   "Displacement, kg",
+   "189",
+   "185.2"
+  ],
+  [
+   "Prismatic coeff.",
+   "0.532",
+   "0.536"
+  ],
+  [
+   "Wetted surface, m\u00b2",
+   "2.66",
+   "2.71"
+  ],
+  [
+   "Waterline length",
+   "\u2013",
+   "4629"
+  ]
+ ],
+ "pattern": "LLLLLLLDLDLLDLDLDLLDDLDDDDDDDDDDDDDDDD",
+ "strip": "6.35 \u00d7 19.05 mm bead and cove",
+ "colors": {
+  "L": "#e3c28c",
+  "D": "#784226"
+ },
+ "legend": [
+  [
+   "Light cedar strips",
+   "#e3c28c"
+  ],
+  [
+   "Dark red cedar strips",
+   "#784226"
+  ],
+  [
+   "Cherry stems, 3 + 3 laminations",
+   "#a14f30"
+  ],
+  [
+   "Ash gunwales, decks, seats, yoke, thwart",
+   "#e3d1b0"
+  ],
+  [
+   "Cane seat panels",
+   "#d6b578"
+  ],
+  [
+   "Plywood molds and stem forms",
+   "#c2945c"
+  ],
+  [
+   "Spruce strongback",
+   "#e8d6ab"
+  ]
+ ],
+ "views": {
+  "canoe_hull_shell": {
+   "Cedar strips": 76,
+   "Inner stem laminations": 6,
+   "Outer stem laminations": 6
+  },
+  "canoe_full": {
+   "Cedar strips": 76,
+   "Inner stem laminations": 6,
+   "Outer stem laminations": 6,
+   "Gunwales": 4,
+   "Decks": 2,
+   "Seat parts": 18,
+   "Yoke and thwart": 2
+  },
+  "canoe_on_molds": {
+   "Cedar strips": 76,
+   "Inner stem laminations": 6,
+   "Station molds": 15,
+   "Stem forms": 2,
+   "Strongback parts": 5
+  }
+ },
+ "masses_kg": {
+  "cedar": 13.9,
+  "cherry": 0.8
+ }
+}

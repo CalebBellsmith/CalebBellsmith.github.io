@@ -1,0 +1,231 @@
+<meta charset="utf-8">
+<title>Nomad 17 Strip Canoe</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one working viewport (model) beside a narrow spec rail, like a lofting table with its offsets sheet */
+:root {
+  --bg: #eef1f2;
+  --panel: #ffffff;
+  --ink: #1d2427;
+  --muted: #5b676c;
+  --rule: #d3dadd;
+  --accent: #9a3a20;        /* cherry stem */
+  --stage: #dfe5e7;
+  --display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #131819; --panel: #1b2224; --ink: #e4eaec; --muted: #94a3a8;
+    --rule: #2c373a; --accent: #d9734f; --stage: #0e1213; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #131819; --panel: #1b2224; --ink: #e4eaec; --muted: #94a3a8;
+  --rule: #2c373a; --accent: #d9734f; --stage: #0e1213; color-scheme: dark;
+}
+html, body { height: 100%; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 16px; box-sizing: border-box;
+}
+.wrap { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 16px; height: 100%; min-height: 560px; }
+header { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; }
+h1 { font-family: var(--display); font-weight: 600; font-size: 2rem; letter-spacing: .01em; margin: 0; text-wrap: balance; }
+h1 span { color: var(--accent); }
+.sub { color: var(--muted); margin: 0; }
+.stage { position: relative; background: var(--stage); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; min-height: 420px; }
+canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+.tabs { position: absolute; top: 12px; left: 12px; display: flex; gap: 4px; flex-wrap: wrap; background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 4px; }
+.tabs button { font: 600 .95rem var(--display); letter-spacing: .06em; text-transform: uppercase; border: 0; background: transparent; color: var(--muted); padding: 6px 12px; border-radius: 4px; cursor: pointer; }
+.tabs button[aria-pressed="true"] { background: var(--ink); color: var(--panel); }
+.tabs button:focus-visible, .tools button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.tools { position: absolute; right: 12px; bottom: 12px; display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.tools button[aria-pressed="true"] { background: var(--ink); color: var(--panel); }
+.tools button { font: 500 .8rem var(--mono); background: var(--panel); color: var(--ink); border: 1px solid var(--rule); border-radius: 4px; padding: 6px 10px; cursor: pointer; }
+.status { position: absolute; left: 12px; bottom: 12px; font: .78rem var(--mono); color: var(--muted); }
+aside { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+aside h2 { font: 600 .85rem var(--display); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
+dl { display: grid; grid-template-columns: 1fr auto auto; gap: 4px 10px; margin: 0; font-size: .9rem; }
+dt { color: var(--muted); }
+dd { margin: 0; font-family: var(--mono); font-size: .82rem; font-variant-numeric: tabular-nums; text-align: right; }
+dd.ref { color: var(--muted); }
+.legend { display: grid; grid-template-columns: 14px 1fr; gap: 6px 8px; align-items: center; font-size: .9rem; }
+.sw { width: 14px; height: 14px; border-radius: 2px; border: 1px solid var(--rule); }
+.pattern { display: flex; gap: 1px; height: 18px; border-radius: 2px; overflow: hidden; }
+.pattern i { flex: 1; }
+.note { color: var(--muted); font-size: .85rem; line-height: 1.45; margin: 0; }
+@media (max-width: 820px) {
+  html, body { height: auto; }
+  .wrap { grid-template-columns: 1fr; height: auto; }
+  .stage { height: 62vh; }
+}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Nomad 17 <span>/</span> cedar strip canoe</h1>
+    <p class="sub">Reconstructed from Ted Moores' published dimensions · all units mm</p>
+  </header>
+
+  <div class="stage" id="stage">
+    <canvas id="c" aria-label="3D model viewer"></canvas>
+    <div class="tabs" role="group" aria-label="Model">
+      <button id="t-shell" data-m="canoe_hull_shell" aria-pressed="true">Hull shell</button>
+      <button id="t-full" data-m="canoe_full" aria-pressed="false">Full canoe</button>
+      <button id="t-molds" data-m="canoe_on_molds" aria-pressed="false">On molds</button>
+    </div>
+    <div class="tools">
+      <button id="v-side">Profile</button>
+      <button id="v-plan">Plan</button>
+      <button id="v-end">Body</button>
+      <button id="v-iso">3/4</button>
+      <button id="xray" aria-pressed="false">See-through hull</button>
+    </div>
+    <div class="status" id="status">Loading model…</div>
+  </div>
+
+  <aside>
+    <section>
+      <h2>Hydrostatics vs. Nomad 17</h2>
+      <dl id="hydro">
+        <dt></dt><dd class="ref">plan</dd><dd>model</dd>
+      </dl>
+      <p class="note" style="margin-top:8px">Fresh water, 115 mm draft. Shape parameters were tuned until the model matched the published figures.</p>
+    </section>
+    <section>
+      <h2>Strip layup</h2>
+      <div class="pattern" id="pattern" aria-label="Strip colour order, sheer to keel"></div>
+      <p class="note" style="margin-top:6px" id="pnote"></p>
+    </section>
+    <section>
+      <h2>Materials</h2>
+      <div class="legend" id="legend"></div>
+    </section>
+    <section>
+      <h2>Parts in this view</h2>
+      <dl id="parts"></dl>
+    </section>
+  </aside>
+</div>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+const canvas = document.getElementById('c');
+const stage = document.getElementById('stage');
+const status = document.getElementById('status');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(30, 1, 10, 60000);
+const controls = new OrbitControls(camera, canvas);
+controls.enableDamping = true;
+scene.add(new THREE.HemisphereLight(0xffffff, 0x6b5a48, 1.1));
+const sun = new THREE.DirectionalLight(0xffffff, 1.6); sun.position.set(3000, 6000, 4000); scene.add(sun);
+const fill = new THREE.DirectionalLight(0xffffff, 0.6); fill.position.set(-4000, 2000, -3000); scene.add(fill);
+
+function themeColors() {
+  const cs = getComputedStyle(document.documentElement);
+  scene.background = new THREE.Color(cs.getPropertyValue('--stage').trim());
+}
+themeColors();
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', themeColors);
+new MutationObserver(themeColors).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+function resize() {
+  const r = stage.getBoundingClientRect();
+  renderer.setSize(r.width, r.height, false);
+  camera.aspect = r.width / r.height; camera.updateProjectionMatrix();
+}
+new ResizeObserver(resize).observe(stage);
+
+const BUILD = Date.now();
+const loader = new GLTFLoader();
+const cache = {};
+let current = null, box = null, spec = null;
+
+function frame(dir) {
+  if (!box) return;
+  const c = box.getCenter(new THREE.Vector3());
+  const size = box.getSize(new THREE.Vector3()).length();
+  const d = dir.clone().normalize().multiplyScalar(size * 1.75);
+  camera.position.copy(c).add(d);
+  camera.up.set(0, 1, 0);
+  controls.target.copy(c); controls.update();
+}
+// glTF is y-up: model x = length, model z (up) -> y, model y -> -z
+const VIEWS = {
+  iso: new THREE.Vector3(0.9, 0.55, 1.0), side: new THREE.Vector3(0, 0.02, 1),
+  plan: new THREE.Vector3(0, 1, 0.001), end: new THREE.Vector3(1, 0.05, 0.001),
+};
+for (const [id, v] of [['v-iso', 'iso'], ['v-side', 'side'], ['v-plan', 'plan'], ['v-end', 'end']])
+  document.getElementById(id).addEventListener('click', () => frame(VIEWS[v]));
+
+let xray = false;
+function applyXray() {
+  if (!current) return;
+  current.traverse(o => {
+    if (!o.isMesh || !/^strip_|^outer_stem|^inner_stem/.test(o.name)) return;
+    if (!o.userData.mat) { o.userData.mat = o.material; o.userData.ghost = o.material.clone(); Object.assign(o.userData.ghost, { transparent: true, opacity: 0.18, depthWrite: false }); }
+    o.material = xray ? o.userData.ghost : o.userData.mat;
+  });
+}
+const xb = document.getElementById('xray');
+xb.addEventListener('click', () => { xray = !xray; xb.setAttribute('aria-pressed', xray); applyXray(); });
+
+async function show(name) {
+  for (const b of document.querySelectorAll('.tabs button')) b.setAttribute('aria-pressed', b.dataset.m === name);
+  status.textContent = 'Loading model…';
+  if (!cache[name]) cache[name] = await new Promise((res, rej) => loader.load(`${name}.gltf.json?b=${BUILD}`, g => res(g.scene), undefined, rej));
+  if (current) scene.remove(current);
+  current = cache[name]; scene.add(current); applyXray();
+  box = new THREE.Box3().setFromObject(current);
+  frame(VIEWS.iso);
+  const s = box.getSize(new THREE.Vector3());
+  status.textContent = `${Math.round(s.x)} × ${Math.round(s.z)} × ${Math.round(s.y)} mm`;
+  if (spec) listParts(name);
+}
+for (const b of document.querySelectorAll('.tabs button')) b.addEventListener('click', () => show(b.dataset.m).catch(err));
+function err(e) { status.textContent = 'Model failed to load: ' + (e?.message || e); }
+
+function row(dl, label, ...vals) {
+  const dt = document.createElement('dt'); dt.textContent = label; dl.append(dt);
+  vals.forEach((v, i) => { const dd = document.createElement('dd'); dd.textContent = v; if (vals.length > 1 && i === 0) dd.className = 'ref'; dl.append(dd); });
+}
+function listParts(name) {
+  const dl = document.getElementById('parts'); dl.replaceChildren();
+  dl.style.gridTemplateColumns = '1fr auto';
+  for (const [k, v] of Object.entries(spec.views[name])) row(dl, k, String(v));
+}
+
+fetch('spec.json').then(r => r.json()).then(s => {
+  spec = s;
+  const h = document.getElementById('hydro');
+  for (const r of s.hydro) row(h, r[0], r[1], r[2]);
+  const p = document.getElementById('pattern');
+  for (const c of s.pattern) { const i = document.createElement('i'); i.style.background = c === 'L' ? s.colors.L : s.colors.D; p.append(i); }
+  document.getElementById('pnote').textContent = `${s.pattern.length} strips per side, sheer (left) to keel line (right), ${s.strip}. Port and starboard match.`;
+  const lg = document.getElementById('legend');
+  for (const [label, col] of s.legend) { const sw = document.createElement('span'); sw.className = 'sw'; sw.style.background = col; const t = document.createElement('span'); t.textContent = label; lg.append(sw, t); }
+  const active = document.querySelector('.tabs button[aria-pressed="true"]').dataset.m;
+  if (current) listParts(active);
+}).catch(() => {});
+
+resize();
+show('canoe_hull_shell').catch(err);
+(function loop() { controls.update(); renderer.render(scene, camera); requestAnimationFrame(loop); })();
+</script>

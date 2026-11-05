@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nomad 17 Canoe</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Same neon tokens as the funky side */
+    :root {
+      --bg: #07060d; --stage: #05040a; --panel: #0f0c1d; --raise: #1a1530; --raise-hover: #241d42;
+      --line: #2b2450; --text: #e9e6ff; --muted: #8e88b8; --cyan: #00f0ff; --pink: #ff2bd6;
+      --glow-c: 0 0 10px rgba(0, 240, 255, 0.5);
+      --font-head: 'Orbitron', system-ui, sans-serif;
+      --font-body: 'Rajdhani', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+      color-scheme: dark;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    [hidden] { display: none !important; }
+    body { background: var(--bg); color: var(--text); font: 500 15px var(--font-body); }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; height: 100%; }
+    .stage { position: relative; background: var(--stage); min-height: 420px; overflow: hidden; }
+    canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+    .bar { position: absolute; left: 12px; right: 12px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; pointer-events: none; }
+    .bar > * { pointer-events: auto; }
+    .bar.top { top: 12px; }
+    .bar.bottom { bottom: 12px; justify-content: space-between; }
+    .seg { display: flex; gap: 2px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 3px; flex-wrap: wrap; }
+    .seg button, .chip {
+      font: 700 0.72rem var(--font-head); letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted); background: transparent; border: 0; border-radius: 6px; padding: 7px 11px; cursor: pointer;
+    }
+    .seg button:hover, .chip:hover { color: var(--text); background: var(--raise-hover); }
+    .seg button.on, .chip.on { color: var(--bg); background: var(--cyan); box-shadow: var(--glow-c); }
+    .chip { background: var(--panel); border: 1px solid var(--line); }
+    button:focus-visible { outline: 2px solid var(--pink); outline-offset: 2px; }
+    .readout { font: 0.75rem var(--font-mono); color: var(--muted); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 5px 9px; }
+    .hint { font: 0.72rem var(--font-mono); color: var(--muted); }
+    .panel { background: var(--panel); border-left: 1px solid var(--line); padding: 18px 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+    .panel h1 { font: 700 1.05rem var(--font-head); letter-spacing: 0.06em; text-shadow: var(--glow-c); }
+    .sub { color: var(--muted); font-size: 0.9rem; margin-top: 2px; }
+    h2 { font: 700 0.68rem var(--font-head); letter-spacing: 0.14em; text-transform: uppercase; color: var(--pink); margin-bottom: 8px; }
+    dl { display: grid; grid-template-columns: 1fr auto auto; gap: 3px 10px; font-size: 0.92rem; }
+    dt { color: var(--muted); }
+    dd { font: 0.78rem var(--font-mono); text-align: right; font-variant-numeric: tabular-nums; }
+    dd.ref { color: var(--muted); }
+    dl.two { grid-template-columns: 1fr auto; }
+    .pattern { display: flex; gap: 1px; height: 16px; border-radius: 3px; overflow: hidden; border: 1px solid var(--line); }
+    .pattern i { flex: 1; }
+    .legend { display: grid; grid-template-columns: 12px 1fr; gap: 5px 8px; align-items: center; font-size: 0.9rem; }
+    .sw { width: 12px; height: 12px; border-radius: 2px; }
+    .note { color: var(--muted); font-size: 0.85rem; line-height: 1.4; margin-top: 6px; }
+    @media (max-width: 820px) {
+      html, body { height: auto; }
+      .layout { grid-template-columns: 1fr; height: auto; }
+      .stage { height: 70vh; }
+      .panel { border-left: 0; border-top: 1px solid var(--line); }
+    }
+  </style>
+</head>
+<body>
+  <main class="layout">
+    <section class="stage" id="stage" aria-label="3D model">
+      <canvas id="c"></canvas>
+      <div class="bar top">
+        <div class="seg" role="group" aria-label="Model">
+          <button type="button" data-m="canoe_hull_shell" class="on">Hull shell</button>
+          <button type="button" data-m="canoe_full">Full canoe</button>
+          <button type="button" data-m="canoe_on_molds">On molds</button>
+        </div>
+      </div>
+      <div class="bar bottom">
+        <span class="readout" id="status">Loading model…</span>
+        <div class="seg" role="group" aria-label="View">
+          <button type="button" data-v="iso" class="on">3/4</button>
+          <button type="button" data-v="side">Profile</button>
+          <button type="button" data-v="plan">Plan</button>
+          <button type="button" data-v="end">Body</button>
+          <button type="button" data-v="under">Under</button>
+        </div>
+        <div class="seg" role="group" aria-label="Display">
+          <button type="button" id="flip" title="Turn the boat over">Flip</button>
+          <button type="button" id="xray" title="See the molds and stems through the planking">See-through</button>
+          <button type="button" id="spin" title="Turn the model slowly">Spin</button>
+        </div>
+      </div>
+    </section>
+
+    <aside class="panel">
+      <header>
+        <h1>NOMAD 17</h1>
+        <p class="sub">Cedar strip canoe · reconstructed from Ted Moores' published lines · mm</p>
+      </header>
+      <section>
+        <h2>Hydrostatics</h2>
+        <dl id="hydro"><dt></dt><dd class="ref">plan</dd><dd>model</dd></dl>
+        <p class="note">Fresh water at 115 mm draft. Hull shape tuned until the model matched the published Nomad 17 figures.</p>
+      </section>
+      <section>
+        <h2>Strip layup</h2>
+        <div class="pattern" id="pattern" aria-label="Strip colour order, sheer to keel"></div>
+        <p class="note" id="pnote"></p>
+      </section>
+      <section>
+        <h2>Materials</h2>
+        <div class="legend" id="legend"></div>
+      </section>
+      <section>
+        <h2>Parts in view</h2>
+        <dl class="two" id="parts"></dl>
+      </section>
+    </aside>
+  </main>
+
+  <script type="importmap">
+  { "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  } }
+  </script>
+  <script type="module">
+  import * as THREE from 'three';
+  import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+  import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+  const $ = id => document.getElementById(id);
+  const stage = $('stage'), status = $('status');
+  const renderer = new THREE.WebGLRenderer({ canvas: $('c'), antialias: true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color('#05040a');
+  const camera = new THREE.PerspectiveCamera(30, 1, 10, 80000);
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.autoRotateSpeed = 0.8;
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x3a2f5a, 1.1));
+  const sun = new THREE.DirectionalLight(0xffffff, 1.6); sun.position.set(3000, 6000, 4000); scene.add(sun);
+  const rim = new THREE.DirectionalLight(0x9fe9ff, 0.5); rim.position.set(-4000, 1500, -3000); scene.add(rim);
+
+  // Floor grid in the funky cyan, placed under whichever model is showing
+  const grid = new THREE.GridHelper(9000, 30, 0x00f0ff, 0x1b1736);
+  grid.material.transparent = true; grid.material.opacity = 0.35;
+  scene.add(grid);
+
+  function resize() {
+    const r = stage.getBoundingClientRect();
+    renderer.setSize(r.width, r.height, false);
+    camera.aspect = r.width / Math.max(r.height, 1); camera.updateProjectionMatrix();
+  }
+  new ResizeObserver(resize).observe(stage);
+
+  // glTF is y-up: boat length on x, model "up" on y, beam on z
+  const VIEWS = {
+    iso: new THREE.Vector3(0.9, 0.55, 1.0), side: new THREE.Vector3(0, 0.02, 1),
+    plan: new THREE.Vector3(0, 1, 0.001), end: new THREE.Vector3(1, 0.05, 0.001),
+    under: new THREE.Vector3(0.6, -0.7, 0.8),
+  };
+  const loader = new GLTFLoader();
+  const cache = {};
+  const pivot = new THREE.Group(); scene.add(pivot);
+  let current = null, box = null, spec = null, view = 'iso', flipped = false, xray = false;
+
+  function fit() {
+    if (!current) return;
+    pivot.rotation.x = flipped ? Math.PI : 0;
+    pivot.updateMatrixWorld(true);
+    box = new THREE.Box3().setFromObject(pivot);
+    grid.position.y = box.min.y - 2;
+    const s = box.getSize(new THREE.Vector3());
+    status.textContent = `${Math.round(s.x)} × ${Math.round(s.z)} × ${Math.round(s.y)} mm`;
+  }
+  function frame() {
+    if (!box) return;
+    const c = box.getCenter(new THREE.Vector3());
+    const d = VIEWS[view].clone().normalize().multiplyScalar(box.getSize(new THREE.Vector3()).length() * 1.75);
+    camera.position.copy(c).add(d);
+    controls.target.copy(c); controls.update();
+  }
+  function applyXray() {
+    if (!current) return;
+    current.traverse(o => {
+      if (!o.isMesh || !/^(strip_|outer_stem|inner_stem)/.test(o.name)) return;
+      if (!o.userData.solid) {
+        o.userData.solid = o.material;
+        o.userData.ghost = o.material.clone();
+        Object.assign(o.userData.ghost, { transparent: true, opacity: 0.16, depthWrite: false });
+      }
+      o.material = xray ? o.userData.ghost : o.userData.solid;
+    });
+  }
+  function listParts(name) {
+    const dl = $('parts'); dl.replaceChildren();
+    for (const [k, v] of Object.entries(spec.views[name])) {
+      const dt = document.createElement('dt'); dt.textContent = k;
+      const dd = document.createElement('dd'); dd.textContent = v;
+      dl.append(dt, dd);
+    }
+  }
+  function pressed(group, btn) {
+    group.querySelectorAll('button').forEach(b => b.classList.toggle('on', b === btn));
+  }
+
+  async function show(name) {
+    status.textContent = 'Loading model…';
+    if (!cache[name]) cache[name] = await new Promise((res, rej) =>
+      loader.load(`models/${name}.glb`, g => res(g.scene), undefined, rej));
+    if (current) pivot.remove(current);
+    current = cache[name]; pivot.add(current);
+    // the as-built jig is modelled upside down already; start every model the right way up
+    flipped = false; $('flip').classList.remove('on');
+    applyXray(); fit(); frame();
+    if (spec) listParts(name);
+  }
+
+  const modelSeg = document.querySelector('[aria-label="Model"]');
+  modelSeg.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    pressed(modelSeg, b);
+    show(b.dataset.m).catch(fail);
+  });
+  const viewSeg = document.querySelector('[aria-label="View"]');
+  viewSeg.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    pressed(viewSeg, b); view = b.dataset.v; frame();
+  });
+  $('flip').addEventListener('click', () => { flipped = !flipped; $('flip').classList.toggle('on', flipped); fit(); frame(); });
+  $('xray').addEventListener('click', () => { xray = !xray; $('xray').classList.toggle('on', xray); applyXray(); });
+  $('spin').addEventListener('click', () => { controls.autoRotate = !controls.autoRotate; $('spin').classList.toggle('on', controls.autoRotate); });
+  function fail(e) { status.textContent = 'Model failed to load: ' + (e && e.message || e); }
+
+  fetch('models/spec.json').then(r => r.json()).then(s => {
+    spec = s;
+    const h = $('hydro');
+    for (const [label, ref, val] of s.hydro) {
+      const dt = document.createElement('dt'); dt.textContent = label;
+      const a = document.createElement('dd'); a.className = 'ref'; a.textContent = ref;
+      const b = document.createElement('dd'); b.textContent = val;
+      h.append(dt, a, b);
+    }
+    for (const c of s.pattern) { const i = document.createElement('i'); i.style.background = s.colors[c]; $('pattern').append(i); }
+    $('pnote').textContent = `${s.pattern.length} strips per side, sheer (left) to keel (right), ${s.strip}. Light along the sheer, fading to dark over the bottom.`;
+    for (const [label, col] of s.legend) {
+      const sw = document.createElement('span'); sw.className = 'sw'; sw.style.background = col;
+      const t = document.createElement('span'); t.textContent = label;
+      $('legend').append(sw, t);
+    }
+    if (current) listParts(modelSeg.querySelector('.on').dataset.m);
+  }).catch(() => {});
+
+  resize();
+  show('canoe_hull_shell').catch(fail);
+  (function loop() { controls.update(); renderer.render(scene, camera); requestAnimationFrame(loop); })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+# Large CAD exports: regenerate with `python build.py`
+out/*.step
+out/*.stl
+# Preview build output (the site copy lives in funky/canoe/models)
+preview/*.glb
+preview/*.gltf.json
+__pycache__/

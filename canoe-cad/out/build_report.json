@@ -1,0 +1,612 @@
+{
+ "hull_params": {
+  "Bm": 445.0,
+  "T0": 12.5,
+  "ps": 3.2,
+  "R": 43.9626,
+  "a": 497.1694,
+  "b": 485.5948,
+  "q": 3.2757,
+  "r": 1.8357,
+  "n0": 2.2706,
+  "n1": 2.1995,
+  "D0": 179.1606,
+  "D1": 147.8896
+ },
+ "strips": {
+  "strips_per_side": 38,
+  "midship_half_girth": 713.2,
+  "strips": [
+   {
+    "label": "strip_S01_light",
+    "side": "S",
+    "index": 1,
+    "cedar": "L",
+    "length_mm": 5105.8
+   },
+   {
+    "label": "strip_S02_light",
+    "side": "S",
+    "index": 2,
+    "cedar": "L",
+    "length_mm": 5105.8
+   },
+   {
+    "label": "strip_S03_light",
+    "side": "S",
+    "index": 3,
+    "cedar": "L",
+    "length_mm": 5105.8
+   },
+   {
+    "label": "strip_S04_light",
+    "side": "S",
+    "index": 4,
+    "cedar": "L",
+    "length_mm": 5105.8
+   },
+   {
+    "label": "strip_S05_light",
+    "side": "S",
+    "index": 5,
+    "cedar": "L",
+    "length_mm": 5105.8
+   },
+   {
+    "label": "strip_S06_light",
+    "side": "S",
+    "index": 6,
+    "cedar": "L",
+    "length_mm": 5105.8
+   },
+   {
+    "label": "strip_S07_light",
+    "side": "S",
+    "index": 7,
+    "cedar": "L",
+    "length_mm": 5105.6
+   },
+   {
+    "label": "strip_S08_dark",
+    "side": "S",
+    "index": 8,
+    "cedar": "D",
+    "length_mm": 5104.1
+   },
+   {
+    "label": "strip_S09_light",
+    "side": "S",
+    "index": 9,
+    "cedar": "L",
+    "length_mm": 5101.0
+   },
+   {
+    "label": "strip_S10_dark",
+    "side": "S",
+    "index": 10,
+    "cedar": "D",
+    "length_mm": 5096.1
+   },
+   {
+    "label": "strip_S11_light",
+    "side": "S",
+    "index": 11,
+    "cedar": "L",
+    "length_mm": 5089.4
+   },
+   {
+    "label": "strip_S12_light",
+    "side": "S",
+    "index": 12,
+    "cedar": "L",
+    "length_mm": 5080.8
+   },
+   {
+    "label": "strip_S13_dark",
+    "side": "S",
+    "index": 13,
+    "cedar": "D",
+    "length_mm": 5070.0
+   },
+   {
+    "label": "strip_S14_light",
+    "side": "S",
+    "index": 14,
+    "cedar": "L",
+    "length_mm": 5057.0
+   },
+   {
+    "label": "strip_S15_dark",
+    "side": "S",
+    "index": 15,
+    "cedar": "D",
+    "length_mm": 5041.5
+   },
+   {
+    "label": "strip_S16_light",
+    "side": "S",
+    "index": 16,
+    "cedar": "L",
+    "length_mm": 5023.2
+   },
+   {
+    "label": "strip_S17_dark",
+    "side": "S",
+    "index": 17,
+    "cedar": "D",
+    "length_mm": 5001.8
+   },
+   {
+    "label": "strip_S18_light",
+    "side": "S",
+    "index": 18,
+    "cedar": "L",
+    "length_mm": 4976.9
+   },
+   {
+    "label": "strip_S19_light",
+    "side": "S",
+    "index": 19,
+    "cedar": "L",
+    "length_mm": 4947.6
+   },
+   {
+    "label": "strip_S20_dark",
+    "side": "S",
+    "index": 20,
+    "cedar": "D",
+    "length_mm": 4913.5
+   },
+   {
+    "label": "strip_S21_dark",
+    "side": "S",
+    "index": 21,
+    "cedar": "D",
+    "length_mm": 4873.4
+   },
+   {
+    "label": "strip_S22_light",
+    "side": "S",
+    "index": 22,
+    "cedar": "L",
+    "length_mm": 4825.5
+   },
+   {
+    "label": "strip_S23_dark",
+    "side": "S",
+    "index": 23,
+    "cedar": "D",
+    "length_mm": 4767.3
+   },
+   {
+    "label": "strip_S24_dark",
+    "side": "S",
+    "index": 24,
+    "cedar": "D",
+    "length_mm": 4694.3
+   },
+   {
+    "label": "strip_S25_dark",
+    "side": "S",
+    "index": 25,
+    "cedar": "D",
+    "length_mm": 4596.9
+   },
+   {
+    "label": "strip_S26_dark",
+    "side": "S",
+    "index": 26,
+    "cedar": "D",
+    "length_mm": 4446.0
+   },
+   {
+    "label": "strip_S27_dark",
+    "side": "S",
+    "index": 27,
+    "cedar": "D",
+    "length_mm": 3790.0
+   },
+   {
+    "label": "strip_S28_dark",
+    "side": "S",
+    "index": 28,
+    "cedar": "D",
+    "length_mm": 3538.8
+   },
+   {
+    "label": "strip_S29_dark",
+    "side": "S",
+    "index": 29,
+    "cedar": "D",
+    "length_mm": 3349.8
+   },
+   {
+    "label": "strip_S30_dark",
+    "side": "S",
+    "index": 30,
+    "cedar": "D",
+    "length_mm": 3175.0
+   },
+   {
+    "label": "strip_S31_dark",
+    "side": "S",
+    "index": 31,
+    "cedar": "D",
+    "length_mm": 3002.2
+   },
+   {
+    "label": "strip_S32_dark",
+    "side": "S",
+    "index": 32,
+    "cedar": "D",
+    "length_mm": 2824.2
+   },
+   {
+    "label": "strip_S33_dark",
+    "side": "S",
+    "index": 33,
+    "cedar": "D",
+    "length_mm": 2635.3
+   },
+   {
+    "label": "strip_S34_dark",
+    "side": "S",
+    "index": 34,
+    "cedar": "D",
+    "length_mm": 2428.6
+   },
+   {
+    "label": "strip_S35_dark",
+    "side": "S",
+    "index": 35,
+    "cedar": "D",
+    "length_mm": 2194.1
+   },
+   {
+    "label": "strip_S36_dark",
+    "side": "S",
+    "index": 36,
+    "cedar": "D",
+    "length_mm": 1913.8
+   },
+   {
+    "label": "strip_S37_dark",
+    "side": "S",
+    "index": 37,
+    "cedar": "D",
+    "length_mm": 1547.3
+   },
+   {
+    "label": "strip_S38_dark",
+    "side": "S",
+    "index": 38,
+    "cedar": "D",
+    "length_mm": 938.4
+   },
+   {
+    "label": "strip_P01_light",
+    "side": "P",
+    "index": 1,
+    "cedar": "L",
+    "length_mm": 5105.8
+   },
+   {
+    "label": "strip_P02_light",
+    "side": "P",
+    "index": 2,
+    "cedar": "L",
+    "length_mm": 5105.8
+   },
+   {
+    "label": "strip_P03_light",
+    "side": "P",
+    "index": 3,
+    "cedar": "L",
+    "length_mm": 5105.8
+   },
+   {
+    "label": "strip_P04_light",
+    "side": "P",
+    "index": 4,
+    "cedar": "L",
+    "length_mm": 5105.8
+   },
+   {
+    "label": "strip_P05_light",
+    "side": "P",
+    "index": 5,
+    "cedar": "L",
+    "length_mm": 5105.8
+   },
+   {
+    "label": "strip_P06_light",
+    "side": "P",
+    "index": 6,
+    "cedar": "L",
+    "length_mm": 5105.8
+   },
+   {
+    "label": "strip_P07_light",
+    "side": "P",
+    "index": 7,
+    "cedar": "L",
+    "length_mm": 5105.6
+   },
+   {
+    "label": "strip_P08_dark",
+    "side": "P",
+    "index": 8,
+    "cedar": "D",
+    "length_mm": 5104.1
+   },
+   {
+    "label": "strip_P09_light",
+    "side": "P",
+    "index": 9,
+    "cedar": "L",
+    "length_mm": 5101.0
+   },
+   {
+    "label": "strip_P10_dark",
+    "side": "P",
+    "index": 10,
+    "cedar": "D",
+    "length_mm": 5096.1
+   },
+   {
+    "label": "strip_P11_light",
+    "side": "P",
+    "index": 11,
+    "cedar": "L",
+    "length_mm": 5089.4
+   },
+   {
+    "label": "strip_P12_light",
+    "side": "P",
+    "index": 12,
+    "cedar": "L",
+    "length_mm": 5080.8
+   },
+   {
+    "label": "strip_P13_dark",
+    "side": "P",
+    "index": 13,
+    "cedar": "D",
+    "length_mm": 5070.0
+   },
+   {
+    "label": "strip_P14_light",
+    "side": "P",
+    "index": 14,
+    "cedar": "L",
+    "length_mm": 5057.0
+   },
+   {
+    "label": "strip_P15_dark",
+    "side": "P",
+    "index": 15,
+    "cedar": "D",
+    "length_mm": 5041.5
+   },
+   {
+    "label": "strip_P16_light",
+    "side": "P",
+    "index": 16,
+    "cedar": "L",
+    "length_mm": 5023.2
+   },
+   {
+    "label": "strip_P17_dark",
+    "side": "P",
+    "index": 17,
+    "cedar": "D",
+    "length_mm": 5001.8
+   },
+   {
+    "label": "strip_P18_light",
+    "side": "P",
+    "index": 18,
+    "cedar": "L",
+    "length_mm": 4976.9
+   },
+   {
+    "label": "strip_P19_light",
+    "side": "P",
+    "index": 19,
+    "cedar": "L",
+    "length_mm": 4947.6
+   },
+   {
+    "label": "strip_P20_dark",
+    "side": "P",
+    "index": 20,
+    "cedar": "D",
+    "length_mm": 4913.5
+   },
+   {
+    "label": "strip_P21_dark",
+    "side": "P",
+    "index": 21,
+    "cedar": "D",
+    "length_mm": 4873.4
+   },
+   {
+    "label": "strip_P22_light",
+    "side": "P",
+    "index": 22,
+    "cedar": "L",
+    "length_mm": 4825.5
+   },
+   {
+    "label": "strip_P23_dark",
+    "side": "P",
+    "index": 23,
+    "cedar": "D",
+    "length_mm": 4767.3
+   },
+   {
+    "label": "strip_P24_dark",
+    "side": "P",
+    "index": 24,
+    "cedar": "D",
+    "length_mm": 4694.3
+   },
+   {
+    "label": "strip_P25_dark",
+    "side": "P",
+    "index": 25,
+    "cedar": "D",
+    "length_mm": 4596.9
+   },
+   {
+    "label": "strip_P26_dark",
+    "side": "P",
+    "index": 26,
+    "cedar": "D",
+    "length_mm": 4446.0
+   },
+   {
+    "label": "strip_P27_dark",
+    "side": "P",
+    "index": 27,
+    "cedar": "D",
+    "length_mm": 3790.0
+   },
+   {
+    "label": "strip_P28_dark",
+    "side": "P",
+    "index": 28,
+    "cedar": "D",
+    "length_mm": 3538.8
+   },
+   {
+    "label": "strip_P29_dark",
+    "side": "P",
+    "index": 29,
+    "cedar": "D",
+    "length_mm": 3349.8
+   },
+   {
+    "label": "strip_P30_dark",
+    "side": "P",
+    "index": 30,
+    "cedar": "D",
+    "length_mm": 3175.0
+   },
+   {
+    "label": "strip_P31_dark",
+    "side": "P",
+    "index": 31,
+    "cedar": "D",
+    "length_mm": 3002.2
+   },
+   {
+    "label": "strip_P32_dark",
+    "side": "P",
+    "index": 32,
+    "cedar": "D",
+    "length_mm": 2824.2
+   },
+   {
+    "label": "strip_P33_dark",
+    "side": "P",
+    "index": 33,
+    "cedar": "D",
+    "length_mm": 2635.3
+   },
+   {
+    "label": "strip_P34_dark",
+    "side": "P",
+    "index": 34,
+    "cedar": "D",
+    "length_mm": 2428.6
+   },
+   {
+    "label": "strip_P35_dark",
+    "side": "P",
+    "index": 35,
+    "cedar": "D",
+    "length_mm": 2194.1
+   },
+   {
+    "label": "strip_P36_dark",
+    "side": "P",
+    "index": 36,
+    "cedar": "D",
+    "length_mm": 1913.8
+   },
+   {
+    "label": "strip_P37_dark",
+    "side": "P",
+    "index": 37,
+    "cedar": "D",
+    "length_mm": 1547.3
+   },
+   {
+    "label": "strip_P38_dark",
+    "side": "P",
+    "index": 38,
+    "cedar": "D",
+    "length_mm": 938.4
+   }
+  ]
+ },
+ "hull_shell": {
+  "parts": 88,
+  "triangles": 93432,
+  "bbox_mm": [
+   [
+    -2591.0,
+    -443.1,
+    0.1
+   ],
+   [
+    2591.0,
+    443.1,
+    635.0
+   ]
+  ]
+ },
+ "full": {
+  "parts": 114,
+  "triangles": 108688,
+  "bbox_mm": [
+   [
+    -2591.0,
+    -449.9,
+    0.1
+   ],
+   [
+    2591.0,
+    449.9,
+    635.0
+   ]
+  ]
+ },
+ "on_molds": {
+  "parts": 104,
+  "triangles": 99260,
+  "bbox_mm": [
+   [
+    -2552.9,
+    -443.1,
+    0.0
+   ],
+   [
+    2552.9,
+    443.1,
+    1369.9
+   ]
+  ]
+ },
+ "hydrostatics": {
+  "draft": 115,
+  "volume_m3": 0.18518651402845032,
+  "displacement_kg": 185.18651402845032,
+  "Lwl": 4629.258666666667,
+  "Bwl": 850.8360657298849,
+  "Am_m2": 0.07461769071101004,
+  "Cp": 0.5361127106562154,
+  "wetted_m2": 2.7133401696646673
+ }
+}

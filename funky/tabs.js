@@ -1,4 +1,4 @@
-/* LED Matrix and Stark Sight tabs. */
+/* LED Matrix, Stark Sight and Canoe tabs. */
 (function () {
   const F = window.Funky;
   const $ = id => document.getElementById(id);
@@ -131,4 +131,14 @@
   F.onTab('starksight', () => ssWatch(true));
   window.addEventListener('hashchange', () => { if (location.hash !== '#starksight') ssWatch(false); });
   if (location.hash === '#starksight') ssWatch(true);
+
+  // ---------- Canoe ----------
+  // The 3D viewer is heavy (three.js + ~6 MB of models), so it only loads once the tab opens.
+  const canoeEmbed = $('canoeEmbed');
+  function loadCanoe() {
+    if (canoeEmbed.firstChild) return;
+    canoeEmbed.innerHTML = '<iframe src="canoe/" title="Nomad 17 canoe 3D model"></iframe>';
+  }
+  F.onTab('canoe', loadCanoe);
+  if (location.hash === '#canoe') loadCanoe();
 })();
