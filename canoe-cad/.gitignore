@@ -5,3 +5,8 @@ out/*.stl
 preview/*.glb
 preview/*.gltf.json
 __pycache__/
+# OpenFOAM run directories (meshes and fields, ~1 GB each): regenerate with
+# cfd/setup_case.py + ./Allrun; the results that matter go into sim.json
+cfd/U*/
+cfd/template/
+.DS_Store
