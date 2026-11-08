@@ -177,7 +177,10 @@
     //   showcaseFit:      'cover' or 'contain'
     //   showcasePosition: which part stays in view when cropped, e.g. 'center 30%'
     const SLIDE_RATIO = 16 / 10;
-    const items = PROJECTS.map(p => ({
+    // The carousel opens on this project, then carries on in the usual order (wrapping round)
+    const FIRST = 'centrifuge';
+    const start = Math.max(0, PROJECTS.findIndex(p => p.id === FIRST));
+    const items = PROJECTS.slice(start).concat(PROJECTS.slice(0, start)).map(p => ({
       id:    p.id,
       src:   p.thumbnail,
       title: p.title,
