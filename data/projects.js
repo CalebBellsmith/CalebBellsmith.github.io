@@ -70,7 +70,9 @@ const PROJECTS = [
     categories: ['design'],
     images: [
       { src: 'images/canoe.jpg',     alt: 'Canoe' },
+      { src: 'images/canoe-flow-sim.jpg',   alt: 'Flow simulation: tracer particles around the hull' },
       { src: 'images/stems.jpg',     alt: 'Stems' },
+      { src: 'images/canoe-impact-sim.jpg', alt: 'Impact simulation: structural failure index after hitting a rock' },
       { src: 'images/machining.jpg', alt: 'Machining' },
       { src: 'images/frontview.jpg', alt: 'Front View' },
       { src: 'images/earlydays.jpg', alt: 'Early Days' },
